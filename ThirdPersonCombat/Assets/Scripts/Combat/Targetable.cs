@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Targetable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public event System.Action<Targetable> OnDestroyedDisabled;
+    private void OnDestroy()
     {
-        
+        OnDestroyedDisabled?.Invoke(this);
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        OnDestroyedDisabled?.Invoke(this);
     }
 }

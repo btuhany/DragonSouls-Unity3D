@@ -10,6 +10,7 @@ namespace States
 
         public override void Enter()
         {
+            animationController.PlayFreeLook();
             inputReader.TargetEvent += HandleOnTargetEvent;
         }
 
@@ -49,7 +50,7 @@ namespace States
         }
         private void HandleOnTargetEvent()
         {
-            //player.TargetableCheck
+            if (!targetableCheck.TrySelectTarget()) return;
             stateMachine.ChangeState(player.TargetPlayerState);
         }
     }

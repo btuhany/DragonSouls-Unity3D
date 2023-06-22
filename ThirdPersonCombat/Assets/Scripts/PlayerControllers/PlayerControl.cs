@@ -11,6 +11,8 @@ namespace PlayerControllers
         [Header("FreeLookState")]
         public float MovementSpeed;
         public float FaceDirectionRotationLerpTimeScale = 3f;
+        [Header("TargetState")]
+        public float TargetDirectionRotationLerpTimeScale = 2f;
 
         [Header("Scripts")]
         public InputReader InputReader;
@@ -18,13 +20,15 @@ namespace PlayerControllers
         public PlayerAnimationController AnimationController; 
         public PlayerStateMachine StateMachine;
         public TargetableCheck TargetableCheck;
+        
 
         [HideInInspector] public PlayerFreeLookState FreeLookPlayerState; 
         [HideInInspector] public PlayerTargetState TargetPlayerState;
         private void Awake()
         {
-            FreeLookPlayerState = new PlayerFreeLookState(this);
             StateMachine = new PlayerStateMachine();
+            FreeLookPlayerState = new PlayerFreeLookState(this);
+            TargetPlayerState = new PlayerTargetState(this);
         }
         private void OnEnable()
         {

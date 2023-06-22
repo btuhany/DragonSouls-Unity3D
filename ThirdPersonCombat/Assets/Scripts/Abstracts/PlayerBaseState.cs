@@ -14,6 +14,7 @@ namespace States
         protected InputReader inputReader;
         protected PlayerAnimationController animationController;
         protected PlayerStateMachine stateMachine;
+        protected TargetableCheck targetableCheck;
         public PlayerBaseState(PlayerControl player)
         {
             mainCamTransform = Camera.main.transform;
@@ -23,6 +24,7 @@ namespace States
             this.inputReader = player.InputReader;
             this.animationController = player.AnimationController;
             this.stateMachine = player.StateMachine;
+            this.targetableCheck = player.TargetableCheck;
         }
     }
 }

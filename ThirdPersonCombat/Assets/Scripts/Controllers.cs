@@ -198,7 +198,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""618b8eda-5a78-4db5-b1a6-c2d7572767dd"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
