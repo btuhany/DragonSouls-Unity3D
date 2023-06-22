@@ -8,18 +8,12 @@ namespace PlayerControllers
     //This class is being used as a data transmitter.
     public class PlayerControl : MonoBehaviour  
     {
-        [Header("FreeLookState")]
-        public float MovementSpeed;
-        public float FaceDirectionRotationLerpTimeScale = 3f;
-        [Header("TargetState")]
-        public float TargetDirectionRotationLerpTimeScale = 2f;
-
-        [Header("Scripts")]
+        [Header("Components")]
         public InputReader InputReader;
-        public CharacterController CharacterController;
         public PlayerAnimationController AnimationController; 
         public PlayerStateMachine StateMachine;
         public TargetableCheck TargetableCheck;
+        public MovementController Movement;
         
 
         [HideInInspector] public PlayerFreeLookState FreeLookPlayerState; 

@@ -5,7 +5,7 @@ namespace Inputs
 {
     public class InputReader : MonoBehaviour, Controllers.IPlayerActions
     {
-        public Vector2 MovementValue { get; private set; }
+        public Vector2 MovementOn2DAxis { get; private set; }
         public event System.Action JumpEvent;
         public event System.Action DodgeEvent;
         public event System.Action TargetEvent;
@@ -35,7 +35,7 @@ namespace Inputs
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            MovementValue = context.ReadValue<Vector2>();
+            MovementOn2DAxis = context.ReadValue<Vector2>();
         }
 
         public void OnCamera(InputAction.CallbackContext context)

@@ -21,33 +21,17 @@ namespace States
 
         public override void Tick(float deltaTime)
         {
-            characterController.Move(CamRelativeMovementVector() * player.MovementSpeed * deltaTime);
-            FaceDirectionRotationHandler(deltaTime);
-            animationController.FreeLookMovementAnim(inputReader.MovementValue.magnitude);
-        }
-        private void FaceDirectionRotationHandler(float deltaTime)
-        {
-            Vector3 movementVector = CamRelativeMovementVector();
-            if (movementVector != Vector3.zero)
+            Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
+            MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.FreeLookMovementSpeed, deltaTime);
+            animationController.FreeLookMovementAnim(movementOn2DAxis.magnitude);
+            
+            if (movementOn2DAxis.magnitude > 0.3f)
             {
-                transform.rotation = Quaternion.Lerp(
-                    transform.rotation,
-                    Quaternion.LookRotation(movementVector),
-                    deltaTime * player.FaceDirectionRotationLerpTimeScale
-                    );
+                RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
             }
         }
-        private Vector3 CamRelativeMovementVector()
-        {
-            Vector3 normalizedForwardVector = mainCamTransform.forward * inputReader.MovementValue.y;
-            normalizedForwardVector.y = 0f;
 
-            Vector3 normalizedRightVector = mainCamTransform.right * inputReader.MovementValue.x;
-            normalizedRightVector.y = 0f;
-            
 
-            return normalizedForwardVector + normalizedRightVector;
-        }
         private void HandleOnTargetEvent()
         {
             if (!targetableCheck.TrySelectTarget()) return;
