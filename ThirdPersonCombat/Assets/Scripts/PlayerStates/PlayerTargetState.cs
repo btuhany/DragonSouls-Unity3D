@@ -30,12 +30,15 @@ namespace States
 
         public override void Tick(float deltaTime)
         {
-            
+            HandleMovementAnimation();
             RotateCharacter(movement.TargetRelativeMotionVector(targetTransform.position),deltaTime);
             MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
-            //TargetRangeControl(deltaTime);
+            TargetRangeControl(deltaTime);
         }
-       
+        private void HandleMovementAnimation()
+        {
+            animationController.TargetMovementBlendTree(inputReader.MovementOn2DAxis);
+        }
         private void TargetRangeControl(float deltaTime)
         {
             targetRangeControlCounter -= deltaTime;
