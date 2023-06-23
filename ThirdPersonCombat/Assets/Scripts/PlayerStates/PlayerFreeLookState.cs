@@ -22,16 +22,18 @@ namespace States
         public override void Tick(float deltaTime)
         {
             Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
-            MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.FreeLookMovementSpeed, deltaTime);
-            animationController.FreeLookMovementAnim(movementOn2DAxis.magnitude);
-            
-            if (movementOn2DAxis.magnitude > 0.3f)
+            MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.FreeLookMaxMovementSpeed, deltaTime);
+            HandleMovementAnimation();
+
+            if (movementOn2DAxis.magnitude > 0f)
             {
                 RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
             }
         }
-
-
+        private void HandleMovementAnimation()
+        {
+            animationController.FreeLookMovementBlendTree(inputReader.MovementOn2DAxis);
+        }
         private void HandleOnTargetEvent()
         {
             if (!targetableCheck.TrySelectTarget()) return;

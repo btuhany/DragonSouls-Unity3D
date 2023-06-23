@@ -6,7 +6,7 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [Header("FreeLookState")]
-    public float FreeLookMovementSpeed = 10f;
+    public float FreeLookMaxMovementSpeed = 10f;
     public float _faceDirectionRotationLerpTimeScale = 3f;
     [Header("TargetState")]
     public float TargetMovementSpeed = 4f;

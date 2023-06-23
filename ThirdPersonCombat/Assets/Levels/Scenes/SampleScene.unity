@@ -247,7 +247,7 @@ MonoBehaviour:
     m_VirtualCamera: {fileID: 473794041}
     m_ActivateAfter: 0
     m_MinDuration: 0
-  - m_FullHash: 466277450
+  - m_FullHash: 673655915
     m_VirtualCamera: {fileID: 1815023929}
     m_ActivateAfter: 0
     m_MinDuration: 0
@@ -270,8 +270,34 @@ MonoBehaviour:
     m_ParentHash: 585382737
   - m_Hash: 1911844345
     m_ParentHash: 585382737
-  - m_Hash: 466277450
+  - m_Hash: -1356792818
+    m_ParentHash: 585382737
+  - m_Hash: 281998946
+    m_ParentHash: 585382737
+  - m_Hash: 2100467113
+    m_ParentHash: 585382737
+  - m_Hash: 1487852096
+    m_ParentHash: 585382737
+  - m_Hash: 673655915
     m_ParentHash: 756556552
+  - m_Hash: -686900691
+    m_ParentHash: 673655915
+  - m_Hash: -1212053858
+    m_ParentHash: 673655915
+  - m_Hash: 1102597038
+    m_ParentHash: 673655915
+  - m_Hash: 1967429895
+    m_ParentHash: 673655915
+  - m_Hash: 1774725795
+    m_ParentHash: 673655915
+  - m_Hash: -1359787599
+    m_ParentHash: 673655915
+  - m_Hash: -1718665348
+    m_ParentHash: 673655915
+  - m_Hash: 477266434
+    m_ParentHash: 673655915
+  - m_Hash: -1521507131
+    m_ParentHash: 673655915
 --- !u!1 &258160032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,7 +1490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2af88ff42dadae49bb6dcd2fcaa23ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FreeLookMovementSpeed: 10
+  FreeLookMaxMovementSpeed: 10
   _faceDirectionRotationLerpTimeScale: 20.15
   TargetMovementSpeed: 4
   _targetDirectionRotationLerpTimeScale: 2
@@ -2499,7 +2525,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815023927}
-  m_LocalRotation: {x: 3e-45, y: -1e-45, z: -0, w: 1}
+  m_LocalRotation: {x: -1e-45, y: -1e-45, z: -0, w: 1}
   m_LocalPosition: {x: -0.122057974, y: 1.2056276, z: -11.222908}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
