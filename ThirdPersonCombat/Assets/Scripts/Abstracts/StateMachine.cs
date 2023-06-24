@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace States
 {
-    public abstract class StateMachine
+    public abstract class StateMachine : MonoBehaviour
     {
         private State _currentState;
 

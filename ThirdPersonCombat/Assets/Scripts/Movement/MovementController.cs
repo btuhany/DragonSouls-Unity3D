@@ -11,8 +11,12 @@ public class MovementController : MonoBehaviour
     [Header("TargetState")]
     public float TargetMovementSpeed = 4f;
     public float _targetDirectionRotationLerpTimeScale = 2f;
+    [Header("Config")]
+    public float SprintMovementSpeed = 15f;
     [Header("Components")]
     [SerializeField] private CharacterController _characterController;
+
+    public Vector3 Velocity => _characterController.velocity; 
     private Transform _mainCam;
     private void Awake()
     {
@@ -20,14 +24,13 @@ public class MovementController : MonoBehaviour
     }
     public Vector3 CamRelativeMotionVector(Vector2 input2DMovementVector)
     {
-        Vector3 normalizedForwardVector = _mainCam.forward * input2DMovementVector.y;
+        Vector3 forwardVector = _mainCam.forward * input2DMovementVector.y;
+        Vector3 rightVector = _mainCam.right * input2DMovementVector.x;
 
-        Vector3 normalizedRightVector = _mainCam.right * input2DMovementVector.x;
+        Vector3 relativeVector = forwardVector + rightVector;
+        relativeVector.y = 0f;
 
-        Vector3 normalizedRelativeVector = normalizedForwardVector + normalizedRightVector;
-        normalizedRelativeVector.y = 0f;
-
-        return normalizedRelativeVector;
+        return relativeVector;
     }
     public Vector3 TargetRelativeMotionVector(Vector3 targetPos)
     {

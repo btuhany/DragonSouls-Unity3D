@@ -1,10 +1,13 @@
-using PlayerControllers;
+
 using UnityEngine;
 namespace States
 {
+    // TODO: Event returns
     public class PlayerFreeLookState : PlayerBaseState
     {
-        public PlayerFreeLookState(PlayerControl player) : base(player)
+        private bool _isSprintHold = false;
+        private bool _isSprint = false;
+        public PlayerFreeLookState(PlayerStateMachine player) : base(player)
         {
         }
 
@@ -12,24 +15,45 @@ namespace States
         {
             animationController.PlayFreeLook();
             inputReader.TargetEvent += HandleOnTargetEvent;
+            inputReader.SprintHoldEvent += HandleOnSprintHoldEvent;
+            inputReader.SprintHoldCanceledEvent += HandleOnSprintHoldCancelEvent;
+            inputReader.SprintEvent += HandleOnSprintEvent;
+            inputReader.LightAttackEvent += HandleOnLightAttackEvent;
         }
 
         public override void Exit()
         {
             inputReader.TargetEvent -= HandleOnTargetEvent;
+            inputReader.SprintHoldEvent -= HandleOnSprintHoldEvent;
+            inputReader.SprintHoldCanceledEvent -= HandleOnSprintHoldCancelEvent;
+            inputReader.SprintEvent -= HandleOnSprintEvent;
+            inputReader.LightAttackEvent -= HandleOnLightAttackEvent;
         }
 
         public override void Tick(float deltaTime)
         {
             Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
-            MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.FreeLookMaxMovementSpeed, deltaTime);
+
             HandleMovementAnimation();
+
+            if (_isSprintHold || _isSprint)
+            {
+                MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis.normalized), movement.SprintMovementSpeed, deltaTime);
+            }
+            else
+            {
+                MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.FreeLookMaxMovementSpeed, deltaTime);
+            }
+
 
             if (movementOn2DAxis.magnitude > 0f)
             {
                 RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
             }
+
+            HandleSprintControl();
         }
+
         private void HandleMovementAnimation()
         {
             animationController.FreeLookMovementBlendTree(inputReader.MovementOn2DAxis);
@@ -37,8 +61,38 @@ namespace States
         private void HandleOnTargetEvent()
         {
             if (!targetableCheck.TrySelectTarget()) return;
-            stateMachine.ChangeState(player.TargetPlayerState);
+            player.ChangeState(player.TargetPlayerState);
         }
+        private void HandleOnSprintHoldEvent()
+        {
+            _isSprintHold = true;
+            animationController.Sprint(true);
+        }
+        private void HandleOnSprintHoldCancelEvent()
+        {
+            _isSprintHold = false;
+            if (_isSprint) return;
+            animationController.Sprint(false);
+        }
+        private void HandleOnSprintEvent()
+        {
+            _isSprint = true;
+            animationController.Sprint(true);
+        }
+        private void HandleSprintControl()
+        {
+            if (_isSprint && movement.Velocity.sqrMagnitude < 0.1f)
+            {
+                _isSprint = false;
+                if (_isSprintHold) return;
+                animationController.Sprint(false);
+            }
+        }
+        private void HandleOnLightAttackEvent()
+        {
+            player.ChangeState(player.LightAttackState);
+        }
+
     }
 }
 

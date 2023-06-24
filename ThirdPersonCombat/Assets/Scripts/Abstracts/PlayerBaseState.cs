@@ -1,30 +1,30 @@
 using Inputs;
 using PlayerController;
-using PlayerControllers;
 using UnityEngine;
 
 namespace States
 {
     public abstract class PlayerBaseState : State
     {
-        protected PlayerControl player;
         protected Transform transform;
         protected Transform mainCamTransform;
         protected InputReader inputReader;
         protected PlayerAnimationController animationController;
-        protected PlayerStateMachine stateMachine;
+        protected PlayerStateMachine player;
         protected TargetableCheck targetableCheck;
         protected MovementController movement;
-        public PlayerBaseState(PlayerControl player)
+        protected CombatController combat;
+
+        public PlayerBaseState(PlayerStateMachine player)
         {
             mainCamTransform = Camera.main.transform;
             this.player = player;
             this.transform = player.transform;
             this.inputReader = player.InputReader;
             this.animationController = player.AnimationController;
-            this.stateMachine = player.StateMachine;
             this.targetableCheck = player.TargetableCheck;
             this.movement = player.Movement;
+            this.combat = player.CombatController;
         }
         protected void MoveCharacter(Vector3 motion, float speed, float deltaTime)
         {

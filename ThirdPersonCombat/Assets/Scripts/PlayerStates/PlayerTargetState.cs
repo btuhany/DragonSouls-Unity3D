@@ -1,5 +1,3 @@
-using PlayerControllers;
-using System;
 using UnityEngine;
 namespace States
 {
@@ -8,7 +6,7 @@ namespace States
         private Transform targetTransform;
         private const int lostTargetCancelDelay = 2;
         private float targetRangeControlCounter = lostTargetCancelDelay;
-        public PlayerTargetState(PlayerControl player) : base(player)
+        public PlayerTargetState(PlayerStateMachine player) : base(player)
         {
 
         }
@@ -47,18 +45,17 @@ namespace States
                 targetRangeControlCounter = lostTargetCancelDelay;
                 if (!targetableCheck.IsTargetInRange())
                 {
-                    stateMachine.ChangeState(player.FreeLookPlayerState);
+                    player.ChangeState(player.FreeLookPlayerState);
                     return;
                 }
             }
-
         }
         private void HandleOnTargetEvent()
         {
-            stateMachine.ChangeState(player.FreeLookPlayerState);
+            player.ChangeState(player.FreeLookPlayerState);
         }
 
-        //Character always on looking to target
+        //Character always looks to target
         private Vector3 MotionVectorAroundTarget()
         {
             Vector3 motion = Vector3.zero;
