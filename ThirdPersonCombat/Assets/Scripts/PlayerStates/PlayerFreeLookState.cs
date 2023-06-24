@@ -61,7 +61,7 @@ namespace States
         private void HandleOnTargetEvent()
         {
             if (!targetableCheck.TrySelectTarget()) return;
-            player.ChangeState(player.TargetPlayerState);
+            stateMachine.ChangeState(stateMachine.TargetPlayerState);
         }
         private void HandleOnSprintHoldEvent()
         {
@@ -90,7 +90,7 @@ namespace States
         }
         private void HandleOnLightAttackEvent()
         {
-            player.ChangeState(player.LightAttackState);
+            stateMachine.ChangeState(stateMachine.LightAttackState);
         }
 
     }

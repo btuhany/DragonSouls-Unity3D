@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace PlayerController
@@ -48,6 +49,22 @@ namespace PlayerController
         public void PlayAttack(string attackString, float transitionTime)
         {
             _anim.CrossFadeInFixedTime(attackString, transitionTime);
+           // _anim.Play(attackString);
         }
+        public void StopAttack(string attackString, float transitionTime)
+        {
+            
+        }
+        public float GetAttackAnimNormalizedTime()
+        {
+            AnimatorStateInfo currentInfo = _anim.GetCurrentAnimatorStateInfo(0);
+            AnimatorStateInfo nextInfo = _anim.GetNextAnimatorStateInfo(0);
+            if(_anim.IsInTransition(0) && nextInfo.IsTag("Attack"))
+            {
+                currentInfo = nextInfo;
+            }
+            return currentInfo.normalizedTime;
+        }
+       
     }
 }

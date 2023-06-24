@@ -10,7 +10,7 @@ namespace States
         protected Transform mainCamTransform;
         protected InputReader inputReader;
         protected PlayerAnimationController animationController;
-        protected PlayerStateMachine player;
+        protected PlayerStateMachine stateMachine;
         protected TargetableCheck targetableCheck;
         protected MovementController movement;
         protected CombatController combat;
@@ -18,7 +18,7 @@ namespace States
         public PlayerBaseState(PlayerStateMachine player)
         {
             mainCamTransform = Camera.main.transform;
-            this.player = player;
+            this.stateMachine = player;
             this.transform = player.transform;
             this.inputReader = player.InputReader;
             this.animationController = player.AnimationController;

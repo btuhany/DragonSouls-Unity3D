@@ -7,10 +7,16 @@ namespace PlayerController
     public struct Attack
     {
         public string animationName;
-        public float animationTransitionDuration;
+        public float transitionDuration;
+        public float comboAttackTime;
+    }
+    public enum AttackType
+    {
+        Light,
+        Heavy
     }
     public class CombatController : MonoBehaviour
     {
-        public Attack[] Attacks;
+        public Attack[] LightAttacks;
     }
 }

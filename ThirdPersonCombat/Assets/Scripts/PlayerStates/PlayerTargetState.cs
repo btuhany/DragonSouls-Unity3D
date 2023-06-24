@@ -45,14 +45,14 @@ namespace States
                 targetRangeControlCounter = lostTargetCancelDelay;
                 if (!targetableCheck.IsTargetInRange())
                 {
-                    player.ChangeState(player.FreeLookPlayerState);
+                    stateMachine.ChangeState(stateMachine.FreeLookPlayerState);
                     return;
                 }
             }
         }
         private void HandleOnTargetEvent()
         {
-            player.ChangeState(player.FreeLookPlayerState);
+            stateMachine.ChangeState(stateMachine.FreeLookPlayerState);
         }
 
         //Character always looks to target
