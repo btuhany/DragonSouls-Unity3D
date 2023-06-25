@@ -31,7 +31,7 @@ namespace PlayerController
         {
             _anim.Play(_freeLookBlendTreeHash);
         }
-        public void PlaySetBoolsCombatTargetBlendSetBools()
+        public void PlaySetBoolsCombatBlendTree()
         {
             _anim.Play(_targetSwordBlendTreeHash); //Virtual target camera get set by this anim.
             _anim.SetBool(_targetBoolHash, true);
@@ -42,7 +42,7 @@ namespace PlayerController
             _anim.SetBool(_targetBoolHash, false);
             _anim.SetBool(_freeBoolHash, true);
         }
-        public void CancelTargetBools()
+        public void ResetCombatBools()
         {
             _anim.SetBool(_targetBoolHash, false);
             _anim.SetBool(_freeBoolHash, false);

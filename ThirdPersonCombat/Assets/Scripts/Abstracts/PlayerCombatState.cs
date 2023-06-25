@@ -64,18 +64,7 @@ namespace States
             _heavyAttackIndex = 0;
             _animationTimePassed = 0f;
         }
-        protected virtual void StateEnterActions()
-        {
-
-        }
-        protected virtual void StateExitActions()
-        {
-
-        }
-        protected virtual void StateTickActions(float deltaTime)
-        {
- 
-        }
+     
         private void TryLightComboAttack(float animationTime)
         {
             if (animationTime < _currentAttack.attackDuration)
@@ -182,5 +171,11 @@ namespace States
             _heavyAttackIndex++;
             _animationTimePassed = 0f;
         }
+        protected virtual void StateEnterActions() { }
+        
+        protected virtual void StateExitActions() { }
+
+        protected virtual void StateTickActions(float deltaTime) { }
+
     }
 }

@@ -2,7 +2,7 @@ using PlayerController;
 using UnityEngine;
 namespace States
 {
-    public class PlayerCombatTargetState : PlayerCombatState
+    public abstract class PlayerCombatTargetState : PlayerCombatState
     {
         private Transform targetTransform;
         private const int lostTargetCancelDelay = 2;
@@ -14,14 +14,14 @@ namespace States
 
         protected override void StateEnterActions()
         {
-            animationController.PlaySetBoolsCombatTargetBlendSetBools();
+            animationController.PlaySetBoolsCombatBlendTree();
             targetRangeControlCounter = 3f;
             targetTransform = targetableCheck.CurrentTargetTransform;
             inputReader.TargetEvent += HandleOnTargetEvent;
         }
         protected override void StateExitActions()
         {
-            animationController.CancelTargetBools();
+            animationController.ResetCombatBools();
             targetTransform = null;
             targetableCheck.ClearTarget();
             inputReader.TargetEvent -= HandleOnTargetEvent;

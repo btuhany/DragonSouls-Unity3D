@@ -14,7 +14,7 @@ namespace States
         public override void Enter()
         {
             targetRangeControlCounter = 3f;
-            animationController.PlaySetBoolsCombatTargetBlendSetBools();
+            animationController.PlaySetBoolsCombatBlendTree();
             targetTransform = targetableCheck.CurrentTargetTransform;
             inputReader.TargetEvent += HandleOnTargetEvent;
         }
