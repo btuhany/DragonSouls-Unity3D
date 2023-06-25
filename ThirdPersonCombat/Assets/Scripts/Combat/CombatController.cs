@@ -8,7 +8,13 @@ namespace PlayerController
     {
         public string animationName;
         public float transitionDuration;
-        public float comboAttackTime;
+        public float attackDuration;
+        public float comboPermissionDelay;
+      
+    }
+    public enum Weapon
+    {
+        Unarmed,
     }
     public enum AttackType
     {
@@ -17,6 +23,15 @@ namespace PlayerController
     }
     public class CombatController : MonoBehaviour
     {
-        public Attack[] LightAttacks;
+        [SerializeField] PlayerAnimationController _animationController;
+        public float CombatModeDuration = 2f;
+        public Attack[] UnarmedLightAttacks;
+        public Attack[] UnarmedHeavyAttacks;
+        public Attack UnarmedLLHComboAttack;
+        public void PlayUnarmedAttack(int index)
+        {
+            Attack attack = UnarmedLightAttacks[index];
+            _animationController.PlayAttack(attack.animationName, attack.transitionDuration);
+        }
     }
 }

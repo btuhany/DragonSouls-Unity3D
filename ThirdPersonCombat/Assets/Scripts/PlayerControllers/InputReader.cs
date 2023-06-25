@@ -1,3 +1,4 @@
+using PlayerController;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +16,8 @@ namespace Inputs
         public event System.Action SprintHoldEvent;
         public event System.Action SprintHoldCanceledEvent;
         public event System.Action LightAttackEvent;
+        public event System.Action HeavyAttackEvent;
+        public AttackType LastAttackType { get; private set; }
 
         private Controllers _controls;
         private void Awake()
@@ -78,8 +81,15 @@ namespace Inputs
         public void OnLightAttack(InputAction.CallbackContext context)
         {
             if (!context.performed) { return; }
+            LastAttackType = AttackType.Light;
             LightAttackEvent?.Invoke();
         }
 
+        public void OnHeavyAttack(InputAction.CallbackContext context)
+        {
+            if (!context.performed) { return; }
+            LastAttackType = AttackType.Heavy;
+            HeavyAttackEvent?.Invoke();
+        }
     }
 }

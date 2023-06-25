@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using static System.TimeZoneInfo;
 
 namespace PlayerController
 {
@@ -15,11 +16,16 @@ namespace PlayerController
 
         private readonly int _freeLookForwardHash = Animator.StringToHash("FreeLookForward");
         private readonly int _freeLookRightHash = Animator.StringToHash("FreeLookRight");
+        private readonly int _unarmedForward = Animator.StringToHash("UnarmedForward");
         private readonly int _isSprintHash = Animator.StringToHash("IsSprint");
 
         private readonly int _targetforwardHash = Animator.StringToHash("TargetForward");
         private readonly int _targetrightHash = Animator.StringToHash("TargetRight");
 
+        public void SetLayerWeight(int index, float value)
+        {
+            _anim.SetLayerWeight(index, value);
+        }
         public void PlayFreeLook()
         {
             _anim.Play(_freeLookBlendTreeHash);
@@ -27,6 +33,10 @@ namespace PlayerController
         public void PlayTarget()
         {
             _anim.Play(_targetSwordBlendTreeHash);
+        }
+        public void UnarmedModeMovement(Vector2 dirVector)
+        {
+            _anim.SetFloat(_unarmedForward, dirVector.magnitude, _animatorDumpTime, Time.deltaTime);
         }
         public void TargetMovementBlendTree(Vector2 dirVector)
         {
@@ -49,22 +59,9 @@ namespace PlayerController
         public void PlayAttack(string attackString, float transitionTime)
         {
             _anim.CrossFadeInFixedTime(attackString, transitionTime);
-           // _anim.Play(attackString);
+            // _anim.Play(attackString);
         }
-        public void StopAttack(string attackString, float transitionTime)
-        {
-            
-        }
-        public float GetAttackAnimNormalizedTime()
-        {
-            AnimatorStateInfo currentInfo = _anim.GetCurrentAnimatorStateInfo(0);
-            AnimatorStateInfo nextInfo = _anim.GetNextAnimatorStateInfo(0);
-            if(_anim.IsInTransition(0) && nextInfo.IsTag("Attack"))
-            {
-                currentInfo = nextInfo;
-            }
-            return currentInfo.normalizedTime;
-        }
-       
+
+        
     }
 }

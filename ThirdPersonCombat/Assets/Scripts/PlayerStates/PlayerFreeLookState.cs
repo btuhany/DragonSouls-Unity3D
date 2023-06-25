@@ -19,6 +19,7 @@ namespace States
             inputReader.SprintHoldCanceledEvent += HandleOnSprintHoldCancelEvent;
             inputReader.SprintEvent += HandleOnSprintEvent;
             inputReader.LightAttackEvent += HandleOnLightAttackEvent;
+            inputReader.HeavyAttackEvent += HandleOnHeavyAttackEvent;
         }
 
         public override void Exit()
@@ -28,13 +29,14 @@ namespace States
             inputReader.SprintHoldCanceledEvent -= HandleOnSprintHoldCancelEvent;
             inputReader.SprintEvent -= HandleOnSprintEvent;
             inputReader.LightAttackEvent -= HandleOnLightAttackEvent;
+            inputReader.HeavyAttackEvent -= HandleOnHeavyAttackEvent;
         }
 
         public override void Tick(float deltaTime)
         {
             Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
 
-            HandleMovementAnimation();
+            animationController.FreeLookMovementBlendTree(movementOn2DAxis);
 
             if (_isSprintHold || _isSprint)
             {
@@ -54,10 +56,6 @@ namespace States
             HandleSprintControl();
         }
 
-        private void HandleMovementAnimation()
-        {
-            animationController.FreeLookMovementBlendTree(inputReader.MovementOn2DAxis);
-        }
         private void HandleOnTargetEvent()
         {
             if (!targetableCheck.TrySelectTarget()) return;
@@ -90,7 +88,11 @@ namespace States
         }
         private void HandleOnLightAttackEvent()
         {
-            stateMachine.ChangeState(stateMachine.LightAttackState);
+            stateMachine.ChangeState(stateMachine.UnarmedAttackState);
+        }
+        private void HandleOnHeavyAttackEvent()
+        {
+            stateMachine.ChangeState(stateMachine.UnarmedAttackState);
         }
 
     }

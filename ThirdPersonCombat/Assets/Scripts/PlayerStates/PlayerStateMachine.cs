@@ -1,4 +1,3 @@
-
 using Inputs;
 using PlayerController;
 using UnityEngine;
@@ -16,13 +15,13 @@ namespace States
 
         [HideInInspector] public PlayerFreeLookState FreeLookPlayerState;
         [HideInInspector] public PlayerTargetState TargetPlayerState;
-        [HideInInspector] public PlayerAttackingState LightAttackState;
+        [HideInInspector] public PlayerAttackingState UnarmedAttackState;
 
         private void Awake()
         {
             FreeLookPlayerState = new PlayerFreeLookState(this);
             TargetPlayerState = new PlayerTargetState(this);
-            LightAttackState = new PlayerAttackingState(this,AttackType.Light);
+            UnarmedAttackState = new PlayerAttackingState(this, Weapon.Unarmed);
         }
         private void OnEnable()
         {
