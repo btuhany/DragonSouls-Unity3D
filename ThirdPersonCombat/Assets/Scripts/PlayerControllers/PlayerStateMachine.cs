@@ -16,11 +16,13 @@ namespace States
         [HideInInspector] public PlayerFreeLookState FreeLookPlayerState;
         [HideInInspector] public PlayerCombatTargetState UnarmedTargetState;
         [HideInInspector] public PlayerCombatState UnarmedAttackTransitionState;
+        [HideInInspector] public PlayerSwordFreeState SwordCombatFreeState;
 
         private void Awake()
         {
             FreeLookPlayerState = new PlayerFreeLookState(this);
             UnarmedTargetState = new PlayerUnarmedTargetState(this);
+            SwordCombatFreeState = new PlayerSwordFreeState(this);
             UnarmedAttackTransitionState = new PlayerUnarmedFreeState(this, Weapon.Unarmed, true);
         }
         private void OnEnable()

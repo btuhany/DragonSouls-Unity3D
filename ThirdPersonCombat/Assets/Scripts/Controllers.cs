@@ -107,6 +107,15 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UnsheathSword"",
+                    ""type"": ""Button"",
+                    ""id"": ""533f4374-98db-4166-abe8-8f6d9e5b47f3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -285,6 +294,17 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""action"": ""HeavyAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13b6151e-9068-4a34-bcde-d7380308255a"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UnsheathSword"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -330,6 +350,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         m_Player_HoldSprint = m_Player.FindAction("HoldSprint", throwIfNotFound: true);
         m_Player_LightAttack = m_Player.FindAction("LightAttack", throwIfNotFound: true);
         m_Player_HeavyAttack = m_Player.FindAction("HeavyAttack", throwIfNotFound: true);
+        m_Player_UnsheathSword = m_Player.FindAction("UnsheathSword", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -400,6 +421,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_HoldSprint;
     private readonly InputAction m_Player_LightAttack;
     private readonly InputAction m_Player_HeavyAttack;
+    private readonly InputAction m_Player_UnsheathSword;
     public struct PlayerActions
     {
         private @Controllers m_Wrapper;
@@ -413,6 +435,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         public InputAction @HoldSprint => m_Wrapper.m_Player_HoldSprint;
         public InputAction @LightAttack => m_Wrapper.m_Player_LightAttack;
         public InputAction @HeavyAttack => m_Wrapper.m_Player_HeavyAttack;
+        public InputAction @UnsheathSword => m_Wrapper.m_Player_UnsheathSword;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -449,6 +472,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @HeavyAttack.started += instance.OnHeavyAttack;
             @HeavyAttack.performed += instance.OnHeavyAttack;
             @HeavyAttack.canceled += instance.OnHeavyAttack;
+            @UnsheathSword.started += instance.OnUnsheathSword;
+            @UnsheathSword.performed += instance.OnUnsheathSword;
+            @UnsheathSword.canceled += instance.OnUnsheathSword;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -480,6 +506,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @HeavyAttack.started -= instance.OnHeavyAttack;
             @HeavyAttack.performed -= instance.OnHeavyAttack;
             @HeavyAttack.canceled -= instance.OnHeavyAttack;
+            @UnsheathSword.started -= instance.OnUnsheathSword;
+            @UnsheathSword.performed -= instance.OnUnsheathSword;
+            @UnsheathSword.canceled -= instance.OnUnsheathSword;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -526,5 +555,6 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         void OnHoldSprint(InputAction.CallbackContext context);
         void OnLightAttack(InputAction.CallbackContext context);
         void OnHeavyAttack(InputAction.CallbackContext context);
+        void OnUnsheathSword(InputAction.CallbackContext context);
     }
 }

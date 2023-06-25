@@ -10,14 +10,15 @@ namespace PlayerController
         [SerializeField] Animator _anim;
 
         public bool IsSprint = false;
-
+        public bool IsUnsheathAnimInfo => _anim.GetCurrentAnimatorStateInfo(0).IsTag("Unsheath");
         private readonly int _targetSwordBlendTreeHash = Animator.StringToHash("TargetSwordBlendTree");
         private readonly int _freeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
+        private readonly int _unsheathSwordHash = Animator.StringToHash("UnsheathSword");
 
         private readonly int _freeLookForwardHash = Animator.StringToHash("FreeLookForward");
         private readonly int _freeLookRightHash = Animator.StringToHash("FreeLookRight");
 
-        private readonly int _unarmedForward = Animator.StringToHash("UnarmedForward");
+        private readonly int _combatFreeForwardHash = Animator.StringToHash("CombatFreeForward");
 
         private readonly int _isSprintHash = Animator.StringToHash("IsSprint");
 
@@ -37,6 +38,10 @@ namespace PlayerController
             _anim.SetBool(_targetBoolHash, true);
             _anim.SetBool(_freeBoolHash, false);
         }
+        public void PlayUnsheathSword()
+        {
+            _anim.Play(_unsheathSwordHash);
+        }
         public void SetBoolsCombatFree()
         {
             _anim.SetBool(_targetBoolHash, false);
@@ -47,11 +52,17 @@ namespace PlayerController
             _anim.SetBool(_targetBoolHash, false);
             _anim.SetBool(_freeBoolHash, false);
         }
-        public void UnarmedModeMovement(Vector2 dirVector)
+
+        // Same methods! 
+        public void UnarmedFreeMovement(Vector2 dirVector)
         {
-            _anim.SetFloat(_unarmedForward, dirVector.magnitude, _animatorDumpTime, Time.deltaTime);
+            _anim.SetFloat(_combatFreeForwardHash, dirVector.magnitude, _animatorDumpTime, Time.deltaTime);
         }
-        
+        public void SwordFreeMovement(Vector2 dirVector)
+        {
+            _anim.SetFloat(_combatFreeForwardHash, dirVector.magnitude, _animatorDumpTime, Time.deltaTime);
+        }
+
         public void TargetMovementBlendTree(Vector2 dirVector)
         {
             _anim.SetFloat(_targetforwardHash, dirVector.y);
@@ -75,6 +86,7 @@ namespace PlayerController
             _anim.CrossFadeInFixedTime(attackString, transitionTime);
             // _anim.Play(attackString);
         }
+ 
 
         
     }

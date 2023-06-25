@@ -17,6 +17,7 @@ namespace Inputs
         public event System.Action SprintHoldCanceledEvent;
         public event System.Action LightAttackEvent;
         public event System.Action HeavyAttackEvent;
+        public event System.Action UnsheathSword;
         public AttackType LastAttackType { get; private set; }
 
         private Controllers _controls;
@@ -90,6 +91,12 @@ namespace Inputs
             if (!context.performed) { return; }
             LastAttackType = AttackType.Heavy;
             HeavyAttackEvent?.Invoke();
+        }
+
+        public void OnUnsheathSword(InputAction.CallbackContext context)
+        {
+            if (!context.performed) { return; }
+            UnsheathSword?.Invoke();
         }
     }
 }

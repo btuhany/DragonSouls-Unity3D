@@ -1,8 +1,8 @@
 
+using TMPro;
 using UnityEngine;
 namespace States
 {
-    // TODO: Event returns
     public class PlayerFreeLookState : PlayerBaseState
     {
         private bool _isSprintHold = false;
@@ -20,6 +20,7 @@ namespace States
             inputReader.SprintEvent += HandleOnSprintEvent;
             inputReader.LightAttackEvent += HandleOnLightAttackEvent;
             inputReader.HeavyAttackEvent += HandleOnHeavyAttackEvent;
+            inputReader.UnsheathSword += HandleOnUnsheathEvent;
         }
 
         public override void Exit()
@@ -30,6 +31,7 @@ namespace States
             inputReader.SprintEvent -= HandleOnSprintEvent;
             inputReader.LightAttackEvent -= HandleOnLightAttackEvent;
             inputReader.HeavyAttackEvent -= HandleOnHeavyAttackEvent;
+            inputReader.UnsheathSword -= HandleOnUnsheathEvent;
         }
 
         public override void Tick(float deltaTime)
@@ -93,6 +95,11 @@ namespace States
         private void HandleOnHeavyAttackEvent()
         {
             stateMachine.ChangeState(stateMachine.UnarmedAttackTransitionState);
+        }
+        private void HandleOnUnsheathEvent()
+        {
+            animationController.PlayUnsheathSword();
+            stateMachine.ChangeState(stateMachine.SwordCombatFreeState);
         }
 
     }
