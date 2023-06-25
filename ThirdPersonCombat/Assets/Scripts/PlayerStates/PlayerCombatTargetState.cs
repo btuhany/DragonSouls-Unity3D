@@ -2,45 +2,41 @@ using PlayerController;
 using UnityEngine;
 namespace States
 {
-    public class PlayerTargetState : PlayerBaseState
+    public class PlayerCombatTargetState : PlayerCombatState
     {
         private Transform targetTransform;
         private const int lostTargetCancelDelay = 2;
         private float targetRangeControlCounter = lostTargetCancelDelay;
-        public PlayerTargetState(PlayerStateMachine player) : base(player)
+
+        public PlayerCombatTargetState(PlayerStateMachine player, Weapon weapon, bool autoStateChange = false) : base(player, weapon, autoStateChange)
         {
         }
 
-        public override void Enter()
+        protected override void StateEnterActions()
         {
-            targetRangeControlCounter = 3f;
             animationController.PlaySetBoolsCombatTargetBlendSetBools();
+            targetRangeControlCounter = 3f;
             targetTransform = targetableCheck.CurrentTargetTransform;
             inputReader.TargetEvent += HandleOnTargetEvent;
         }
-
-        public override void Exit()
+        protected override void StateExitActions()
         {
+            animationController.CancelTargetBools();
             targetTransform = null;
             targetableCheck.ClearTarget();
             inputReader.TargetEvent -= HandleOnTargetEvent;
         }
-
-        public override void Tick(float deltaTime)
+        protected override void StateTickActions(float deltaTime)
         {
-            HandleMovementAnimation();
+            animationController.TargetMovementBlendTree(inputReader.MovementOn2DAxis);
             RotateCharacter(movement.TargetRelativeMotionVector(targetTransform.position), deltaTime);
             MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
             TargetRangeControl(deltaTime);
         }
-        private void HandleMovementAnimation()
-        {
-            animationController.TargetMovementBlendTree(inputReader.MovementOn2DAxis);
-        }
         private void TargetRangeControl(float deltaTime)
         {
             targetRangeControlCounter -= deltaTime;
-            if(targetRangeControlCounter < 0)
+            if (targetRangeControlCounter < 0)
             {
                 targetRangeControlCounter = lostTargetCancelDelay;
                 if (!targetableCheck.IsTargetInRange())
@@ -52,26 +48,25 @@ namespace States
         }
         private void HandleOnTargetEvent()
         {
-            Debug.Log("!");
             stateMachine.ChangeState(stateMachine.FreeLookPlayerState);
         }
 
         private Vector3 MotionVectorAroundTarget()
         {
-        //Character always looks to target
+            //Character always looks to target
             Vector3 motion = Vector3.zero;
-            motion  += transform.right * inputReader.MovementOn2DAxis.x;
-            motion  += transform.forward * inputReader.MovementOn2DAxis.y;
+            motion += transform.right * inputReader.MovementOn2DAxis.x;
+            motion += transform.forward * inputReader.MovementOn2DAxis.y;
             return motion;
         }
         private void HandleOnLightAttackEvent()
         {
-               
+
         }
         private void HandleOnHeavyAttackEvent()
         {
-            
+
         }
-        
     }
+
 }

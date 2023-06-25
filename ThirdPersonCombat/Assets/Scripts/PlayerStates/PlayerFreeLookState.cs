@@ -13,7 +13,7 @@ namespace States
 
         public override void Enter()
         {
-            animationController.PlayFreeLook();
+            animationController.PlaySetFreeLookBlend();
             inputReader.TargetEvent += HandleOnTargetEvent;
             inputReader.SprintHoldEvent += HandleOnSprintHoldEvent;
             inputReader.SprintHoldCanceledEvent += HandleOnSprintHoldCancelEvent;

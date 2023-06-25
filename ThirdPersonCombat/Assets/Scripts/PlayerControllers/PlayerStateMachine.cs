@@ -14,14 +14,14 @@ namespace States
         public CombatController CombatController;
 
         [HideInInspector] public PlayerFreeLookState FreeLookPlayerState;
-        [HideInInspector] public PlayerTargetState TargetPlayerState;
-        [HideInInspector] public PlayerAttackingState UnarmedAttackState;
+        [HideInInspector] public PlayerCombatTargetState TargetPlayerState;
+        [HideInInspector] public PlayerCombatState UnarmedAttackState;
 
         private void Awake()
         {
             FreeLookPlayerState = new PlayerFreeLookState(this);
-            TargetPlayerState = new PlayerTargetState(this);
-            UnarmedAttackState = new PlayerAttackingState(this, Weapon.Unarmed);
+            TargetPlayerState = new PlayerCombatTargetState(this, Weapon.Unarmed, false);
+            UnarmedAttackState = new PlayerCombatFreeState(this, Weapon.Unarmed, true);
         }
         private void OnEnable()
         {

@@ -13,7 +13,6 @@ namespace States
         protected PlayerStateMachine stateMachine;
         protected TargetableCheck targetableCheck;
         protected MovementController movement;
-        protected CombatController combat;
 
         public PlayerBaseState(PlayerStateMachine player)
         {
@@ -24,7 +23,6 @@ namespace States
             this.animationController = player.AnimationController;
             this.targetableCheck = player.TargetableCheck;
             this.movement = player.Movement;
-            this.combat = player.CombatController;
         }
         protected void MoveCharacter(Vector3 motion, float speed, float deltaTime)
         {

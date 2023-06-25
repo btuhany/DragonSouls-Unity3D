@@ -15,6 +15,7 @@ namespace PlayerController
     public enum Weapon
     {
         Unarmed,
+        Sword
     }
     public enum AttackType
     {
@@ -23,15 +24,14 @@ namespace PlayerController
     }
     public class CombatController : MonoBehaviour
     {
-        [SerializeField] PlayerAnimationController _animationController;
         public float CombatModeDuration = 2f;
         public Attack[] UnarmedLightAttacks;
         public Attack[] UnarmedHeavyAttacks;
         public Attack UnarmedLLHComboAttack;
-        public void PlayUnarmedAttack(int index)
-        {
-            Attack attack = UnarmedLightAttacks[index];
-            _animationController.PlayAttack(attack.animationName, attack.transitionDuration);
-        }
+
+        public Attack[] SwordLightAttacks;
+        public Attack[] SwordHeavyAttacks;
+        public Attack SwordLLHComboAttack;
+
     }
 }

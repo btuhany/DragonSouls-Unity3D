@@ -16,28 +16,42 @@ namespace PlayerController
 
         private readonly int _freeLookForwardHash = Animator.StringToHash("FreeLookForward");
         private readonly int _freeLookRightHash = Animator.StringToHash("FreeLookRight");
+
         private readonly int _unarmedForward = Animator.StringToHash("UnarmedForward");
+
         private readonly int _isSprintHash = Animator.StringToHash("IsSprint");
 
         private readonly int _targetforwardHash = Animator.StringToHash("TargetForward");
         private readonly int _targetrightHash = Animator.StringToHash("TargetRight");
 
-        public void SetLayerWeight(int index, float value)
-        {
-            _anim.SetLayerWeight(index, value);
-        }
-        public void PlayFreeLook()
+        private readonly int _targetBoolHash = Animator.StringToHash("IsTarget");
+        private readonly int _freeBoolHash = Animator.StringToHash("IsFree");
+
+        public void PlaySetFreeLookBlend()
         {
             _anim.Play(_freeLookBlendTreeHash);
         }
-        public void PlayTarget()
+        public void PlaySetBoolsCombatTargetBlendSetBools()
         {
-            _anim.Play(_targetSwordBlendTreeHash);
+            _anim.Play(_targetSwordBlendTreeHash); //Virtual target camera get set by this anim.
+            _anim.SetBool(_targetBoolHash, true);
+            _anim.SetBool(_freeBoolHash, false);
+        }
+        public void SetBoolsCombatFree()
+        {
+            _anim.SetBool(_targetBoolHash, false);
+            _anim.SetBool(_freeBoolHash, true);
+        }
+        public void CancelTargetBools()
+        {
+            _anim.SetBool(_targetBoolHash, false);
+            _anim.SetBool(_freeBoolHash, false);
         }
         public void UnarmedModeMovement(Vector2 dirVector)
         {
             _anim.SetFloat(_unarmedForward, dirVector.magnitude, _animatorDumpTime, Time.deltaTime);
         }
+        
         public void TargetMovementBlendTree(Vector2 dirVector)
         {
             _anim.SetFloat(_targetforwardHash, dirVector.y);
