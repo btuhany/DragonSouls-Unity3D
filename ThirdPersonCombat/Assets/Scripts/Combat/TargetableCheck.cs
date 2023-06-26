@@ -18,7 +18,7 @@ public class TargetableCheck : MonoBehaviour
     private Targetable _previousTargetable;
     public List<Targetable> Targets = new List<Targetable>();
     public bool IsThereTarget => Targets.Count > 0;
-    public Transform CurrentTargetTransform => _currentTargetable.transform;
+    public Transform CurrentTargetTransform => _currentTargetable?.transform;
     private void Awake()
     {
         _mainCam = Camera.main;

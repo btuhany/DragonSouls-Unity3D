@@ -161,12 +161,15 @@ namespace States
 
         private void AutoTargetMovement()
         {
-            Targetable target = targetableCheck.GetClosestTarget();
-            if (target == null) return;
+            if (targetableCheck.CurrentTargetTransform != null) return;
+            
+            Transform targetTransform = targetableCheck.GetClosestTarget().transform;
 
-            RotateCharacter(movement.TargetRelativeMotionVector(target.transform.position), _combat.AutoTargetRotationDeltaTime);
+            if (targetTransform == null) return;
 
-            Vector3 dir = target.transform.position - transform.position;
+            RotateCharacter(movement.TargetRelativeMotionVector(targetTransform.position), _combat.AutoTargetRotationDeltaTime);
+
+            Vector3 dir = targetTransform.position - transform.position;
             dir.y = 0f;
             
             forceReciver.AddForce(dir * 8, 0.1f);

@@ -676,7 +676,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.022847686, y: -0.0074772732, z: 0.0001708878, w: 0.99971104}
+  m_LocalRotation: {x: 0.022847686, y: -0.007477269, z: 0.0001708877, w: 0.99971104}
   m_LocalPosition: {x: 0.089748174, y: 5.9700003, z: -25.499329}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1598,6 +1598,7 @@ MonoBehaviour:
   TargetableCheck: {fileID: 1514852403}
   Movement: {fileID: 1086142335}
   CombatController: {fileID: 1086142338}
+  ForceReceiver: {fileID: 1086142336}
 --- !u!114 &1086142338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1610,66 +1611,94 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a58e3526a28c454ca23e0b2d663ad99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoTarget: 0
+  AutoTargetRotationDeltaTime: 0.15
   CombatModeDuration: 3
   UnarmedLightAttacks:
   - animationName: UnarmedLightAttack1
     transitionDuration: 0.15
     attackDuration: 0.4
     comboPermissionDelay: 0.32
+    force: 1
+    forceSmoothTime: 0.4
   - animationName: UnarmedLightAttack2
     transitionDuration: 0.01
     attackDuration: 0.5
     comboPermissionDelay: 0.5
+    force: 100
+    forceSmoothTime: 0
   - animationName: UnarmedLightAttack3
     transitionDuration: 0.01
     attackDuration: 0.5
     comboPermissionDelay: 0.5
+    force: 100
+    forceSmoothTime: 0
   UnarmedHeavyAttacks:
   - animationName: UnarmedHeavyAttack2
     transitionDuration: 0.1
     attackDuration: 0.8
     comboPermissionDelay: 0.5
+    force: 0
+    forceSmoothTime: 0
   - animationName: UnarmedHeavyAttack3
     transitionDuration: 0.1
     attackDuration: 0.8
     comboPermissionDelay: 0.5
+    force: 0
+    forceSmoothTime: 0
   UnarmedLLHComboAttack:
     animationName: UnarmedHeavyAttack1
     transitionDuration: 0.1
     attackDuration: 0.8
     comboPermissionDelay: 0.5
+    force: 0
+    forceSmoothTime: 0
   SwordLightAttacks:
   - animationName: SwordLight1
     transitionDuration: 0.1
     attackDuration: 0.5
     comboPermissionDelay: 0.5
+    force: 10
+    forceSmoothTime: 0
   - animationName: SwordLight2
     transitionDuration: 0.1
     attackDuration: 1
     comboPermissionDelay: 0.5
+    force: 100
+    forceSmoothTime: 0
   - animationName: SwordLight3
     transitionDuration: 0.1
     attackDuration: 0.5
     comboPermissionDelay: 0.5
+    force: 100
+    forceSmoothTime: 0
   SwordHeavyAttacks:
   - animationName: SwordHeavy1
     transitionDuration: 0.1
     attackDuration: 0.5
     comboPermissionDelay: 0.5
+    force: 0
+    forceSmoothTime: 0
   - animationName: SwordHeavy2
     transitionDuration: 0.1
     attackDuration: 0.5
     comboPermissionDelay: 0.5
+    force: 0
+    forceSmoothTime: 0
   SwordLLHComboAttack:
     animationName: SwordLLHCombo
     transitionDuration: 0.1
     attackDuration: 0.5
     comboPermissionDelay: 0.5
+    force: 0
+    forceSmoothTime: 0
   NullAttack:
     animationName: null
     transitionDuration: 0
     attackDuration: 0
     comboPermissionDelay: 0
+    force: 0
+    forceSmoothTime: 0
 --- !u!1 &1148971871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,7 +2398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514852400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.62, z: 6.28}
+  m_LocalPosition: {x: 0, y: 0.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2681,7 +2710,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815023927}
-  m_LocalRotation: {x: 3e-45, y: -1e-45, z: -0, w: 1}
+  m_LocalRotation: {x: -1e-45, y: -1e-45, z: -0, w: 1}
   m_LocalPosition: {x: -0.122057974, y: 1.2056276, z: -11.222908}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2843,7 +2872,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137172196}
-  m_LocalRotation: {x: 0.17080142, y: -0.007419981, z: -0.0009394989, w: 0.98527706}
+  m_LocalRotation: {x: 0.17080142, y: -0.007419979, z: -0.0009394987, w: 0.98527706}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
