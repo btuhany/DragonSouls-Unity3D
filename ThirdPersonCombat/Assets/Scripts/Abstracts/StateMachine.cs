@@ -11,8 +11,8 @@ namespace States
         }
         public void ChangeState(State newState)
         {
-            PreviousState = _currentState;
             _currentState?.Exit();
+            PreviousState = _currentState;
             _currentState = newState;
             _currentState?.Enter();
         }

@@ -14,7 +14,6 @@ namespace States
 
         protected override void StateEnterActions()
         {
-            animationController.PlaySetBoolsCombatBlendTree();
             targetRangeControlCounter = 3f;
             targetTransform = targetableCheck.CurrentTargetTransform;
             inputReader.TargetEvent += HandleOnTargetEvent;
@@ -46,7 +45,7 @@ namespace States
                 }
             }
         }
-        private void HandleOnTargetEvent()
+        protected override void HandleOnTargetEvent()
         {
             stateMachine.ChangeState(stateMachine.FreeLookPlayerState);
         }

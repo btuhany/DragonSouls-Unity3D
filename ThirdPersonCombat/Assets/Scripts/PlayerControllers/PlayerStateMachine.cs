@@ -14,16 +14,17 @@ namespace States
         public CombatController CombatController;
 
         [HideInInspector] public PlayerFreeLookState FreeLookPlayerState;
-        [HideInInspector] public PlayerCombatTargetState UnarmedTargetState;
-        [HideInInspector] public PlayerCombatState UnarmedAttackTransitionState;
-        [HideInInspector] public PlayerSwordFreeState SwordCombatFreeState;
-
+        [HideInInspector] public PlayerUnarmedTargetState UnarmedTargetState;
+        [HideInInspector] public PlayerUnarmedFreeState UnarmedFreeTransitionState;
+        [HideInInspector] public PlayerSwordFreeState SwordFreeState;
+        [HideInInspector] public PlayerSwordTargetState SwordTargetState;
         private void Awake()
         {
             FreeLookPlayerState = new PlayerFreeLookState(this);
             UnarmedTargetState = new PlayerUnarmedTargetState(this);
-            SwordCombatFreeState = new PlayerSwordFreeState(this);
-            UnarmedAttackTransitionState = new PlayerUnarmedFreeState(this, Weapon.Unarmed, true);
+            SwordTargetState = new PlayerSwordTargetState(this);
+            SwordFreeState = new PlayerSwordFreeState(this);
+            UnarmedFreeTransitionState = new PlayerUnarmedFreeState(this, Weapon.Unarmed, true, true);
         }
         private void OnEnable()
         {
@@ -38,7 +39,6 @@ namespace States
         private void Update()
         {
             UpdateState(Time.deltaTime);
-
         }
         void HandleOnJumpEvent()
         {

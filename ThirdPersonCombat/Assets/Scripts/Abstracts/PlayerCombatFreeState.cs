@@ -5,7 +5,7 @@ namespace States
     public abstract class PlayerCombatFreeState : PlayerCombatState
     {
         private bool _entryAttack = false;
-        public PlayerCombatFreeState(PlayerStateMachine player, Weapon weapon ,bool entryAttack, bool autoStateChange = false) : base(player, weapon , autoStateChange)
+        public PlayerCombatFreeState(PlayerStateMachine player, Weapon weapon, bool entryAttack, bool autoStateChange = false) : base(player, weapon, autoStateChange)
         {
             _entryAttack = entryAttack;
         }
@@ -13,7 +13,7 @@ namespace States
         protected override void StateEnterActions()
         {
             animationController.SetBoolsCombatFree();
-            if(_entryAttack)
+            if (_entryAttack)
             {
                 if (inputReader.LastAttackType == AttackType.Light)
                 {
@@ -30,6 +30,7 @@ namespace States
         {
             animationController.ResetCombatBools();
         }
+
     }
 }
 

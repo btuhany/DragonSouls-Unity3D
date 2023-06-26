@@ -10,21 +10,24 @@ namespace PlayerController
         [SerializeField] Animator _anim;
 
         public bool IsSprint = false;
-        public bool IsUnsheathAnimInfo => _anim.GetCurrentAnimatorStateInfo(0).IsTag("Unsheath");
-        private readonly int _targetSwordBlendTreeHash = Animator.StringToHash("TargetSwordBlendTree");
+        public bool IsUnsheathAnimPlaying => _anim.GetCurrentAnimatorStateInfo(0).IsTag("Unsheath");
+
+
+        private readonly int _swordTargetBlendTreeHash = Animator.StringToHash("SwordTargetBlendTree");
+        private readonly int _unarmedTargetBlendTreeHash = Animator.StringToHash("UnarmedTargetBlendTree");
         private readonly int _freeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
-        private readonly int _unsheathSwordHash = Animator.StringToHash("UnsheathSword");
+
 
         private readonly int _freeLookForwardHash = Animator.StringToHash("FreeLookForward");
         private readonly int _freeLookRightHash = Animator.StringToHash("FreeLookRight");
-
-        private readonly int _combatFreeForwardHash = Animator.StringToHash("CombatFreeForward");
-
-        private readonly int _isSprintHash = Animator.StringToHash("IsSprint");
-
         private readonly int _targetforwardHash = Animator.StringToHash("TargetForward");
         private readonly int _targetrightHash = Animator.StringToHash("TargetRight");
 
+        private readonly int _combatFreeForwardHash = Animator.StringToHash("CombatFreeForward");
+
+
+        private readonly int _unsheathSwordHash = Animator.StringToHash("UnsheathSword");
+        private readonly int _isSprintHash = Animator.StringToHash("IsSprint");
         private readonly int _targetBoolHash = Animator.StringToHash("IsTarget");
         private readonly int _freeBoolHash = Animator.StringToHash("IsFree");
 
@@ -32,9 +35,16 @@ namespace PlayerController
         {
             _anim.Play(_freeLookBlendTreeHash);
         }
-        public void PlaySetBoolsCombatBlendTree()
+        public void PlaySetBoolsCombatTarget(Weapon weapon)
         {
-            _anim.Play(_targetSwordBlendTreeHash); //Virtual target camera get set by this anim.
+            if(weapon == Weapon.Unarmed)
+            {
+                _anim.Play(_unarmedTargetBlendTreeHash);
+            }
+            else if(weapon == Weapon.Sword)
+            {
+                _anim.Play(_swordTargetBlendTreeHash); //Virtual target camera get set by this anim.
+            }
             _anim.SetBool(_targetBoolHash, true);
             _anim.SetBool(_freeBoolHash, false);
         }

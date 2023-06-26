@@ -37,6 +37,7 @@ namespace States
             StateEnterActions();
             inputReader.LightAttackEvent += HandleOnLightAttackEvent;
             inputReader.HeavyAttackEvent += HandleOnHeavyAttackEvent;
+            inputReader.TargetEvent += HandleOnTargetEvent;
         }
         public override void Tick(float deltaTime)
         {
@@ -60,6 +61,7 @@ namespace States
             StateExitActions();
             inputReader.LightAttackEvent -= HandleOnLightAttackEvent;
             inputReader.HeavyAttackEvent -= HandleOnHeavyAttackEvent;
+            inputReader.TargetEvent -= HandleOnTargetEvent;
             _lightAttackIndex = 0;
             _heavyAttackIndex = 0;
             _animationTimePassed = 0f;
@@ -137,22 +139,6 @@ namespace States
                 HeavyAttack();
             }
         }
-        private void HandleOnLightAttackEvent()
-        {
-            TryLightComboAttack(_animationTimePassed);
-        }
-
-        private void HandleOnHeavyAttackEvent()
-        {
-            if (_lightAttackIndex == 2)
-            {
-                TryLLHComboAttack(_animationTimePassed);
-            }
-            else
-            {
-                TryHeavyComboAttack(_animationTimePassed);
-            }
-        }
 
         protected void LightAttack()
         {
@@ -170,6 +156,26 @@ namespace States
             animationController.PlayAttack(_currentAttack.animationName, _currentAttack.transitionDuration);
             _heavyAttackIndex++;
             _animationTimePassed = 0f;
+        }
+        private void HandleOnLightAttackEvent()
+        {
+            TryLightComboAttack(_animationTimePassed);
+        }
+
+        private void HandleOnHeavyAttackEvent()
+        {
+            if (_lightAttackIndex >= 2)
+            {
+                TryLLHComboAttack(_animationTimePassed);
+            }
+            else
+            {
+                TryHeavyComboAttack(_animationTimePassed);
+            }
+        }
+        protected virtual void HandleOnTargetEvent()
+        {
+
         }
         protected virtual void StateEnterActions() { }
         

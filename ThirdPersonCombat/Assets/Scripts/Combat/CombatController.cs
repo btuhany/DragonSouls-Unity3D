@@ -10,7 +10,6 @@ namespace PlayerController
         public float transitionDuration;
         public float attackDuration;
         public float comboPermissionDelay;
-      
     }
     public enum Weapon
     {

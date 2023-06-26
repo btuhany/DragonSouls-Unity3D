@@ -90,16 +90,16 @@ namespace States
         }
         private void HandleOnLightAttackEvent()
         {
-            stateMachine.ChangeState(stateMachine.UnarmedAttackTransitionState);
+            stateMachine.ChangeState(stateMachine.UnarmedFreeTransitionState);
         }
         private void HandleOnHeavyAttackEvent()
         {
-            stateMachine.ChangeState(stateMachine.UnarmedAttackTransitionState);
+            stateMachine.ChangeState(stateMachine.UnarmedFreeTransitionState);
         }
         private void HandleOnUnsheathEvent()
         {
             animationController.PlayUnsheathSword();
-            stateMachine.ChangeState(stateMachine.SwordCombatFreeState);
+            stateMachine.ChangeState(stateMachine.SwordFreeState);
         }
 
     }
