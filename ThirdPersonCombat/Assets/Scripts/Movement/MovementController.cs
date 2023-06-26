@@ -1,18 +1,24 @@
 using Inputs;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
     [Header("FreeLookState")]
     public float FreeLookMaxMovementSpeed = 10f;
-    public float _faceDirectionRotationLerpTimeScale = 3f;
+    public float FaceDirectionRotationLerpTimeScale = 3f;
+    public float FreeLookSprintMovementSpeed = 15f;
+    [Header("Combat")]
+    public float CombatSprintSpeed =15f;
+    public float UnarmedFreeSpeed = 10f;
+    public float SwordFreeSpeed = 10f;
     [Header("TargetState")]
     public float TargetMovementSpeed = 4f;
-    public float _targetDirectionRotationLerpTimeScale = 2f;
+    public float TargetDirectionRotationLerpTimeScale = 2f;
+    public float TargetRunSpeed = 15f;
     [Header("Config")]
-    public float SprintMovementSpeed = 15f;
     [Header("Components")]
     [SerializeField] private CharacterController _characterController;
 
@@ -46,7 +52,7 @@ public class MovementController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(
                 transform.rotation,
                 Quaternion.LookRotation(movementVector),
-                deltaTime * _faceDirectionRotationLerpTimeScale
+                deltaTime * FaceDirectionRotationLerpTimeScale
                 );
         }
     }

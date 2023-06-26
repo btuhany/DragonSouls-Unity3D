@@ -5,8 +5,7 @@ namespace States
 {
     public class PlayerFreeLookState : PlayerBaseState
     {
-        private bool _isSprintHold = false;
-        private bool _isSprint = false;
+
         public PlayerFreeLookState(PlayerStateMachine player) : base(player)
         {
         }
@@ -14,24 +13,7 @@ namespace States
         public override void Enter()
         {
             animationController.PlaySetFreeLookBlend();
-            inputReader.TargetEvent += HandleOnTargetEvent;
-            inputReader.SprintHoldEvent += HandleOnSprintHoldEvent;
-            inputReader.SprintHoldCanceledEvent += HandleOnSprintHoldCancelEvent;
-            inputReader.SprintEvent += HandleOnSprintEvent;
-            inputReader.LightAttackEvent += HandleOnLightAttackEvent;
-            inputReader.HeavyAttackEvent += HandleOnHeavyAttackEvent;
-            inputReader.UnsheathSword += HandleOnUnsheathEvent;
-        }
-
-        public override void Exit()
-        {
-            inputReader.TargetEvent -= HandleOnTargetEvent;
-            inputReader.SprintHoldEvent -= HandleOnSprintHoldEvent;
-            inputReader.SprintHoldCanceledEvent -= HandleOnSprintHoldCancelEvent;
-            inputReader.SprintEvent -= HandleOnSprintEvent;
-            inputReader.LightAttackEvent -= HandleOnLightAttackEvent;
-            inputReader.HeavyAttackEvent -= HandleOnHeavyAttackEvent;
-            inputReader.UnsheathSword -= HandleOnUnsheathEvent;
+            base.Enter();
         }
 
         public override void Tick(float deltaTime)
@@ -40,9 +22,9 @@ namespace States
 
             animationController.FreeLookMovementBlendTree(movementOn2DAxis);
 
-            if (_isSprintHold || _isSprint)
+            if (isSprintHold || isSprint)
             {
-                MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis.normalized), movement.SprintMovementSpeed, deltaTime);
+                MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis.normalized), movement.FreeLookSprintMovementSpeed, deltaTime);
             }
             else
             {
@@ -58,50 +40,26 @@ namespace States
             HandleSprintControl();
         }
 
-        private void HandleOnTargetEvent()
+        protected override void HandleOnTargetEvent()
         {
             if (!targetableCheck.TrySelectTarget()) return;
-            stateMachine.ChangeState(stateMachine.UnarmedTargetState);
-        }
-        private void HandleOnSprintHoldEvent()
-        {
-            _isSprintHold = true;
-            animationController.Sprint(true);
-        }
-        private void HandleOnSprintHoldCancelEvent()
-        {
-            _isSprintHold = false;
-            if (_isSprint) return;
-            animationController.Sprint(false);
-        }
-        private void HandleOnSprintEvent()
-        {
-            _isSprint = true;
-            animationController.Sprint(true);
-        }
-        private void HandleSprintControl()
-        {
-            if (_isSprint && movement.Velocity.sqrMagnitude < 0.1f)
-            {
-                _isSprint = false;
-                if (_isSprintHold) return;
-                animationController.Sprint(false);
-            }
-        }
-        private void HandleOnLightAttackEvent()
-        {
-            stateMachine.ChangeState(stateMachine.UnarmedFreeTransitionState);
-        }
-        private void HandleOnHeavyAttackEvent()
-        {
-            stateMachine.ChangeState(stateMachine.UnarmedFreeTransitionState);
-        }
-        private void HandleOnUnsheathEvent()
-        {
-            animationController.PlayUnsheathSword();
-            stateMachine.ChangeState(stateMachine.SwordFreeState);
+            stateMachine.ChangeState(stateMachine.SwordTargetState);
         }
 
+        protected override void HandleOnLightAttackEvent()
+        {
+            stateMachine.ChangeState(stateMachine.UnarmedFreeTransitionState);
+        }
+
+        protected override void HandleOnHeavyAttackEvent()
+        {
+            stateMachine.ChangeState(stateMachine.UnarmedFreeTransitionState);
+        }
+
+        protected override void HandleSheathEvent()
+        {
+            stateMachine.ChangeState(stateMachine.SwordFreeState);
+        }
     }
 }
 

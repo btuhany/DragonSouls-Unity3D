@@ -12,23 +12,36 @@ namespace States
         {
         }
 
-        protected override void StateEnterActions()
+        public override void Enter()
         {
             targetRangeControlCounter = 3f;
             targetTransform = targetableCheck.CurrentTargetTransform;
+            base.Enter();
         }
-        protected override void StateExitActions()
+        public override void Exit()
         {
             animationController.ResetCombatBools();
             targetTransform = null;
             targetableCheck.ClearTarget();
+            base.Exit();
         }
+
         protected override void StateTickActions(float deltaTime)
         {
             animationController.TargetMovementBlendTree(inputReader.MovementOn2DAxis);
-            RotateCharacter(movement.TargetRelativeMotionVector(targetTransform.position), deltaTime);
-            MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
+
+            if (isSprintHold || isSprint)
+            {
+                RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), deltaTime);
+                MoveCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.TargetRunSpeed, deltaTime);
+            }
+            else
+            {
+                RotateCharacter(movement.TargetRelativeMotionVector(targetTransform.position), deltaTime);
+                MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
+            }
             TargetRangeControl(deltaTime);
+            HandleSprintControl();
         }
         private void TargetRangeControl(float deltaTime)
         {
@@ -43,11 +56,6 @@ namespace States
                 }
             }
         }
-        protected override void HandleOnTargetEvent()
-        {
-            stateMachine.ChangeState(stateMachine.PreviousState);
-        }
-
         private Vector3 MotionVectorAroundTarget()
         {
             //Character always looks to target
@@ -56,14 +64,7 @@ namespace States
             motion += transform.forward * inputReader.MovementOn2DAxis.y;
             return motion;
         }
-        private void HandleOnLightAttackEvent()
-        {
 
-        }
-        private void HandleOnHeavyAttackEvent()
-        {
-
-        }
     }
 
 }

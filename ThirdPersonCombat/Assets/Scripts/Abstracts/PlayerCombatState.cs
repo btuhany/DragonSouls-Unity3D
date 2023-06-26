@@ -34,10 +34,7 @@ namespace States
 
         public override void Enter()
         {
-            StateEnterActions();
-            inputReader.LightAttackEvent += HandleOnLightAttackEvent;
-            inputReader.HeavyAttackEvent += HandleOnHeavyAttackEvent;
-            inputReader.TargetEvent += HandleOnTargetEvent;
+            base.Enter();
         }
         public override void Tick(float deltaTime)
         {
@@ -58,14 +55,11 @@ namespace States
         }
         public override void Exit()
         {
-            StateExitActions();
-            inputReader.LightAttackEvent -= HandleOnLightAttackEvent;
-            inputReader.HeavyAttackEvent -= HandleOnHeavyAttackEvent;
-            inputReader.TargetEvent -= HandleOnTargetEvent;
             _lightAttackIndex = 0;
             _heavyAttackIndex = 0;
             _animationTimePassed = 0f;
             _currentAttack = _combat.NullAttack;
+            base.Exit();
         }
      
         private void TryLightComboAttack(float animationTime)
@@ -93,7 +87,6 @@ namespace States
                 LightAttack();
             }
         }
-
         private void TryHeavyComboAttack(float normalizedTime)
         {
             if (normalizedTime < _currentAttack.attackDuration)
@@ -149,7 +142,6 @@ namespace States
             _lightAttackIndex++;
             _animationTimePassed = 0f;
         }
-
         protected void HeavyAttack()
         {
             _lightAttackIndex = 0;
@@ -158,12 +150,12 @@ namespace States
             _heavyAttackIndex++;
             _animationTimePassed = 0f;
         }
-        private void HandleOnLightAttackEvent()
+
+        protected override void HandleOnLightAttackEvent()
         {
             TryLightComboAttack(_animationTimePassed);
         }
-
-        private void HandleOnHeavyAttackEvent()
+        protected override void HandleOnHeavyAttackEvent()
         {
             if (_lightAttackIndex >= 2)
             {
@@ -174,13 +166,9 @@ namespace States
                 TryHeavyComboAttack(_animationTimePassed);
             }
         }
-        protected virtual void HandleOnTargetEvent() { }
 
-        protected virtual void StateEnterActions() { }
+        protected abstract void StateTickActions(float deltaTime);
         
-        protected virtual void StateExitActions() { }
-
-        protected virtual void StateTickActions(float deltaTime) { }
 
     }
 }

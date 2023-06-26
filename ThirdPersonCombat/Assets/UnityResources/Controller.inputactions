@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UnsheathSword",
+                    "name": "SheathSword",
                     "type": "Button",
                     "id": "533f4374-98db-4166-abe8-8f6d9e5b47f3",
                     "expectedControlType": "Button",
@@ -280,7 +280,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "UnsheathSword",
+                    "action": "SheathSword",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

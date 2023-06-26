@@ -9,9 +9,40 @@ public class PlayerUnarmedTargetState : PlayerCombatTargetState
     public PlayerUnarmedTargetState(PlayerStateMachine player, Weapon weapon = Weapon.Unarmed, bool autoStateChange = false) : base(player, weapon, autoStateChange)
     {
     }
-    protected override void StateEnterActions()
+    public override void Enter()
     {
-        animationController.PlaySetBoolsCombatTarget(Weapon.Unarmed);
-        base.StateEnterActions();
+        if(stateMachine.PreviousState == stateMachine.SwordTargetState)
+        {
+            if(!targetableCheck.TryTransferTarget())
+            {
+                stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+                return;
+            }
+        }
+        if (stateMachine.PreviousState == stateMachine.SwordFreeState || stateMachine.PreviousState == stateMachine.SwordTargetState)
+        {
+            animationController.PlaySheathSword();
+            animationController.TargetCombat(Weapon.Unarmed, false);
+        }
+        else
+        {
+            animationController.TargetCombat(Weapon.Unarmed);
+        }
+        base.Enter();
+    }
+    public override void Exit()
+    {
+        animationController.ResetCombatBools();
+        base.Exit();
+    }
+    protected override void HandleSheathEvent()
+    {
+        if (animationController.IsAttackPlaying) return;
+        stateMachine.ChangeState(stateMachine.SwordTargetState);
+    }
+
+    protected override void HandleOnTargetEvent()
+    {
+        stateMachine.ChangeState(stateMachine.UnarmedFreeState);
     }
 }

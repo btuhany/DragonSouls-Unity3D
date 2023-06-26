@@ -15,6 +15,7 @@ public class TargetableCheck : MonoBehaviour
     [SerializeField] private CinemachineTargetGroup _cinemachineTargetGroup;
     private Camera _mainCam;
     private Targetable _currentTargetable;
+    private Targetable _previousTargetable;
     public List<Targetable> Targets = new List<Targetable>();
     public Transform CurrentTargetTransform => _currentTargetable.transform;
     private void Awake()
@@ -44,10 +45,19 @@ public class TargetableCheck : MonoBehaviour
         _cinemachineTargetGroup.AddMember(_currentTargetable.transform, targetMemberCamWeight, targetMemberCamRadius);
         return true;
     }
+    public bool TryTransferTarget()
+    {
+        if (Targets.Count == 0) return false;
+        _currentTargetable = _previousTargetable;
+        if (_currentTargetable == null) return false;
+        _cinemachineTargetGroup.AddMember(_currentTargetable.transform, targetMemberCamWeight, targetMemberCamRadius);
+        return true;
+    }
     public void ClearTarget()
     {
         if (!_currentTargetable) return;
         _cinemachineTargetGroup.RemoveMember(_currentTargetable.transform);
+        _previousTargetable = _currentTargetable;
         _currentTargetable = null;
     }
     public bool IsTargetInRange()

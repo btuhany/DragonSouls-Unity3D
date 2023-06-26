@@ -4,21 +4,20 @@ namespace States
 {
     public abstract class PlayerCombatFreeState : PlayerCombatState
     {
-        private bool _entryAttack = false;
-        private Weapon _weapon;
+        protected bool entryAttack = false;
+        protected Weapon weapon;
         public PlayerCombatFreeState(PlayerStateMachine player, Weapon weapon, bool entryAttack, bool autoStateChange = false) : base(player, weapon, autoStateChange)
         {
-            _entryAttack = entryAttack;
-            _weapon = weapon;
+            this.entryAttack = entryAttack;
+            this.weapon = weapon;
         }
-
-        protected override void StateEnterActions()
+        public override void Enter()
         {
-            animationController.PlaySetBoolsCombatFree(_weapon);
-
+            base.Enter();
+            //animationController.PlaySetBoolsCombatFree(_weapon);
             if (stateMachine.PreviousState == stateMachine.UnarmedTargetState) return;
-            if (stateMachine.PreviousState == stateMachine.SwordFreeState) return;
-            if (_entryAttack)
+            if (stateMachine.PreviousState == stateMachine.SwordTargetState) return;
+            if (entryAttack)
             {
                 if (inputReader.LastAttackType == AttackType.Light)
                 {
@@ -30,12 +29,11 @@ namespace States
                 }
             }
         }
-
-        protected override void StateExitActions()
+        public override void Exit()
         {
             animationController.ResetCombatBools();
+            base.Exit();
         }
-
     }
 }
 

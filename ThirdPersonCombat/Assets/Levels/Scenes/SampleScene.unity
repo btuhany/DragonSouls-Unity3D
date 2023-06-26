@@ -247,7 +247,19 @@ MonoBehaviour:
     m_VirtualCamera: {fileID: 473794041}
     m_ActivateAfter: 0
     m_MinDuration: 0
-  - m_FullHash: 673655915
+  - m_FullHash: 1237525050
+    m_VirtualCamera: {fileID: 473794041}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: -1965804464
+    m_VirtualCamera: {fileID: 473794041}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: -1369446728
+    m_VirtualCamera: {fileID: 1815023929}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: -979823661
     m_VirtualCamera: {fileID: 1815023929}
     m_ActivateAfter: 0
     m_MinDuration: 0
@@ -270,34 +282,98 @@ MonoBehaviour:
     m_ParentHash: 585382737
   - m_Hash: 1911844345
     m_ParentHash: 585382737
-  - m_Hash: -1356792818
-    m_ParentHash: 585382737
   - m_Hash: 281998946
     m_ParentHash: 585382737
-  - m_Hash: 2100467113
+  - m_Hash: -1356792818
     m_ParentHash: 585382737
-  - m_Hash: 1487852096
-    m_ParentHash: 585382737
-  - m_Hash: 673655915
+  - m_Hash: -1369446728
     m_ParentHash: 756556552
-  - m_Hash: -686900691
-    m_ParentHash: 673655915
-  - m_Hash: -1212053858
-    m_ParentHash: 673655915
-  - m_Hash: 1102597038
-    m_ParentHash: 673655915
-  - m_Hash: 1967429895
-    m_ParentHash: 673655915
-  - m_Hash: 1774725795
-    m_ParentHash: 673655915
-  - m_Hash: -1359787599
-    m_ParentHash: 673655915
-  - m_Hash: -1718665348
-    m_ParentHash: 673655915
-  - m_Hash: 477266434
-    m_ParentHash: 673655915
-  - m_Hash: -1521507131
-    m_ParentHash: 673655915
+  - m_Hash: -480202640
+    m_ParentHash: -1369446728
+  - m_Hash: -146263504
+    m_ParentHash: -1369446728
+  - m_Hash: 1888898293
+    m_ParentHash: -1369446728
+  - m_Hash: -812215092
+    m_ParentHash: -1369446728
+  - m_Hash: 1707402134
+    m_ParentHash: -1369446728
+  - m_Hash: -2006326390
+    m_ParentHash: -1369446728
+  - m_Hash: -636114868
+    m_ParentHash: -1369446728
+  - m_Hash: -1386221172
+    m_ParentHash: -1369446728
+  - m_Hash: -2083188994
+    m_ParentHash: -1369446728
+  - m_Hash: -350224702
+    m_ParentHash: 756556552
+  - m_Hash: -641992632
+    m_ParentHash: 756556552
+  - m_Hash: 1085450738
+    m_ParentHash: 756556552
+  - m_Hash: 934648164
+    m_ParentHash: 756556552
+  - m_Hash: 582921605
+    m_ParentHash: 756556552
+  - m_Hash: -1145570241
+    m_ParentHash: 756556552
+  - m_Hash: -860828503
+    m_ParentHash: 756556552
+  - m_Hash: 1237525050
+    m_ParentHash: 756556552
+  - m_Hash: 1091168440
+    m_ParentHash: 1237525050
+  - m_Hash: 1245374172
+    m_ParentHash: 1237525050
+  - m_Hash: 2116848540
+    m_ParentHash: 1237525050
+  - m_Hash: -979823661
+    m_ParentHash: 756556552
+  - m_Hash: -2074571519
+    m_ParentHash: -979823661
+  - m_Hash: 696566192
+    m_ParentHash: -979823661
+  - m_Hash: -1645214938
+    m_ParentHash: -979823661
+  - m_Hash: 181233629
+    m_ParentHash: -979823661
+  - m_Hash: 263297175
+    m_ParentHash: -979823661
+  - m_Hash: 583111771
+    m_ParentHash: -979823661
+  - m_Hash: 2016290338
+    m_ParentHash: -979823661
+  - m_Hash: 1545714617
+    m_ParentHash: -979823661
+  - m_Hash: 696088879
+    m_ParentHash: -979823661
+  - m_Hash: -1229947499
+    m_ParentHash: 756556552
+  - m_Hash: -1965804464
+    m_ParentHash: 756556552
+  - m_Hash: -89113176
+    m_ParentHash: -1965804464
+  - m_Hash: -1425673496
+    m_ParentHash: -1965804464
+  - m_Hash: -1935328976
+    m_ParentHash: -1965804464
+  - m_Hash: -35432738
+    m_ParentHash: 756556552
+  - m_Hash: 1693058916
+    m_ParentHash: 756556552
+  - m_Hash: 637490722
+    m_ParentHash: 756556552
+  - m_Hash: -873384178
+    m_ParentHash: 756556552
+  - m_Hash: -1124726888
+    m_ParentHash: 756556552
+  - m_Hash: -780842870
+    m_ParentHash: 756556552
+  - m_Hash: -1673590721
+    m_ParentHash: 756556552
+  - m_Hash: 1779536321
+    m_ParentHash: 756556552
 --- !u!1 &258160032
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +676,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.022847686, y: -0.007477269, z: 0.0001708877, w: 0.99971104}
+  m_LocalRotation: {x: 0.022847686, y: -0.0074772732, z: 0.0001708878, w: 0.99971104}
   m_LocalPosition: {x: 0.089748174, y: 5.9700003, z: -25.499329}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1064,7 +1140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533066930}
   m_LocalRotation: {x: -3e-45, y: 1e-45, z: -0, w: 1}
-  m_LocalPosition: {x: 2.8e-44, y: -2.8e-44, z: 10}
+  m_LocalPosition: {x: 2.8e-44, y: 5.6e-44, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1477,10 +1553,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FreeLookMaxMovementSpeed: 6
-  _faceDirectionRotationLerpTimeScale: 20.15
+  FaceDirectionRotationLerpTimeScale: 27.02
+  FreeLookSprintMovementSpeed: 15
+  CombatSprintSpeed: 10
+  UnarmedFreeSpeed: 5
+  SwordFreeSpeed: 5
   TargetMovementSpeed: 4
-  _targetDirectionRotationLerpTimeScale: 2
-  SprintMovementSpeed: 15
+  TargetDirectionRotationLerpTimeScale: 2
+  TargetRunSpeed: 1
   _characterController: {fileID: 1086142332}
 --- !u!114 &1086142336
 MonoBehaviour:
@@ -1558,10 +1638,35 @@ MonoBehaviour:
     transitionDuration: 0.1
     attackDuration: 0.8
     comboPermissionDelay: 0.5
-  SwordLightAttacks: []
-  SwordHeavyAttacks: []
+  SwordLightAttacks:
+  - animationName: SwordLight1
+    transitionDuration: 0.1
+    attackDuration: 0.5
+    comboPermissionDelay: 0.5
+  - animationName: SwordLight2
+    transitionDuration: 0.1
+    attackDuration: 1
+    comboPermissionDelay: 0.5
+  - animationName: SwordLight3
+    transitionDuration: 0.1
+    attackDuration: 0.5
+    comboPermissionDelay: 0.5
+  SwordHeavyAttacks:
+  - animationName: SwordHeavy1
+    transitionDuration: 0.1
+    attackDuration: 0.5
+    comboPermissionDelay: 0.5
+  - animationName: SwordHeavy2
+    transitionDuration: 0.1
+    attackDuration: 0.5
+    comboPermissionDelay: 0.5
   SwordLLHComboAttack:
-    animationName: 
+    animationName: SwordLLHCombo
+    transitionDuration: 0.1
+    attackDuration: 0.5
+    comboPermissionDelay: 0.5
+  NullAttack:
+    animationName: null
     transitionDuration: 0
     attackDuration: 0
     comboPermissionDelay: 0
@@ -2576,7 +2681,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815023927}
-  m_LocalRotation: {x: -1e-45, y: -1e-45, z: -0, w: 1}
+  m_LocalRotation: {x: 3e-45, y: -1e-45, z: -0, w: 1}
   m_LocalPosition: {x: -0.122057974, y: 1.2056276, z: -11.222908}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2738,7 +2843,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137172196}
-  m_LocalRotation: {x: 0.17080142, y: -0.007419979, z: -0.0009394987, w: 0.98527706}
+  m_LocalRotation: {x: 0.17080142, y: -0.007419981, z: -0.0009394989, w: 0.98527706}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
