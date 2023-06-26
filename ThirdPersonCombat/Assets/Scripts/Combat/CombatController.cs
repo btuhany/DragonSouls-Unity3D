@@ -10,6 +10,8 @@ namespace PlayerController
         public float transitionDuration;
         public float attackDuration;
         public float comboPermissionDelay;
+        public float force;
+        public float forceSmoothTime;
     }
     public enum Weapon
     {
@@ -23,6 +25,8 @@ namespace PlayerController
     }
     public class CombatController : MonoBehaviour
     {
+        public bool AutoTarget = false;
+        public float AutoTargetRotationDeltaTime = 0.15f;
         public float CombatModeDuration = 2f;
         public Attack[] UnarmedLightAttacks;
         public Attack[] UnarmedHeavyAttacks;

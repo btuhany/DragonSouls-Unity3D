@@ -141,6 +141,10 @@ namespace States
             animationController.PlayAttack(_currentAttack.animationName, _currentAttack.transitionDuration);
             _lightAttackIndex++;
             _animationTimePassed = 0f;
+            if(_combat.AutoTarget)
+            {
+                AutoTargetMovement();
+            }
         }
         protected void HeavyAttack()
         {
@@ -149,8 +153,24 @@ namespace States
             animationController.PlayAttack(_currentAttack.animationName, _currentAttack.transitionDuration);
             _heavyAttackIndex++;
             _animationTimePassed = 0f;
+            if (_combat.AutoTarget)
+            {
+                AutoTargetMovement();
+            }
         }
 
+        private void AutoTargetMovement()
+        {
+            Targetable target = targetableCheck.GetClosestTarget();
+            if (target == null) return;
+
+            RotateCharacter(movement.TargetRelativeMotionVector(target.transform.position), _combat.AutoTargetRotationDeltaTime);
+
+            Vector3 dir = target.transform.position - transform.position;
+            dir.y = 0f;
+            
+            forceReciver.AddForce(dir * 8, 0.1f);
+        }
         protected override void HandleOnLightAttackEvent()
         {
             TryLightComboAttack(_animationTimePassed);
@@ -168,7 +188,6 @@ namespace States
         }
 
         protected abstract void StateTickActions(float deltaTime);
-        
 
     }
 }

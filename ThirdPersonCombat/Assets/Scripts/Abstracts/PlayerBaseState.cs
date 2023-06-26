@@ -1,6 +1,7 @@
 using Inputs;
 using PlayerController;
 using UnityEngine;
+using Movement;
 
 namespace States
 {
@@ -15,6 +16,7 @@ namespace States
         protected PlayerStateMachine stateMachine;
         protected TargetableCheck targetableCheck;
         protected MovementController movement;
+        protected ForceReceiver forceReciver;
         
 
         public PlayerBaseState(PlayerStateMachine player)
@@ -26,6 +28,7 @@ namespace States
             this.animationController = player.AnimationController;
             this.targetableCheck = player.TargetableCheck;
             this.movement = player.Movement;
+            this.forceReciver = player.ForceReceiver;
         }
         public override void Enter()
         {

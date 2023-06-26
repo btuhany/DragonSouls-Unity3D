@@ -17,6 +17,7 @@ public class TargetableCheck : MonoBehaviour
     private Targetable _currentTargetable;
     private Targetable _previousTargetable;
     public List<Targetable> Targets = new List<Targetable>();
+    public bool IsThereTarget => Targets.Count > 0;
     public Transform CurrentTargetTransform => _currentTargetable.transform;
     private void Awake()
     {
@@ -92,11 +93,12 @@ public class TargetableCheck : MonoBehaviour
         }
         return closestTarget;
     }
-    private Targetable ClosestTarget()
+    public Targetable GetClosestTarget()
     {
-        //Assigning the value of max distance which is radius * 2.
-        float minDistance = _collider.radius * 2;
-        int closestTargetIndex = 0;
+        if (!IsThereTarget) return null;
+        //Assigning the half value of max distance which is radius / 2.
+        float minDistance = _collider.radius / 2f;
+        int closestTargetIndex = -1;
         for (int i = 0; i < Targets.Count; i++)
         {
             float distance = Vector3.Distance(_playerTransform.position, Targets[i].transform.position);
@@ -105,8 +107,11 @@ public class TargetableCheck : MonoBehaviour
                 minDistance = distance;
                 closestTargetIndex = i;
             }
-        } 
-        return Targets[closestTargetIndex];
+        }
+        if (closestTargetIndex >= 0)
+            return Targets[closestTargetIndex];
+        else
+            return null;
     }
 
     private void HandleOnTargetDestroyedDisabled(Targetable target)

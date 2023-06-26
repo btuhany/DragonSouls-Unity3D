@@ -1,6 +1,7 @@
 using Inputs;
 using PlayerController;
 using UnityEngine;
+using Movement;
 
 namespace States
 {
@@ -12,6 +13,7 @@ namespace States
         public TargetableCheck TargetableCheck;
         public MovementController Movement;
         public CombatController CombatController;
+        public ForceReceiver ForceReceiver;
 
         [HideInInspector] public PlayerFreeLookState FreeLookPlayerState;
         [HideInInspector] public PlayerUnarmedTargetState UnarmedTargetState;
