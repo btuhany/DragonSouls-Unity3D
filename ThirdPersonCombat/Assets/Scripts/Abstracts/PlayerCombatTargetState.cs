@@ -16,14 +16,12 @@ namespace States
         {
             targetRangeControlCounter = 3f;
             targetTransform = targetableCheck.CurrentTargetTransform;
-            inputReader.TargetEvent += HandleOnTargetEvent;
         }
         protected override void StateExitActions()
         {
             animationController.ResetCombatBools();
             targetTransform = null;
             targetableCheck.ClearTarget();
-            inputReader.TargetEvent -= HandleOnTargetEvent;
         }
         protected override void StateTickActions(float deltaTime)
         {
@@ -47,7 +45,7 @@ namespace States
         }
         protected override void HandleOnTargetEvent()
         {
-            stateMachine.ChangeState(stateMachine.FreeLookPlayerState);
+            stateMachine.ChangeState(stateMachine.PreviousState);
         }
 
         private Vector3 MotionVectorAroundTarget()

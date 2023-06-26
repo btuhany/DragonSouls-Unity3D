@@ -39,6 +39,7 @@ namespace States
         private void Update()
         {
             UpdateState(Time.deltaTime);
+            Debug.Log(PreviousState);
         }
         void HandleOnJumpEvent()
         {

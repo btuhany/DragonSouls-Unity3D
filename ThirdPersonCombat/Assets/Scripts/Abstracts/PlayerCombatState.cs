@@ -65,6 +65,7 @@ namespace States
             _lightAttackIndex = 0;
             _heavyAttackIndex = 0;
             _animationTimePassed = 0f;
+            _currentAttack = _combat.NullAttack;
         }
      
         private void TryLightComboAttack(float animationTime)
@@ -173,10 +174,8 @@ namespace States
                 TryHeavyComboAttack(_animationTimePassed);
             }
         }
-        protected virtual void HandleOnTargetEvent()
-        {
+        protected virtual void HandleOnTargetEvent() { }
 
-        }
         protected virtual void StateEnterActions() { }
         
         protected virtual void StateExitActions() { }

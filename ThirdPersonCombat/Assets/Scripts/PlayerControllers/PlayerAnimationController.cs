@@ -15,6 +15,8 @@ namespace PlayerController
 
         private readonly int _swordTargetBlendTreeHash = Animator.StringToHash("SwordTargetBlendTree");
         private readonly int _unarmedTargetBlendTreeHash = Animator.StringToHash("UnarmedTargetBlendTree");
+        private readonly int _unarmedFreeBlendTreeHash = Animator.StringToHash("UnarmedFreeBlendTree");
+        private readonly int _swordFreeBlendTreeHash = Animator.StringToHash("SwordFreeBlendTree");
         private readonly int _freeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
 
 
@@ -52,8 +54,16 @@ namespace PlayerController
         {
             _anim.Play(_unsheathSwordHash);
         }
-        public void SetBoolsCombatFree()
+        public void PlaySetBoolsCombatFree(Weapon weapon)
         {
+            if (weapon == Weapon.Unarmed)
+            {
+                _anim.Play(_unarmedFreeBlendTreeHash);
+            }
+            else if (weapon == Weapon.Sword)
+            {
+                _anim.Play(_swordFreeBlendTreeHash); //Virtual target camera get set by this anim.
+            }
             _anim.SetBool(_targetBoolHash, false);
             _anim.SetBool(_freeBoolHash, true);
         }

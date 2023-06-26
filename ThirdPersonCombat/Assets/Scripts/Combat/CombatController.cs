@@ -32,5 +32,7 @@ namespace PlayerController
         public Attack[] SwordHeavyAttacks;
         public Attack SwordLLHComboAttack;
 
+        public Attack NullAttack;
+
     }
 }

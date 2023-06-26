@@ -11,10 +11,16 @@ namespace States
         }
         public void ChangeState(State newState)
         {
+            //if(PreviousState == newState) 
+            //{ 
+            //    newState.HasPreviousTransition = true;
+            //}
+            State prewState = _currentState;
             _currentState?.Exit();
-            PreviousState = _currentState;
             _currentState = newState;
+            PreviousState = prewState;
             _currentState?.Enter();
+            //_currentState.HasPreviousTransition = false;
         }
 
     }

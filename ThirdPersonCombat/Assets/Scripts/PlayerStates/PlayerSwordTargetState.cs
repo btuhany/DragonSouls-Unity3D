@@ -12,7 +12,7 @@ public class PlayerSwordTargetState : PlayerCombatTargetState
 
     protected override void StateEnterActions()
     {
-        animationController.PlaySetBoolsCombatTarget(Weapon.Sword);
         base.StateEnterActions();
+        animationController.PlaySetBoolsCombatTarget(Weapon.Sword);
     }
 }
