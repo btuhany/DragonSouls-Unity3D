@@ -47,6 +47,10 @@ namespace States
             //normalize motionXZAxis 
             movement.LookRotation(motionXZAxis, deltaTime);
         }
+        protected void RotateAround(Vector3 rotationVector, float value)
+        {
+            movement.LookRotationAround(rotationVector, value);
+        }
         protected void AddMethodsToEvents()
         {
             inputReader.TargetEvent += HandleOnTargetEvent;
@@ -56,6 +60,9 @@ namespace States
             inputReader.LightAttackEvent += HandleOnLightAttackEvent;
             inputReader.HeavyAttackEvent += HandleOnHeavyAttackEvent;
             inputReader.SheathUnsheathSword += HandleSheathEvent;
+            inputReader.AimHoldEvent += HandleOnAimHoldEvent;
+            inputReader.AimHoldCancelEvent += HandleOnAimHoldCancelEvent;
+            inputReader.WeaponReturnEvent += HandleOnWeaponReturn;
         }
         protected void RemoveMethodsFromEvents()
         {
@@ -66,6 +73,9 @@ namespace States
             inputReader.LightAttackEvent -= HandleOnLightAttackEvent;
             inputReader.HeavyAttackEvent -= HandleOnHeavyAttackEvent;
             inputReader.SheathUnsheathSword -= HandleSheathEvent;
+            inputReader.AimHoldEvent -= HandleOnAimHoldEvent;
+            inputReader.AimHoldCancelEvent -= HandleOnAimHoldCancelEvent;
+            inputReader.WeaponReturnEvent -= HandleOnWeaponReturn;
         }
         protected abstract void HandleOnTargetEvent();
         //protected abstract void HandleOnSprintHoldEvent();
@@ -102,5 +112,12 @@ namespace States
                 animationController.Sprint(false);
             }
         }
+        protected virtual void HandleOnAimHoldEvent() { }
+
+        protected virtual void HandleOnAimHoldCancelEvent() { }
+
+        protected virtual void HandleOnWeaponReturn() { }
+
+
     }
 }

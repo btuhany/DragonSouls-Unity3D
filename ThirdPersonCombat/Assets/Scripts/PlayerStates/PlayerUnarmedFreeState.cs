@@ -23,6 +23,14 @@ namespace States
                 entryAttack = currentEntryAttack;
                 _isSheath = true;
             }
+            else if(stateMachine.PreviousState == stateMachine.AimState)
+            {
+                _isSheath = false;
+                bool currentEntryAttack = entryAttack;
+                entryAttack = false;
+                base.Enter();
+                entryAttack = currentEntryAttack;
+            }
             else
             {
                 _isSheath = false;
@@ -63,6 +71,11 @@ namespace States
         {
             if (animationController.IsAttackPlaying) return;
             stateMachine.ChangeState(stateMachine.SwordFreeState);
+        }
+        protected override void HandleOnWeaponReturn()
+        {
+            animationController.PlaySwordReturn();
+            _combat.TryReturnSword();
         }
     }
 }

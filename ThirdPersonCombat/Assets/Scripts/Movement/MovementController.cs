@@ -1,3 +1,4 @@
+using Inputs;
 using UnityEngine;
 namespace Movement
 {
@@ -15,6 +16,11 @@ namespace Movement
         public float TargetMovementSpeed = 4f;
         public float TargetDirectionRotationLerpTimeScale = 2f;
         public float TargetRunSpeed = 15f;
+        [Header("Aim")]
+        public float AimMovementSpeed = 3f;
+        [Header("Config")]
+        public float AimStateCameraHorizontalRotationPower = 0.04f;
+        public float AimStateCameraVerticalRotationPower = 5f;
         [Header("Components")]
         [SerializeField] private CharacterController _characterController;
 
@@ -51,6 +57,10 @@ namespace Movement
                     deltaTime * FaceDirectionRotationLerpTimeScale
                     );
             }
+        }
+        public void LookRotationAround(Vector3 rotation, float value)
+        {
+            transform.rotation *= Quaternion.AngleAxis(value, rotation);
         }
         public void Move(Vector3 motion, float speed, float deltaTime)
         {

@@ -59,6 +59,7 @@ namespace States
         {
             stateMachine.ChangeState(stateMachine.SwordFreeState);
         }
+
     }
 }
 

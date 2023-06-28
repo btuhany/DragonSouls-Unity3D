@@ -11,7 +11,7 @@ namespace States
         public override void Enter()
         {
             //animationController.SetBoolsCombatFree(weapon, !animationController.IsUnsheathAnimPlaying);
-            if (stateMachine.PreviousState != stateMachine.SwordTargetState)
+            if (stateMachine.PreviousState != stateMachine.SwordTargetState && stateMachine.PreviousState != stateMachine.AimState)
             {
                 animationController.PlayUnsheathSword();
                 animationController.FreeCombat(Weapon.Sword, false);
@@ -51,6 +51,11 @@ namespace States
         {
             if(animationController.IsAttackPlaying) return;
             stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+        }
+
+        protected override void HandleOnAimHoldEvent()
+        {
+            stateMachine.ChangeState(stateMachine.AimState);
         }
     }
 }

@@ -25,6 +25,12 @@ namespace PlayerController
     }
     public class CombatController : MonoBehaviour
     {
+        [Header("ThrowSwordConfig")]
+        [SerializeField] private Sword _sword;
+        [SerializeField] private float _throwForce = 200f;
+        [SerializeField] private float _throwTorqueMagnitude = 30f;
+        private bool _isSwordThrowed = false;
+
         public bool AutoTarget = false;
         public float AutoTargetRotationDeltaTime = 0.15f;
         public float CombatModeDuration = 2f;
@@ -36,7 +42,20 @@ namespace PlayerController
         public Attack[] SwordHeavyAttacks;
         public Attack SwordLLHComboAttack;
 
+        public Attack ThrowAttack;
+
         public Attack NullAttack;
 
+        public void ThrowSword()
+        {
+            _sword.Throwed(transform.forward * _throwForce, _throwTorqueMagnitude);
+            _isSwordThrowed = true;
+        }
+        public void TryReturnSword()
+        {
+            if (!_isSwordThrowed) return;
+            _sword.Return();
+            _isSwordThrowed = false;
+        }
     }
 }

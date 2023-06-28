@@ -19,6 +19,8 @@ namespace PlayerController
         private readonly int _unarmedFreeBlendTreeHash = Animator.StringToHash("UnarmedFreeBlendTree");
         private readonly int _swordFreeBlendTreeHash = Animator.StringToHash("SwordFreeBlendTree");
         private readonly int _freeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
+        private readonly int _aimSwordBlendTreeHash = Animator.StringToHash("AimSwordBlendTree");
+        private readonly int _returnSwordBlendTreeHash = Animator.StringToHash("ReturnSwordBlendTree");
 
 
         private readonly int _freeLookForwardHash = Animator.StringToHash("FreeLookForward");
@@ -119,7 +121,14 @@ namespace PlayerController
             // _anim.Play(attackString);
         }
  
+        public void PlayAimSword()
+        {
+            _anim.CrossFadeInFixedTime(_aimSwordBlendTreeHash, 0.1f);
+        }
+        public void PlaySwordReturn()
+        {
+            _anim.CrossFadeInFixedTime(_returnSwordBlendTreeHash, 0.1f);
+        }
 
-        
     }
 }

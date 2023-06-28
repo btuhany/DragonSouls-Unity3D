@@ -8,7 +8,9 @@ namespace Inputs
     public class InputReader : MonoBehaviour, Controllers.IPlayerActions
     {
         public Vector2 MovementOn2DAxis { get; private set; }
+        public Vector2 CameraMovementOn2DAxis { get; private set; }
         public bool SprintHold { get; private set; }
+        public bool AimHold { get; private set; }
         public event System.Action JumpEvent;
         public event System.Action DodgeEvent;
         public event System.Action TargetEvent;
@@ -18,6 +20,9 @@ namespace Inputs
         public event System.Action LightAttackEvent;
         public event System.Action HeavyAttackEvent;
         public event System.Action SheathUnsheathSword;
+        public event System.Action AimHoldEvent;
+        public event System.Action AimHoldCancelEvent;
+        public event System.Action WeaponReturnEvent;
         public AttackType LastAttackType { get; private set; }
 
         private Controllers _controls;
@@ -50,7 +55,7 @@ namespace Inputs
 
         public void OnCamera(InputAction.CallbackContext context)
         {
-
+            CameraMovementOn2DAxis = context.ReadValue<Vector2>();
         }
 
         public void OnTarget(InputAction.CallbackContext context)
@@ -97,6 +102,26 @@ namespace Inputs
         {
             if (!context.performed) { return; }
             SheathUnsheathSword?.Invoke();
+        }
+
+        public void OnAim(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                AimHoldEvent?.Invoke();
+                AimHold = true;
+            }
+            if (context.canceled)
+            {
+                AimHoldCancelEvent?.Invoke();
+                AimHold = false;
+            }
+        }
+
+        public void OnWeaponReturn(InputAction.CallbackContext context)
+        {
+            if (!context.performed) { return; }
+            WeaponReturnEvent?.Invoke();
         }
     }
 }

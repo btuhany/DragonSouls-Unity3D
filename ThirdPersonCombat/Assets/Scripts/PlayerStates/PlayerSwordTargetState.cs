@@ -51,4 +51,8 @@ public class PlayerSwordTargetState : PlayerCombatTargetState
     {
         stateMachine.ChangeState(stateMachine.SwordFreeState);
     }
+    protected override void HandleOnAimHoldEvent()
+    {
+        stateMachine.ChangeState(stateMachine.AimState);
+    }
 }

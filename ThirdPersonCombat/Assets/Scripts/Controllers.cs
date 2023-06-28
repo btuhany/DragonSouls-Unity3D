@@ -116,6 +116,24 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""7af5b1cd-9060-4ecd-a7e8-8dad1a88ea91"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponReturn"",
+                    ""type"": ""Button"",
+                    ""id"": ""8d72a1ae-41c6-45e0-926e-fcfafe21edab"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -305,6 +323,28 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""action"": ""SheathSword"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a783ef1e-3cad-4567-808e-8ffbe6bd5503"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a3e5e2c-2c07-4532-a20e-16c39a90d438"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""WeaponReturn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -351,6 +391,8 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         m_Player_LightAttack = m_Player.FindAction("LightAttack", throwIfNotFound: true);
         m_Player_HeavyAttack = m_Player.FindAction("HeavyAttack", throwIfNotFound: true);
         m_Player_SheathSword = m_Player.FindAction("SheathSword", throwIfNotFound: true);
+        m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_WeaponReturn = m_Player.FindAction("WeaponReturn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -422,6 +464,8 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LightAttack;
     private readonly InputAction m_Player_HeavyAttack;
     private readonly InputAction m_Player_SheathSword;
+    private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_WeaponReturn;
     public struct PlayerActions
     {
         private @Controllers m_Wrapper;
@@ -436,6 +480,8 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         public InputAction @LightAttack => m_Wrapper.m_Player_LightAttack;
         public InputAction @HeavyAttack => m_Wrapper.m_Player_HeavyAttack;
         public InputAction @SheathSword => m_Wrapper.m_Player_SheathSword;
+        public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @WeaponReturn => m_Wrapper.m_Player_WeaponReturn;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -475,6 +521,12 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @SheathSword.started += instance.OnSheathSword;
             @SheathSword.performed += instance.OnSheathSword;
             @SheathSword.canceled += instance.OnSheathSword;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
+            @WeaponReturn.started += instance.OnWeaponReturn;
+            @WeaponReturn.performed += instance.OnWeaponReturn;
+            @WeaponReturn.canceled += instance.OnWeaponReturn;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -509,6 +561,12 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @SheathSword.started -= instance.OnSheathSword;
             @SheathSword.performed -= instance.OnSheathSword;
             @SheathSword.canceled -= instance.OnSheathSword;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
+            @WeaponReturn.started -= instance.OnWeaponReturn;
+            @WeaponReturn.performed -= instance.OnWeaponReturn;
+            @WeaponReturn.canceled -= instance.OnWeaponReturn;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -556,5 +614,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         void OnLightAttack(InputAction.CallbackContext context);
         void OnHeavyAttack(InputAction.CallbackContext context);
         void OnSheathSword(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
+        void OnWeaponReturn(InputAction.CallbackContext context);
     }
 }
