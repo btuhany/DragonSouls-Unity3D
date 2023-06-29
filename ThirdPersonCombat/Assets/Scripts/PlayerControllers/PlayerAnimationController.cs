@@ -37,6 +37,8 @@ namespace PlayerController
         private readonly int _targetBoolHash = Animator.StringToHash("IsTarget");
         private readonly int _freeBoolHash = Animator.StringToHash("IsFree");
 
+        private readonly int _targetedHash = Animator.StringToHash("Targeted");
+
         public void PlaySetFreeLookBlend()
         {
             _anim.Play(_freeLookBlendTreeHash);
@@ -97,7 +99,7 @@ namespace PlayerController
             _anim.SetFloat(_combatFreeForwardHash, dirVector.magnitude, _animatorDumpTime, Time.deltaTime);
         }
 
-        public void TargetMovementBlendTree(Vector2 dirVector)
+        public void TargetStateSetFloats(Vector2 dirVector)
         {
             _anim.SetFloat(_targetforwardHash, dirVector.y);
             _anim.SetFloat(_targetrightHash, dirVector.x);
@@ -129,6 +131,9 @@ namespace PlayerController
         {
             _anim.CrossFadeInFixedTime(_returnSwordBlendTreeHash, 0.1f);
         }
-
+        public void TargetedAnimation()
+        {
+            _anim.Play(_targetedHash);
+        }
     }
 }

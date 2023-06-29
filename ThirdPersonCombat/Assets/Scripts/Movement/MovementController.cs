@@ -18,6 +18,7 @@ namespace Movement
         public float TargetRunSpeed = 15f;
         [Header("Aim")]
         public float AimMovementSpeed = 3f;
+        public float ReturnSwordMovementSpeed = 3f;
         [Header("Config")]
         public float AimStateCameraHorizontalRotationPower = 0.04f;
         public float AimStateCameraVerticalRotationPower = 5f;

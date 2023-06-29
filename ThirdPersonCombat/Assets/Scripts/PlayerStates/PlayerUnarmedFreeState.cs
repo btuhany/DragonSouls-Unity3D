@@ -74,8 +74,8 @@ namespace States
         }
         protected override void HandleOnWeaponReturn()
         {
-            animationController.PlaySwordReturn();
-            _combat.TryReturnSword();
+            if (_combat.IsSwordEquipped) return;
+            stateMachine.ChangeState(stateMachine.ReturnSwordState);
         }
     }
 }

@@ -28,8 +28,8 @@ namespace PlayerController
         [Header("ThrowSwordConfig")]
         [SerializeField] private Sword _sword;
         [SerializeField] private float _throwForce = 200f;
-        [SerializeField] private float _throwTorqueMagnitude = 30f;
-        private bool _isSwordThrowed = false;
+
+        public bool IsSwordEquipped => _sword.IsEquipped;
 
         public bool AutoTarget = false;
         public float AutoTargetRotationDeltaTime = 0.15f;
@@ -46,16 +46,17 @@ namespace PlayerController
 
         public Attack NullAttack;
 
-        public void ThrowSword()
-        {
-            _sword.Throwed(transform.forward * _throwForce, _throwTorqueMagnitude);
-            _isSwordThrowed = true;
-        }
         public void TryReturnSword()
         {
-            if (!_isSwordThrowed) return;
+            if (IsSwordEquipped) return;
             _sword.Return();
-            _isSwordThrowed = false;
+
+        }
+        //AnimationEvents
+        public void ThrowSword()
+        {
+            if (!IsSwordEquipped) return;
+            _sword.Throwed(Camera.main.transform.forward * _throwForce);
         }
     }
 }

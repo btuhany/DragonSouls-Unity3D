@@ -10,7 +10,8 @@ namespace States
         private bool _isThrowed = false;
         private float _animationTime = 0f;
         private CombatController _combat;
-  
+        private Transform targetTransform;
+        bool _isTargeted = false;
         public PlayerAimState(PlayerStateMachine player) : base(player)
         {
             _combat = player.CombatController;
@@ -18,7 +19,7 @@ namespace States
 
         public override void Enter()
         {
-            //if(stateMachine.PreviousState == stateMachine.SwordFreeState || stateMachine.PreviousState == stateMachine.SwordTargetState)
+            
             animationController.PlayAimSword();
             base.Enter();
         }
@@ -26,16 +27,35 @@ namespace States
         public override void Tick(float deltaTime)
         {
             Vector2 movementVector = inputReader.MovementOn2DAxis;
-            MoveCharacter(movement.CamRelativeMotionVector(movementVector), movement.AimMovementSpeed, deltaTime);
 
-            animationController.TargetMovementBlendTree(inputReader.CameraMovementOn2DAxis + movementVector);
+            if (_isTargeted)
+            {
+                if (isSprintHold || isSprint)
+                {
+                    RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), deltaTime);
+                    MoveCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.TargetRunSpeed, deltaTime);
+                }
+                else
+                {
+                    Vector3 relativeVector = targetTransform.position - Camera.main.transform.position;
+                    relativeVector.y = 0f;
+                    RotateCharacter(relativeVector, deltaTime);
+                    MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
+                }
+            }
+            else
+            {
+                MoveCharacter(movement.CamRelativeMotionVector(movementVector), movement.AimMovementSpeed, deltaTime);
 
-            //Character horizontal rotation
-            RotateAround(Vector3.up, inputReader.CameraMovementOn2DAxis.x * movement.AimStateCameraHorizontalRotationPower);
+                //Character horizontal rotation
+                RotateAround(Vector3.up, inputReader.CameraMovementOn2DAxis.x * movement.AimStateCameraHorizontalRotationPower);
 
-            //Camera vertical rotation
-            stateMachine.AimStateFocus.rotation *= Quaternion.AngleAxis(inputReader.CameraMovementOn2DAxis.y * movement.AimStateCameraVerticalRotationPower, Vector3.left);
-  
+                //Camera vertical rotation
+                stateMachine.AimStateFocus.rotation *= Quaternion.AngleAxis(inputReader.CameraMovementOn2DAxis.y * movement.AimStateCameraVerticalRotationPower, Vector3.left);
+            }
+
+            animationController.TargetStateSetFloats(inputReader.CameraMovementOn2DAxis + movementVector);
+
             if (_isThrowed)
             {
                 _animationTime += deltaTime;
@@ -50,6 +70,9 @@ namespace States
         {
             _isThrowed = false;
             _animationTime = 0f;
+            _isTargeted = false;
+            targetTransform = null;
+            targetableCheck.ClearTarget();
             base.Exit();
         }
         protected override void HandleOnHeavyAttackEvent()
@@ -66,6 +89,18 @@ namespace States
 
         protected override void HandleOnTargetEvent()
         {
+            if(_isTargeted)
+            {
+                _isTargeted = false;
+                targetTransform = null;
+                targetableCheck.ClearTarget();
+            }
+            else
+            {
+                if (!targetableCheck.TrySelectTarget()) return;
+                targetTransform = targetableCheck.CurrentTargetTransform;
+                _isTargeted = true;
+            }
         }
 
         protected override void HandleSheathEvent()
@@ -81,7 +116,14 @@ namespace States
         {
             animationController.PlayAttack(_combat.ThrowAttack.animationName,_combat.ThrowAttack.transitionDuration);
         }
+        private Vector3 MotionVectorAroundTarget()
+        {
+            //Character always looks to target
+            Vector3 motion = Vector3.zero;
+            motion += transform.right * inputReader.MovementOn2DAxis.x;
+            motion += transform.forward * inputReader.MovementOn2DAxis.y;
+            return motion;
+        }
 
-        
     }
 }

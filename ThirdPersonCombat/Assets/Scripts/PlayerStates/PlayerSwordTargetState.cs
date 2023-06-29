@@ -11,7 +11,7 @@ public class PlayerSwordTargetState : PlayerCombatTargetState
     }
     public override void Enter()
     {
-        if (stateMachine.PreviousState == stateMachine.UnarmedTargetState)
+        if (stateMachine.PreviousState == stateMachine.UnarmedTargetState || stateMachine.PreviousState == stateMachine.ReturnSwordState)
         {
             if (!targetableCheck.TryTransferTarget())
             {
@@ -19,7 +19,7 @@ public class PlayerSwordTargetState : PlayerCombatTargetState
                 return;
             }
         }
-        if (stateMachine.PreviousState != stateMachine.SwordFreeState) //else if
+        if (stateMachine.PreviousState != stateMachine.SwordFreeState && stateMachine.PreviousState != stateMachine.ReturnSwordState) //else if
         {
             animationController.PlayUnsheathSword();
             animationController.TargetCombat(Weapon.Sword,false);

@@ -15,13 +15,14 @@ namespace States
         public CombatController CombatController;
         public ForceReceiver ForceReceiver;
         public Transform AimStateFocus;
-        [HideInInspector] public PlayerFreeLookState FreeLookPlayerState;
-        [HideInInspector] public PlayerUnarmedTargetState UnarmedTargetState;
-        [HideInInspector] public PlayerUnarmedFreeState UnarmedFreeTransitionState;
-        [HideInInspector] public PlayerSwordFreeState SwordFreeState;
-        [HideInInspector] public PlayerSwordTargetState SwordTargetState;
-        [HideInInspector] public PlayerUnarmedFreeState UnarmedFreeState;
-        [HideInInspector] public PlayerAimState AimState;
+        public PlayerFreeLookState FreeLookPlayerState;
+        public PlayerUnarmedTargetState UnarmedTargetState;
+        public PlayerUnarmedFreeState UnarmedFreeTransitionState;
+        public PlayerSwordFreeState SwordFreeState;
+        public PlayerSwordTargetState SwordTargetState;
+        public PlayerUnarmedFreeState UnarmedFreeState;
+        public PlayerAimState AimState;
+        public PlayerSwordReturnState ReturnSwordState;
         private void Awake()
         {
             FreeLookPlayerState = new PlayerFreeLookState(this);
@@ -31,6 +32,7 @@ namespace States
             UnarmedFreeState = new PlayerUnarmedFreeState(this);
             UnarmedFreeTransitionState = new PlayerUnarmedFreeState(this, Weapon.Unarmed, true, true);
             AimState = new PlayerAimState(this);
+            ReturnSwordState = new PlayerSwordReturnState(this);
         }
         private void OnEnable()
         {

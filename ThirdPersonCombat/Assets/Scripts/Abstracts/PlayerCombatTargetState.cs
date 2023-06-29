@@ -28,7 +28,7 @@ namespace States
 
         protected override void StateTickActions(float deltaTime)
         {
-            animationController.TargetMovementBlendTree(inputReader.MovementOn2DAxis);
+            animationController.TargetStateSetFloats(inputReader.MovementOn2DAxis);
 
             if (isSprintHold || isSprint)
             {
