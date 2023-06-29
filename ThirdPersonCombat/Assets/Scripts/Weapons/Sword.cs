@@ -11,7 +11,11 @@ namespace PlayerController
         [SerializeField] private Transform _handHolder;
         [SerializeField] private Transform _sheahtHolder;
         [SerializeField] private float _curvePointReachingSpeed = 10f;
+        [SerializeField] private float _targetReachingSpeed = 20f;
         [SerializeField] private int _damageInAir = 25;
+        [Header("Sword Throw")]
+        [SerializeField] private LayerMask _aimLayer;
+        [SerializeField] private float _aimRange;
         private float _curvePointReachingTime = 1.0f;
         private Rigidbody _rb;
         private bool _isInCurvePoint = false;
@@ -20,6 +24,7 @@ namespace PlayerController
         private bool _isOnThrow = false;
         private CapsuleCollider _collider;
         private Damage _damage;
+        private Transform _mainCam;
         public bool IsEquipped => transform.parent != null;
 
         private void Awake()
@@ -30,6 +35,7 @@ namespace PlayerController
             _tweener = _rb.DORotate(new Vector3(0f, 0f, -180f), 0.1f).SetLoops(-1, LoopType.Incremental);
             _tweener.Pause();
             _damage.enabled = false;
+            _mainCam = Camera.main.transform;
         }
         private void OnEnable()
         {
@@ -80,7 +86,21 @@ namespace PlayerController
             transform.localRotation = Quaternion.Euler(Vector3.zero);
             _tweener.Play();
             StartAttack(_damageInAir);
-            _rb.AddForce(force, ForceMode.Impulse);
+            ThrowProcess(force);
+            
+        }
+        private void ThrowProcess(Vector3 force)
+        {
+            if(Physics.Raycast(_mainCam.position, _mainCam.forward, out RaycastHit hit, _aimRange, _aimLayer))
+            {
+                float inAirTime = Vector3.Distance(hit.point, transform.position) / _targetReachingSpeed;
+                _rb.DOMove(hit.point, inAirTime);
+            }
+            else
+            {
+                _rb.AddForce(force, ForceMode.Impulse);
+            }
+            
         }
         public void Return()
         {
