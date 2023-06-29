@@ -58,7 +58,7 @@ public class PlayerSwordReturnState : PlayerBaseState
 
 
         HandleSprintControl();
-        if(_combat.IsSwordEquipped)
+        if(_combat.IsSwordReturned)
         {
             if (_isTargeted)
                 stateMachine.ChangeState(stateMachine.SwordTargetState);

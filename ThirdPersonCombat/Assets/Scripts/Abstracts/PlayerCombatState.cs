@@ -138,6 +138,7 @@ namespace States
         {
             _heavyAttackIndex = 0;
             _currentAttack = _lightAttackArray[_lightAttackIndex];
+            _combat.CurrentAttack = _currentAttack;
             animationController.PlayAttack(_currentAttack.animationName, _currentAttack.transitionDuration);
             _lightAttackIndex++;
             _animationTimePassed = 0f;
@@ -150,6 +151,7 @@ namespace States
         {
             _lightAttackIndex = 0;
             _currentAttack = _heavyAttackArray[_heavyAttackIndex];
+            _combat.CurrentAttack = _currentAttack;
             animationController.PlayAttack(_currentAttack.animationName, _currentAttack.transitionDuration);
             _heavyAttackIndex++;
             _animationTimePassed = 0f;

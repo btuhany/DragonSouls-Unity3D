@@ -10,8 +10,7 @@ namespace PlayerController
         public float transitionDuration;
         public float attackDuration;
         public float comboPermissionDelay;
-        public float force;
-        public float forceSmoothTime;
+        public int damage;
     }
     public enum Weapon
     {
@@ -29,7 +28,7 @@ namespace PlayerController
         [SerializeField] private Sword _sword;
         [SerializeField] private float _throwForce = 200f;
 
-        public bool IsSwordEquipped => _sword.IsEquipped;
+        public bool IsSwordReturned => _sword.IsEquipped;
 
         public bool AutoTarget = false;
         public float AutoTargetRotationDeltaTime = 0.15f;
@@ -46,17 +45,38 @@ namespace PlayerController
 
         public Attack NullAttack;
 
+        [HideInInspector] public Attack CurrentAttack;
+
         public void TryReturnSword()
         {
-            if (IsSwordEquipped) return;
+            if (IsSwordReturned) return;
             _sword.Return();
 
         }
         //AnimationEvents
         public void ThrowSword()
         {
-            if (!IsSwordEquipped) return;
+            if (!IsSwordReturned) return;
             _sword.Throwed(Camera.main.transform.forward * _throwForce);
+        }
+        public void UnsheathSword()
+        {
+            _sword.Unsheath();
+        }
+
+        public void SheathSword()
+        {
+            _sword.Sheath();
+        }
+
+        public void EnableSwordHitbox()
+        {
+            _sword.StartAttack(CurrentAttack.damage);
+        }
+                
+        public void DisableSwordHitbox()
+        {
+            _sword.StopAttack();
         }
     }
 }

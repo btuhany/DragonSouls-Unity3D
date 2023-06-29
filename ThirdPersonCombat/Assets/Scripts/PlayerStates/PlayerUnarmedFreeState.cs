@@ -69,12 +69,12 @@ namespace States
 
         protected override void HandleSheathEvent()
         {
-            if (animationController.IsAttackPlaying) return;
+            if (animationController.IsAttackPlaying || !_combat.IsSwordReturned) return;
             stateMachine.ChangeState(stateMachine.SwordFreeState);
         }
         protected override void HandleOnWeaponReturn()
         {
-            if (_combat.IsSwordEquipped) return;
+            if (_combat.IsSwordReturned) return;
             stateMachine.ChangeState(stateMachine.ReturnSwordState);
         }
     }
