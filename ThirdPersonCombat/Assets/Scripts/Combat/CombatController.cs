@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using Combat;
 namespace PlayerController
 {
     [Serializable]
@@ -26,6 +26,8 @@ namespace PlayerController
     {
         [Header("ThrowSwordConfig")]
         [SerializeField] private Sword _sword;
+        [SerializeField] private WeaponController _unarmedLeft;
+        [SerializeField] private WeaponController _unarmedRight;
         [SerializeField] private float _throwForce = 200f;
 
         public bool IsSwordReturned => _sword.IsEquipped;
@@ -77,6 +79,19 @@ namespace PlayerController
         public void DisableSwordHitbox()
         {
             _sword.StopAttack();
+        }
+        public void EnableRightUnarmedHitboxes()
+        {
+            _unarmedRight.StartAttack(CurrentAttack.damage);
+        }
+        public void EnableLeftUnarmedHitbox()
+        {
+            _unarmedLeft.StartAttack(CurrentAttack.damage);
+        }
+        public void DisableUnarmedHitboxes()
+        {
+            _unarmedRight.StopAttack();
+            _unarmedLeft.StopAttack();
         }
     }
 }

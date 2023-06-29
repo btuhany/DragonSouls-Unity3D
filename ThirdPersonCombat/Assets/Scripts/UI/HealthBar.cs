@@ -31,11 +31,9 @@ public class HealthBar : MonoBehaviour
         while(timeCounter<duration)
         {
             transform.rotation = Camera.main.transform.rotation;
-            Debug.Log("IsActive!");
             timeCounter += Time.deltaTime;
             yield return null;
         }
-        Debug.Log("InActive!");
         _slider.gameObject.SetActive(false);
         yield return null;
     }
