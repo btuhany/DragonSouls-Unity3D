@@ -7,6 +7,9 @@ namespace Combat
         [SerializeField] private int _maxHealth = 100;
         private int _health;
 
+        public int MaxHealth { get => _maxHealth; }
+
+        public event System.Action<int> OnHealthUpdated;
         private void Start()
         {
             _health = _maxHealth;
@@ -17,6 +20,7 @@ namespace Combat
             if (_health <= 0) return;
 
             _health = Mathf.Max(_health - damage, 0);
+            OnHealthUpdated?.Invoke(_health);
         }
     }
 }

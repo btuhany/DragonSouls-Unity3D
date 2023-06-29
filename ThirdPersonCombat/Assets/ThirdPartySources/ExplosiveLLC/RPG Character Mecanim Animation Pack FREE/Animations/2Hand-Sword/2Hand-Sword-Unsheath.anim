@@ -80197,7 +80197,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 1
   m_Events:
   - time: 0.33333334
-    functionName: SheathSword
+    functionName: UnsheathSword
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

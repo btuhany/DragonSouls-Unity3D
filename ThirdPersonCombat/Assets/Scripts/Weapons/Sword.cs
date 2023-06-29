@@ -10,6 +10,7 @@ namespace PlayerController
         [SerializeField] private Transform _handHolder;
         [SerializeField] private Transform _sheahtHolder;
         [SerializeField] private float _curvePointReachingSpeed = 10f;
+        [SerializeField] private int _damageInAir = 25;
         private float _curvePointReachingTime = 1.0f;
         private Rigidbody _rb;
         private bool _isInCurvePoint = false;
@@ -41,6 +42,7 @@ namespace PlayerController
                 _rb.MovePosition(dir);
                 if (Vector3.Distance(_rb.position, _handHolder.position) < 1f)
                 {
+                    StopAttack();
                     _tweener.Pause();
                     _isInCurvePoint = false;
                     _isReturning = false;
@@ -76,6 +78,7 @@ namespace PlayerController
             transform.parent = null;
             transform.localRotation = Quaternion.Euler(Vector3.zero);
             _tweener.Play();
+            StartAttack(_damageInAir);
             _rb.AddForce(force, ForceMode.Impulse);
         }
         public void Return()
@@ -108,7 +111,6 @@ namespace PlayerController
         public void StartAttack(int damage)
         {
             _collider.enabled = true;
-            _rb.isKinematic = true;
             _damage.ResetState();
             _damage.SetAttackDamage(damage);
             _damage.enabled = true;
@@ -117,7 +119,6 @@ namespace PlayerController
         public void StopAttack()
         {
             _collider.enabled = false;
-            _rb.isKinematic = false;
             _damage.enabled = false;
         }
     }

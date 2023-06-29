@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    public int AttackDamage;
+    [HideInInspector] public int AttackDamage;
 
     private List<Collider> _hitColliders = new List<Collider>();
     private void OnEnable()
