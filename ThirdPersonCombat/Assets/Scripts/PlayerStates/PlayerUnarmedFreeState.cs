@@ -41,7 +41,7 @@ namespace States
 
         protected override void StateTickActions(float deltaTime)
         {
-            if(_isSheath)
+            if (_isSheath)
             {
                 if (animationController.IsUnsheathSheathAnimPlaying)
                     return;
@@ -56,6 +56,10 @@ namespace States
 
             if (movementOn2DAxis.magnitude > 0f)
             {
+                if (stateMachine.CinemachineBrain.IsBlending) 
+                {
+                    return;
+                }
                 RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
             }
             HandleSprintControl();

@@ -7,14 +7,15 @@ public class PlayerSwordReturnState : PlayerBaseState
     private CombatController _combat;
     private Transform targetTransform;
     bool _isTargeted = false;
+
     public PlayerSwordReturnState(PlayerStateMachine player) : base(player)
     {
         _combat = player.CombatController;
     }
     public override void Enter()
     {
-        animationController.PlaySwordReturn();
         _combat.TryReturnSword();
+        animationController.PlaySwordReturn();
 
         base.Enter();
     }

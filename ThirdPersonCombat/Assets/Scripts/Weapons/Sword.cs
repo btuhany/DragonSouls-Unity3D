@@ -23,6 +23,7 @@ namespace PlayerController
         private Rigidbody _rb;
         private Tweener _zRotationAnim;
         private Tweener _yRotationAnim;
+        private Tweener _throwTween;
         private CapsuleCollider _collider;
         private Damage _damage;
         private Transform _mainCam;
@@ -101,7 +102,9 @@ namespace PlayerController
             if(Physics.Raycast(_mainCam.position, _mainCam.forward, out RaycastHit hit, _aimRange, _aimLayer))
             {
                 float inAirTime = Vector3.Distance(hit.point, transform.position) / _targetReachingSpeed;
-                _rb.DOMove(hit.point, inAirTime);
+                _throwTween = _rb.DOMove(hit.point, inAirTime);
+                if(!_throwTween.IsPlaying())
+                    _throwTween.Play();
             }
             else
             {
@@ -110,6 +113,13 @@ namespace PlayerController
         }
         public void Return()
         {
+            if(_isOnThrow)
+            {
+                _isOnThrow = false;
+                _rb.velocity = Vector3.zero;
+                _yRotationAnim.Pause();
+                _throwTween.Pause();
+            }
             CalculateReturnTime();
             _isReturning = true;
             _rb.isKinematic = false;

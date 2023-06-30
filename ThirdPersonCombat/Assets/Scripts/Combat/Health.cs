@@ -9,7 +9,7 @@ namespace Combat
 
         public int MaxHealth { get => _maxHealth; }
 
-        public event System.Action<int> OnHealthUpdated;
+        public event System.Action<int,int> OnHealthUpdated;
         private void Start()
         {
             _health = _maxHealth;
@@ -20,7 +20,7 @@ namespace Combat
             if (_health <= 0) return;
 
             _health = Mathf.Max(_health - damage, 0);
-            OnHealthUpdated?.Invoke(_health);
+            OnHealthUpdated?.Invoke(_health, damage);
         }
     }
 }

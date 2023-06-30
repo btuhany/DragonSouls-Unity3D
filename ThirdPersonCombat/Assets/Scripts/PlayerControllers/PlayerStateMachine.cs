@@ -2,6 +2,7 @@ using Inputs;
 using PlayerController;
 using UnityEngine;
 using Movement;
+using Cinemachine;
 
 namespace States
 {
@@ -16,6 +17,7 @@ namespace States
         public ForceReceiver ForceReceiver;
         public Transform AimStateFocus;
         public Transform FreeLookCamera;
+        public CinemachineStateDrivenCamera CinemachineBrain;
 
         //States
         public PlayerFreeLookState FreeLookPlayerState;

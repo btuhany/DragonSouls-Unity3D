@@ -28,6 +28,16 @@ namespace States
 
         public override void Tick(float deltaTime)
         {
+            if (_isThrowed)
+            {
+                _animationTime += deltaTime;
+                if (_animationTime > _combat.ThrowAttack.attackDuration + _combat.ThrowAttack.comboPermissionDelay)
+                {
+                    stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+                }
+                return;
+            }
+
             Vector2 movementVector = inputReader.MovementOn2DAxis;
 
             if (_isTargeted)
@@ -58,14 +68,7 @@ namespace States
 
             animationController.TargetStateSetFloats(inputReader.CameraMovementOn2DAxis + movementVector);
 
-            if (_isThrowed)
-            {
-                _animationTime += deltaTime;
-                if (_animationTime > _combat.ThrowAttack.attackDuration + _combat.ThrowAttack.comboPermissionDelay)
-                {
-                    stateMachine.ChangeState(stateMachine.UnarmedFreeState);
-                }
-            }
+           
         }
 
         public override void Exit()
