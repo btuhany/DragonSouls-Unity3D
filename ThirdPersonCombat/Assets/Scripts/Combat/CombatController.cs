@@ -59,7 +59,7 @@ namespace PlayerController
         public void ThrowSword()
         {
             if (!IsSwordReturned) return;
-            _sword.Throwed(Camera.main.transform.forward * _throwForce);
+            _sword.Throwed(Camera.main.transform.forward * _throwForce, this.transform);
         }
         public void UnsheathSword()
         {

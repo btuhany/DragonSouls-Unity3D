@@ -17,23 +17,29 @@ namespace PlayerController
         [SerializeField] private LayerMask _aimLayer;
         [SerializeField] private float _aimRange;
         private float _curvePointReachingTime = 1.0f;
-        private Rigidbody _rb;
-        private bool _isInCurvePoint = false;
-        private Tweener _tweener;
         private bool _isReturning = false;
         private bool _isOnThrow = false;
+        private bool _isInCurvePoint = false;
+        private Rigidbody _rb;
+        private Tweener _zRotationAnim;
+        private Tweener _yRotationAnim;
         private CapsuleCollider _collider;
         private Damage _damage;
         private Transform _mainCam;
+        private Transform _swordBody;
+
         public bool IsEquipped => transform.parent != null;
 
         private void Awake()
         {
+            _swordBody = GetComponentsInChildren<Transform>()[1];
             _damage = GetComponent<Damage>();
             _rb = GetComponent<Rigidbody>();
             _collider = GetComponent<CapsuleCollider>();
-            _tweener = _rb.DORotate(new Vector3(0f, 0f, -180f), 0.1f).SetLoops(-1, LoopType.Incremental);
-            _tweener.Pause();
+            _zRotationAnim = transform.DORotate(new Vector3(0f, 0f, -180f), 0.1f).SetLoops(-1, LoopType.Incremental);
+            _yRotationAnim = _swordBody.DOLocalRotate(new Vector3(0f, -180f, 0f), 0.1f).SetLoops(-1, LoopType.Incremental);
+            _yRotationAnim.Pause();
+            _zRotationAnim.Pause();
             _damage.enabled = false;
             _mainCam = Camera.main.transform;
         }
@@ -50,7 +56,8 @@ namespace PlayerController
                 if (Vector3.Distance(_rb.position, _handHolder.position) < 1f)
                 {
                     StopAttack();
-                    _tweener.Pause();
+                    _zRotationAnim.Pause();
+                    _yRotationAnim.Pause();
                     _isInCurvePoint = false;
                     _isReturning = false;
                     _rb.isKinematic = true;
@@ -68,7 +75,7 @@ namespace PlayerController
             {
                 _isOnThrow = false;
                 _rb.velocity = Vector3.zero;
-                _tweener.Pause();
+                _yRotationAnim.Pause();
                 _rb.isKinematic = true;
             }
         }
@@ -77,17 +84,17 @@ namespace PlayerController
             float distance = Vector3.Distance(_curvePoint.position, _rb.transform.position);
             _curvePointReachingTime = distance / _curvePointReachingSpeed;
         }
-        public void Throwed(Vector3 force)
+        public void Throwed(Vector3 force, Transform player)
         {
             _isOnThrow = true;
             _collider.enabled = true;
             _rb.isKinematic = false;
             transform.parent = null;
-            transform.localRotation = Quaternion.Euler(Vector3.zero);
-            _tweener.Play();
+            //transform.localRotation = Quaternion.Euler(Vector3.zero);
+            transform.rotation = Quaternion.LookRotation(player.right, _mainCam.transform.forward);
+            _yRotationAnim.Play();
             StartAttack(_damageInAir);
             ThrowProcess(force);
-            
         }
         private void ThrowProcess(Vector3 force)
         {
@@ -100,7 +107,6 @@ namespace PlayerController
             {
                 _rb.AddForce(force, ForceMode.Impulse);
             }
-            
         }
         public void Return()
         {
@@ -109,7 +115,7 @@ namespace PlayerController
             _rb.isKinematic = false;
             _rb.velocity = Vector3.zero;
             transform.localRotation = Quaternion.Euler(Vector3.zero);
-            _tweener.Play();
+            _zRotationAnim.Play();
             _rb.DOMove(_curvePoint.position, _curvePointReachingTime).SetEase(Ease.InCubic).onComplete = () =>
             {
                 _isInCurvePoint = true;

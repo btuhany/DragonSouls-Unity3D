@@ -5,8 +5,8 @@ namespace States
     public abstract class PlayerCombatTargetState : PlayerCombatState
     {
         private Transform targetTransform;
-        private const int lostTargetCancelDelay = 2;
-        private float targetRangeControlCounter = lostTargetCancelDelay;
+        private const float lostTargetCancelDelay = 0.5f;
+        private float targetRangeControlCounter;
 
         public PlayerCombatTargetState(PlayerStateMachine player, Weapon weapon, bool autoStateChange = false) : base(player, weapon, autoStateChange)
         {
@@ -14,7 +14,7 @@ namespace States
 
         public override void Enter()
         {
-            targetRangeControlCounter = 3f;
+            targetRangeControlCounter = lostTargetCancelDelay;
             targetTransform = targetableCheck.CurrentTargetTransform;
             base.Enter();
         }
