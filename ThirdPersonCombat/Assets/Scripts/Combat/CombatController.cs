@@ -30,6 +30,9 @@ namespace PlayerController
         [SerializeField] private WeaponController _unarmedRight;
         [SerializeField] private float _throwForce = 200f;
 
+        [Header("Aim")]
+        [SerializeField] private GameObject _crossHairPanel;
+
         public bool IsSwordReturned => _sword.IsEquipped;
 
         public bool AutoTarget = false;
@@ -53,8 +56,16 @@ namespace PlayerController
         {
             if (IsSwordReturned) return;
             _sword.Return();
-
         }
+
+        public void SetAciveCrosshair(bool enable)
+        {
+            if(enable)
+                _crossHairPanel.SetActive(true);
+            else
+                _crossHairPanel.SetActive(false);
+        }
+        
         //AnimationEvents
         public void ThrowSword()
         {

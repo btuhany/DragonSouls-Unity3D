@@ -15,6 +15,9 @@ namespace States
         public CombatController CombatController;
         public ForceReceiver ForceReceiver;
         public Transform AimStateFocus;
+        public Transform FreeLookCamera;
+
+        //States
         public PlayerFreeLookState FreeLookPlayerState;
         public PlayerUnarmedTargetState UnarmedTargetState;
         public PlayerUnarmedFreeState UnarmedFreeTransitionState;

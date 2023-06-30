@@ -5361,7 +5361,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5228128570166819123}
-  m_LocalRotation: {x: -0.014567494, y: 0.017027816, z: 0.0054951613, w: 0.99973387}
+  m_LocalRotation: {x: -0.046479538, y: -0.000000007450581, z: -0.000000003259629,
+    w: 0.99891925}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5439,7 +5440,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5228128570245185241}
-  m_LocalRotation: {x: 0.03191538, y: 0.01726482, z: 0.004697777, w: 0.9993304}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5584,6 +5585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5228128570409817805}
+  - component: {fileID: 2651044231407892564}
   - component: {fileID: 5228128570409817806}
   - component: {fileID: 5228128570409817804}
   - component: {fileID: 5228128570409817807}
@@ -5601,8 +5603,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5228128570409817792}
-  m_LocalRotation: {x: -0.14824906, y: -0, z: -0, w: 0.9889501}
-  m_LocalPosition: {x: -0.2723313, y: 0.20562732, z: -5.420218}
+  m_LocalRotation: {x: -0.11646893, y: 0.0480906, z: 0.005646155, w: 0.99201334}
+  m_LocalPosition: {x: -0.52831656, y: 0.20562732, z: -5.403214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5612,6 +5614,19 @@ Transform:
   m_Father: {fileID: 5228128570667303948}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -17.051, y: 0, z: 0}
+--- !u!114 &2651044231407892564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228128570409817792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 525ff851c4b36f44287c7806e09e4754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cinemachine: {fileID: 0}
 --- !u!114 &5228128570409817806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5648,7 +5663,19 @@ MonoBehaviour:
     m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 2651044231407892564}
+          m_TargetAssemblyTypeName: OnFreeLookCamera, Assembly-CSharp
+          m_MethodName: OnFreeLookCam
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   m_LegacyBlendHint: 0
   m_YAxis:
     Value: 0.5
@@ -6272,7 +6299,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5228128570890927059}
-  m_LocalRotation: {x: 0.03191538, y: 0.01726482, z: 0.004697777, w: 0.9993304}
+  m_LocalRotation: {x: 0.000000007450581, y: -0.0000000037252903, z: -9.313226e-10,
+    w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7026,6 +7054,7 @@ MonoBehaviour:
   _unarmedLeft: {fileID: 7233789798221256679}
   _unarmedRight: {fileID: 4111305429152209150}
   _throwForce: 60
+  _crossHairPanel: {fileID: 0}
   AutoTarget: 0
   AutoTargetRotationDeltaTime: 0.15
   CombatModeDuration: 3

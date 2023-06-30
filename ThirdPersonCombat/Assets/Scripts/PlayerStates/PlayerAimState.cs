@@ -19,7 +19,9 @@ namespace States
 
         public override void Enter()
         {
-            
+            stateMachine.AimStateFocus.localRotation = Quaternion.AngleAxis(Camera.main.transform.rotation.eulerAngles.x, Vector3.right);
+            LookRotationCameraForward();
+            _combat.SetAciveCrosshair(true);
             animationController.PlayAimSword();
             base.Enter();
         }
@@ -59,7 +61,7 @@ namespace States
             if (_isThrowed)
             {
                 _animationTime += deltaTime;
-                if(_animationTime > _combat.ThrowAttack.attackDuration + _combat.ThrowAttack.comboPermissionDelay)
+                if (_animationTime > _combat.ThrowAttack.attackDuration + _combat.ThrowAttack.comboPermissionDelay)
                 {
                     stateMachine.ChangeState(stateMachine.UnarmedFreeState);
                 }
@@ -73,6 +75,7 @@ namespace States
             _isTargeted = false;
             targetTransform = null;
             targetableCheck.ClearTarget();
+            _combat.SetAciveCrosshair(false);
             base.Exit();
         }
         protected override void HandleOnHeavyAttackEvent()
@@ -108,7 +111,7 @@ namespace States
         }
         protected override void HandleOnAimHoldCancelEvent()
         {
-            if(!_isThrowed)
+            if (!_isThrowed)
                 stateMachine.ChangeState(stateMachine.SwordFreeState);
         }
 
@@ -116,6 +119,7 @@ namespace States
         {
             animationController.PlayAttack(_combat.ThrowAttack.animationName,_combat.ThrowAttack.transitionDuration);
         }
+
         private Vector3 MotionVectorAroundTarget()
         {
             //Character always looks to target
@@ -125,5 +129,11 @@ namespace States
             return motion;
         }
 
+        private void LookRotationCameraForward()
+        {
+            Vector3 pos = transform.position - Camera.main.transform.position;
+            pos.y = 0f;
+            transform.rotation = Quaternion.LookRotation(pos, Vector3.up);
+        }
     }
 }
