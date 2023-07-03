@@ -22,7 +22,7 @@ namespace States
             if (!stateMachine.CameraController.IsTransition)
             {
                 LookRotationCameraForward();
-                stateMachine.AimStateFocus.localRotation = Quaternion.AngleAxis(Camera.main.transform.rotation.eulerAngles.x, Vector3.right);
+                stateMachine.CameraController.AimCamSetVerticalRotation(Camera.main.transform.rotation.eulerAngles.x);
             }
             _combat.SetAciveCrosshair(true);
             animationController.PlayAimSword();
@@ -53,8 +53,7 @@ namespace States
                 //else
                 {
                     Vector3 relativeVector = targetTransform.position - Camera.main.transform.position;
-                    stateMachine.AimStateFocus.rotation = Quaternion.LookRotation(relativeVector);
-                    stateMachine.CameraController.SetAimCamTarget(targetTransform);
+                    stateMachine.CameraController.SetAimCamTarget(targetTransform, relativeVector);
 
 
                     relativeVector.y = 0f;
@@ -71,7 +70,7 @@ namespace States
                 RotateAround(Vector3.up, inputReader.CameraMovementOn2DAxis.x * movement.AimStateCameraHorizontalRotationPower);
 
                 //Camera vertical rotation
-                stateMachine.AimStateFocus.rotation *= Quaternion.AngleAxis(inputReader.CameraMovementOn2DAxis.y * movement.AimStateCameraVerticalRotationPower, Vector3.left);
+                stateMachine.CameraController.AimCamRotation(inputReader.CameraMovementOn2DAxis.y * movement.AimStateCameraVerticalRotationPower);
             }
 
             animationController.TargetStateSetFloats(inputReader.CameraMovementOn2DAxis + movementVector);

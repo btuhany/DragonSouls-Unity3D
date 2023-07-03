@@ -526,8 +526,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -0.11660572, y: -0.000000030523555, z: -0.0000000035836678,
-    w: 0.9931783}
+  m_LocalRotation: {x: -0.116605744, y: 0.000000007455565, z: 8.75333e-10, w: 0.9931783}
   m_LocalPosition: {x: -8.58, y: 0.45999992, z: -9.629999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -896,6 +895,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
     type: 3}
   m_PrefabInstance: {fileID: 3813318927704186781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &658847771 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5228128570850801995, guid: deaf564db46091a48b1b21d0b1bb7484,
+    type: 3}
+  m_PrefabInstance: {fileID: 5228128570746114871}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
@@ -2163,6 +2168,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1686104026064038052, guid: deaf564db46091a48b1b21d0b1bb7484,
         type: 3}
+      propertyPath: _aimCamFocus
+      value: 
+      objectReference: {fileID: 658847771}
+    - target: {fileID: 1686104026064038052, guid: deaf564db46091a48b1b21d0b1bb7484,
+        type: 3}
       propertyPath: CinemachineBrain
       value: 
       objectReference: {fileID: 330585548}
@@ -2173,7 +2183,22 @@ PrefabInstance:
       objectReference: {fileID: 1847096371}
     - target: {fileID: 1686104026064038052, guid: deaf564db46091a48b1b21d0b1bb7484,
         type: 3}
+      propertyPath: _cinemachineBrain
+      value: 
+      objectReference: {fileID: 330585548}
+    - target: {fileID: 1686104026064038052, guid: deaf564db46091a48b1b21d0b1bb7484,
+        type: 3}
+      propertyPath: _cinemachineAimCam
+      value: 
+      objectReference: {fileID: 1847096371}
+    - target: {fileID: 1686104026064038052, guid: deaf564db46091a48b1b21d0b1bb7484,
+        type: 3}
       propertyPath: CinemachineFreeLookCam
+      value: 
+      objectReference: {fileID: 1179462786}
+    - target: {fileID: 1686104026064038052, guid: deaf564db46091a48b1b21d0b1bb7484,
+        type: 3}
+      propertyPath: _cinemachineFreeLookCam
       value: 
       objectReference: {fileID: 1179462786}
     - target: {fileID: 1686104026064038052, guid: deaf564db46091a48b1b21d0b1bb7484,
@@ -2183,7 +2208,17 @@ PrefabInstance:
       objectReference: {fileID: 846221215}
     - target: {fileID: 1686104026064038052, guid: deaf564db46091a48b1b21d0b1bb7484,
         type: 3}
+      propertyPath: _cinemachineStateDrivenCam
+      value: 
+      objectReference: {fileID: 846221215}
+    - target: {fileID: 1686104026064038052, guid: deaf564db46091a48b1b21d0b1bb7484,
+        type: 3}
       propertyPath: CinemachineAimCamRecomposer
+      value: 
+      objectReference: {fileID: 1847096369}
+    - target: {fileID: 1686104026064038052, guid: deaf564db46091a48b1b21d0b1bb7484,
+        type: 3}
+      propertyPath: _cinemachineAimCamRecomposer
       value: 
       objectReference: {fileID: 1847096369}
     - target: {fileID: 5228128570166819121, guid: deaf564db46091a48b1b21d0b1bb7484,
@@ -2354,17 +2389,17 @@ PrefabInstance:
     - target: {fileID: 5228128570890927057, guid: deaf564db46091a48b1b21d0b1bb7484,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000029802322
+      value: 0.000000014901161
       objectReference: {fileID: 0}
     - target: {fileID: 5228128570890927057, guid: deaf564db46091a48b1b21d0b1bb7484,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000036308236
+      value: -0.0000000064107755
       objectReference: {fileID: 0}
     - target: {fileID: 5228128570890927057, guid: deaf564db46091a48b1b21d0b1bb7484,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000008644819
+      value: -0.0000000015263752
       objectReference: {fileID: 0}
     - target: {fileID: 5228128571214234112, guid: deaf564db46091a48b1b21d0b1bb7484,
         type: 3}

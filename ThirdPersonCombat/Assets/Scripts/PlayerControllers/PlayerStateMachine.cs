@@ -15,7 +15,6 @@ namespace States
         public MovementController Movement;
         public CombatController CombatController;
         public ForceReceiver ForceReceiver;
-        public Transform AimStateFocus;
         public CameraController CameraController;
         
         //States
