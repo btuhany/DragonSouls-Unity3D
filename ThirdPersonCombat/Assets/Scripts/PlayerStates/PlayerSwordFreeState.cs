@@ -1,3 +1,4 @@
+using Cinemachine;
 using PlayerController;
 using States;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace States
         public PlayerSwordFreeState(PlayerStateMachine player, Weapon weapon = Weapon.Sword, bool entryAttack = false, bool autoStateChange = false) : base(player, weapon, entryAttack, autoStateChange)
         {
         }
+
         public override void Enter()
         {
             //animationController.SetBoolsCombatFree(weapon, !animationController.IsUnsheathAnimPlaying);
@@ -22,30 +24,39 @@ namespace States
             }
             base.Enter();
         }
+
         protected override void StateTickActions(float deltaTime)
         {
-            
             if (animationController.IsUnsheathSheathAnimPlaying)
                 return;
+            //Cinemachine IsBlending doesn't work properly at start
+            if(stateMachine.CameraController.IsAimCameraActive) 
+            {
+                return;
+            }
+            if (stateMachine.CameraController.IsTransition)
+            {
+                animationController.SwordFreeMovement(Vector2.zero);
+                return;
+            }
+
             Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
             animationController.SwordFreeMovement(movementOn2DAxis);
 
 
+            if (movementOn2DAxis.magnitude > 0.06f)
+            {
+                RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
+            }
+            
             if (isSprintHold || isSprint)
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.CombatSprintSpeed, deltaTime);
             else
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.SwordFreeSpeed, deltaTime);
             
-            if (movementOn2DAxis.magnitude > 0f)
-            {
-                if (stateMachine.CinemachineBrain.IsBlending)
-                {
-                    return;
-                }
-                RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
-            }
             HandleSprintControl();
         }
+
         protected override void HandleOnTargetEvent()
         {
             if (!targetableCheck.TrySelectTarget()) return;

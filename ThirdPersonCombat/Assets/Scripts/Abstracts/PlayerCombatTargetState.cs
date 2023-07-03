@@ -51,7 +51,7 @@ namespace States
                 targetRangeControlCounter = lostTargetCancelDelay;
                 if (!targetableCheck.IsTargetInRange())
                 {
-                    stateMachine.ChangeState(stateMachine.FreeLookPlayerState);
+                    stateMachine.ChangeState(stateMachine.PreviousState);
                     return;
                 }
             }

@@ -16,9 +16,8 @@ namespace States
         public CombatController CombatController;
         public ForceReceiver ForceReceiver;
         public Transform AimStateFocus;
-        public Transform FreeLookCamera;
-        public CinemachineStateDrivenCamera CinemachineBrain;
-
+        public CameraController CameraController;
+        
         //States
         public PlayerFreeLookState FreeLookPlayerState;
         public PlayerUnarmedTargetState UnarmedTargetState;

@@ -19,8 +19,11 @@ namespace States
 
         public override void Enter()
         {
-            stateMachine.AimStateFocus.localRotation = Quaternion.AngleAxis(Camera.main.transform.rotation.eulerAngles.x, Vector3.right);
-            LookRotationCameraForward();
+            if (!stateMachine.CameraController.IsTransition)
+            {
+                LookRotationCameraForward();
+                stateMachine.AimStateFocus.localRotation = Quaternion.AngleAxis(Camera.main.transform.rotation.eulerAngles.x, Vector3.right);
+            }
             _combat.SetAciveCrosshair(true);
             animationController.PlayAimSword();
             base.Enter();
@@ -34,22 +37,26 @@ namespace States
                 if (_animationTime > _combat.ThrowAttack.attackDuration + _combat.ThrowAttack.comboPermissionDelay)
                 {
                     stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+                    return;
                 }
-                return;
             }
 
             Vector2 movementVector = inputReader.MovementOn2DAxis;
 
             if (_isTargeted)
             {
-                if (isSprintHold || isSprint)
-                {
-                    RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), deltaTime);
-                    MoveCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.TargetRunSpeed, deltaTime);
-                }
-                else
+                //if (isSprintHold || isSprint)
+                //{
+                //    RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), deltaTime);
+                //    MoveCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.TargetRunSpeed, deltaTime);
+                //}
+                //else
                 {
                     Vector3 relativeVector = targetTransform.position - Camera.main.transform.position;
+                    stateMachine.AimStateFocus.rotation = Quaternion.LookRotation(relativeVector);
+                    stateMachine.CameraController.SetAimCamTarget(targetTransform);
+
+
                     relativeVector.y = 0f;
                     RotateCharacter(relativeVector, deltaTime);
                     MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
@@ -57,6 +64,7 @@ namespace States
             }
             else
             {
+                stateMachine.CameraController.ResetAimCamTarget();
                 MoveCharacter(movement.CamRelativeMotionVector(movementVector), movement.AimMovementSpeed, deltaTime);
 
                 //Character horizontal rotation

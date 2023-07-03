@@ -26,6 +26,7 @@ namespace States
             else if(stateMachine.PreviousState == stateMachine.AimState)
             {
                 _isSheath = false;
+                animationController.FreeCombat(weapon, false);
                 bool currentEntryAttack = entryAttack;
                 entryAttack = false;
                 base.Enter();
@@ -44,7 +45,9 @@ namespace States
             if (_isSheath)
             {
                 if (animationController.IsUnsheathSheathAnimPlaying)
+                {
                     return;
+                }
             }
             Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
             animationController.UnarmedFreeMovement(movementOn2DAxis);
@@ -56,7 +59,7 @@ namespace States
 
             if (movementOn2DAxis.magnitude > 0f)
             {
-                if (stateMachine.CinemachineBrain.IsBlending) 
+                if (stateMachine.CameraController.IsTransition) 
                 {
                     return;
                 }
