@@ -17,6 +17,15 @@ public class PlayerSwordReturnState : PlayerBaseState
         _combat.TryReturnSword();
         animationController.PlaySwordReturn();
 
+        if(stateMachine.PreviousState == stateMachine.UnarmedTargetState)
+        {
+            if (targetableCheck.TryTransferTarget())
+            {
+                targetTransform = targetableCheck.CurrentTargetTransform;
+                _isTargeted = true;
+            }
+        }
+
         base.Enter();
     }
     public override void Tick(float deltaTime)

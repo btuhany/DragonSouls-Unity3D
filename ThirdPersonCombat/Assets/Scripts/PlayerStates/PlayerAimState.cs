@@ -62,6 +62,7 @@ namespace States
                 relativeVector.y = 0f;
                 RotateCharacter(relativeVector, deltaTime);
                 MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
+                animationController.TargetStateSetFloats(movementVector);
             }
             else
             {
@@ -73,8 +74,10 @@ namespace States
 
                 //Camera vertical rotation
                 stateMachine.CameraController.AimCamRotation(inputReader.CameraMovementOn2DAxis.y * movement.AimStateCameraVerticalRotationPower);
+
+                animationController.TargetStateSetFloats(inputReader.CameraMovementOn2DAxis + movementVector);
             }
-            animationController.TargetStateSetFloats(inputReader.CameraMovementOn2DAxis + movementVector);
+            
         }
 
         public override void Exit()

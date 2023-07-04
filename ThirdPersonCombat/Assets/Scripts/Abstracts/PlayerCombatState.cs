@@ -48,7 +48,7 @@ namespace States
                 }
 
             }
-            if (_animationTimePassed > _currentAttack.attackDuration + _currentAttack.comboPermissionDelay)
+            if (_animationTimePassed > _currentAttack.attackDuration) //+ _currentAttack.comboPermissionDelay)
             {
                 StateTickActions(deltaTime);
             }
@@ -125,6 +125,14 @@ namespace States
                 _lightAttackIndex = 0;
                 _currentAttack = _lightLightHeavyComboAttack;
                 animationController.PlayAttack(_currentAttack.animationName, _currentAttack.transitionDuration);
+                if (_combat.AttackForce)
+                {
+                    forceReciver.AddForce(transform.forward * _currentAttack.force, _currentAttack.forceLerpTime);
+                }
+                if (_combat.AutoTarget)
+                {
+                    AutoTargetMovement();
+                }
                 _animationTimePassed = 0f;
             }
             else
@@ -146,6 +154,10 @@ namespace States
             {
                 AutoTargetMovement();
             }
+            if(_combat.AttackForce)
+            {
+                forceReciver.AddForce(transform.forward * _currentAttack.force, _currentAttack.forceLerpTime);
+            }
         }
         protected void HeavyAttack()
         {
@@ -158,6 +170,10 @@ namespace States
             if (_combat.AutoTarget)
             {
                 AutoTargetMovement();
+            }
+            if (_combat.AttackForce)
+            {
+                forceReciver.AddForce(transform.forward * _currentAttack.force, _currentAttack.forceLerpTime);
             }
         }
 

@@ -5440,7 +5440,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5228128570245185241}
-  m_LocalRotation: {x: 0.000000014901161, y: -0.0000000064107755, z: -0.0000000015263752,
+  m_LocalRotation: {x: 0.000000029802322, y: -0.000000036308236, z: -0.000000008644819,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -5519,8 +5519,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5228128570364225413}
-  m_LocalRotation: {x: -0.70085186, y: -0.009121869, z: 0.008964033, w: 0.71319216}
-  m_LocalPosition: {x: -0.00000012805685, y: -0.010295868, z: 5.219911}
+  m_LocalRotation: {x: -0.700852, y: -0.009121183, z: 0.0089633595, w: 0.71319216}
+  m_LocalPosition: {x: 0.000000066822395, y: -0.010296822, z: 5.2199106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6326,7 +6326,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5228128570890927059}
-  m_LocalRotation: {x: 0.000000029802322, y: -0.000000036308236, z: -0.000000008644819,
+  m_LocalRotation: {x: 0.000000014901161, y: -0.0000000064107755, z: -0.0000000015263752,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -7084,6 +7084,7 @@ MonoBehaviour:
   _unarmedRight: {fileID: 4111305429152209150}
   _throwForce: 60
   _crossHairPanel: {fileID: 0}
+  AttackForce: 0
   AutoTarget: 0
   AutoTargetRotationDeltaTime: 0.15
   CombatModeDuration: 3
@@ -7093,84 +7094,114 @@ MonoBehaviour:
     attackDuration: 0.47
     comboPermissionDelay: 0.35
     damage: 10
+    force: 5
+    forceLerpTime: 0.1
   - animationName: UnarmedLightAttack2
     transitionDuration: 0.15
     attackDuration: 0.47
     comboPermissionDelay: 0.35
     damage: 15
+    force: 5
+    forceLerpTime: 0.1
   - animationName: UnarmedLightAttack3
     transitionDuration: 0.15
     attackDuration: 0.47
     comboPermissionDelay: 0.35
     damage: 20
+    force: 5
+    forceLerpTime: 0.1
   UnarmedHeavyAttacks:
   - animationName: UnarmedHeavyAttack2
     transitionDuration: 0.1
     attackDuration: 0.6
     comboPermissionDelay: 0.4
     damage: 25
+    force: 4
+    forceLerpTime: 0.1
   - animationName: UnarmedHeavyAttack3
     transitionDuration: 0.1
     attackDuration: 0.6
     comboPermissionDelay: 0.2
     damage: 30
+    force: 4
+    forceLerpTime: 0.1
   UnarmedLLHComboAttack:
     animationName: UnarmedHeavyAttack1
     transitionDuration: 0.1
     attackDuration: 0.47
     comboPermissionDelay: 0.35
     damage: 25
+    force: 3
+    forceLerpTime: 0.2
   SwordLightAttacks:
   - animationName: SwordLight3
     transitionDuration: 0.1
     attackDuration: 0.9
     comboPermissionDelay: 0.35
     damage: 12
+    force: 0
+    forceLerpTime: 0
   - animationName: SwordLight1
     transitionDuration: 0.5
     attackDuration: 0.9
     comboPermissionDelay: 0.35
     damage: 22
+    force: 0
+    forceLerpTime: 0
   - animationName: SwordLight2
     transitionDuration: 0.1
     attackDuration: 0.95
     comboPermissionDelay: 0.35
     damage: 27
+    force: 0
+    forceLerpTime: 0
   SwordHeavyAttacks:
   - animationName: SwordHeavy1
     transitionDuration: 0.1
     attackDuration: 0.95
     comboPermissionDelay: 0.3
     damage: 30
+    force: 0
+    forceLerpTime: 0
   - animationName: SwordHeavy2
     transitionDuration: 0.1
     attackDuration: 0.95
     comboPermissionDelay: 0.35
     damage: 40
+    force: 0
+    forceLerpTime: 0
   SwordLLHComboAttack:
     animationName: SwordLLHCombo
     transitionDuration: 0.1
     attackDuration: 1
     comboPermissionDelay: 0.35
     damage: 33
+    force: 0
+    forceLerpTime: 0
   ThrowAttack:
     animationName: ThrowSword
     transitionDuration: 0.1
     attackDuration: 0.5
     comboPermissionDelay: 0.2
     damage: 10
+    force: 0
+    forceLerpTime: 0
   NullAttack:
     animationName: null
     transitionDuration: 0
     attackDuration: 0
     comboPermissionDelay: 0
     damage: 0
+    force: 0
+    forceLerpTime: 0
   CurrentAttack:
     animationName: 
     transitionDuration: 0
     attackDuration: 0
     comboPermissionDelay: 0
     damage: 0
+    force: 0
+    forceLerpTime: 0
 --- !u!114 &5228128571827528777
 MonoBehaviour:
   m_ObjectHideFlags: 0

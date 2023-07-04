@@ -11,6 +11,8 @@ namespace PlayerController
         public float attackDuration;
         public float comboPermissionDelay;
         public int damage;
+        public float force;
+        public float forceLerpTime;
     }
     public enum Weapon
     {
@@ -35,6 +37,7 @@ namespace PlayerController
 
         public bool IsSwordReturned => _sword.IsEquipped;
 
+        public bool AttackForce = false;
         public bool AutoTarget = false;
         public float AutoTargetRotationDeltaTime = 0.15f;
         public float CombatModeDuration = 2f;
