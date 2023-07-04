@@ -11,7 +11,7 @@ namespace States
         private float _animationTime = 0f;
         private CombatController _combat;
         private Transform targetTransform;
-        bool _isTargeted = false;
+        private bool _isTargeted = false;
         public PlayerAimState(PlayerStateMachine player) : base(player)
         {
             _combat = player.CombatController;
@@ -19,6 +19,15 @@ namespace States
 
         public override void Enter()
         {
+            _isTargeted = false;
+            if (stateMachine.PreviousState == stateMachine.SwordTargetState)
+            {
+                if (targetableCheck.TryTransferTarget())
+                {
+                    targetTransform = targetableCheck.CurrentTargetTransform;
+                    _isTargeted = true;
+                }
+            }
             if (!stateMachine.CameraController.IsTransition)
             {
                 LookRotationCameraForward();
@@ -36,7 +45,10 @@ namespace States
                 _animationTime += deltaTime;
                 if (_animationTime > _combat.ThrowAttack.attackDuration + _combat.ThrowAttack.comboPermissionDelay)
                 {
-                    stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+                    if(_isTargeted)
+                        stateMachine.ChangeState(stateMachine.UnarmedTargetState);
+                    else
+                        stateMachine.ChangeState(stateMachine.UnarmedFreeState);
                     return;
                 }
             }
@@ -45,21 +57,11 @@ namespace States
 
             if (_isTargeted)
             {
-                //if (isSprintHold || isSprint)
-                //{
-                //    RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), deltaTime);
-                //    MoveCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.TargetRunSpeed, deltaTime);
-                //}
-                //else
-                {
-                    Vector3 relativeVector = targetTransform.position - Camera.main.transform.position;
-                    stateMachine.CameraController.SetAimCamTarget(targetTransform, relativeVector);
-
-
-                    relativeVector.y = 0f;
-                    RotateCharacter(relativeVector, deltaTime);
-                    MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
-                }
+                Vector3 relativeVector = targetTransform.position - Camera.main.transform.position;
+                stateMachine.CameraController.SetAimCamTarget(targetTransform, relativeVector);
+                relativeVector.y = 0f;
+                RotateCharacter(relativeVector, deltaTime);
+                MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
             }
             else
             {
@@ -72,17 +74,13 @@ namespace States
                 //Camera vertical rotation
                 stateMachine.CameraController.AimCamRotation(inputReader.CameraMovementOn2DAxis.y * movement.AimStateCameraVerticalRotationPower);
             }
-
             animationController.TargetStateSetFloats(inputReader.CameraMovementOn2DAxis + movementVector);
-
-           
         }
 
         public override void Exit()
         {
             _isThrowed = false;
             _animationTime = 0f;
-            _isTargeted = false;
             targetTransform = null;
             targetableCheck.ClearTarget();
             _combat.SetAciveCrosshair(false);
@@ -122,7 +120,12 @@ namespace States
         protected override void HandleOnAimHoldCancelEvent()
         {
             if (!_isThrowed)
-                stateMachine.ChangeState(stateMachine.SwordFreeState);
+            {
+                if (_isTargeted)
+                    stateMachine.ChangeState(stateMachine.SwordTargetState);
+                else
+                    stateMachine.ChangeState(stateMachine.SwordFreeState);
+            }
         }
 
         private void ThrowSword()

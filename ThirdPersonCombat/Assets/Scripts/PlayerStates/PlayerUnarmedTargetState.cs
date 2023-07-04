@@ -11,7 +11,7 @@ public class PlayerUnarmedTargetState : PlayerCombatTargetState
     }
     public override void Enter()
     {
-        if(stateMachine.PreviousState == stateMachine.SwordTargetState)
+        if(stateMachine.PreviousState == stateMachine.SwordTargetState || stateMachine.PreviousState == stateMachine.AimState)
         {
             if(!targetableCheck.TryTransferTarget())
             {
@@ -44,5 +44,11 @@ public class PlayerUnarmedTargetState : PlayerCombatTargetState
     protected override void HandleOnTargetEvent()
     {
         stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+    }
+
+    protected override void HandleOnWeaponReturn()
+    {
+        if (_combat.IsSwordReturned) return;
+        stateMachine.ChangeState(stateMachine.ReturnSwordState);
     }
 }

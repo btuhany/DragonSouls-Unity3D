@@ -38,6 +38,7 @@ namespace PlayerController
         private readonly int _freeBoolHash = Animator.StringToHash("IsFree");
 
         private readonly int _targetedHash = Animator.StringToHash("Targeted");
+        private readonly int _untargetedHash = Animator.StringToHash("Untargeted");
 
         public void PlaySetFreeLookBlend()
         {
@@ -134,6 +135,10 @@ namespace PlayerController
         public void TargetedAnimation()
         {
             _anim.Play(_targetedHash);
+        }
+        public void UntargetedAnimation()
+        {
+            _anim.Play(_untargetedHash);
         }
     }
 }

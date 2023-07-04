@@ -9,10 +9,12 @@ public class CameraController : MonoBehaviour
     public CinemachineFreeLook _cinemachineFreeLookCam;
     public CinemachineVirtualCamera _cinemachineAimCam;
     public CinemachineRecomposer _cinemachineAimCamRecomposer;
+    public CinemachineVirtualCamera _cinemachineTargetCam;
 
     public Transform _aimCamFocus;
 
     public bool IsAimCameraActive => _cinemachineStateDrivenCam.LiveChild.Priority == _cinemachineAimCam.Priority;
+    public bool IsTargetCamActive => _cinemachineStateDrivenCam.LiveChild.Priority == _cinemachineTargetCam.Priority;
     public bool IsTransition => _cinemachineStateDrivenCam.IsBlending;
 
     public void SetAimCamTarget(Transform targetTransform, Vector3 targetDir)

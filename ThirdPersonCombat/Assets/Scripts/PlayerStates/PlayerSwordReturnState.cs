@@ -24,26 +24,20 @@ public class PlayerSwordReturnState : PlayerBaseState
         Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
         animationController.TargetStateSetFloats(inputReader.MovementOn2DAxis);
 
+        //Cinemachine IsBlending doesn't work properly at start
+        if (!_isTargeted && stateMachine.CameraController.IsTargetCamActive) return;
+
         if (_isTargeted)
         {
-            if (isSprintHold || isSprint)
-            {
-                RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), deltaTime);
-                MoveCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.TargetRunSpeed, deltaTime);
-            }
-            else
-            {
-                Vector3 relativeVector = targetTransform.position - Camera.main.transform.position;
-                relativeVector.y = 0f;
-                RotateCharacter(relativeVector, deltaTime);
-                MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
-            }
+            
+            RotateCharacter(movement.TargetRelativeMotionVector(targetTransform.position), deltaTime);
+            MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
         }
         else
         {
             if (isSprintHold || isSprint)
             {
-                MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis.normalized), movement.ReturnSwordMovementSpeed, deltaTime);
+                MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis.normalized), movement.ReturnSwordRunMovementSpeed, deltaTime);
             }
             else
             {
@@ -53,6 +47,10 @@ public class PlayerSwordReturnState : PlayerBaseState
 
             if (movementOn2DAxis.magnitude > 0f)
             {
+                if (stateMachine.CameraController.IsTransition)
+                {
+                    return;
+                }
                 RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
             }
         }
@@ -90,8 +88,7 @@ public class PlayerSwordReturnState : PlayerBaseState
             _isTargeted = false;
             targetTransform = null;
             targetableCheck.ClearTarget();
-            animationController.FreeCombat(Weapon.Sword);
-            animationController.PlaySwordReturn();
+            animationController.UntargetedAnimation();//for state driven camera
         }
         else
         {
