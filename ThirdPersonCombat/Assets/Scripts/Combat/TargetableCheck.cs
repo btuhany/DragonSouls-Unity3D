@@ -43,6 +43,7 @@ public class TargetableCheck : MonoBehaviour
         if (Targets.Count == 0) return false;
         _currentTargetable = ClosestTargetScreenOrigin();
         if (_currentTargetable == null) return false;
+        _currentTargetable.SetTargetedState(true);
         _cinemachineTargetGroup.AddMember(_currentTargetable.transform, targetMemberCamWeight, targetMemberCamRadius);
         return true;
     }
@@ -51,12 +52,14 @@ public class TargetableCheck : MonoBehaviour
         if (Targets.Count == 0) return false;
         _currentTargetable = _previousTargetable;
         if (_currentTargetable == null) return false;
+        _currentTargetable.SetTargetedState(true);
         _cinemachineTargetGroup.AddMember(_currentTargetable.transform, targetMemberCamWeight, targetMemberCamRadius);
         return true;
     }
     public void ClearTarget()
     {
         if (!_currentTargetable) return;
+        _currentTargetable.SetTargetedState(false);
         _cinemachineTargetGroup.RemoveMember(_currentTargetable.transform);
         _previousTargetable = _currentTargetable;
         _currentTargetable = null;

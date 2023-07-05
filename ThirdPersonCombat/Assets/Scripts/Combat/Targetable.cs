@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Targetable : MonoBehaviour
 {
+    [SerializeField] private TargetableCanvasHandler _targetableCanvasHandler;
     public event System.Action<Targetable> OnDestroyedDisabled;
     private void OnDestroy()
     {
@@ -10,5 +11,9 @@ public class Targetable : MonoBehaviour
     private void OnDisable()
     {
         OnDestroyedDisabled?.Invoke(this);
+    }
+    public void SetTargetedState(bool isTargeted)
+    {
+        _targetableCanvasHandler.SetActive(isTargeted);
     }
 }
