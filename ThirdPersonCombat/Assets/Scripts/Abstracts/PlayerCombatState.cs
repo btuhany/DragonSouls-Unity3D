@@ -14,6 +14,8 @@ namespace States
         private Attack _currentAttack;
         private int _heavyAttackIndex = 0;
         float _animationTimePassed = 0f;
+        private AttackType _nextAttack = AttackType.Null;
+        
         public PlayerCombatState(PlayerStateMachine player, Weapon weapon, bool autoStateChange = false ) : base(player)
         {
             _combat = player.CombatController;
@@ -48,9 +50,29 @@ namespace States
                 }
 
             }
+
             if (_animationTimePassed > _currentAttack.attackDuration) //+ _currentAttack.comboPermissionDelay)
             {
                 StateTickActions(deltaTime);
+            }
+
+            //Auto attack from saved next attack if player pressed attack button in an attack duration.
+            if (_animationTimePassed > _currentAttack.attackDuration  && _animationTimePassed < _currentAttack.attackDuration + _currentAttack.comboPermissionDelay)
+            {
+                if (_nextAttack != AttackType.Null)
+                {
+                    if (_nextAttack == AttackType.Light)
+                    {
+                        TryLightComboAttack(_animationTimePassed);
+                    }
+                    else if (_nextAttack == AttackType.Heavy)
+                    {
+                        //TryHeavyComboAttack(_animationTimePassed);
+                        HandleOnHeavyAttackEvent(); //for checking if llh combo
+                    }
+                    Debug.Log("attack from nextAttack");
+                    _nextAttack = AttackType.Null;
+                }
             }
         }
         public override void Exit()
@@ -66,6 +88,7 @@ namespace States
         {
             if (animationTime < _currentAttack.attackDuration)
             {
+                _nextAttack = AttackType.Light;
                 return;
             }
             else if (animationTime <= _currentAttack.attackDuration + _currentAttack.comboPermissionDelay)
@@ -91,6 +114,7 @@ namespace States
         {
             if (normalizedTime < _currentAttack.attackDuration)
             {
+                _nextAttack = AttackType.Heavy;
                 return;
             }
             else if (normalizedTime <= _currentAttack.attackDuration + _currentAttack.comboPermissionDelay)
@@ -116,6 +140,7 @@ namespace States
         {
             if (normalizedTime < _currentAttack.attackDuration)
             {
+                _nextAttack = AttackType.Heavy;
                 return;
             }
             else if (normalizedTime <= _currentAttack.attackDuration + _currentAttack.comboPermissionDelay)

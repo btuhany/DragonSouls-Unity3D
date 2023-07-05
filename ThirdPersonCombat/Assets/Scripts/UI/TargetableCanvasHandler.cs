@@ -13,8 +13,9 @@ public class TargetableCanvasHandler : MonoBehaviour
     }
     private void Update()
     {
-        if (_isActive)
-            transform.rotation = Camera.main.transform.rotation;
+        if (!_isActive) return;
+        transform.rotation = Camera.main.transform.rotation;
+        
     }
     public void SetActive(bool activeState)
     {

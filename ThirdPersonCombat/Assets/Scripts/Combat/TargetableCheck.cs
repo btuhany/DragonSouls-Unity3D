@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Cinemachine;
-using System;
-
 public class TargetableCheck : MonoBehaviour
 {
     [Header("TargetCameraConfig")]

@@ -4,6 +4,11 @@ public class Targetable : MonoBehaviour
 {
     [SerializeField] private TargetableCanvasHandler _targetableCanvasHandler;
     public event System.Action<Targetable> OnDestroyedDisabled;
+    private void Awake()
+    {
+        if(!_targetableCanvasHandler)
+            _targetableCanvasHandler = GetComponentInChildren<TargetableCanvasHandler>();
+    }
     private void OnDestroy()
     {
         OnDestroyedDisabled?.Invoke(this);

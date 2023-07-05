@@ -33,7 +33,8 @@ namespace States
                 LookRotationCameraForward();
                 stateMachine.CameraController.AimCamSetVerticalRotation(Camera.main.transform.rotation.eulerAngles.x);
             }
-            _combat.SetAciveCrosshair(true);
+            if(!_isTargeted)
+                _combat.SetAciveCrosshair(true);
             animationController.PlayAimSword();
             base.Enter();
         }
@@ -108,12 +109,14 @@ namespace States
                 _isTargeted = false;
                 targetTransform = null;
                 targetableCheck.ClearTarget();
+                _combat.SetAciveCrosshair(true);
             }
             else
             {
                 if (!targetableCheck.TrySelectTarget()) return;
                 targetTransform = targetableCheck.CurrentTargetTransform;
                 _isTargeted = true;
+                _combat.SetAciveCrosshair(false);
             }
         }
 

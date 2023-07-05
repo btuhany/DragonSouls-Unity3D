@@ -22,7 +22,8 @@ namespace PlayerController
     public enum AttackType
     {
         Light,
-        Heavy
+        Heavy,
+        Null
     }
     public class CombatController : MonoBehaviour
     {
