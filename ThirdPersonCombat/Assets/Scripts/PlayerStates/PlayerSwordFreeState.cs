@@ -11,7 +11,7 @@ namespace States
         }
 
         public override void Enter()
-        {
+        {   
             //animationController.SetBoolsCombatFree(weapon, !animationController.IsUnsheathAnimPlaying);
             if (stateMachine.PreviousState != stateMachine.SwordTargetState && stateMachine.PreviousState != stateMachine.AimState && stateMachine.PreviousState != stateMachine.ReturnSwordState)
             {
@@ -41,7 +41,6 @@ namespace States
             }
 
             Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
-            animationController.SwordFreeMovement(movementOn2DAxis);
 
 
             if (movementOn2DAxis.magnitude > 0.06f)
@@ -49,10 +48,16 @@ namespace States
                 RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
             }
             
-            if (isSprintHold || isSprint)
+            if (IsSprintHold || IsSprint)
+            {
+                animationController.SprintSetFloats(movementOn2DAxis);
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.CombatSprintSpeed, deltaTime);
+            }
             else
+            {
+                animationController.SwordFreeMovement(movementOn2DAxis);
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.SwordFreeSpeed, deltaTime);
+            }
             
             HandleSprintControl();
         }

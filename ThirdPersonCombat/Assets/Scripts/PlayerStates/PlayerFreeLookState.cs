@@ -19,14 +19,14 @@ namespace States
         {
             Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
 
-            animationController.FreeLookMovementBlendTree(movementOn2DAxis);
-
-            if (isSprintHold || isSprint)
+            if (IsSprintHold || IsSprint)
             {
+                animationController.SprintSetFloats(movementOn2DAxis);
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis.normalized), movement.FreeLookSprintMovementSpeed, deltaTime);
             }
             else
             {
+                animationController.FreeLookMovementBlendTree(movementOn2DAxis);
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.FreeLookMaxMovementSpeed, deltaTime);
             }
 

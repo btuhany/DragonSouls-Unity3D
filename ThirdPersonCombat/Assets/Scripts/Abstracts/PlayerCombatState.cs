@@ -70,7 +70,6 @@ namespace States
                         //TryHeavyComboAttack(_animationTimePassed);
                         HandleOnHeavyAttackEvent(); //for checking if llh combo
                     }
-                    Debug.Log("attack from nextAttack");
                     _nextAttack = AttackType.Null;
                 }
             }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UIControllers;
 public class TargetableCheck : MonoBehaviour
 {
     [Header("TargetCameraConfig")]
@@ -10,6 +11,7 @@ public class TargetableCheck : MonoBehaviour
     [SerializeField] private SphereCollider _collider;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private CinemachineTargetGroup _cinemachineTargetGroup;
+    [SerializeField] private TargetCrosshairController _targetCrosshair;
     private Camera _mainCam;
     private Targetable _currentTargetable;
     private Targetable _previousTargetable;
@@ -40,7 +42,7 @@ public class TargetableCheck : MonoBehaviour
         if (Targets.Count == 0) return false;
         _currentTargetable = ClosestTargetScreenOrigin();
         if (_currentTargetable == null) return false;
-        _currentTargetable.SetTargetedState(true);
+        _targetCrosshair.SetTargetState(_currentTargetable.transform);
         _cinemachineTargetGroup.AddMember(_currentTargetable.transform, targetMemberCamWeight, targetMemberCamRadius);
         return true;
     }
@@ -49,17 +51,17 @@ public class TargetableCheck : MonoBehaviour
         if (Targets.Count == 0) return false;
         _currentTargetable = _previousTargetable;
         if (_currentTargetable == null) return false;
-        _currentTargetable.SetTargetedState(true);
+        _targetCrosshair.SetTargetState(_currentTargetable.transform);
         _cinemachineTargetGroup.AddMember(_currentTargetable.transform, targetMemberCamWeight, targetMemberCamRadius);
         return true;
     }
     public void ClearTarget()
     {
         if (!_currentTargetable) return;
-        _currentTargetable.SetTargetedState(false);
         _cinemachineTargetGroup.RemoveMember(_currentTargetable.transform);
         _previousTargetable = _currentTargetable;
         _currentTargetable = null;
+        _targetCrosshair.ClearTarget();
     }
     public bool IsTargetInRange()
     {

@@ -50,12 +50,17 @@ namespace States
                 }
             }
             Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
-            animationController.UnarmedFreeMovement(movementOn2DAxis);
 
-            if (isSprintHold || isSprint)
+            if (IsSprintHold || IsSprint)
+            {
+                animationController.SprintSetFloats(movementOn2DAxis);
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.CombatSprintSpeed, deltaTime);
+            }
             else
+            {
+                animationController.UnarmedFreeMovement(movementOn2DAxis);
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.UnarmedFreeSpeed, deltaTime);
+            }
 
             if (movementOn2DAxis.magnitude > 0f)
             {

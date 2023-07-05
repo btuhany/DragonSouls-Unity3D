@@ -40,6 +40,8 @@ namespace PlayerController
         private readonly int _targetedHash = Animator.StringToHash("Targeted");
         private readonly int _untargetedHash = Animator.StringToHash("Untargeted");
 
+        private readonly int _sprintForwardHash = Animator.StringToHash("SprintForward");
+
         public void PlaySetFreeLookBlend()
         {
             _anim.Play(_freeLookBlendTreeHash);
@@ -123,7 +125,6 @@ namespace PlayerController
             _anim.CrossFadeInFixedTime(attackString, transitionTime);
             // _anim.Play(attackString);
         }
- 
         public void PlayAimSword()
         {
             _anim.CrossFadeInFixedTime(_aimSwordBlendTreeHash, 0.1f);
@@ -139,6 +140,17 @@ namespace PlayerController
         public void UntargetedAnimation()
         {
             _anim.Play(_untargetedHash);
+        }
+        public void SprintSetFloats(Vector2 movementVector)
+        {
+            if(movementVector.sqrMagnitude > 0)
+            {
+                _anim.SetFloat(_sprintForwardHash, 1);
+            }
+            else
+            {
+                _anim.SetFloat(_sprintForwardHash, 0);
+            }
         }
     }
 }

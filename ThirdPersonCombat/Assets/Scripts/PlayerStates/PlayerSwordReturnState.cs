@@ -44,7 +44,7 @@ public class PlayerSwordReturnState : PlayerBaseState
         }
         else
         {
-            if (isSprintHold || isSprint)
+            if (IsSprintHold || IsSprint)
             {
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis.normalized), movement.ReturnSwordRunMovementSpeed, deltaTime);
             }

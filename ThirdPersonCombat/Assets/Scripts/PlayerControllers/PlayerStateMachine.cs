@@ -26,6 +26,9 @@ namespace States
         public PlayerUnarmedFreeState UnarmedFreeState;
         public PlayerAimState AimState;
         public PlayerSwordReturnState ReturnSwordState;
+
+        public bool IsSprintHolding;
+        public bool IsSprinting;
         private void Awake()
         {
             FreeLookPlayerState = new PlayerFreeLookState(this);

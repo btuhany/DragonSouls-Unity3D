@@ -7,8 +7,8 @@ namespace States
 {
     public abstract class PlayerBaseState : State
     {
-        protected bool isSprintHold = false;
-        protected bool isSprint = false;
+        public bool IsSprintHold = false;
+        public bool IsSprint = false;
         protected Transform transform;
         protected Transform mainCamTransform;
         protected InputReader inputReader;
@@ -17,7 +17,6 @@ namespace States
         protected TargetableCheck targetableCheck;
         protected MovementController movement;
         protected ForceReceiver forceReciver;
-        
 
         public PlayerBaseState(PlayerStateMachine player)
         {
@@ -32,10 +31,14 @@ namespace States
         }
         public override void Enter()
         {
+            IsSprintHold = stateMachine.IsSprintHolding;
+            IsSprint = stateMachine.IsSprinting;
             AddMethodsToEvents();
         }
         public override void Exit()
         {
+            stateMachine.IsSprintHolding = IsSprintHold;
+            stateMachine.IsSprinting = IsSprint;
             RemoveMethodsFromEvents();
         }
         protected void MoveCharacter(Vector3 motion, float speed, float deltaTime)
@@ -86,29 +89,29 @@ namespace States
         protected abstract void HandleSheathEvent();
         protected virtual void HandleOnSprintHoldEvent()
         {
-            isSprintHold = true;
+            IsSprintHold = true;
             animationController.Sprint(true);
         }
 
         protected virtual void HandleOnSprintHoldCancelEvent()
         {
-            isSprintHold = false;
-            if (isSprint) return;
+            IsSprintHold = false;
+            if (IsSprint) return;
             animationController.Sprint(false);
         }
 
         protected virtual void HandleOnSprintEvent()
         {
-            isSprint = true;
+            IsSprint = true;
             animationController.Sprint(true);
         }
 
         protected virtual void HandleSprintControl()
         {
-            if (isSprint && movement.Velocity.sqrMagnitude < 0.1f)
+            if (IsSprint && movement.Velocity.sqrMagnitude < 0.1f)
             {
-                isSprint = false;
-                if (isSprintHold) return;
+                IsSprint = false;
+                if (IsSprintHold) return;
                 animationController.Sprint(false);
             }
         }

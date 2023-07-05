@@ -28,15 +28,15 @@ namespace States
 
         protected override void StateTickActions(float deltaTime)
         {
-            animationController.TargetStateSetFloats(inputReader.MovementOn2DAxis);
-
-            if (isSprintHold || isSprint)
+            if (IsSprintHold || IsSprint)
             {
                 RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), deltaTime);
-                MoveCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.TargetRunSpeed, deltaTime);
+                MoveCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis.normalized), movement.TargetRunSpeed, deltaTime);
+                animationController.SprintSetFloats(inputReader.MovementOn2DAxis);
             }
             else
             {
+                animationController.TargetStateSetFloats(inputReader.MovementOn2DAxis);
                 RotateCharacter(movement.TargetRelativeMotionVector(targetTransform.position), deltaTime);
                 MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
             }
