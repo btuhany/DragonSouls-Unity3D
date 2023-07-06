@@ -1,6 +1,5 @@
 using UnityEngine;
-using PlayerController;
-
+using Combat;
 namespace States
 {
     public abstract class PlayerCombatState : PlayerBaseState
@@ -148,6 +147,7 @@ namespace States
                 //End the combo if last attack is performed.
                 _lightAttackIndex = 0;
                 _currentAttack = _lightLightHeavyComboAttack;
+                _combat.CurrentAttack = _currentAttack;
                 animationController.PlayAttack(_currentAttack.animationName, _currentAttack.transitionDuration);
                 if (_combat.AttackForce)
                 {

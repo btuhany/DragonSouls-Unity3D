@@ -1,7 +1,6 @@
-using PlayerController;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Combat;
 
 namespace Inputs
 {

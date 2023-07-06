@@ -2,6 +2,7 @@ using Inputs;
 using PlayerController;
 using UnityEngine;
 using Movement;
+using Combat;
 
 namespace States
 {

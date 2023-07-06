@@ -4,7 +4,7 @@ namespace Combat
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] private int _maxHealth = 100;
+        private int _maxHealth = 100;
         private int _health;
 
         public int MaxHealth { get => _maxHealth; }
@@ -21,6 +21,11 @@ namespace Combat
 
             _health = Mathf.Max(_health - damage, 0);
             OnHealthUpdated?.Invoke(_health, damage);
+        }
+
+        public void SetHealth(int value)
+        {
+            _maxHealth = value;
         }
     }
 }

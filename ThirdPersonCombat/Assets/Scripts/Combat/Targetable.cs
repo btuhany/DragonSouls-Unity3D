@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Targetable : MonoBehaviour
 {
+    public Transform TargetPoint;
     public event System.Action<Targetable> OnDestroyedDisabled;
 
     private void OnDestroy()

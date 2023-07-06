@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
-using Combat;
-namespace PlayerController
+using PlayerController;
+namespace Combat
 {
     [Serializable]
     public struct Attack

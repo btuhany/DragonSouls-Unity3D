@@ -2,7 +2,7 @@ using Inputs;
 using PlayerController;
 using TMPro;
 using UnityEngine;
-
+using Combat;
 namespace States
 {
     public class PlayerAimState : PlayerBaseState

@@ -1,7 +1,7 @@
 using PlayerController;
 using States;
 using UnityEngine;
-
+using Combat;
 namespace States
 {
     public class PlayerUnarmedFreeState : PlayerCombatFreeState

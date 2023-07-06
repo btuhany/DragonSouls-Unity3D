@@ -2,6 +2,7 @@ using Cinemachine;
 using PlayerController;
 using States;
 using UnityEngine;
+using Combat;
 namespace States
 {
     public class PlayerSwordFreeState : PlayerCombatFreeState

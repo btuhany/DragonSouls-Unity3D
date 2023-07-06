@@ -42,8 +42,8 @@ public class TargetableCheck : MonoBehaviour
         if (Targets.Count == 0) return false;
         _currentTargetable = ClosestTargetScreenOrigin();
         if (_currentTargetable == null) return false;
-        _targetCrosshair.SetTargetState(_currentTargetable.transform);
-        _cinemachineTargetGroup.AddMember(_currentTargetable.transform, targetMemberCamWeight, targetMemberCamRadius);
+        _targetCrosshair.SetTargetState(_currentTargetable.TargetPoint);
+        _cinemachineTargetGroup.AddMember(_currentTargetable.TargetPoint, targetMemberCamWeight, targetMemberCamRadius);
         return true;
     }
     public bool TryTransferTarget()
@@ -51,14 +51,14 @@ public class TargetableCheck : MonoBehaviour
         if (Targets.Count == 0) return false;
         _currentTargetable = _previousTargetable;
         if (_currentTargetable == null) return false;
-        _targetCrosshair.SetTargetState(_currentTargetable.transform);
-        _cinemachineTargetGroup.AddMember(_currentTargetable.transform, targetMemberCamWeight, targetMemberCamRadius);
+        _targetCrosshair.SetTargetState(_currentTargetable.TargetPoint);
+        _cinemachineTargetGroup.AddMember(_currentTargetable.TargetPoint, targetMemberCamWeight, targetMemberCamRadius);
         return true;
     }
     public void ClearTarget()
     {
         if (!_currentTargetable) return;
-        _cinemachineTargetGroup.RemoveMember(_currentTargetable.transform);
+        _cinemachineTargetGroup.RemoveMember(_currentTargetable.TargetPoint);
         _previousTargetable = _currentTargetable;
         _currentTargetable = null;
         _targetCrosshair.ClearTarget();

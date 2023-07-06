@@ -2,8 +2,7 @@ using Inputs;
 using PlayerController;
 using UnityEngine;
 using Movement;
-using Cinemachine;
-
+using Combat;
 namespace States
 {
     public class PlayerStateMachine : StateMachine
@@ -29,8 +28,15 @@ namespace States
 
         public bool IsSprintHolding;
         public bool IsSprinting;
+
+        public static PlayerStateMachine Instance;
+        public PlayerStateMachine()
+        {
+            Instance = this;
+        }
         private void Awake()
         {
+            SingletonObject();
             FreeLookPlayerState = new PlayerFreeLookState(this);
             UnarmedTargetState = new PlayerUnarmedTargetState(this);
             SwordTargetState = new PlayerSwordTargetState(this);
@@ -40,6 +46,15 @@ namespace States
             AimState = new PlayerAimState(this);
             ReturnSwordState = new PlayerSwordReturnState(this);
         }
+
+        private void SingletonObject()
+        {
+            if (Instance != null && Instance != this)
+                Destroy(this.gameObject);
+            else
+                Instance = this;
+        }
+
         private void OnEnable()
         {
             InputReader.JumpEvent += HandleOnDodgeEvent;
