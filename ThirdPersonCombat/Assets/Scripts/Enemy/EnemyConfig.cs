@@ -26,4 +26,7 @@ public class EnemyConfig : ScriptableObject
     public float LookRotationLerpTimeMultiplier = 0.2f;
     public float MinWaitTime = 0.5f;
     public float MaxWaitTime = 2f;
+
+    [Header("TargetState")]
+    public float TargetedMovementSpeed = 2f;
 }

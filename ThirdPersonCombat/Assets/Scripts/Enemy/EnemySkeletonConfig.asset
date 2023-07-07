@@ -16,6 +16,10 @@ MonoBehaviour:
   MaxSpeed: 5
   IdleRunAnimTransitionTime: 0.1
   AnimationDampTime: 0.1
-  MinIdleRange: 20
+  MinIdleRange: 5
   DestinationPointRefreshTime: 0.6
   MaxAttackDistance: 1.5
+  LookRotationLerpTimeMultiplier: 1
+  MinWaitTime: 4
+  MaxWaitTime: 5
+  TargetedMovementSpeed: 1

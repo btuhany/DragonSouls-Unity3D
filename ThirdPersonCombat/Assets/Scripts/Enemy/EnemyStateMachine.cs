@@ -18,6 +18,7 @@ public class EnemyStateMachine : StateMachine
     public EnemyIdleState enemyIdleState;
     public EnemyChaseState enemyChaseState;
     public EnemyAttackState enemyAttackState;
+    public EnemyTargetState enemyTargetState;
     private void Awake()
     {
         _health = GetComponent<Health>();
@@ -29,12 +30,13 @@ public class EnemyStateMachine : StateMachine
         enemyIdleState = new EnemyIdleState(this);
         enemyChaseState = new EnemyChaseState(this);
         enemyAttackState = new EnemyAttackState(this);
+        enemyTargetState = new EnemyTargetState(this);
     }
     private void OnEnable()
     {
         NavmeshAgent.speed = Config.MaxSpeed;
         _health.SetHealth(Config.Health);
-        ChangeState(enemyAttackState);
+       // ChangeState(enemyTargetState);
     }
     private void Update()
     {
