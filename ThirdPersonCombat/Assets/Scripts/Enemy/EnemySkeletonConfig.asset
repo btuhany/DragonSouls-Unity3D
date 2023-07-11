@@ -22,4 +22,15 @@ MonoBehaviour:
   LookRotationLerpTimeMultiplier: 1
   MinWaitTime: 4
   MaxWaitTime: 5
-  TargetedMovementSpeed: 1
+  TargetMovementSpeed: 2
+  TargetMaxRightDirChangeTime: 6
+  TargetMinRightDirChangeTime: 1
+  TargetMinBackDirChangeTime: 1
+  TargetMaxBackDirChangeTime: 0.5
+  TargetMinApproachPlayerTime: 2
+  TargetMaxApproachPlayerTime: 15
+  TargetMinSpeedUpTime: 0.8
+  TargetMaxSpeedUpTime: 2
+  TargetMinSpeedUpValue: 1.5
+  TargetMaxSpeedUpValue: 3
+  TargetBackDirChangeProbility: 0.1

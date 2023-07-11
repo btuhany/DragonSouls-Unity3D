@@ -10,13 +10,14 @@ namespace States
         private int _rightValue = 0;
         private int _forwardValue = 0;
         private float _randomDirChangeTime = 0f;
-        private float _rightValueTimeCounter = 0f;
+        private float dirChangeTimeCounter = 0f;
         private float _randomApproachPlayerTime = 0f;
         private float _approachPlayerTimeCounter = 0f;
         private float _movementSpeedMultiplier = 1f;
         private float _speedUpTimeCounter = 0f;
         private float _speedUpTime = 0f;
         private bool _isApproach = false;
+        private bool _isMovingBack = false;
 
         private EnemyMovementController _movement;
         private EnemyConfig _config;
@@ -32,13 +33,15 @@ namespace States
 
         public override void Enter()
         {
+            _isApproach = false;
+            _isMovingBack = false;
             _rightValue = RandomSign();
-            _rightValueTimeCounter = 0f;
+            dirChangeTimeCounter = 0f;
             _approachPlayerTimeCounter = 0f;
             _speedUpTimeCounter = 0f;
             _forwardValue = 0;
             _movementSpeedMultiplier = 1f;
-            _randomDirChangeTime = Random.Range(_config.TargetMinDirChangeTime, _config.TargetMaxDirChangeTime);
+            _randomDirChangeTime = Random.Range(_config.TargetMinRightDirChangeTime, _config.TargetMaxRightDirChangeTime);
             _randomApproachPlayerTime = Random.Range(_config.TargetMinApproachPlayerTime, _config.TargetMaxApproachPlayerTime);
             _speedUpTime = Random.Range(_config.TargetMinSpeedUpTime, _config.TargetMaxSpeedUpTime);
             _playerDistance = Vector3.Distance(_playerTargetTransform.position, stateMachine.transform.position);
@@ -52,14 +55,27 @@ namespace States
         {
             if (!_isApproach)
             {
-                _rightValueTimeCounter += deltaTime;
+                dirChangeTimeCounter += deltaTime;
                 _approachPlayerTimeCounter += deltaTime;
 
-                if (_rightValueTimeCounter >= _randomDirChangeTime)
+                if (dirChangeTimeCounter >= _randomDirChangeTime)
                 {
-                    _rightValue = RandomSign();
-                    _rightValueTimeCounter = 0f;
-                    _randomDirChangeTime = Random.Range(_config.TargetMinDirChangeTime, _config.TargetMaxDirChangeTime);
+                    if(!_isMovingBack && Random.Range(1,101) >= 100 - 100 * _config.TargetBackDirChangeProbility)
+                    {
+                        _isMovingBack = true;
+                        _rightValue = 0;
+                        _forwardValue = -1;
+                        _randomDirChangeTime = Random.Range(_config.TargetMinBackDirChangeTime, _config.TargetMaxBackDirChangeTime);
+                    }
+                    else
+                    {
+                        _isMovingBack = false;
+                        _forwardValue = 0;
+                        _rightValue = RandomSign();
+                        _randomDirChangeTime = Random.Range(_config.TargetMinRightDirChangeTime, _config.TargetMaxRightDirChangeTime);
+                    }
+
+                    dirChangeTimeCounter = 0f;
                 }
 
                 if (_approachPlayerTimeCounter >= _randomApproachPlayerTime)
@@ -87,7 +103,7 @@ namespace States
             _playerDistance -= _forwardValue * _config.TargetMovementSpeed * deltaTime * _movementSpeedMultiplier;
             if(_playerDistance < 0.5f ) _playerDistance = 0.5f; 
 
-            StabilizeDistance(_playerDistance);
+            //StabilizeDistance(_playerDistance);
         }
 
         private Vector3 MotionVectorAroundTarget(float rightVal)
