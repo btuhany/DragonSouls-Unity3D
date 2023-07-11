@@ -28,5 +28,13 @@ public class EnemyConfig : ScriptableObject
     public float MaxWaitTime = 2f;
 
     [Header("TargetState")]
-    public float TargetedMovementSpeed = 2f;
+    public float TargetMovementSpeed = 2f;
+    public float TargetMaxDirChangeTime = 6f;
+    public float TargetMinDirChangeTime = 1f;
+    public float TargetMinApproachPlayerTime = 5f;
+    public float TargetMaxApproachPlayerTime = 10f;
+    public float TargetMinSpeedUpTime = 0.8f;
+    public float TargetMaxSpeedUpTime = 2f;
+    public float TargetMinSpeedUpValue = 1.5f;
+    public float TargetMaxSpeedUpValue = 3f;
 }

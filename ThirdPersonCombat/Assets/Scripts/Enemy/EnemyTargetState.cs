@@ -1,22 +1,47 @@
 using Inputs;
+using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace States
 {
     public class EnemyTargetState : EnemyBaseState
     {
+        private int _rightValue = 0;
+        private int _forwardValue = 0;
+        private float _randomDirChangeTime = 0f;
+        private float _rightValueTimeCounter = 0f;
+        private float _randomApproachPlayerTime = 0f;
+        private float _approachPlayerTimeCounter = 0f;
+        private float _movementSpeedMultiplier = 1f;
+        private float _speedUpTimeCounter = 0f;
+        private float _speedUpTime = 0f;
+        private bool _isApproach = false;
+
+        private EnemyMovementController _movement;
+        private EnemyConfig _config;
         private Transform _playerTargetTransform;
-        private float _rightValue = 0f;
-        private float _forwardValue = 0f;
+        private float _playerDistance;
 
         public EnemyTargetState(EnemyStateMachine enemy) : base(enemy)
         {
+            _movement = enemy.Movement;
+            _config = enemy.Config;
+            _playerTargetTransform = PlayerStateMachine.Instance.transform;
         }
 
         public override void Enter()
         {
-            _playerTargetTransform = PlayerStateMachine.Instance.transform;
-            _rightValue = 2f;
+            _rightValue = RandomSign();
+            _rightValueTimeCounter = 0f;
+            _approachPlayerTimeCounter = 0f;
+            _speedUpTimeCounter = 0f;
+            _forwardValue = 0;
+            _movementSpeedMultiplier = 1f;
+            _randomDirChangeTime = Random.Range(_config.TargetMinDirChangeTime, _config.TargetMaxDirChangeTime);
+            _randomApproachPlayerTime = Random.Range(_config.TargetMinApproachPlayerTime, _config.TargetMaxApproachPlayerTime);
+            _speedUpTime = Random.Range(_config.TargetMinSpeedUpTime, _config.TargetMaxSpeedUpTime);
+            _playerDistance = Vector3.Distance(_playerTargetTransform.position, stateMachine.transform.position);
         }
 
         public override void Exit()
@@ -25,16 +50,76 @@ namespace States
 
         public override void Tick(float deltaTime)
         {
-            //stateMachine.Movement.LookRotation(movement.TargetRelativeMotionVector(_playerTargetTransform.position), 20f, deltaTime);
-            //stateMachine.transform.RotateAround(_playerTargetTransform.position, Vector3.up, stateMachine.Config.TargetedMovementSpeed);
+            if (!_isApproach)
+            {
+                _rightValueTimeCounter += deltaTime;
+                _approachPlayerTimeCounter += deltaTime;
+
+                if (_rightValueTimeCounter >= _randomDirChangeTime)
+                {
+                    _rightValue = RandomSign();
+                    _rightValueTimeCounter = 0f;
+                    _randomDirChangeTime = Random.Range(_config.TargetMinDirChangeTime, _config.TargetMaxDirChangeTime);
+                }
+
+                if (_approachPlayerTimeCounter >= _randomApproachPlayerTime)
+                {
+                    _isApproach = true;
+                    _forwardValue = 1;
+                    _rightValue = 0;
+                    _approachPlayerTimeCounter = 0f;
+                    _approachPlayerTimeCounter = Random.Range(_config.TargetMinApproachPlayerTime, _config.TargetMaxApproachPlayerTime);
+                }
+            }
+            else
+            {
+                _speedUpTimeCounter += deltaTime;
+                if(_speedUpTimeCounter >= _speedUpTime)
+                {
+                    _movementSpeedMultiplier = Random.Range(_config.TargetMinSpeedUpValue, _config.TargetMaxSpeedUpValue);
+                }
+            }
+
+            _movement.LookRotation(TargetRelativeMotionVector(_playerTargetTransform.position));
+
+            _movement.Move(MotionVectorAroundTarget(_rightValue), _config.TargetMovementSpeed, deltaTime);
+
+            _playerDistance -= _forwardValue * _config.TargetMovementSpeed * deltaTime * _movementSpeedMultiplier;
+            if(_playerDistance < 0.5f ) _playerDistance = 0.5f; 
+
+            StabilizeDistance(_playerDistance);
         }
-        private Vector3 MotionVectorAroundTarget()
+
+        private Vector3 MotionVectorAroundTarget(float rightVal)
         {
-            //Character always looks to target
+            //right value should be in range of [-1,1]
             Vector3 motion = Vector3.zero;
-            motion += stateMachine.transform.right * _rightValue;
-            motion += stateMachine.transform.forward * _forwardValue;
+            motion += stateMachine.transform.right * rightVal;
             return motion;
+        }
+
+        private Vector3 TargetRelativeMotionVector(Vector3 targetPos)
+        {
+            Vector3 relativeVector = targetPos - stateMachine.transform.position;
+            relativeVector.y = 0f;
+
+            return relativeVector;
+        }
+
+        private void StabilizeDistance(float distance)
+        {
+            float currentDistance = Vector3.Distance(_playerTargetTransform.position, stateMachine.transform.position);
+            float difference = distance  - currentDistance;
+            Vector3 dif = stateMachine.transform.position - _playerTargetTransform.position;
+            stateMachine.transform.position += dif.normalized * difference;
+        }
+
+        private int RandomSign()
+        {
+            int randomNumber = Random.Range(1, 3);
+            if (randomNumber == 2)
+                return -1;
+            return randomNumber;
         }
     }
 }

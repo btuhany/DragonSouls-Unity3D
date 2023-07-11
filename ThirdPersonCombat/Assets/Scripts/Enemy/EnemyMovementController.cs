@@ -1,3 +1,4 @@
+using States;
 using UnityEngine;
 
 public class EnemyMovementController : MonoBehaviour
@@ -16,20 +17,20 @@ public class EnemyMovementController : MonoBehaviour
 
         return relativeVector;
     }
-    public void LookRotation(Vector3 movementVector, float lerpTimeScale, float deltaTime)
+    public void LookRotation(Vector3 dir, float lerpTimeScale, float deltaTime)
     {
-        if (movementVector != Vector3.zero)
+        if (dir != Vector3.zero)
         {
             transform.rotation = Quaternion.Lerp(
                 transform.rotation,
-                Quaternion.LookRotation(movementVector),
+                Quaternion.LookRotation(dir),
                 deltaTime * lerpTimeScale
                 );
         }
     }
-    public void LookRotationAround(Vector3 rotation, float value)
+    public void LookRotation(Vector3 dir)
     {
-        transform.rotation *= Quaternion.AngleAxis(value, rotation);
+        transform.rotation = Quaternion.LookRotation(dir);
     }
     public void Move(Vector3 motion, float speed, float deltaTime)
     {

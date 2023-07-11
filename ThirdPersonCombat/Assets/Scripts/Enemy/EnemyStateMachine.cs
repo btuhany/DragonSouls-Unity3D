@@ -36,7 +36,7 @@ public class EnemyStateMachine : StateMachine
     {
         NavmeshAgent.speed = Config.MaxSpeed;
         _health.SetHealth(Config.Health);
-       // ChangeState(enemyTargetState);
+        ChangeState(enemyTargetState);
     }
     private void Update()
     {
