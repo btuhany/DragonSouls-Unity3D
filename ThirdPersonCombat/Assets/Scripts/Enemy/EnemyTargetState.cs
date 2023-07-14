@@ -1,6 +1,4 @@
-using Inputs;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
+using System.Collections;
 using UnityEngine;
 
 namespace States
@@ -22,7 +20,9 @@ namespace States
         private EnemyMovementController _movement;
         private EnemyConfig _config;
         private Transform _playerTargetTransform;
-        private float _playerDistance;
+
+        private WaitForSeconds _closeRangeAttackWaitTime;
+        private WaitForSeconds _closeRangeChaseWaitTime;
 
         public EnemyTargetState(EnemyStateMachine enemy) : base(enemy)
         {
@@ -33,6 +33,10 @@ namespace States
 
         public override void Enter()
         {
+            navmeshAgent.isStopped = true;
+            if(_playerTargetTransform == null)
+                _playerTargetTransform = PlayerStateMachine.Instance.transform;
+            animationController.PlayTargetedBlend(0.1f);
             _isApproach = false;
             _isMovingBack = false;
             _rightValue = RandomSign();
@@ -44,7 +48,8 @@ namespace States
             _randomDirChangeTime = Random.Range(_config.TargetMinRightDirChangeTime, _config.TargetMaxRightDirChangeTime);
             _randomApproachPlayerTime = Random.Range(_config.TargetMinApproachPlayerTime, _config.TargetMaxApproachPlayerTime);
             _speedUpTime = Random.Range(_config.TargetMinSpeedUpTime, _config.TargetMaxSpeedUpTime);
-            _playerDistance = Vector3.Distance(_playerTargetTransform.position, stateMachine.transform.position);
+            _closeRangeAttackWaitTime = new WaitForSeconds(Random.Range(config.AttackReactionMinWaitTime, config.AttackReactionMaxWaitTime));
+            _closeRangeChaseWaitTime = new WaitForSeconds(Random.Range(config.ChaseReactionMinWaitTime, config.ChaseReactionMaxWaitTime));
         }
 
         public override void Exit()
@@ -60,7 +65,7 @@ namespace States
 
                 if (dirChangeTimeCounter >= _randomDirChangeTime)
                 {
-                    if(!_isMovingBack && Random.Range(1,101) >= 100 - 100 * _config.TargetBackDirChangeProbility)
+                    if (!_isMovingBack && Random.Range(1,101) >= 100 - 100 * _config.TargetBackDirChangeProbility)
                     {
                         _isMovingBack = true;
                         _rightValue = 0;
@@ -86,6 +91,7 @@ namespace States
                     _approachPlayerTimeCounter = 0f;
                     _approachPlayerTimeCounter = Random.Range(_config.TargetMinApproachPlayerTime, _config.TargetMaxApproachPlayerTime);
                 }
+
             }
             else
             {
@@ -98,19 +104,32 @@ namespace States
 
             _movement.LookRotation(TargetRelativeMotionVector(_playerTargetTransform.position));
 
-            _movement.Move(MotionVectorAroundTarget(_rightValue), _config.TargetMovementSpeed, deltaTime);
+            _movement.Move(MotionVectorAroundTarget(_rightValue, _forwardValue * _movementSpeedMultiplier), _config.TargetMovementSpeed, deltaTime);
 
-            _playerDistance -= _forwardValue * _config.TargetMovementSpeed * deltaTime * _movementSpeedMultiplier;
-            if(_playerDistance < 0.5f ) _playerDistance = 0.5f; 
+            if (_movementSpeedMultiplier == 1f)
+                animationController.SetTargetedLocomotionSpeed(_rightValue, _forwardValue, 0.1f);
+            else
+            {
+                animationController.SetTargetedBool(false);
+                animationController.SetIdleRunLocomotionSpeed(_forwardValue * _movementSpeedMultiplier, 0.1f);
+            }
 
-            //StabilizeDistance(_playerDistance);
+            if (stateMachine.IsPlayerInRange(_config.TargetToAttackChangeRange))
+            {
+                stateMachine.StartAttackStateCheck(_closeRangeAttackWaitTime, _config.TargetToAttackChangeRange);
+            }
+            else if (!stateMachine.IsPlayerInRange(_config.TargetToChaseChangeRange))
+            {
+                stateMachine.StartChaseStateCheck(_closeRangeChaseWaitTime, _config.TargetToChaseChangeRange);
+            }
         }
 
-        private Vector3 MotionVectorAroundTarget(float rightVal)
+        private Vector3 MotionVectorAroundTarget(float rightVal, float forwardVal)
         {
             //right value should be in range of [-1,1]
             Vector3 motion = Vector3.zero;
             motion += stateMachine.transform.right * rightVal;
+            motion += stateMachine.transform.forward * forwardVal;
             return motion;
         }
 

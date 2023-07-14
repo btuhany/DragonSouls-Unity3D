@@ -16,16 +16,26 @@ public class EnemyConfig : ScriptableObject
     public float AnimationDampTime = 0.1f;
 
     [Header("Detection")]
-    public float MinIdleRange = 20f;
+    public float MinIdleRange = 30f;
 
     [Header("ChaseState")]
-    public float DestinationPointRefreshTime = 0.5f;
-    public float MaxAttackDistance = 0.5f;
+    public float ChasePointRefreshTime = 0.5f;
+    public float ChaseToTargetChangeMaxRange = 9f;
+    public float ChaseToTargetChangeMinRange = 2f;
+    public float ChaseToAttackChangeRange = 1f;
+    public float ChaseToTargetChangeProbability = 0.25f;
+    public float ChaseReactionMinWaitTime = 0f;
+    public float ChaseReactionMaxWaitTime = 1.2f;
+    public float ChaseToIdleChangeRange = 20f;
 
     [Header("AttackState")]
     public float LookRotationLerpTimeMultiplier = 0.2f;
-    public float MinWaitTime = 0.5f;
-    public float MaxWaitTime = 2f;
+    public float AttackMinWaitTime = 0.5f;
+    public float AttackMaxWaitTime = 2f;
+    public float AttackToTargetChangeRange = 2f;
+    public float AttackToChaseChangeRange = 10f;
+    public float AttackReactionMinWaitTime = 0f;
+    public float AttackReactionMaxWaitTime = 1.2f;
 
     [Header("TargetState")]
     public float TargetMovementSpeed = 2f;
@@ -40,4 +50,6 @@ public class EnemyConfig : ScriptableObject
     public float TargetMinSpeedUpValue = 1.5f;
     public float TargetMaxSpeedUpValue = 3f;
     public float TargetBackDirChangeProbility = 0.2f;
+    public float TargetToAttackChangeRange = 1f;
+    public float TargetToChaseChangeRange = 10f;
 }

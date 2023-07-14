@@ -9,8 +9,10 @@ namespace States
 
         public override void Enter()
         {
+            navmeshAgent.isStopped = true;
+            stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.0f, 0f);           
             animationController.PlayIdleRunBlend(config.IdleRunAnimTransitionTime);
-            animationController.SetLocomotionSpeed(0f, config.AnimationDampTime);
+            animationController.SetIdleRunLocomotionSpeed(0f, config.AnimationDampTime);
         }
 
         public override void Exit()
@@ -21,7 +23,7 @@ namespace States
         {
             if (stateMachine.IsPlayerInRange(config.MinIdleRange))
             {
-                stateMachine.ChangeState(stateMachine.enemyChaseState);
+                stateMachine.ChangeState(stateMachine.ChaseState);
             }
                 
         }

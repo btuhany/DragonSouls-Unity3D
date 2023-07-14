@@ -16,35 +16,61 @@ namespace States
 
         public override void Enter()
         {
-            _randomWaitTime = Random.Range(config.MinWaitTime, config.MaxWaitTime);
+            navmeshAgent.isStopped = true;
+            _randomWaitTime = Random.Range(config.AttackMinWaitTime, config.AttackMaxWaitTime);
+            stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.0f, 0f);
             RandomAttack();
+            _animationTimeCounter = 0f;
+            _timeCounter = 0f;
         }
 
         public override void Exit()
         {
-            _animationTimeCounter = 0f;  
-            _timeCounter = 0f;
-         }
+
+        }
 
         public override void Tick(float deltaTime)
         {
             _animationTimeCounter += deltaTime;
             if (_animationTimeCounter > _combat.CurrentAttack.attackDuration)
             {
-                _timeCounter += deltaTime;
-                if (_timeCounter < _randomWaitTime)
+                if(!stateMachine.DebugButton)
                 {
-                    if (!TurnToPlayer(deltaTime))
-                        stateMachine.AnimationController.SetLocomotionSpeed(0.05f, 0f);
-                    else
-                        stateMachine.AnimationController.SetLocomotionSpeed(0.0f, 0.1f);
+                    _timeCounter += deltaTime;
+                    if (_timeCounter < _randomWaitTime)
+                    {
+                        LookToPlayer(deltaTime);
 
-                    return;
+                        if (!IsTurnedToPlayer())
+                        {
+                            stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.05f, 0f);
+                        }
+                        else
+                        {
+                            stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.0f, 0f);
+                            if (!stateMachine.IsPlayerInRange(config.AttackToChaseChangeRange))
+                            {
+                                stateMachine.ChangeState(stateMachine.ChaseState);
+                                return;
+                            }
+                            else if (!stateMachine.IsPlayerInRange(config.AttackToTargetChangeRange))
+                            {
+                                stateMachine.ChangeState(stateMachine.TargetState);
+                                return;
+                            }
+                        }
+
+
+                    }
+                    else
+                    {
+
+                        RandomAttack();
+                        _animationTimeCounter = 0f;
+                        _timeCounter = 0f;
+                        _randomWaitTime = Random.Range(config.AttackMinWaitTime, config.AttackMaxWaitTime);
+                    }
                 }
-                RandomAttack();
-                _animationTimeCounter = 0f;
-                _timeCounter = 0f;
-                _randomWaitTime = Random.Range(config.MinWaitTime, config.MaxWaitTime);
             }
         }
 
@@ -55,14 +81,18 @@ namespace States
             animationController.PlayAttack(randomAttack.animationName, randomAttack.transitionDuration);
         }
 
-        private bool TurnToPlayer(float deltaTime)
+        private bool IsTurnedToPlayer()
+        {
+            float similarity = Vector3.Dot((PlayerStateMachine.Instance.transform.position - stateMachine.transform.position).normalized, stateMachine.transform.forward);
+            if (similarity > 0.99f)
+                return true;
+            return false;
+        }
+
+        private void LookToPlayer(float deltaTime)
         {
             Vector3 playerPos = PlayerStateMachine.Instance.transform.position;
             movement.LookRotation(playerPos - stateMachine.transform.position, _randomWaitTime * config.LookRotationLerpTimeMultiplier, deltaTime);
-            float similarity = Quaternion.Dot(PlayerStateMachine.Instance.transform.rotation, stateMachine.transform.rotation);
-            if (similarity < 0.1f)
-                return true;
-            return false;
         }
     }
 

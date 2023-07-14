@@ -17,20 +17,27 @@ MonoBehaviour:
   IdleRunAnimTransitionTime: 0.1
   AnimationDampTime: 0.1
   MinIdleRange: 5
-  DestinationPointRefreshTime: 0.6
-  MaxAttackDistance: 1.5
-  LookRotationLerpTimeMultiplier: 1
-  MinWaitTime: 4
-  MaxWaitTime: 5
-  TargetMovementSpeed: 2
+  ChasePointRefreshTime: 0.5
+  ChaseToTargetChangeMaxRange: 9
+  ChaseToTargetChangeMinRange: 2
+  ChaseToAttackChangeRange: 1.5
+  ChaseToTargetChangeProbability: 0.3
+  LookRotationLerpTimeMultiplier: 100
+  AttackMinWaitTime: 0.5
+  AttackMaxWaitTime: 2
+  AttackToTargetChangeRange: 1
+  AttackToChaseChangeRange: 5
+  TargetMovementSpeed: 2.95
   TargetMaxRightDirChangeTime: 6
   TargetMinRightDirChangeTime: 1
   TargetMinBackDirChangeTime: 1
   TargetMaxBackDirChangeTime: 0.5
   TargetMinApproachPlayerTime: 2
-  TargetMaxApproachPlayerTime: 15
+  TargetMaxApproachPlayerTime: 11.17
   TargetMinSpeedUpTime: 0.8
   TargetMaxSpeedUpTime: 2
   TargetMinSpeedUpValue: 1.5
   TargetMaxSpeedUpValue: 3
-  TargetBackDirChangeProbility: 0.1
+  TargetBackDirChangeProbility: 0.2
+  TargetToAttackChangeRange: 1.5
+  TargetToChaseChangeRange: 10
