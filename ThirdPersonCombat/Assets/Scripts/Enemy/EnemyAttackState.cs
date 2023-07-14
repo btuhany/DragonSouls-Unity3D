@@ -34,42 +34,39 @@ namespace States
             _animationTimeCounter += deltaTime;
             if (_animationTimeCounter > _combat.CurrentAttack.attackDuration)
             {
-                if(!stateMachine.DebugButton)
+                _timeCounter += deltaTime;
+                if (_timeCounter < _randomWaitTime)
                 {
-                    _timeCounter += deltaTime;
-                    if (_timeCounter < _randomWaitTime)
+                    LookToPlayer(deltaTime);
+
+                    if (!IsTurnedToPlayer())
                     {
-                        LookToPlayer(deltaTime);
-
-                        if (!IsTurnedToPlayer())
-                        {
-                            stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.05f, 0f);
-                        }
-                        else
-                        {
-                            stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.0f, 0f);
-                            if (!stateMachine.IsPlayerInRange(config.AttackToChaseChangeRange))
-                            {
-                                stateMachine.ChangeState(stateMachine.ChaseState);
-                                return;
-                            }
-                            else if (!stateMachine.IsPlayerInRange(config.AttackToTargetChangeRange))
-                            {
-                                stateMachine.ChangeState(stateMachine.TargetState);
-                                return;
-                            }
-                        }
-
-
+                        stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.05f, 0f);
                     }
                     else
                     {
-
-                        RandomAttack();
-                        _animationTimeCounter = 0f;
-                        _timeCounter = 0f;
-                        _randomWaitTime = Random.Range(config.AttackMinWaitTime, config.AttackMaxWaitTime);
+                        stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.0f, 0f);
+                        if (!stateMachine.IsPlayerInRange(config.AttackToChaseChangeRange))
+                        {
+                            stateMachine.ChangeState(stateMachine.ChaseState);
+                            return;
+                        }
+                        else if (!stateMachine.IsPlayerInRange(config.AttackToTargetChangeRange))
+                        {
+                            stateMachine.ChangeState(stateMachine.TargetState);
+                            return;
+                        }
                     }
+
+
+                }
+                else
+                {
+
+                    RandomAttack();
+                    _animationTimeCounter = 0f;
+                    _timeCounter = 0f;
+                    _randomWaitTime = Random.Range(config.AttackMinWaitTime, config.AttackMaxWaitTime);
                 }
             }
         }

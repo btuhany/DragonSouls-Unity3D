@@ -7,7 +7,6 @@ using System.Collections;
 
 public class EnemyStateMachine : StateMachine
 {
-    public bool DebugButton;
     public EnemyAnimationController AnimationController;
     public EnemyConfig Config;
     public NavMeshAgent NavmeshAgent;

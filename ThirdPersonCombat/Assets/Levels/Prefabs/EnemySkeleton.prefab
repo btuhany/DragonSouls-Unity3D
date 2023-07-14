@@ -1281,6 +1281,10 @@ GameObject:
   - component: {fileID: 5945505441429482343}
   - component: {fileID: 5974603714255237397}
   - component: {fileID: 5963269761059776395}
+  - component: {fileID: 142385827806822885}
+  - component: {fileID: 507853341016031796}
+  - component: {fileID: 5911081604538694599}
+  - component: {fileID: 7044097416515568994}
   m_Layer: 0
   m_Name: SWORD
   m_TagString: Untagged
@@ -1353,6 +1357,58 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &142385827806822885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951247868757826767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4303e0e024b381748bee54ffb660cb9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &507853341016031796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951247868757826767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ae64e890d01044fad5d5df403144ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackDamage: 0
+--- !u!136 &5911081604538694599
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951247868757826767}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.33
+  m_Height: 3.7
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 2.1}
+--- !u!114 &7044097416515568994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951247868757826767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ae64e890d01044fad5d5df403144ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackDamage: 0
 --- !u!1 &5951249185171016791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,8 +1809,8 @@ MonoBehaviour:
   AnimationController: {fileID: 2467826576402964528}
   Config: {fileID: 11400000, guid: 297e8e3b8450e774e946722a4b0ccbed, type: 2}
   NavmeshAgent: {fileID: 4377941786552427434}
-  Movement: {fileID: 0}
-  Combat: {fileID: 0}
+  Movement: {fileID: 7272117038270641187}
+  Combat: {fileID: 6494932264427656613}
 --- !u!114 &2467826576402964528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1791,7 +1847,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb6e72ad6c3395458c010d338cefdaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attacks: []
+  Attacks:
+  - animationName: SkeletonAttack1
+    transitionDuration: 0.3
+    attackDuration: 2.9
+    comboPermissionDelay: 0
+    damage: 0
+    force: 0
+    forceLerpTime: 0
+  - animationName: SkeletonAttack2
+    transitionDuration: 0.3
+    attackDuration: 4.3
+    comboPermissionDelay: 0
+    damage: 0
+    force: 0
+    forceLerpTime: 0
+  - animationName: SkeletonAttack3
+    transitionDuration: 0.3
+    attackDuration: 3
+    comboPermissionDelay: 0
+    damage: 0
+    force: 0
+    forceLerpTime: 0
+  - animationName: SkeletonAttack4
+    transitionDuration: 0.3
+    attackDuration: 2.6
+    comboPermissionDelay: 0
+    damage: 0
+    force: 0
+    forceLerpTime: 0
+  - animationName: SkeletonSwordedAttack
+    transitionDuration: 0.3
+    attackDuration: 4.5
+    comboPermissionDelay: 0
+    damage: 0
+    force: 0
+    forceLerpTime: 0
+  CurrentAttack:
+    animationName: 
+    transitionDuration: 0
+    attackDuration: 0
+    comboPermissionDelay: 0
+    damage: 0
+    force: 0
+    forceLerpTime: 0
+  _weapon: {fileID: 0}
 --- !u!114 &2622736940094571497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1829,10 +1929,10 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.3
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.03
+  m_SkinWidth: 0.04
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.99, z: 0}
 --- !u!195 &4377941786552427434
