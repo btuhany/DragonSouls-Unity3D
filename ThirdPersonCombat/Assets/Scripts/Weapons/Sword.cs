@@ -29,7 +29,7 @@ namespace PlayerController
         private Transform _mainCam;
         private Transform _swordBody;
 
-        public bool IsEquipped => transform.parent != null;
+        public bool IsEquipped => transform.parent == _handHolder;
 
         private void Awake()
         {
@@ -78,6 +78,7 @@ namespace PlayerController
                 _rb.velocity = Vector3.zero;
                 _yRotationAnim.Pause();
                 _rb.isKinematic = true;
+                transform.SetParent(other.transform);
             }
         }
         private void CalculateReturnTime()
@@ -103,7 +104,12 @@ namespace PlayerController
             {
                 float inAirTime = Vector3.Distance(hit.point, transform.position) / _targetReachingSpeed;
                 _throwTween = _rb.DOMove(hit.point, inAirTime);
-                if(!_throwTween.IsPlaying())
+                _throwTween.onComplete = () =>
+                {
+                    if(_isOnThrow)
+                        _rb.AddForce(force, ForceMode.Impulse);
+                };
+                if (!_throwTween.IsPlaying())
                     _throwTween.Play();
             }
             else
@@ -113,6 +119,7 @@ namespace PlayerController
         }
         public void Return()
         {
+            transform.parent = null;
             if(_isOnThrow)
             {
                 _isOnThrow = false;

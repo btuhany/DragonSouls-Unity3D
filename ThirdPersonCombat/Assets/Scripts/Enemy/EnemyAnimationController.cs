@@ -6,6 +6,8 @@ namespace EnemyControllers
     {
         private Animator _anim;
 
+        public bool IsGetHitPlaying => _anim.GetCurrentAnimatorStateInfo(0).IsTag("GetHit");
+
         private readonly int _locomotionSpeed = Animator.StringToHash("Speed");
         private readonly int _idleRunBlend = Animator.StringToHash("IdleRunBlend");
         private readonly int _targetedBlendTree = Animator.StringToHash("TargetedBlendTree");
@@ -49,6 +51,18 @@ namespace EnemyControllers
         {
             _anim.CrossFadeInFixedTime(attackString, transitionTime);
         }
-        
+        public void PlayDeadAnimation()
+        {
+            _anim.CrossFadeInFixedTime(_dead, 0.1f);
+        }
+        public void PlayGetHitAnimation(int leftright)
+        {
+            if (leftright == 0)
+                _anim.Play(_getHitCenter);
+            else if (leftright == -1)
+                _anim.Play(_getHitLeft);
+            else if (leftright == 1)
+                _anim.Play(_getHitRight);
+        }
     }
 }

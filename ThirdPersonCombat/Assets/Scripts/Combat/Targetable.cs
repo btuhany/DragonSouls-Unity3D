@@ -13,4 +13,8 @@ public class Targetable : MonoBehaviour
     {
         OnDestroyedDisabled?.Invoke(this);
     }
+    public void ResetTargetable()
+    {
+        OnDestroyedDisabled?.Invoke(this);
+    }
 }

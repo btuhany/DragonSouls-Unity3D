@@ -45,10 +45,10 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   quality:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 2
   intensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   clamp:
     m_OverrideState: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   threshold:
     m_OverrideState: 1
     m_Value: 1
@@ -127,7 +127,7 @@ MonoBehaviour:
   active: 0
   mode:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
 --- !u!114 &9122107262667540605
 MonoBehaviour:
   m_ObjectHideFlags: 3

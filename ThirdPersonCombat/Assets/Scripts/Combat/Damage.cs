@@ -16,7 +16,7 @@ namespace Combat
             if (other.TryGetComponent(out Health health))
             {
                 _hitColliders.Add(other);
-                health.TakeDamage(AttackDamage);
+                health.TakeDamage(AttackDamage, transform.position);
             }
         }
 

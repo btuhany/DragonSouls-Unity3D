@@ -9,6 +9,7 @@ public class EnemyMovementController : MonoBehaviour
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
+        GetComponent<EnemyStateMachine>().OnDead += HandleOnDead;
     }
     public Vector3 TargetRelativeMotionVector(Vector3 targetPos)
     {
@@ -35,5 +36,9 @@ public class EnemyMovementController : MonoBehaviour
     public void Move(Vector3 motion, float speed, float deltaTime)
     {
         _characterController.Move(motion * speed * deltaTime);
+    }
+    private void HandleOnDead()
+    {
+        _characterController.enabled = false;
     }
 }

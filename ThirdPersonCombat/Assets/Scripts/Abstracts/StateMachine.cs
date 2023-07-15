@@ -3,7 +3,7 @@ namespace States
 {
     public abstract class StateMachine : MonoBehaviour
     {
-        private State _currentState;
+        protected State _currentState;
         public State PreviousState;
         public void UpdateState(float deltaTime)
         {

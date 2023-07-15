@@ -52,4 +52,7 @@ public class EnemyConfig : ScriptableObject
     public float TargetBackDirChangeProbility = 0.2f;
     public float TargetToAttackChangeRange = 1f;
     public float TargetToChaseChangeRange = 10f;
+
+    [Header("GetHitState")]
+    public float GetHitAnimationTime = 0.7f;
 }

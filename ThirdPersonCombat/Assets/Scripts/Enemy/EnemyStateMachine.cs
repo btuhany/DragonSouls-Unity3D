@@ -13,18 +13,25 @@ public class EnemyStateMachine : StateMachine
     public EnemyMovementController Movement;
     public EnemyCombatController Combat;
 
-    private Health _health;
-
     public EnemyIdleState IdleState;
     public EnemyChaseState ChaseState;
     public EnemyAttackState AttackState;
     public EnemyTargetState TargetState;
+    public EnemyDeadState DeadState;
+    public EnemyGetHitState GetHitState;
+
+    public Health Health;
+
+    public event System.Action OnDead; 
+
+    private Targetable _targetController;
 
     private bool _isInAttackConditionCheck = false;
     private bool _isInChaseConditionCheck = false;
     private void Awake()
     {
-        _health = GetComponent<Health>();
+        _targetController = GetComponent<Targetable>();
+        Health = GetComponent<Health>();
         AnimationController = GetComponent<EnemyAnimationController>();
         Movement = GetComponent<EnemyMovementController>();
         NavmeshAgent = GetComponent<NavMeshAgent>();
@@ -34,11 +41,14 @@ public class EnemyStateMachine : StateMachine
         ChaseState = new EnemyChaseState(this);
         AttackState = new EnemyAttackState(this);
         TargetState = new EnemyTargetState(this);
+        DeadState = new EnemyDeadState(this);
+        GetHitState = new EnemyGetHitState(this);
     }
     private void OnEnable()
     {
+        Health.OnHealthUpdated += HandleOnHealthUpdated;
         NavmeshAgent.speed = Config.MaxSpeed;
-        _health.SetHealth(Config.Health);
+        Health.SetHealth(Config.Health);
         ChangeState(TargetState);
     }
     private void Update()
@@ -72,6 +82,22 @@ public class EnemyStateMachine : StateMachine
         StartCoroutine(CheckChaseStateConditions(waitTime, range));
     }
 
+    private void HandleOnHealthUpdated(int health, int damage)
+    {
+        if (health <= 0)
+        {
+            ChangeState(DeadState);
+            OnDead?.Invoke();
+            _targetController.ResetTargetable();
+        }
+        else
+        {
+            if (_currentState == GetHitState)
+                GetHitState.GetHitAgain();
+            else
+                ChangeState(GetHitState);
+        }
+    }
     private IEnumerator CheckAttackStateConditions(WaitForSeconds waitTime, float range)
     {
         yield return waitTime;

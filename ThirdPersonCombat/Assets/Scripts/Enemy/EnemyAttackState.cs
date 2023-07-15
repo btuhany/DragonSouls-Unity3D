@@ -34,11 +34,10 @@ namespace States
             _animationTimeCounter += deltaTime;
             if (_animationTimeCounter > _combat.CurrentAttack.attackDuration)
             {
+                LookToPlayer(deltaTime);
                 _timeCounter += deltaTime;
                 if (_timeCounter < _randomWaitTime)
                 {
-                    LookToPlayer(deltaTime);
-
                     if (!IsTurnedToPlayer())
                     {
                         stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.05f, 0f);
@@ -64,15 +63,16 @@ namespace States
                 {
 
                     RandomAttack();
-                    _animationTimeCounter = 0f;
                     _timeCounter = 0f;
                     _randomWaitTime = Random.Range(config.AttackMinWaitTime, config.AttackMaxWaitTime);
                 }
             }
+
         }
 
         void RandomAttack()
         {
+            _animationTimeCounter = 0f;
             Attack randomAttack = _combat.Attacks[Random.Range(0, _combat.Attacks.Length)];
             _combat.CurrentAttack = randomAttack;
             animationController.PlayAttack(randomAttack.animationName, randomAttack.transitionDuration);
