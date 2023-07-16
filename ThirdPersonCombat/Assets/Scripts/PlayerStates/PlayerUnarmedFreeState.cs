@@ -32,6 +32,13 @@ namespace States
                 base.Enter();
                 entryAttack = currentEntryAttack;
             }
+            else if(stateMachine.PreviousState == stateMachine.RollState)
+            {
+                _isSheath = false;
+                entryAttack = false;
+                animationController.FreeCombat(weapon);
+                base.Enter();
+            }
             else
             {
                 _isSheath = false;
@@ -71,6 +78,9 @@ namespace States
                 RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
             }
             HandleSprintControl();
+
+            if (stateMachine.IsRoll)
+                stateMachine.ChangeState(stateMachine.RollState);
         }
 
         protected override void HandleOnTargetEvent()

@@ -54,11 +54,11 @@ namespace PlayerController
             {
                 if (weapon == Weapon.Unarmed)
                 {
-                    _anim.Play(_unarmedTargetBlendTreeHash);
+                    _anim.CrossFadeInFixedTime(_unarmedTargetBlendTreeHash, 0.1f);
                 }
                 else if (weapon == Weapon.Sword)
                 {
-                    _anim.Play(_swordTargetBlendTreeHash); //Virtual target camera get set by this anim.
+                    _anim.CrossFadeInFixedTime(_swordTargetBlendTreeHash, 0.1f); //Virtual target camera get set by this anim.
                 }
             }
             _anim.SetBool(_targetBoolHash, true);

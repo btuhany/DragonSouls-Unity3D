@@ -8,7 +8,7 @@ namespace States
         }
         public override void Enter()
         {
-            if (stateMachine.PreviousState == stateMachine.UnarmedTargetState || stateMachine.PreviousState == stateMachine.ReturnSwordState || stateMachine.PreviousState == stateMachine.AimState)
+            if (stateMachine.PreviousState == stateMachine.UnarmedTargetState || stateMachine.PreviousState == stateMachine.ReturnSwordState || stateMachine.PreviousState == stateMachine.AimState || stateMachine.PreviousState == stateMachine.RollState)
             {
                 if (!targetableCheck.TryTransferTarget())
                 {
@@ -17,7 +17,7 @@ namespace States
                 }
             }
             if (stateMachine.PreviousState != stateMachine.SwordFreeState && stateMachine.PreviousState != stateMachine.ReturnSwordState &&
-                stateMachine.PreviousState != stateMachine.AimState) //else if
+                stateMachine.PreviousState != stateMachine.AimState && stateMachine.PreviousState != stateMachine.AimState) //else if
             {
                 animationController.PlayUnsheathSword();
                 animationController.TargetCombat(Weapon.Sword, false);

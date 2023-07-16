@@ -73,6 +73,9 @@ public class PlayerSwordReturnState : PlayerBaseState
             else
                 stateMachine.ChangeState(stateMachine.SwordFreeState);
         }
+
+        if (stateMachine.IsRoll)
+            stateMachine.ChangeState(stateMachine.RollState);
     }
     public override void Exit()
     {

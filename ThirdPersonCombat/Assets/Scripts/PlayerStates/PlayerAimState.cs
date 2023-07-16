@@ -11,7 +11,7 @@ namespace States
         private float _animationTime = 0f;
         private CombatController _combat;
         private Transform targetTransform;
-        private bool _isTargeted = false;
+        public bool IsTargeted = false;
         public PlayerAimState(PlayerStateMachine player) : base(player)
         {
             _combat = player.CombatController;
@@ -19,13 +19,13 @@ namespace States
 
         public override void Enter()
         {
-            _isTargeted = false;
+            IsTargeted = false;
             if (stateMachine.PreviousState == stateMachine.SwordTargetState)
             {
                 if (targetableCheck.TryTransferTarget())
                 {
                     targetTransform = targetableCheck.CurrentTargetTransform;
-                    _isTargeted = true;
+                    IsTargeted = true;
                 }
             }
             if (!stateMachine.CameraController.IsTransition && stateMachine.PreviousState != stateMachine.RollState)
@@ -33,7 +33,7 @@ namespace States
                 LookRotationCameraForward();
                 stateMachine.CameraController.AimCamSetVerticalRotation(Camera.main.transform.rotation.eulerAngles.x);
             }
-            if(!_isTargeted)
+            if(!IsTargeted)
                 _combat.SetAciveCrosshair(true);
             animationController.PlayAimSword();
             base.Enter();
@@ -46,7 +46,7 @@ namespace States
                 _animationTime += deltaTime;
                 if (_animationTime > _combat.ThrowAttack.attackDuration + _combat.ThrowAttack.comboPermissionDelay)
                 {
-                    if(_isTargeted)
+                    if(IsTargeted)
                         stateMachine.ChangeState(stateMachine.UnarmedTargetState);
                     else
                         stateMachine.ChangeState(stateMachine.UnarmedFreeState);
@@ -56,7 +56,7 @@ namespace States
 
             Vector2 movementVector = inputReader.MovementOn2DAxis;
 
-            if (_isTargeted)
+            if (IsTargeted)
             {
                 Vector3 relativeVector = targetTransform.position - Camera.main.transform.position;
                 stateMachine.CameraController.SetAimCamTarget(targetTransform, relativeVector);
@@ -105,9 +105,9 @@ namespace States
 
         protected override void HandleOnTargetEvent()
         {
-            if(_isTargeted)
+            if(IsTargeted)
             {
-                _isTargeted = false;
+                IsTargeted = false;
                 targetTransform = null;
                 targetableCheck.ClearTarget();
                 _combat.SetAciveCrosshair(true);
@@ -116,7 +116,7 @@ namespace States
             {
                 if (!targetableCheck.TrySelectTarget()) return;
                 targetTransform = targetableCheck.CurrentTargetTransform;
-                _isTargeted = true;
+                IsTargeted = true;
                 _combat.SetAciveCrosshair(false);
             }
         }
@@ -128,7 +128,7 @@ namespace States
         {
             if (!_isThrowed)
             {
-                if (_isTargeted)
+                if (IsTargeted)
                     stateMachine.ChangeState(stateMachine.SwordTargetState);
                 else
                     stateMachine.ChangeState(stateMachine.SwordFreeState);

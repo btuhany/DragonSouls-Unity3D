@@ -43,6 +43,8 @@ namespace States
             }
             TargetRangeControl(deltaTime);
             HandleSprintControl();
+            if (stateMachine.IsRoll)
+                stateMachine.ChangeState(stateMachine.RollState);
         }
         private void TargetRangeControl(float deltaTime)
         {
