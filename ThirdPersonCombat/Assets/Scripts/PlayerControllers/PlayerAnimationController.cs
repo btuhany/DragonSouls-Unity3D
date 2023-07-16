@@ -41,9 +41,11 @@ namespace PlayerController
 
         private readonly int _sprintForwardHash = Animator.StringToHash("SprintForward");
 
+        private readonly int _isRollHash = Animator.StringToHash("Roll");
+
         public void PlaySetFreeLookBlend()
         {
-            _anim.Play(_freeLookBlendTreeHash);
+            _anim.CrossFadeInFixedTime(_freeLookBlendTreeHash, 0.1f);
         }
         public void TargetCombat(Weapon weapon, bool play = true)
         {
@@ -150,6 +152,11 @@ namespace PlayerController
             {
                 _anim.SetFloat(_sprintForwardHash, 0);
             }
+        }
+
+        public void PlayRoll()
+        {
+            _anim.CrossFadeInFixedTime(_isRollHash, 0.1f);
         }
     }
 }

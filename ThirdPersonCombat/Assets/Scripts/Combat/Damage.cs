@@ -6,7 +6,7 @@ namespace Combat
     public class Damage : MonoBehaviour
     {
         [HideInInspector] public int AttackDamage;
-
+        [SerializeField] Transform HitControlPosition;
         private List<Collider> _hitColliders = new List<Collider>();
      
         private void OnTriggerEnter(Collider other)
@@ -16,7 +16,8 @@ namespace Combat
             if (other.TryGetComponent(out Health health))
             {
                 _hitColliders.Add(other);
-                health.TakeDamage(AttackDamage, transform.position);
+                health.TakeDamage(AttackDamage);
+                health.EnterHitPosition = HitControlPosition.position;
             }
         }
 

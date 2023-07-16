@@ -25,9 +25,11 @@ namespace States
         public PlayerUnarmedFreeState UnarmedFreeState;
         public PlayerAimState AimState;
         public PlayerSwordReturnState ReturnSwordState;
+        public PlayerRollState RollState;
 
         public bool IsSprintHolding;
         public bool IsSprinting;
+        public bool IsRoll = false;
 
         public static PlayerStateMachine Instance;
         public PlayerStateMachine()
@@ -45,6 +47,7 @@ namespace States
             UnarmedFreeTransitionState = new PlayerUnarmedFreeState(this, Weapon.Unarmed, true, true);
             AimState = new PlayerAimState(this);
             ReturnSwordState = new PlayerSwordReturnState(this);
+            RollState = new PlayerRollState(this);
         }
 
         private void SingletonObject()

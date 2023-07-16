@@ -14,7 +14,7 @@ public class EnemyGetHitState : EnemyBaseState
     public override void Enter()
     {
         _timeCounter = 0f;
-        Vector3 hitRelativePoint = stateMachine.transform.InverseTransformPoint(stateMachine.Health.LastHitPosition);
+        Vector3 hitRelativePoint = stateMachine.transform.InverseTransformPoint(stateMachine.Health.EnterHitPosition);
         if(hitRelativePoint.x < 0.15)
         {
             animationController.PlayGetHitAnimation(1);

@@ -134,6 +134,15 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Roll"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f6eb867-7e77-4a36-ae1e-1fb4eca05ea1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -345,6 +354,17 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""action"": ""WeaponReturn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""399c0f3d-6e3a-4682-8a1d-c81ec62a3a7f"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -393,6 +413,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         m_Player_SheathSword = m_Player.FindAction("SheathSword", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_WeaponReturn = m_Player.FindAction("WeaponReturn", throwIfNotFound: true);
+        m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -466,6 +487,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SheathSword;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_WeaponReturn;
+    private readonly InputAction m_Player_Roll;
     public struct PlayerActions
     {
         private @Controllers m_Wrapper;
@@ -482,6 +504,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         public InputAction @SheathSword => m_Wrapper.m_Player_SheathSword;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @WeaponReturn => m_Wrapper.m_Player_WeaponReturn;
+        public InputAction @Roll => m_Wrapper.m_Player_Roll;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -527,6 +550,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @WeaponReturn.started += instance.OnWeaponReturn;
             @WeaponReturn.performed += instance.OnWeaponReturn;
             @WeaponReturn.canceled += instance.OnWeaponReturn;
+            @Roll.started += instance.OnRoll;
+            @Roll.performed += instance.OnRoll;
+            @Roll.canceled += instance.OnRoll;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -567,6 +593,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @WeaponReturn.started -= instance.OnWeaponReturn;
             @WeaponReturn.performed -= instance.OnWeaponReturn;
             @WeaponReturn.canceled -= instance.OnWeaponReturn;
+            @Roll.started -= instance.OnRoll;
+            @Roll.performed -= instance.OnRoll;
+            @Roll.canceled -= instance.OnRoll;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -616,5 +645,6 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         void OnSheathSword(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnWeaponReturn(InputAction.CallbackContext context);
+        void OnRoll(InputAction.CallbackContext context);
     }
 }

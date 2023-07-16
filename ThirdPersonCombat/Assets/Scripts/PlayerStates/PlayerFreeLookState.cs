@@ -36,6 +36,8 @@ namespace States
                 RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
             }
 
+            if (stateMachine.IsRoll)
+                stateMachine.ChangeState(stateMachine.RollState);
             HandleSprintControl();
         }
 

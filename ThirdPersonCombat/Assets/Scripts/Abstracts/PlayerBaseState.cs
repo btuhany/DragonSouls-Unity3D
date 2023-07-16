@@ -67,6 +67,7 @@ namespace States
             inputReader.AimHoldEvent += HandleOnAimHoldEvent;
             inputReader.AimHoldCancelEvent += HandleOnAimHoldCancelEvent;
             inputReader.WeaponReturnEvent += HandleOnWeaponReturn;
+            inputReader.RollEvent += HandleOnRollEvent;
         }
         protected void RemoveMethodsFromEvents()
         {
@@ -80,6 +81,7 @@ namespace States
             inputReader.AimHoldEvent -= HandleOnAimHoldEvent;
             inputReader.AimHoldCancelEvent -= HandleOnAimHoldCancelEvent;
             inputReader.WeaponReturnEvent -= HandleOnWeaponReturn;
+            inputReader.RollEvent -= HandleOnRollEvent;
         }
         protected abstract void HandleOnTargetEvent();
         //protected abstract void HandleOnSprintHoldEvent();
@@ -115,6 +117,11 @@ namespace States
                 if (IsSprintHold) return;
                 animationController.Sprint(false);
             }
+        }
+
+        protected virtual void HandleOnRollEvent()
+        {
+            stateMachine.IsRoll = true;
         }
         protected virtual void HandleOnAimHoldEvent() { }
 

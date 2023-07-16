@@ -22,6 +22,7 @@ namespace Inputs
         public event System.Action AimHoldEvent;
         public event System.Action AimHoldCancelEvent;
         public event System.Action WeaponReturnEvent;
+        public event System.Action RollEvent;
         public AttackType LastAttackType { get; private set; }
 
         private Controllers _controls;
@@ -121,6 +122,26 @@ namespace Inputs
         {
             if (!context.performed) { return; }
             WeaponReturnEvent?.Invoke();
+        }
+
+        public void OnRoll(InputAction.CallbackContext context)
+        {
+            if (context.performed && !SprintHold)
+            {
+                RollEvent?.Invoke();
+            }
+            //if (context.started)
+            //{
+            //    Debug.Log("started");
+            //}
+            //if (context.performed)
+            //{
+            //    Debug.Log("performed");
+            //}
+            //if (context.canceled)
+            //{
+            //    Debug.Log("canceled");
+            //}
         }
     }
 }

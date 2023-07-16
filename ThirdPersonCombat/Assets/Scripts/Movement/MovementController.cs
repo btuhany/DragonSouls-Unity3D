@@ -23,6 +23,9 @@ namespace Movement
         [Header("Config")]
         public float AimStateCameraHorizontalRotationPower = 0.04f;
         public float AimStateCameraVerticalRotationPower = 5f;
+        public float RollStateRotateTime = 1f;
+        public float RollDuration = 0.6f;
+        public float RollDistance = 4f;
         [Header("Components")]
         [SerializeField] private CharacterController _characterController;
 
