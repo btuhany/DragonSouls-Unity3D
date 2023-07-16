@@ -42,6 +42,7 @@ namespace PlayerController
         private readonly int _sprintForwardHash = Animator.StringToHash("SprintForward");
 
         private readonly int _isRollHash = Animator.StringToHash("Roll");
+        private readonly int _isFastRollHash = Animator.StringToHash("FastRoll");
 
         public void PlaySetFreeLookBlend()
         {
@@ -77,11 +78,11 @@ namespace PlayerController
             {
                 if (weapon == Weapon.Unarmed)
                 {
-                    _anim.Play(_unarmedFreeBlendTreeHash);
+                    _anim.CrossFadeInFixedTime(_unarmedFreeBlendTreeHash, 0.1f);
                 }
                 else if (weapon == Weapon.Sword)
                 {
-                    _anim.Play(_swordFreeBlendTreeHash); //Virtual target camera get set by this anim.
+                    _anim.CrossFadeInFixedTime(_swordFreeBlendTreeHash, 0.1f); //Virtual target camera get set by this anim.
                 }
             }
             _anim.SetBool(_targetBoolHash, false);
@@ -157,6 +158,10 @@ namespace PlayerController
         public void PlayRoll()
         {
             _anim.CrossFadeInFixedTime(_isRollHash, 0.1f);
+        }
+        public void PlayFastRoll()
+        {
+            _anim.CrossFadeInFixedTime(_isFastRollHash, 0.1f);
         }
     }
 }

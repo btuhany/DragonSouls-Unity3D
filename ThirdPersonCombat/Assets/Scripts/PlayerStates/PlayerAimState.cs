@@ -28,7 +28,7 @@ namespace States
                     _isTargeted = true;
                 }
             }
-            if (!stateMachine.CameraController.IsTransition)
+            if (!stateMachine.CameraController.IsTransition && stateMachine.PreviousState != stateMachine.RollState)
             {
                 LookRotationCameraForward();
                 stateMachine.CameraController.AimCamSetVerticalRotation(Camera.main.transform.rotation.eulerAngles.x);
@@ -78,7 +78,8 @@ namespace States
 
                 animationController.TargetStateSetFloats(inputReader.CameraMovementOn2DAxis + movementVector);
             }
-            
+            if (stateMachine.IsRoll)
+                stateMachine.ChangeState(stateMachine.RollState);
         }
 
         public override void Exit()

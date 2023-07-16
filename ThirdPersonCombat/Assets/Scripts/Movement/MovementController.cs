@@ -4,6 +4,7 @@ namespace Movement
 {
     public class MovementController : MonoBehaviour
     {
+        [SerializeField] Transform _humanModelTransform;
         [Header("FreeLookState")]
         public float FreeLookMaxMovementSpeed = 10f;
         public float FaceDirectionRotationLerpTimeScale = 3f;
@@ -26,6 +27,8 @@ namespace Movement
         public float RollStateRotateTime = 1f;
         public float RollDuration = 0.6f;
         public float RollDistance = 4f;
+        public float FastRollDuration = 0.3f;
+        public float FastRollDistance = 2.5f;
         [Header("Components")]
         [SerializeField] private CharacterController _characterController;
 
@@ -71,7 +74,11 @@ namespace Movement
         {
             _characterController.Move(motion * speed * deltaTime);
         }
-
+        
+        public void RotateHumanModel(float angle)
+        {
+            _humanModelTransform.rotation = Quaternion.Euler(0, angle, 0);
+        }
     }
 
 }
