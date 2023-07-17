@@ -20,7 +20,7 @@ namespace States
         public override void Enter()
         {
             IsTargeted = false;
-            if (stateMachine.PreviousState == stateMachine.SwordTargetState)
+            if (stateMachine.PreviousState == stateMachine.SwordTargetState || stateMachine.PreviousState == stateMachine.RollState)
             {
                 if (targetableCheck.TryTransferTarget())
                 {
@@ -154,6 +154,12 @@ namespace States
             Vector3 pos = transform.position - Camera.main.transform.position;
             pos.y = 0f;
             transform.rotation = Quaternion.LookRotation(pos, Vector3.up);
+        }
+
+        protected override void HandleOnTargetSelect(Vector2 selectDir)
+        {
+            targetableCheck.ChangeTarget(selectDir);
+            targetTransform = targetableCheck.CurrentTargetTransform;
         }
     }
 }

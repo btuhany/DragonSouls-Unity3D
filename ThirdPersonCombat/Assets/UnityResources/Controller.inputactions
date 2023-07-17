@@ -121,6 +121,15 @@
                     "processors": "",
                     "interactions": "Tap",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TargetSelect",
+                    "type": "Value",
+                    "id": "426e7bca-89d3-407d-9c48-eeb0a11824b4",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -341,6 +350,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0085af3-bef3-49fd-a1fc-45e05cc846d2",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "Tap(duration=0.3)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "TargetSelect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

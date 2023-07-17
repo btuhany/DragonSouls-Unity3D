@@ -23,6 +23,7 @@ namespace Inputs
         public event System.Action AimHoldCancelEvent;
         public event System.Action WeaponReturnEvent;
         public event System.Action RollEvent;
+        public event System.Action<Vector2> TargetSelectEvent;
         public AttackType LastAttackType { get; private set; }
 
         private Controllers _controls;
@@ -142,6 +143,14 @@ namespace Inputs
             //{
             //    Debug.Log("canceled");
             //}
+        }
+
+        public void OnTargetSelect(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                TargetSelectEvent?.Invoke(context.ReadValue<Vector2>());
+            }
         }
     }
 }

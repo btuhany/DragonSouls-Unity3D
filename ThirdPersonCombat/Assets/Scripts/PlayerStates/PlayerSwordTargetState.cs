@@ -1,4 +1,6 @@
 using Combat;
+using UnityEngine;
+
 namespace States
 {
     public class PlayerSwordTargetState : PlayerCombatTargetState
@@ -17,7 +19,7 @@ namespace States
                 }
             }
             if (stateMachine.PreviousState != stateMachine.SwordFreeState && stateMachine.PreviousState != stateMachine.ReturnSwordState &&
-                stateMachine.PreviousState != stateMachine.AimState && stateMachine.PreviousState != stateMachine.AimState) //else if
+                stateMachine.PreviousState != stateMachine.AimState && stateMachine.PreviousState != stateMachine.AimState && stateMachine.PreviousState != stateMachine.RollState) //else if
             {
                 animationController.PlayUnsheathSword();
                 animationController.TargetCombat(Weapon.Sword, false);
@@ -52,6 +54,10 @@ namespace States
         protected override void HandleOnAimHoldEvent()
         {
             stateMachine.ChangeState(stateMachine.AimState);
+        }
+        protected override void HandleOnTargetSelect(Vector2 selectDir)
+        {
+            targetableCheck.ChangeTarget(selectDir);
         }
     }
 

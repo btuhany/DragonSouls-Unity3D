@@ -11,7 +11,7 @@ public class PlayerUnarmedTargetState : PlayerCombatTargetState
     }
     public override void Enter()
     {
-        if(stateMachine.PreviousState == stateMachine.SwordTargetState || stateMachine.PreviousState == stateMachine.AimState)
+        if(stateMachine.PreviousState == stateMachine.SwordTargetState || stateMachine.PreviousState == stateMachine.AimState || stateMachine.PreviousState == stateMachine.RollState)
         {
             if(!targetableCheck.TryTransferTarget())
             {
@@ -50,5 +50,10 @@ public class PlayerUnarmedTargetState : PlayerCombatTargetState
     {
         if (_combat.IsSwordReturned) return;
         stateMachine.ChangeState(stateMachine.ReturnSwordState);
+    }
+
+    protected override void HandleOnTargetSelect(Vector2 selectDir)
+    {
+        targetableCheck.ChangeTarget(selectDir);
     }
 }

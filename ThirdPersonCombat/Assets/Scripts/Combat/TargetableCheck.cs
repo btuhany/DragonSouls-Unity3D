@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UIControllers;
+using UnityEditor;
+
 public class TargetableCheck : MonoBehaviour
 {
     [Header("TargetCameraConfig")]
@@ -120,12 +122,44 @@ public class TargetableCheck : MonoBehaviour
     {
         RemoveTarget(target);
     }
+    
     private void RemoveTarget(Targetable target)
     {
         if (target == _currentTargetable)
             ClearTarget();
         Targets.Remove(target);
         target.OnDestroyedDisabled -= HandleOnTargetDestroyedDisabled;
+    }
+    
+    public void ChangeTarget(Vector2 selectDir)
+    {
+        Targetable closestTarget = null;
+        float closestDistance = 5f;
+        foreach (Targetable target in Targets)
+        {
+            Vector2 viewPos = _mainCam.WorldToViewportPoint(target.transform.position);
+            if (viewPos.x < 0 || viewPos.x > 1 || viewPos.y < 0 || viewPos.y > 1) continue;
+
+            //Screen origin is Vector2(0.5f,0.5f)
+            Vector2 distanceVector = viewPos - Vector2.one / 2;
+            float distance = distanceVector.magnitude;
+            if (Vector2.Dot(distanceVector.normalized, selectDir.normalized) > 0.1f)
+            {
+                if(distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestTarget = target;
+                }
+            }
+            if(closestTarget != null)
+            {
+                ClearTarget();
+                _currentTargetable = closestTarget;
+                _targetCrosshair.SetTargetState(_currentTargetable.TargetPoint);
+                _cinemachineTargetGroup.AddMember(_currentTargetable.TargetPoint, targetMemberCamWeight, targetMemberCamRadius);
+            }
+
+        }
     }
 
 }

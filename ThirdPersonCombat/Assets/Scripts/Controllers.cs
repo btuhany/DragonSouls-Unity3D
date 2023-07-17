@@ -143,6 +143,15 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TargetSelect"",
+                    ""type"": ""Value"",
+                    ""id"": ""426e7bca-89d3-407d-9c48-eeb0a11824b4"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -365,6 +374,17 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""action"": ""Roll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0085af3-bef3-49fd-a1fc-45e05cc846d2"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": ""Tap(duration=0.3)"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""TargetSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -414,6 +434,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_WeaponReturn = m_Player.FindAction("WeaponReturn", throwIfNotFound: true);
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
+        m_Player_TargetSelect = m_Player.FindAction("TargetSelect", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -488,6 +509,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_WeaponReturn;
     private readonly InputAction m_Player_Roll;
+    private readonly InputAction m_Player_TargetSelect;
     public struct PlayerActions
     {
         private @Controllers m_Wrapper;
@@ -505,6 +527,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @WeaponReturn => m_Wrapper.m_Player_WeaponReturn;
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
+        public InputAction @TargetSelect => m_Wrapper.m_Player_TargetSelect;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -553,6 +576,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @Roll.started += instance.OnRoll;
             @Roll.performed += instance.OnRoll;
             @Roll.canceled += instance.OnRoll;
+            @TargetSelect.started += instance.OnTargetSelect;
+            @TargetSelect.performed += instance.OnTargetSelect;
+            @TargetSelect.canceled += instance.OnTargetSelect;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -596,6 +622,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @Roll.started -= instance.OnRoll;
             @Roll.performed -= instance.OnRoll;
             @Roll.canceled -= instance.OnRoll;
+            @TargetSelect.started -= instance.OnTargetSelect;
+            @TargetSelect.performed -= instance.OnTargetSelect;
+            @TargetSelect.canceled -= instance.OnTargetSelect;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -646,5 +675,6 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnWeaponReturn(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
+        void OnTargetSelect(InputAction.CallbackContext context);
     }
 }

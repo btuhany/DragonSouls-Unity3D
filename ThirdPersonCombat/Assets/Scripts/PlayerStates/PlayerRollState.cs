@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerRollState : PlayerBaseState
 {
-    bool _isTargeted;
     bool _nextStateRoll = false;
     bool _aimCancelled = false;
     bool _isFastRoll = false;
@@ -31,10 +30,12 @@ public class PlayerRollState : PlayerBaseState
         
         if(stateMachine.PreviousState == stateMachine.SwordTargetState || stateMachine.PreviousState == stateMachine.UnarmedTargetState)
         {
-            _isTargeted = true;
             if(!targetableCheck.TryTransferTarget())
             {
-                Debug.Log("TODO!");
+                if (stateMachine.PreviousState == stateMachine.SwordTargetState)
+                    stateMachine.PreviousState = stateMachine.SwordFreeState;
+                else
+                    stateMachine.PreviousState = stateMachine.UnarmedFreeState;
             }
         }
         
@@ -42,19 +43,21 @@ public class PlayerRollState : PlayerBaseState
         if (stateMachine.PreviousState != stateMachine.AimState)
         {
             animationController.PlayRoll();
-            if(_isTargeted)
-            {
-                RotateCharacter(movement.TargetRelativeMotionVector(_rollMovement), movement.RollStateRotateTime);
-            }
-            else
-            {
-                RotateCharacter(movement.CamRelativeMotionVector(_rollMovement), movement.RollStateRotateTime);
-            }
+            RotateCharacter(movement.CamRelativeMotionVector(_rollMovement), movement.RollStateRotateTime);
+        
         }
         else
         {
-            _isFastRoll = true;
+            if(stateMachine.AimState.IsTargeted)
+            {
+                if (!targetableCheck.TryTransferTarget())
+                {
+
+                }
+            }
+
             movement.RotateHumanModel(Vector3.SignedAngle(stateMachine.transform.forward, new Vector3(_rollMovement.x, 0f, _rollMovement.y), Vector3.up));
+            _isFastRoll = true;
             animationController.PlayFastRoll();
         }
         
@@ -90,14 +93,9 @@ public class PlayerRollState : PlayerBaseState
                     stateMachine.ChangeState(stateMachine.PreviousState);
                 }
             }
-            if(_isTargeted)
-            {
-                MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
-            }
-            else
-            {
-                MoveCharacter(movement.CamRelativeMotionVector(_rollMovement), movement.FastRollDistance, deltaTime);
-            }
+
+            MoveCharacter(movement.CamRelativeMotionVector(_rollMovement), movement.FastRollDistance, deltaTime);
+            
         }
         else
         {
@@ -112,14 +110,9 @@ public class PlayerRollState : PlayerBaseState
                 //stateMachine.IsRoll = false;
                 stateMachine.ChangeState(stateMachine.PreviousState);
             }
-            if(_isTargeted)
-            {
-                MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
-            }
-            else
-            {
-                MoveCharacter(movement.CamRelativeMotionVector(_rollMovement), movement.RollDistance, deltaTime);
-            }
+
+            MoveCharacter(movement.CamRelativeMotionVector(_rollMovement), movement.RollDistance, deltaTime);
+            
         }
 
     }
@@ -157,14 +150,5 @@ public class PlayerRollState : PlayerBaseState
     protected override void HandleOnRollEvent()
     {
         _nextStateRoll = true;
-    }
-
-    private Vector3 MotionVectorAroundTarget()
-    {
-        //Character always looks to target
-        Vector3 motion = Vector3.zero;
-        motion += transform.right * inputReader.MovementOn2DAxis.x;
-        motion += transform.forward * inputReader.MovementOn2DAxis.y;
-        return motion;
     }
 }

@@ -77,7 +77,7 @@ namespace Movement
         
         public void RotateHumanModel(float angle)
         {
-            _humanModelTransform.rotation = Quaternion.Euler(0, angle, 0);
+            _humanModelTransform.localRotation = Quaternion.Euler(0, angle, 0);
         }
     }
 

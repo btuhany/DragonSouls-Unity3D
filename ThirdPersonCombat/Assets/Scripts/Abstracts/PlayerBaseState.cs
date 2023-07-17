@@ -68,6 +68,7 @@ namespace States
             inputReader.AimHoldCancelEvent += HandleOnAimHoldCancelEvent;
             inputReader.WeaponReturnEvent += HandleOnWeaponReturn;
             inputReader.RollEvent += HandleOnRollEvent;
+            inputReader.TargetSelectEvent += HandleOnTargetSelect;
         }
         protected void RemoveMethodsFromEvents()
         {
@@ -82,6 +83,7 @@ namespace States
             inputReader.AimHoldCancelEvent -= HandleOnAimHoldCancelEvent;
             inputReader.WeaponReturnEvent -= HandleOnWeaponReturn;
             inputReader.RollEvent -= HandleOnRollEvent;
+            inputReader.TargetSelectEvent -= HandleOnTargetSelect;
         }
         protected abstract void HandleOnTargetEvent();
         //protected abstract void HandleOnSprintHoldEvent();
@@ -128,6 +130,8 @@ namespace States
         protected virtual void HandleOnAimHoldCancelEvent() { }
 
         protected virtual void HandleOnWeaponReturn() { }
+
+        protected virtual void HandleOnTargetSelect(Vector2 selectDir) { }
 
 
     }
