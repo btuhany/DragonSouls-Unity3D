@@ -8,6 +8,8 @@ public class PlayerRollState : PlayerBaseState
     bool _nextStateRoll = false;
     bool _aimCancelled = false;
     bool _isFastRoll = false;
+    public bool IsAttack = false;
+    public bool AimHolded = false;
     float _timeCounter;
     Vector2 _rollMovement;
     public PlayerRollState(PlayerStateMachine player) : base(player)
@@ -16,6 +18,8 @@ public class PlayerRollState : PlayerBaseState
 
     public override void Enter()
     {
+        AimHolded = false;
+        IsAttack = false;
         _nextStateRoll = false;
         _aimCancelled = false;
         _isFastRoll = false;
@@ -108,6 +112,12 @@ public class PlayerRollState : PlayerBaseState
                     return;
                 }
                 //stateMachine.IsRoll = false;
+                if(AimHolded)
+                {
+                    stateMachine.ChangeState(stateMachine.AimState);
+                    return;
+                }
+
                 stateMachine.ChangeState(stateMachine.PreviousState);
             }
 
@@ -123,15 +133,21 @@ public class PlayerRollState : PlayerBaseState
         {
             movement.RotateHumanModel(0f);
         }
+        else
+        {
+            RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.RollStateRotateTime);
+        }
         stateMachine.IsRoll = false;
         base.Exit();
     }
     protected override void HandleOnHeavyAttackEvent()
     {
+        IsAttack = true;
     }
 
     protected override void HandleOnLightAttackEvent()
     {
+        IsAttack = true;
     }
 
     protected override void HandleOnTargetEvent()
@@ -145,6 +161,11 @@ public class PlayerRollState : PlayerBaseState
     protected override void HandleOnAimHoldCancelEvent()
     {
         _aimCancelled = true;
+    }
+
+    protected override void HandleOnAimHoldEvent()
+    {
+        AimHolded = true;
     }
 
     protected override void HandleOnRollEvent()

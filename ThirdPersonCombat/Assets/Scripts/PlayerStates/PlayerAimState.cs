@@ -158,6 +158,7 @@ namespace States
 
         protected override void HandleOnTargetSelect(Vector2 selectDir)
         {
+            if (!IsTargeted) return;
             targetableCheck.ChangeTarget(selectDir);
             targetTransform = targetableCheck.CurrentTargetTransform;
         }

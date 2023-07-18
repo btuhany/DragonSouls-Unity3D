@@ -22,12 +22,25 @@ namespace States
             else
             {
                 animationController.FreeCombat(Weapon.Sword, true);
+                if(stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsAttack)
+                {
+                    entryAttack = true;
+                }
+                else
+                {
+                    entryAttack = false;
+                }
             }
             base.Enter();
         }
 
         protected override void StateTickActions(float deltaTime)
         {
+            if(IsAttacking)
+            {
+                RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), 2f);
+                IsAttacking = false;
+            }
             if (animationController.IsUnsheathSheathAnimPlaying)
                 return;
             //Cinemachine IsBlending doesn't work properly at start

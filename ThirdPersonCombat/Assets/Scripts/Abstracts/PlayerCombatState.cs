@@ -1,9 +1,12 @@
 using UnityEngine;
 using Combat;
+using UnityEngine.UIElements;
+
 namespace States
 {
     public abstract class PlayerCombatState : PlayerBaseState
     {
+        protected bool IsAttacking = false;
         protected CombatController _combat;
         private bool _autoStateChange = false;
         private Attack[] _heavyAttackArray;
@@ -53,6 +56,11 @@ namespace States
             if (_animationTimePassed > _currentAttack.attackDuration) //+ _currentAttack.comboPermissionDelay)
             {
                 StateTickActions(deltaTime);
+            }
+            else
+            {
+                if(!IsAttacking)
+                    IsAttacking = true;
             }
 
             //Auto attack from saved next attack if player pressed attack button in an attack duration.

@@ -29,7 +29,8 @@ namespace PlayerController
         private Transform _mainCam;
         private Transform _swordBody;
 
-        public bool IsEquipped => transform.parent == _handHolder;
+        public bool IsInHand => transform.parent == _handHolder;
+        public bool IsInSheath => transform.parent == _sheahtHolder;
 
         private void Awake()
         {
