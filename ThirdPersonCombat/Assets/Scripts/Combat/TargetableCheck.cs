@@ -71,7 +71,9 @@ public class TargetableCheck : MonoBehaviour
         foreach (Targetable targetable in Targets)
         {
             if (targetable == _currentTargetable)
+            {
                 return true;
+            }
         }
         return false;
     }
@@ -134,16 +136,17 @@ public class TargetableCheck : MonoBehaviour
     public void ChangeTarget(Vector2 selectDir)
     {
         Targetable closestTarget = null;
-        float closestDistance = 5f;
+        float closestDistance = 500f;
         foreach (Targetable target in Targets)
         {
+            if (target == _currentTargetable) continue;
             Vector2 viewPos = _mainCam.WorldToViewportPoint(target.transform.position);
             if (viewPos.x < 0 || viewPos.x > 1 || viewPos.y < 0 || viewPos.y > 1) continue;
 
             //Screen origin is Vector2(0.5f,0.5f)
             Vector2 distanceVector = viewPos - Vector2.one / 2;
             float distance = distanceVector.magnitude;
-            if (Vector2.Dot(distanceVector.normalized, selectDir.normalized) > 0.1f)
+            if (Vector2.Dot(distanceVector.normalized, selectDir.normalized) > 0f)
             {
                 if(distance < closestDistance)
                 {
@@ -151,14 +154,13 @@ public class TargetableCheck : MonoBehaviour
                     closestTarget = target;
                 }
             }
-            if(closestTarget != null)
-            {
-                ClearTarget();
-                _currentTargetable = closestTarget;
-                _targetCrosshair.SetTargetState(_currentTargetable.TargetPoint);
-                _cinemachineTargetGroup.AddMember(_currentTargetable.TargetPoint, targetMemberCamWeight, targetMemberCamRadius);
-            }
-
+        }
+        if (closestTarget != null)
+        {
+            ClearTarget();
+            _currentTargetable = closestTarget;
+            _targetCrosshair.SetTargetState(_currentTargetable.TargetPoint);
+            _cinemachineTargetGroup.AddMember(_currentTargetable.TargetPoint, targetMemberCamWeight, targetMemberCamRadius);
         }
     }
 
