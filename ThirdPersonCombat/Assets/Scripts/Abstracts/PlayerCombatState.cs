@@ -87,6 +87,7 @@ namespace States
             _heavyAttackIndex = 0;
             _animationTimePassed = 0f;
             _currentAttack = _combat.NullAttack;
+            IsAttacking = false;
             base.Exit();
         }
      

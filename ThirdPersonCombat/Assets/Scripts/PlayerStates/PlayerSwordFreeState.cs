@@ -38,7 +38,7 @@ namespace States
         {
             if(IsAttacking)
             {
-                RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), 2f);
+                RotateCharacterAttack(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.RotateAfterAttackTime);
                 IsAttacking = false;
             }
             if (animationController.IsUnsheathSheathAnimPlaying)

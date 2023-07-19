@@ -7,9 +7,10 @@ public class PlayerRollState : PlayerBaseState
 {
     bool _nextStateRoll = false;
     bool _aimCancelled = false;
-    bool _isFastRoll = false;
+    public bool IsFastRoll = false;
     public bool IsAttack = false;
     public bool AimHolded = false;
+    public bool IsTargeted = false;
     float _timeCounter;
     Vector2 _rollMovement;
     public PlayerRollState(PlayerStateMachine player) : base(player)
@@ -18,11 +19,12 @@ public class PlayerRollState : PlayerBaseState
 
     public override void Enter()
     {
+        IsTargeted = false;
         AimHolded = false;
         IsAttack = false;
         _nextStateRoll = false;
         _aimCancelled = false;
-        _isFastRoll = false;
+        IsFastRoll = false;
         if (inputReader.MovementOn2DAxis.sqrMagnitude < 0.02f)
         {
             _rollMovement = new Vector2(stateMachine.transform.forward.x, stateMachine.transform.forward.z);  //default forward
@@ -54,14 +56,14 @@ public class PlayerRollState : PlayerBaseState
         {
             if(stateMachine.AimState.IsTargeted)
             {
-                if (!targetableCheck.TryTransferTarget())
+                if (targetableCheck.TryTransferTarget())
                 {
-
+                    IsTargeted = true;
                 }
             }
 
-            movement.RotateHumanModel(Vector3.SignedAngle(stateMachine.transform.forward, new Vector3(_rollMovement.x, 0f, _rollMovement.y), Vector3.up));
-            _isFastRoll = true;
+            movement.RotateHumanModel(Vector3.SignedAngle(stateMachine.transform.forward, movement.CamRelativeMotionVector(_rollMovement), Vector3.up));
+            IsFastRoll = true;
             animationController.PlayFastRoll();
         }
         
@@ -71,7 +73,7 @@ public class PlayerRollState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         _timeCounter += deltaTime;
-        if(_isFastRoll)
+        if(IsFastRoll)
         {
             if(_timeCounter > movement.FastRollDuration)
             {
@@ -129,7 +131,7 @@ public class PlayerRollState : PlayerBaseState
     public override void Exit()
     {
         _nextStateRoll = false;
-        if (_isFastRoll)
+        if (IsFastRoll)
         {
             movement.RotateHumanModel(0f);
         }

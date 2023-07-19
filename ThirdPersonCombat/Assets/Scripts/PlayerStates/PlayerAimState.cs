@@ -20,7 +20,7 @@ namespace States
         public override void Enter()
         {
             IsTargeted = false;
-            if (stateMachine.PreviousState == stateMachine.SwordTargetState || stateMachine.PreviousState == stateMachine.RollState)
+            if (stateMachine.PreviousState == stateMachine.SwordTargetState || (stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsTargeted))
             {
                 if (targetableCheck.TryTransferTarget())
                 {
@@ -28,10 +28,14 @@ namespace States
                     IsTargeted = true;
                 }
             }
-            if (!stateMachine.CameraController.IsTransition && stateMachine.PreviousState != stateMachine.RollState)
+            if (!stateMachine.CameraController.IsTransition)
             {
-                LookRotationCameraForward();
-                stateMachine.CameraController.AimCamSetVerticalRotation(Camera.main.transform.rotation.eulerAngles.x);
+                if (!(stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsFastRoll))
+                {
+                    LookRotationCameraForward();
+                    stateMachine.CameraController.AimCamSetVerticalRotation(Camera.main.transform.rotation.eulerAngles.x);
+                }
+                
             }
             if(!IsTargeted)
                 _combat.SetAciveCrosshair(true);
@@ -52,6 +56,7 @@ namespace States
                         stateMachine.ChangeState(stateMachine.UnarmedFreeState);
                     return;
                 }
+                return;
             }
 
             Vector2 movementVector = inputReader.MovementOn2DAxis;

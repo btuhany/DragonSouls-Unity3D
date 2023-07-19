@@ -13,6 +13,7 @@ namespace Movement
         public float CombatSprintSpeed = 15f;
         public float UnarmedFreeSpeed = 10f;
         public float SwordFreeSpeed = 10f;
+        public float RotateAfterAttackTime = 0.2f;
         [Header("TargetState")]
         public float TargetMovementSpeed = 4f;
         public float TargetDirectionRotationLerpTimeScale = 2f;

@@ -25,7 +25,7 @@ namespace Movement
         private void Update()
         {
             if (_impact.sqrMagnitude > 0.07f)
-                _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _currentVelocity, _impactSmoothTime);
+                _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _currentVelocity ,_impactSmoothTime);
             else
                 _impact = Vector3.zero;
 
@@ -42,5 +42,6 @@ namespace Movement
             _impact = force;
             _impactSmoothTime = lerpTime;
         }
+
     }
 }

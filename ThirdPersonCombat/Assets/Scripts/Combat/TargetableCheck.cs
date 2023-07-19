@@ -143,8 +143,9 @@ public class TargetableCheck : MonoBehaviour
             Vector2 viewPos = _mainCam.WorldToViewportPoint(target.transform.position);
             if (viewPos.x < 0 || viewPos.x > 1 || viewPos.y < 0 || viewPos.y > 1) continue;
 
+            Vector2 targetPos = _mainCam.WorldToViewportPoint(_currentTargetable.TargetPoint.position);
             //Screen origin is Vector2(0.5f,0.5f)
-            Vector2 distanceVector = viewPos - Vector2.one / 2;
+            Vector2 distanceVector = viewPos - targetPos;
             float distance = distanceVector.magnitude;
             if (Vector2.Dot(distanceVector.normalized, selectDir.normalized) > 0f)
             {

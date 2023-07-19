@@ -58,7 +58,7 @@ namespace States
         {
             if (IsAttacking)
             {
-                RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), 2f);
+                RotateCharacterAttack(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.RotateAfterAttackTime);
                 IsAttacking = false;
             }
             if (_isSheath)
@@ -94,7 +94,6 @@ namespace States
             if (stateMachine.IsRoll)
                 stateMachine.ChangeState(stateMachine.RollState);
         }
-
         protected override void HandleOnTargetEvent()
         {
             if (!targetableCheck.TrySelectTarget()) return;

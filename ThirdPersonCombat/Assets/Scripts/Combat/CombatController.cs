@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using PlayerController;
+using Movement;
+
 namespace Combat
 {
     [Serializable]
@@ -27,6 +29,7 @@ namespace Combat
     }
     public class CombatController : MonoBehaviour
     {
+        private ForceReceiver _force;
         [Header("ThrowSwordConfig")]
         [SerializeField] private Sword _sword;
         [SerializeField] private WeaponController _unarmedLeft;
@@ -56,6 +59,10 @@ namespace Combat
 
         [HideInInspector] public Attack CurrentAttack;
 
+        private void Awake()
+        {
+            _force = GetComponent<ForceReceiver>();
+        }
         public void TryReturnSword()
         {
             if (IsSwordReturned) return;
@@ -89,6 +96,7 @@ namespace Combat
         public void EnableSwordHitbox()
         {
             _sword.StartAttack(CurrentAttack.damage);
+            _force.AddForce(CurrentAttack.force * transform.forward, CurrentAttack.forceLerpTime);
         }
                 
         public void DisableSwordHitbox()
@@ -98,10 +106,12 @@ namespace Combat
         public void EnableRightUnarmedHitboxes()
         {
             _unarmedRight.StartAttack(CurrentAttack.damage);
+            _force.AddForce(CurrentAttack.force * transform.forward, CurrentAttack.forceLerpTime);
         }
         public void EnableLeftUnarmedHitbox()
         {
             _unarmedLeft.StartAttack(CurrentAttack.damage);
+            _force.AddForce(CurrentAttack.force * transform.forward, CurrentAttack.forceLerpTime);
         }
         public void DisableUnarmedHitboxes()
         {

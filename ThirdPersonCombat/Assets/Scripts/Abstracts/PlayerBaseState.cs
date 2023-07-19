@@ -3,6 +3,7 @@ using PlayerController;
 using UnityEngine;
 using Movement;
 using Combat;
+using DG.Tweening;
 
 namespace States
 {
@@ -50,6 +51,13 @@ namespace States
         {
             //normalize motionXZAxis 
             movement.LookRotation(motionXZAxis, deltaTime);
+        }
+        protected void RotateCharacterAttack(Vector3 motionXZAxis, float time)
+        {
+            if (motionXZAxis != Vector3.zero)
+            {
+                transform.DOLocalRotateQuaternion(Quaternion.LookRotation(motionXZAxis), time);
+            }
         }
         protected void RotateAround(Vector3 rotationVector, float value)
         {
