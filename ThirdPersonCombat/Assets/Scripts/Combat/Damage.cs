@@ -11,10 +11,12 @@ namespace Combat
      
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log("Triggered!");
             if (_hitColliders.Contains(other)) return;
 
             if (other.TryGetComponent(out Health health))
             {
+                if (_hitColliders.Contains(other)) return;
                 _hitColliders.Add(other);
                 health.TakeDamage(AttackDamage);
                 health.EnterHitPosition = HitControlPosition.position;

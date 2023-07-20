@@ -1790,7 +1790,7 @@ GameObject:
   - component: {fileID: 1096273846}
   m_Layer: 8
   m_Name: EnemySkeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1830,7 +1830,7 @@ MonoBehaviour:
   NavmeshAgent: {fileID: 4377941786552427434}
   Movement: {fileID: 7272117038270641187}
   Combat: {fileID: 6494932264427656613}
-  Health: {fileID: 0}
+  Health: {fileID: 2622736940094571497}
 --- !u!114 &2467826576402964528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,7 +1924,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917cb40e108b0364498d75417195accb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 500
   EnterHitPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1095210396577186076
 MonoBehaviour:
@@ -1951,10 +1950,10 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.96
-  m_Radius: 0.22
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.04
+  m_SkinWidth: 0.05
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.99, z: 0}
 --- !u!195 &4377941786552427434

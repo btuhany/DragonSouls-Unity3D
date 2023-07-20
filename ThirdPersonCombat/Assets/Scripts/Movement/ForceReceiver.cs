@@ -43,5 +43,16 @@ namespace Movement
             _impactSmoothTime = lerpTime;
         }
 
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                if (_impact != Vector3.zero)
+                    _impact = Vector3.zero;
+            }
+        }
+
+
+
     }
 }

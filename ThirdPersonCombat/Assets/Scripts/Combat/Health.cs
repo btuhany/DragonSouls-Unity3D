@@ -4,7 +4,7 @@ namespace Combat
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] int _maxHealth = 100;
+        int _maxHealth = 100;
         private int _health;
         public Vector3 EnterHitPosition;
         public int MaxHealth { get => _maxHealth; }

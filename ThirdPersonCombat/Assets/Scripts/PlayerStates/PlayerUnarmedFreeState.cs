@@ -52,14 +52,18 @@ namespace States
                 animationController.FreeCombat(weapon);
                 base.Enter();
             }
+            if (stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsAttack)
+            {
+                LightAttack();
+            }
         }
 
         protected override void StateTickActions(float deltaTime)
         {
             if (IsAttacking)
             {
-                RotateCharacterAttack(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.RotateAfterAttackTime);
                 IsAttacking = false;
+                RotateCharacterAttack(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.RotateAfterAttackTime);
             }
             if (_isSheath)
             {
@@ -102,7 +106,6 @@ namespace States
 
         protected override void HandleSheathEvent()
         {
-            Debug.Log(_combat.IsSwordReturned);
             if (animationController.IsAttackPlaying || !_combat.IsSwordReturned) return;
             stateMachine.ChangeState(stateMachine.SwordFreeState);
         }

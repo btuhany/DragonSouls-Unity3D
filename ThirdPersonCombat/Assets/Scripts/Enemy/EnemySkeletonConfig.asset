@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 923fa95da4919ab46ac439a237bf86d1, type: 3}
   m_Name: EnemySkeletonConfig
   m_EditorClassIdentifier: 
-  Health: 700
+  Health: 180
   MaxSpeed: 5
   IdleRunAnimTransitionTime: 0.1
   AnimationDampTime: 0.1
@@ -47,3 +47,4 @@ MonoBehaviour:
   TargetToAttackChangeRange: 2
   TargetToChaseChangeRange: 10
   GetHitAnimationTime: 0.7
+  DeadAnimTime: 1.06

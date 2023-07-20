@@ -6,6 +6,7 @@ namespace States
 {
     public abstract class PlayerCombatState : PlayerBaseState
     {
+        protected bool TransitionToAimState = false;
         protected bool IsAttacking = false;
         protected CombatController _combat;
         private bool _autoStateChange = false;
@@ -38,6 +39,8 @@ namespace States
 
         public override void Enter()
         {
+            TransitionToAimState = false;
+            IsAttacking = false;
             base.Enter();
         }
         public override void Tick(float deltaTime)
@@ -243,5 +246,10 @@ namespace States
 
         protected abstract void StateTickActions(float deltaTime);
 
+        protected override void HandleOnAimHoldCancelEvent()
+        {
+            TransitionToAimState = false;
+            base.HandleOnAimHoldCancelEvent();
+        }
     }
 }

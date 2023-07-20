@@ -29,6 +29,10 @@ namespace States
                 animationController.TargetCombat(Weapon.Sword, true);
             }
             base.Enter();
+            if (stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsAttack)
+            {
+                LightAttack();
+            }
         }
         public override void Exit()
         {

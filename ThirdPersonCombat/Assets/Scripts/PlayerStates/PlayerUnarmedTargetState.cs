@@ -29,6 +29,10 @@ public class PlayerUnarmedTargetState : PlayerCombatTargetState
             animationController.TargetCombat(Weapon.Unarmed);
         }
         base.Enter();
+        if (stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsAttack)
+        {
+            LightAttack();
+        }
     }
     public override void Exit()
     {

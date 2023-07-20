@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EnemyDeadState : EnemyBaseState
 {
+    float _timeCounter = 0.0f;
     public EnemyDeadState(EnemyStateMachine enemy) : base(enemy)
     {
     }
 
     public override void Enter()
     {
+        _timeCounter = 0f;
         animationController.PlayDeadAnimation();
     }
 
@@ -19,5 +21,10 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+        _timeCounter += deltaTime;
+        if(_timeCounter > config.DeadAnimTime)
+        {
+            stateMachine.gameObject.SetActive(false);
+        }
     }
 }

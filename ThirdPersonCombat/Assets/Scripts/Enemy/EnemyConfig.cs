@@ -55,4 +55,7 @@ public class EnemyConfig : ScriptableObject
 
     [Header("GetHitState")]
     public float GetHitAnimationTime = 0.7f;
+
+    [Header("DeadState")]
+    public float DeadAnimTime = 1.06f;
 }

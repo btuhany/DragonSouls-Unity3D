@@ -7,12 +7,14 @@ namespace States
 {
     public class PlayerSwordFreeState : PlayerCombatFreeState
     {
+        bool isSheating = false;
         public PlayerSwordFreeState(PlayerStateMachine player, Weapon weapon = Weapon.Sword, bool entryAttack = false, bool autoStateChange = false) : base(player, weapon, entryAttack, autoStateChange)
         {
         }
 
         public override void Enter()
-        {   
+        {
+            isSheating = false;
             //animationController.SetBoolsCombatFree(weapon, !animationController.IsUnsheathAnimPlaying);
             if (stateMachine.PreviousState != stateMachine.SwordTargetState && stateMachine.PreviousState != stateMachine.AimState && stateMachine.PreviousState != stateMachine.ReturnSwordState && stateMachine.PreviousState != stateMachine.RollState)
             {
@@ -36,11 +38,25 @@ namespace States
 
         protected override void StateTickActions(float deltaTime)
         {
+            if(isSheating)
+            {
+                return;
+            }
             if(IsAttacking)
             {
-                RotateCharacterAttack(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.RotateAfterAttackTime);
                 IsAttacking = false;
+                if(!TransitionToAimState)
+                {
+                    RotateCharacterAttack(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.RotateAfterAttackTime);
+                }
+                else
+                {
+                    stateMachine.ChangeState(stateMachine.AimState);
+                    return;
+                }
+
             }
+
             if (animationController.IsUnsheathSheathAnimPlaying)
                 return;
             //Cinemachine IsBlending doesn't work properly at start
@@ -89,12 +105,21 @@ namespace States
         {
             if(animationController.IsAttackPlaying) return;
             stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+            isSheating = true;
         }
 
         protected override void HandleOnAimHoldEvent()
         {
-            stateMachine.ChangeState(stateMachine.AimState);
+            if(!IsAttacking)
+            {
+                stateMachine.ChangeState(stateMachine.AimState);
+            }
+            else
+            {
+                TransitionToAimState= true;
+            }
         }
+
     }
 }
 

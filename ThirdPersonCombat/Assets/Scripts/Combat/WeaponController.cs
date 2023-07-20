@@ -24,6 +24,7 @@ namespace Combat
 
         public void StopAttack()
         {
+            _damage.ResetState();
             _collider.enabled = false;
             _damage.enabled = false;
         }

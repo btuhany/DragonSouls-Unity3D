@@ -38,7 +38,7 @@ namespace States
                 
             }
             if(!IsTargeted)
-                _combat.SetAciveCrosshair(true);
+                _combat.SetAciveCrosshair(true);           
             animationController.PlayAimSword();
             base.Enter();
         }
@@ -56,6 +56,18 @@ namespace States
                         stateMachine.ChangeState(stateMachine.UnarmedFreeState);
                     return;
                 }
+
+                if (IsTargeted)
+                {
+                    Vector3 relativeVector = targetTransform.position - Camera.main.transform.position;
+                    relativeVector.y = 0f;
+                    RotateCharacter(relativeVector, deltaTime);
+                }
+                else
+                {
+                    RotateAround(Vector3.up, inputReader.CameraMovementOn2DAxis.x * movement.AimStateCameraHorizontalRotationPower);
+                }
+
                 return;
             }
 
