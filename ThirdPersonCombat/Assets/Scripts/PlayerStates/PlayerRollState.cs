@@ -19,6 +19,7 @@ public class PlayerRollState : PlayerBaseState
 
     public override void Enter()
     {
+        stateMachine.Health.IsInvulnerable = true;
         IsTargeted = false;
         AimHolded = false;
         IsAttack = false;
@@ -36,7 +37,11 @@ public class PlayerRollState : PlayerBaseState
         
         if(stateMachine.PreviousState == stateMachine.SwordTargetState || stateMachine.PreviousState == stateMachine.UnarmedTargetState)
         {
-            if(!targetableCheck.TryTransferTarget())
+            if(targetableCheck.TryTransferTarget())
+            {
+                IsTargeted = true;
+            }
+            else
             {
                 if (stateMachine.PreviousState == stateMachine.SwordTargetState)
                     stateMachine.PreviousState = stateMachine.SwordFreeState;
@@ -116,6 +121,7 @@ public class PlayerRollState : PlayerBaseState
                 //stateMachine.IsRoll = false;
                 if(AimHolded)
                 {
+                    stateMachine.AimState.IsTargeted = IsTargeted;
                     stateMachine.ChangeState(stateMachine.AimState);
                     return;
                 }
@@ -130,6 +136,7 @@ public class PlayerRollState : PlayerBaseState
     }
     public override void Exit()
     {
+        stateMachine.Health.IsInvulnerable = false;
         _nextStateRoll = false;
         if (IsFastRoll)
         {

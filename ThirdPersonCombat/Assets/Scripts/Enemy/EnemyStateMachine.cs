@@ -19,6 +19,7 @@ public class EnemyStateMachine : StateMachine
     public EnemyTargetState TargetState;
     public EnemyDeadState DeadState;
     public EnemyGetHitState GetHitState;
+    public EnemySwordPierced SwordHitState;
 
     public Health Health;
 
@@ -43,6 +44,7 @@ public class EnemyStateMachine : StateMachine
         TargetState = new EnemyTargetState(this);
         DeadState = new EnemyDeadState(this);
         GetHitState = new EnemyGetHitState(this);
+        SwordHitState = new EnemySwordPierced(this);
     }
     private void OnEnable()
     {

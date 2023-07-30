@@ -39,6 +39,15 @@ public class PlayerUnarmedTargetState : PlayerCombatTargetState
         animationController.ResetCombatBools();
         base.Exit();
     }
+    protected override void StateTickActions(float deltaTime)
+    {
+        if (!targetableCheck.IsTargetInRange())
+        {
+            stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+            return;
+        }
+        base.StateTickActions(deltaTime);
+    }
     protected override void HandleSheathEvent()
     {
         if (animationController.IsAttackPlaying) return;

@@ -15,6 +15,7 @@ namespace States
         public CombatController CombatController;
         public ForceReceiver ForceReceiver;
         public CameraController CameraController;
+        public Health Health;
         
         //States
         public PlayerFreeLookState FreeLookPlayerState;
@@ -48,6 +49,7 @@ namespace States
             AimState = new PlayerAimState(this);
             ReturnSwordState = new PlayerSwordReturnState(this);
             RollState = new PlayerRollState(this);
+            Health = GetComponent<Health>();
         }
 
         private void SingletonObject()

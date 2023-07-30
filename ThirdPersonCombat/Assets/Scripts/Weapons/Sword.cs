@@ -16,10 +16,12 @@ namespace PlayerController
         [Header("Sword Throw")]
         [SerializeField] private LayerMask _aimLayer;
         [SerializeField] private float _aimRange;
+        private TrailRenderer _trail;
         private float _curvePointReachingTime = 1.0f;
         private bool _isReturning = false;
         private bool _isOnThrow = false;
         private bool _isInCurvePoint = false;
+        private bool _isOnEnemy = false;
         private Rigidbody _rb;
         private Tweener _zRotationAnim;
         private Tweener _yRotationAnim;
@@ -28,12 +30,14 @@ namespace PlayerController
         private Damage _damage;
         private Transform _mainCam;
         private Transform _swordBody;
+        private EnemyStateMachine _currentEnemy;
 
         public bool IsInHand => transform.parent == _handHolder;
         public bool IsInSheath => transform.parent == _sheahtHolder;
 
         private void Awake()
         {
+            _trail = GetComponentInChildren<TrailRenderer>();
             _swordBody = GetComponentsInChildren<Transform>()[1];
             _damage = GetComponent<Damage>();
             _rb = GetComponent<Rigidbody>();
@@ -48,6 +52,7 @@ namespace PlayerController
         private void OnEnable()
         {
             _collider.enabled = false;
+            _trail.enabled = false;
         }
         private void FixedUpdate()
         {
@@ -80,6 +85,12 @@ namespace PlayerController
                 _yRotationAnim.Pause();
                 _rb.isKinematic = true;
                 transform.SetParent(other.transform);
+                if (other.CompareTag("Enemy"))
+                {
+                    _currentEnemy = other.GetComponent<EnemyStateMachine>();
+                    _currentEnemy.ChangeState(_currentEnemy.SwordHitState);
+                    _isOnEnemy = true;
+                }
             }
         }
         private void CalculateReturnTime()
@@ -120,6 +131,10 @@ namespace PlayerController
         }
         public void Return()
         {
+            if(_isOnEnemy)
+            {
+                _currentEnemy.ChangeState(_currentEnemy.ChaseState);
+            }
             transform.parent = null;
             if(_isOnThrow)
             {
@@ -155,6 +170,7 @@ namespace PlayerController
 
         public void StartAttack(int damage)
         {
+            _trail.enabled = true;
             _collider.enabled = true;
             _damage.ResetState();
             _damage.SetAttackDamage(damage);
@@ -165,6 +181,7 @@ namespace PlayerController
         {
             _collider.enabled = false;
             _damage.enabled = false;
+            _trail.enabled = false;
         }
     }
 

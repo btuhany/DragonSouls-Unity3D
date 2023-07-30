@@ -64,5 +64,13 @@ namespace EnemyControllers
             else if (leftright == 1)
                 _anim.Play(_getHitRight);
         }
+        public void PauseAnimation()
+        {
+            _anim.enabled= false;
+        }
+        public void ResumeAnimation()
+        {
+            _anim.enabled= true;
+        }
     }
 }

@@ -43,6 +43,11 @@ namespace States
         {
             if (animationController.IsUnsheathSheathAnimPlaying)
                 return;
+            if (!targetableCheck.IsTargetInRange())
+            {
+                stateMachine.ChangeState(stateMachine.SwordFreeState);
+                return;
+            }
             base.StateTickActions(deltaTime);
         }
         protected override void HandleSheathEvent()

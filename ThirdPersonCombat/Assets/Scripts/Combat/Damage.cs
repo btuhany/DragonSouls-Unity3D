@@ -11,7 +11,6 @@ namespace Combat
      
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Triggered!");
             if (_hitColliders.Contains(other)) return;
 
             if (other.TryGetComponent(out Health health))

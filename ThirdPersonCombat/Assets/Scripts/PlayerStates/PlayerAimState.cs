@@ -19,7 +19,10 @@ namespace States
 
         public override void Enter()
         {
-            IsTargeted = false;
+            if(stateMachine.PreviousState != stateMachine.RollState) 
+            {
+                IsTargeted = false;
+            }
             if (stateMachine.PreviousState == stateMachine.SwordTargetState || (stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsTargeted))
             {
                 if (targetableCheck.TryTransferTarget())

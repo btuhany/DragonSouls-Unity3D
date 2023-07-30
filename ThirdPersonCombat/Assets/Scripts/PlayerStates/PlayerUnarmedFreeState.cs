@@ -52,10 +52,6 @@ namespace States
                 animationController.FreeCombat(weapon);
                 base.Enter();
             }
-            if (stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsAttack)
-            {
-                LightAttack();
-            }
         }
 
         protected override void StateTickActions(float deltaTime)
