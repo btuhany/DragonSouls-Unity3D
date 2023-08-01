@@ -25,7 +25,7 @@ namespace States
 
         protected override void StateTickActions(float deltaTime)
         {
-            if (IsSprintHold || IsSprint)
+            if ((IsSprintHold || IsSprint) && stateMachine.Stamina.UseStamina(movement.SprintStaminaCost))
             {
                 RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), deltaTime);
                 MoveCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis.normalized), movement.TargetRunSpeed, deltaTime);

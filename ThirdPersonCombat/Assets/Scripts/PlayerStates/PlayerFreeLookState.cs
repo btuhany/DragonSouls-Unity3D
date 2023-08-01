@@ -19,7 +19,7 @@ namespace States
         {
             Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
 
-            if (IsSprintHold || IsSprint)
+            if ((IsSprintHold || IsSprint) && stateMachine.Stamina.UseStamina(movement.SprintStaminaCost))
             {
                 animationController.SprintSetFloats(movementOn2DAxis);
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis.normalized), movement.FreeLookSprintMovementSpeed, deltaTime);
@@ -49,12 +49,14 @@ namespace States
 
         protected override void HandleOnLightAttackEvent()
         {
-            stateMachine.ChangeState(stateMachine.UnarmedFreeTransitionState);
+            if (stateMachine.Stamina.UseStamina(movement.LightAttackStaminaCost))
+                stateMachine.ChangeState(stateMachine.UnarmedFreeTransitionState);
         }
 
         protected override void HandleOnHeavyAttackEvent()
         {
-            stateMachine.ChangeState(stateMachine.UnarmedFreeTransitionState);
+            if (stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
+                stateMachine.ChangeState(stateMachine.UnarmedFreeTransitionState);
         }
 
         protected override void HandleSheathEvent()

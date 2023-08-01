@@ -152,12 +152,14 @@ public class PlayerRollState : PlayerBaseState
     }
     protected override void HandleOnHeavyAttackEvent()
     {
-        IsAttack = true;
+        if (stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
+            IsAttack = true;
     }
 
     protected override void HandleOnLightAttackEvent()
     {
-        IsAttack = true;
+        if (stateMachine.Stamina.UseStamina(movement.LightAttackStaminaCost))
+            IsAttack = true;
     }
 
     protected override void HandleOnTargetEvent()
@@ -180,6 +182,9 @@ public class PlayerRollState : PlayerBaseState
 
     protected override void HandleOnRollEvent()
     {
-        _nextStateRoll = true;
+        if (stateMachine.Stamina.UseStamina(movement.RollStaminaCost))
+        {
+            _nextStateRoll = true;
+        }
     }
 }

@@ -113,14 +113,20 @@ namespace States
         }
         protected override void HandleOnHeavyAttackEvent()
         {
-            ThrowSword();
-            _isThrowed = true;
+            if(stateMachine.Stamina.UseStamina(movement.SwordThrowStaminaCost))
+            {
+                ThrowSword();
+                _isThrowed = true;
+            }
         }
 
         protected override void HandleOnLightAttackEvent()
         {
-            ThrowSword();
-            _isThrowed = true;
+            if (stateMachine.Stamina.UseStamina(movement.SwordThrowStaminaCost))
+            {
+                ThrowSword();
+                _isThrowed = true;
+            }
         }
 
         protected override void HandleOnTargetEvent()

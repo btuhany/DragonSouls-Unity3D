@@ -131,7 +131,10 @@ namespace States
 
         protected virtual void HandleOnRollEvent()
         {
-            stateMachine.IsRoll = true;
+            if(stateMachine.Stamina.UseStamina(movement.RollStaminaCost))
+            {
+                stateMachine.IsRoll = true;
+            }
         }
         protected virtual void HandleOnAimHoldEvent() { }
 

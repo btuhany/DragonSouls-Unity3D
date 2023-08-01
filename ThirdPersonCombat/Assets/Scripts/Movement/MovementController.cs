@@ -30,6 +30,12 @@ namespace Movement
         public float RollDistance = 4f;
         public float FastRollDuration = 0.3f;
         public float FastRollDistance = 2.5f;
+        [Header("StaminaCosts")]
+        public float RollStaminaCost = 30f;
+        public float SprintStaminaCost = 1f;
+        public float LightAttackStaminaCost = 40f;
+        public float HeavyAttackStaminaCost = 60f;
+        public float SwordThrowStaminaCost = 35f;
         [Header("Components")]
         [SerializeField] private CharacterController _characterController;
 

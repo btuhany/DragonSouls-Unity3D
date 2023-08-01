@@ -78,7 +78,7 @@ namespace States
                 RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
             }
             
-            if (IsSprintHold || IsSprint)
+            if ((IsSprintHold || IsSprint) && stateMachine.Stamina.UseStamina(movement.SprintStaminaCost))
             {
                 animationController.SprintSetFloats(movementOn2DAxis);
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.CombatSprintSpeed, deltaTime);

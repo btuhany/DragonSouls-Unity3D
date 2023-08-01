@@ -111,10 +111,11 @@ namespace States
                 }
                 else
                 {
-                    LightAttack();
+                    if (stateMachine.Stamina.UseStamina(movement.LightAttackStaminaCost))
+                        LightAttack();
                 }
             }
-            else
+            else if (stateMachine.Stamina.UseStamina(movement.LightAttackStaminaCost))
             {
                 _lightAttackIndex = 0;
                 LightAttack();
@@ -137,10 +138,11 @@ namespace States
                 }
                 else
                 {
-                    HeavyAttack();
+                    if (stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
+                        HeavyAttack();
                 }
             }
-            else
+            else if (stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
             {
                 _heavyAttackIndex = 0;
                 HeavyAttack();
@@ -234,14 +236,18 @@ namespace States
         }
         protected override void HandleOnHeavyAttackEvent()
         {
-            if (_lightAttackIndex >= 2)
+            if (stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
             {
-                TryLLHComboAttack(_animationTimePassed);
+                if (_lightAttackIndex >= 2)
+                {
+                    TryLLHComboAttack(_animationTimePassed);
+                }
+                else
+                {
+                    TryHeavyComboAttack(_animationTimePassed);
+                }
             }
-            else
-            {
-                TryHeavyComboAttack(_animationTimePassed);
-            }
+
         }
 
         protected abstract void StateTickActions(float deltaTime);
