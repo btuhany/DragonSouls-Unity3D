@@ -5631,7 +5631,8 @@ MonoBehaviour:
   CombatController: {fileID: 5140849125630205052}
   ForceReceiver: {fileID: 5140849125630205054}
   CameraController: {fileID: 1783357948524646509}
-  Health: {fileID: 0}
+  Health: {fileID: 1142221291561146617}
+  Stamina: {fileID: 5259172069297143359}
   IsSprintHolding: 0
   IsSprinting: 0
   IsRoll: 0
@@ -5668,6 +5669,11 @@ MonoBehaviour:
   RollDistance: 3
   FastRollDuration: 0.4
   FastRollDistance: 1.7
+  RollStaminaCost: 30
+  SprintStaminaCost: 0.9
+  LightAttackStaminaCost: 40
+  HeavyAttackStaminaCost: 60
+  SwordThrowStaminaCost: 30
   _characterController: {fileID: 5140849125630205058}
 --- !u!114 &5140849125630205052
 MonoBehaviour:
@@ -5839,7 +5845,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _enemyCheckTransform: {fileID: 2816187389456744866}
-  _enemyCheckRadius: 0.7
+  _enemyCheckRadius: 0.5
   _enemyCheckGroundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -5886,6 +5892,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c908bb02eb5f30d42b65fa987af2f0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxStamina: 200
+  _regenerateSpeedOnMovement: 35
+  _regenerateSpeed: 50
 --- !u!114 &1142221291561146617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6224,7 +6233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8456730541233616259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.029, z: 0.895}
+  m_LocalPosition: {x: 0, y: 1.029, z: 0.615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

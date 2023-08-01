@@ -82,7 +82,7 @@ public class PlayerRollState : PlayerBaseState
         {
             if(_timeCounter > movement.FastRollDuration)
             {
-                if (_nextStateRoll)
+                if (_nextStateRoll && stateMachine.Stamina.UseStamina(movement.RollStaminaCost))
                 {
                     Exit();
                     Enter();
@@ -112,7 +112,7 @@ public class PlayerRollState : PlayerBaseState
         {
             if (_timeCounter > movement.RollDuration)
             {
-                if (_nextStateRoll)
+                if (_nextStateRoll && stateMachine.Stamina.UseStamina(movement.RollStaminaCost))
                 {
                     Exit();
                     Enter();
@@ -182,9 +182,8 @@ public class PlayerRollState : PlayerBaseState
 
     protected override void HandleOnRollEvent()
     {
-        if (stateMachine.Stamina.UseStamina(movement.RollStaminaCost))
-        {
-            _nextStateRoll = true;
-        }
+        
+        _nextStateRoll = true;
+        
     }
 }

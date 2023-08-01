@@ -155,7 +155,7 @@ namespace States
                 _nextAttack = AttackType.Heavy;
                 return;
             }
-            else if (normalizedTime <= _currentAttack.attackDuration + _currentAttack.comboPermissionDelay)
+            else if (normalizedTime <= _currentAttack.attackDuration + _currentAttack.comboPermissionDelay && stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
             {
                 //Combo
                 //End the combo if last attack is performed.
@@ -173,7 +173,7 @@ namespace States
                 }
                 _animationTimePassed = 0f;
             }
-            else
+            else if (stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
             {
                 _heavyAttackIndex = 0;
                 HeavyAttack();
@@ -236,18 +236,14 @@ namespace States
         }
         protected override void HandleOnHeavyAttackEvent()
         {
-            if (stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
+            if (_lightAttackIndex >= 2)
             {
-                if (_lightAttackIndex >= 2)
-                {
-                    TryLLHComboAttack(_animationTimePassed);
-                }
-                else
-                {
-                    TryHeavyComboAttack(_animationTimePassed);
-                }
+                TryLLHComboAttack(_animationTimePassed);
             }
-
+            else
+            {
+                TryHeavyComboAttack(_animationTimePassed);
+            }
         }
 
         protected abstract void StateTickActions(float deltaTime);
