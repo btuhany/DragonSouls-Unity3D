@@ -8,7 +8,7 @@ public class EnemyMovementController : MonoBehaviour
     public Vector3 Velocity => _characterController.velocity;
     private void Awake()
     {
-        _characterController = GetComponent<CharacterController>();
+        _characterController = GetComponentInChildren<CharacterController>();
         GetComponent<EnemyStateMachine>().OnDead += HandleOnDead;
     }
     public Vector3 TargetRelativeMotionVector(Vector3 targetPos)

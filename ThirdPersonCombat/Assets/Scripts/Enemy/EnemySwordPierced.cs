@@ -10,7 +10,6 @@ public class EnemySwordPierced : EnemyBaseState
 
     public override void Enter()
     {
-        animationController.PlayGetHitAnimation(0);
     }
 
     public override void Exit()

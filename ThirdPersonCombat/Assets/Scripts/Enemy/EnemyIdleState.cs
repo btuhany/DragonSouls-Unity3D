@@ -9,7 +9,6 @@ namespace States
 
         public override void Enter()
         {
-            navmeshAgent.isStopped = true;
             stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.0f, 0f);           
             animationController.PlayIdleRunBlend(config.IdleRunAnimTransitionTime);
             animationController.SetIdleRunLocomotionSpeed(0f, config.AnimationDampTime);

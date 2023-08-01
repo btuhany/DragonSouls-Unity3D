@@ -6,6 +6,8 @@ namespace PlayerController
 {
     public class Sword : MonoBehaviour
     {
+        [SerializeField] private ParticleSystem _freezeElectricFX;
+
         [SerializeField] private float _curvePointToHolderReturnLerpTime = 0.3f;
         [SerializeField] private Transform _curvePoint;
         [SerializeField] private Transform _handHolder;
@@ -13,6 +15,7 @@ namespace PlayerController
         [SerializeField] private float _curvePointReachingSpeed = 10f;
         [SerializeField] private float _targetReachingSpeed = 20f;
         [SerializeField] private int _damageInAir = 25;
+
         [Header("Sword Throw")]
         [SerializeField] private LayerMask _aimLayer;
         [SerializeField] private float _aimRange;
@@ -53,6 +56,7 @@ namespace PlayerController
         {
             _collider.enabled = false;
             _trail.enabled = false;
+            _freezeElectricFX.gameObject.SetActive(false);
         }
         private void FixedUpdate()
         {
@@ -89,7 +93,10 @@ namespace PlayerController
                 {
                     _currentEnemy = other.GetComponent<EnemyStateMachine>();
                     _currentEnemy.ChangeState(_currentEnemy.SwordHitState);
+                    _currentEnemy.IsSwordOn= true;
+                    _currentEnemy.Sword = this;
                     _isOnEnemy = true;
+                    _freezeElectricFX.gameObject.SetActive(true);
                 }
             }
         }
@@ -134,6 +141,9 @@ namespace PlayerController
             if(_isOnEnemy)
             {
                 _currentEnemy.ChangeState(_currentEnemy.ChaseState);
+                _freezeElectricFX.gameObject.SetActive(false);
+                _currentEnemy.IsSwordOn = false;
+                _isOnEnemy = false;
             }
             transform.parent = null;
             if(_isOnThrow)
@@ -182,6 +192,13 @@ namespace PlayerController
             _collider.enabled = false;
             _damage.enabled = false;
             _trail.enabled = false;
+        }
+
+        public void DetachFromEnemy()
+        {
+            _freezeElectricFX.gameObject.SetActive(false);
+            _currentEnemy.IsSwordOn = false;
+            _isOnEnemy = false;
         }
     }
 

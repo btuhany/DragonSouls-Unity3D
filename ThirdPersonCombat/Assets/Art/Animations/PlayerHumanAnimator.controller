@@ -862,7 +862,7 @@ BlendTree:
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 49465ef866a763743a799ce9ebbac322, type: 2}
-    m_Threshold: 0
+    m_Threshold: 0.01
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -886,7 +886,7 @@ BlendTree:
     m_Mirror: 0
   m_BlendParameter: CombatFreeForward
   m_BlendParameterY: TargetForward
-  m_MinThreshold: 0
+  m_MinThreshold: 0.01
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
@@ -1859,7 +1859,7 @@ BlendTree:
   m_MaxThreshold: 0.3857143
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
-  m_BlendType: 1
+  m_BlendType: 2
 --- !u!206 &3402829292183495221
 BlendTree:
   m_ObjectHideFlags: 0
@@ -2770,7 +2770,7 @@ BlendTree:
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 3904137b94e379746bce38428e377a53, type: 2}
-    m_Threshold: 0
+    m_Threshold: 0.1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -2778,7 +2778,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: d7512f83b2acc2d44995dea23b769c51, type: 2}
-    m_Threshold: 0.1
+    m_Threshold: 0.3
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -2794,7 +2794,7 @@ BlendTree:
     m_Mirror: 0
   m_BlendParameter: CombatFreeForward
   m_BlendParameterY: TargetForward
-  m_MinThreshold: 0
+  m_MinThreshold: 0.1
   m_MaxThreshold: 0.5
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0

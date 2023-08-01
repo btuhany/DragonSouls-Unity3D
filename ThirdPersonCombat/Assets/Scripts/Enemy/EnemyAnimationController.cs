@@ -58,11 +58,11 @@ namespace EnemyControllers
         public void PlayGetHitAnimation(int leftright)
         {
             if (leftright == 0)
-                _anim.Play(_getHitCenter);
+                _anim.CrossFadeInFixedTime(_getHitCenter, 0.1f);
             else if (leftright == -1)
-                _anim.Play(_getHitLeft);
+                _anim.CrossFadeInFixedTime(_getHitCenter, 0.1f);
             else if (leftright == 1)
-                _anim.Play(_getHitRight);
+                _anim.CrossFadeInFixedTime(_getHitCenter, 0.1f);
         }
         public void PauseAnimation()
         {

@@ -33,8 +33,7 @@ namespace States
 
         public override void Enter()
         {
-            navmeshAgent.isStopped = true;
-            if(_playerTargetTransform == null)
+            if (_playerTargetTransform == null)
                 _playerTargetTransform = PlayerStateMachine.Instance.transform;
             animationController.PlayTargetedBlend(0.1f);
             _isApproach = false;

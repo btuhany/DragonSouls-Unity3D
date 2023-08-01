@@ -16,12 +16,12 @@ namespace States
 
         public override void Enter()
         {
-            navmeshAgent.isStopped = true;
             _randomWaitTime = Random.Range(config.AttackMinWaitTime, config.AttackMaxWaitTime);
             stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.0f, 0f);
             RandomAttack();
             _animationTimeCounter = 0f;
             _timeCounter = 0f;
+            LookToPlayer(0.4f);
         }
 
         public override void Exit()
@@ -76,6 +76,7 @@ namespace States
             Attack randomAttack = _combat.Attacks[Random.Range(0, _combat.Attacks.Length)];
             _combat.CurrentAttack = randomAttack;
             animationController.PlayAttack(randomAttack.animationName, randomAttack.transitionDuration);
+            stateMachine.EnemyForceReceiver.AddForce();
         }
 
         private bool IsTurnedToPlayer()

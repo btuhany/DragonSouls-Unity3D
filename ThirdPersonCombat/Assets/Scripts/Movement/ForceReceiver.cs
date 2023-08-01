@@ -12,6 +12,11 @@ namespace Movement
         [SerializeField] private float _checkRadius;
         [SerializeField] private LayerMask _groundMask;
 
+        [Header("Force Enemy Check")]
+        [SerializeField] private Transform _enemyCheckTransform;
+        [SerializeField] private float _enemyCheckRadius;
+        [SerializeField] private LayerMask _enemyCheckGroundMask;
+
         private Vector3 _verticalVelocity = Vector3.zero;
 
         private Vector3 _currentVelocity = Vector3.zero;
@@ -39,6 +44,10 @@ namespace Movement
 
         public void AddForce(Vector3 force, float lerpTime)
         {
+            if(Physics.CheckSphere(_enemyCheckTransform.position, _enemyCheckRadius, _enemyCheckGroundMask))
+            {
+                return;
+            }
             _impact = force;
             _impactSmoothTime = lerpTime;
         }
@@ -52,7 +61,7 @@ namespace Movement
             }
         }
 
-
+        
 
     }
 }

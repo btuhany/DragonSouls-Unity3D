@@ -136,6 +136,7 @@ public class PlayerRollState : PlayerBaseState
     }
     public override void Exit()
     {
+        targetableCheck.ClearTarget();
         stateMachine.Health.IsInvulnerable = false;
         _nextStateRoll = false;
         if (IsFastRoll)

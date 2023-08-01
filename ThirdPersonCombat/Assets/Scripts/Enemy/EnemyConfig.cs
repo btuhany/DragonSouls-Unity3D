@@ -27,6 +27,7 @@ public class EnemyConfig : ScriptableObject
     public float ChaseReactionMinWaitTime = 0f;
     public float ChaseReactionMaxWaitTime = 1.2f;
     public float ChaseToIdleChangeRange = 20f;
+    public float ChaseSpeed = 6f;
 
     [Header("AttackState")]
     public float LookRotationLerpTimeMultiplier = 0.2f;

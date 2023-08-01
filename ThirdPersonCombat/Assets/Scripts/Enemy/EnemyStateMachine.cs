@@ -4,6 +4,7 @@ using EnemyControllers;
 using Combat;
 using UnityEngine.AI;
 using System.Collections;
+using PlayerController;
 
 public class EnemyStateMachine : StateMachine
 {
@@ -12,6 +13,7 @@ public class EnemyStateMachine : StateMachine
     public NavMeshAgent NavmeshAgent;
     public EnemyMovementController Movement;
     public EnemyCombatController Combat;
+    public EnemyForceReceiver EnemyForceReceiver;
 
     public EnemyIdleState IdleState;
     public EnemyChaseState ChaseState;
@@ -29,14 +31,17 @@ public class EnemyStateMachine : StateMachine
 
     private bool _isInAttackConditionCheck = false;
     private bool _isInChaseConditionCheck = false;
+    public bool IsSwordOn = false;
+    public Sword Sword;
+    public bool IsDead = false;
     private void Awake()
     {
         _targetController = GetComponent<Targetable>();
         Health = GetComponent<Health>();
         AnimationController = GetComponent<EnemyAnimationController>();
         Movement = GetComponent<EnemyMovementController>();
-        NavmeshAgent = GetComponent<NavMeshAgent>();
         Combat = GetComponent<EnemyCombatController>();
+        EnemyForceReceiver = GetComponent<EnemyForceReceiver>();
 
         IdleState = new EnemyIdleState(this);
         ChaseState = new EnemyChaseState(this);
@@ -45,16 +50,18 @@ public class EnemyStateMachine : StateMachine
         DeadState = new EnemyDeadState(this);
         GetHitState = new EnemyGetHitState(this);
         SwordHitState = new EnemySwordPierced(this);
+
+        NavmeshAgent.isStopped = true;
     }
     private void OnEnable()
     {
         Health.OnHealthUpdated += HandleOnHealthUpdated;
-        NavmeshAgent.speed = Config.MaxSpeed;
         Health.SetHealth(Config.Health);
-        ChangeState(TargetState);
+        ChangeState(ChaseState);
     }
     private void Update()
     {
+        if (IsDead) { return; }
         UpdateState(Time.deltaTime);
     }
     private void OnDrawGizmosSelected()

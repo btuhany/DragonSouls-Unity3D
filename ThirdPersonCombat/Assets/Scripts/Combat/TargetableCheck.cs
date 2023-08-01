@@ -54,7 +54,7 @@ public class TargetableCheck : MonoBehaviour
         _currentTargetable = _previousTargetable;
         if (_currentTargetable == null) return false;
         _targetCrosshair.SetTargetState(_currentTargetable.TargetPoint);
-        _cinemachineTargetGroup.AddMember(_currentTargetable.TargetPoint, targetMemberCamWeight, targetMemberCamRadius);
+        _cinemachineTargetGroup.AddMember(_previousTargetable.TargetPoint, targetMemberCamWeight, targetMemberCamRadius);
         return true;
     }
     public void ClearTarget()
