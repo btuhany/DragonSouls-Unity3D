@@ -1321,6 +1321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598e3a02052f41a4dac756ac497cd8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tree: {fileID: 11400000, guid: 0142a093e1d4c2f4b9f09d644fa94b6e, type: 2}
 --- !u!1 &1770230019 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5652237702366931658, guid: 450e79c70f5006b459f9a693891651bc,
@@ -2269,12 +2270,12 @@ PrefabInstance:
     - target: {fileID: 5652237701446456889, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000025108502
+      value: -0.000000025108498
       objectReference: {fileID: 0}
     - target: {fileID: 5652237701446456889, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000005978215
+      value: -0.000000005978214
       objectReference: {fileID: 0}
     - target: {fileID: 5652237701598990202, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}

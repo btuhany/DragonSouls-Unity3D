@@ -11,8 +11,10 @@ public abstract class Node : ScriptableObject
         Success
     }
 
-    public State mState = State.Running;
-    public bool Started = false;
+    [HideInInspector] public State mState = State.Running;
+    [HideInInspector] public bool Started = false;
+    [HideInInspector] public string Guid;
+    [HideInInspector] public Vector2 Position;
     public State Update()
     {
         if (!Started)
@@ -32,6 +34,10 @@ public abstract class Node : ScriptableObject
         return mState;
     }
 
+    public virtual Node Clone()
+    {
+        return Instantiate(this);
+    }
     protected abstract void OnStart();
     protected abstract void OnStop();
     protected abstract State OnUpdate();
