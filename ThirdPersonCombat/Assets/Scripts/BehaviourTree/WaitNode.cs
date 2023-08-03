@@ -15,10 +15,12 @@ public class WaitNode : ActionNode
 
     protected override State OnUpdate()
     {
+
         if(Time.time - _startTime >= WaitTime)
         {
             return State.Success;
         }
+        blackboard.moveToPosition.x++;
         return State.Running;
     }
 }

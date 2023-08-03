@@ -15,7 +15,7 @@
                     </ui:VisualElement>
                     <ui:Label display-tooltip-when-elided="true" name="description" />
                 </ui:VisualElement>
-                <ui:Label text="This is a description" display-tooltip-when-elided="true" name="description" style="background-color: rgb(56, 56, 56);" />
+                <ui:Label display-tooltip-when-elided="true" name="description" style="background-color: rgb(56, 56, 56); white-space: normal; max-width: 150px; color: rgb(255, 255, 255);" />
                 <ui:VisualElement name="divider" />
                 <ui:VisualElement name="output" style="position: relative; flex-basis: auto; flex-direction: column; flex-grow: 0; flex-wrap: nowrap; justify-content: center; width: auto; height: auto; bottom: auto; right: auto; background-color: rgb(56, 56, 56); left: auto; top: auto;" />
             </ui:VisualElement>

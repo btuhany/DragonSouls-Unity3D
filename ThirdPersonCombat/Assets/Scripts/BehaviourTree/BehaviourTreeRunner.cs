@@ -7,6 +7,7 @@ public class BehaviourTreeRunner : MonoBehaviour
     private void Awake()
     {
         Tree = Tree.Clone();
+        Tree.Bind(GetComponent<AiAgent>());
     }
     private void Update()
     {

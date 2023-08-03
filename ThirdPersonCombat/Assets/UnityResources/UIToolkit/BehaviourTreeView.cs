@@ -24,6 +24,14 @@ public class BehaviourTreeView : GraphView
 
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/UnityResources/UIToolkit/BehaviourTreeEditor.uss");
         styleSheets.Add(styleSheet);
+
+        Undo.undoRedoPerformed += OnUndoRedoPerformed;
+    }
+
+    private void OnUndoRedoPerformed()
+    {
+        PopulateView(_tree);
+        AssetDatabase.SaveAssets();
     }
 
     NodeView FindNodeView(Node node)
@@ -76,7 +84,7 @@ public class BehaviourTreeView : GraphView
                 NodeView nodeView = elem as NodeView;
                 if (nodeView != null)
                 {
-                    _tree.DeleteNode(nodeView.Node);
+                    _tree.DeleteNode(nodeView.node);
                 }
 
                 Edge edge = elem as Edge;
@@ -84,7 +92,7 @@ public class BehaviourTreeView : GraphView
                 {
                     NodeView parentView = edge.output.node as NodeView;
                     NodeView childView = edge.input.node as NodeView;
-                    _tree.RemoveChild(parentView.Node, childView.Node);
+                    _tree.RemoveChild(parentView.node, childView.node);
                 }
             });
         }
@@ -95,7 +103,16 @@ public class BehaviourTreeView : GraphView
             {
                 NodeView parentView = edge.output.node as NodeView;
                 NodeView childView = edge.input.node as NodeView;
-                _tree.AddChild(parentView.Node, childView.Node);
+                _tree.AddChild(parentView.node, childView.node);
+            });
+        }
+
+        if(graphViewChange.movedElements != null)
+        {
+            nodes.ForEach((n) =>
+            {
+                NodeView view = n as NodeView;
+                view.SortChildren();
             });
         }
         return graphViewChange;
@@ -151,5 +168,14 @@ public class BehaviourTreeView : GraphView
         NodeView nodeView = new NodeView(node);
         nodeView.OnNodeSelected = OnNodeSelected;
         AddElement(nodeView);
+    }
+
+    public void UpdateNodeStates()
+    {
+        nodes.ForEach(n =>
+        {
+            NodeView view = n as NodeView;
+            view.UpdateState();
+        });
     }
 }
