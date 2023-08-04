@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923fa95da4919ab46ac439a237bf86d1, type: 3}
+  m_Name: EnemySkeletonConfig
+  m_EditorClassIdentifier: 
+  Health: 180
+  MaxSpeed: 5
+  IdleRunAnimTransitionTime: 0.1
+  AnimationDampTime: 0.1
+  MinIdleRange: 19
+  ChasePointRefreshTime: 0.78
+  ChaseToTargetChangeMaxRange: 5
+  ChaseToTargetChangeMinRange: 3
+  ChaseToAttackChangeRange: 1.4
+  ChaseToTargetChangeProbability: 0.25
+  ChaseReactionMinWaitTime: 0
+  ChaseReactionMaxWaitTime: 1.2
+  ChaseToIdleChangeRange: 20
+  ChaseSpeed: 4
+  LookRotationLerpTimeMultiplier: 2
+  AttackMinWaitTime: 0.3
+  AttackMaxWaitTime: 4
+  AttackToTargetChangeRange: 1
+  AttackToChaseChangeRange: 5
+  AttackReactionMinWaitTime: 0
+  AttackReactionMaxWaitTime: 0.3
+  TargetMovementSpeed: 1
+  TargetMaxRightDirChangeTime: 6
+  TargetMinRightDirChangeTime: 1
+  TargetMinBackDirChangeTime: 0.2
+  TargetMaxBackDirChangeTime: 1
+  TargetMinApproachPlayerTime: 0.2
+  TargetMaxApproachPlayerTime: 11.17
+  TargetMinSpeedUpTime: 0.2
+  TargetMaxSpeedUpTime: 3
+  TargetMinSpeedUpValue: 1.5
+  TargetMaxSpeedUpValue: 3
+  TargetBackDirChangeProbility: 0.1
+  TargetToAttackChangeRange: 2
+  TargetToChaseChangeRange: 8
+  GetHitAnimationTime: 0.7
+  DeadAnimTime: 1.06

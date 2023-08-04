@@ -20,7 +20,6 @@ public class WaitNode : ActionNode
         {
             return State.Success;
         }
-        blackboard.moveToPosition.x++;
         return State.Running;
     }
 }

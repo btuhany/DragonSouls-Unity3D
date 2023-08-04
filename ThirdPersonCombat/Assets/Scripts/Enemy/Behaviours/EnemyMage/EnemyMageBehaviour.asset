@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8620563797450839315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f27ebcc77c8d946b26daee2dd645d7, type: 3}
+  m_Name: FaceToPlayer
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 3424feb66a16a0c498746ae5c6c7e3fa
+  Position: {x: -168.14995, y: 304.946}
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: Face to player
+  rotateSpeed: 50
+  animCrossFade: 0.1
+  chaseRotationLerpTime: 2
+--- !u!114 &-8301581025811783737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175ddf95313eb9d44924fb26deaa0c5c, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 4dc5c297e3b5b494e84e9e8ddfb79d17
+  Position: {x: -27.749973, y: -32.36}
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  Child: {fileID: -1117345180916584561}
+--- !u!114 &-1117345180916584561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a95d4c8869f6943bdfe49b6db6f511, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 04faab7a250d7ea46b4599216dce167f
+  Position: {x: 9.750034, y: 149.55002}
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  Children:
+  - {fileID: -8620563797450839315}
+  - {fileID: 5167048782457075074}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc07011cd47b63498f3fa50047e455d, type: 3}
+  m_Name: EnemyMageBehaviour
+  m_EditorClassIdentifier: 
+  RootNode: {fileID: -8301581025811783737}
+  TreeState: 0
+  Nodes:
+  - {fileID: -8301581025811783737}
+  - {fileID: -8620563797450839315}
+  - {fileID: 5167048782457075074}
+  - {fileID: -1117345180916584561}
+--- !u!114 &5167048782457075074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db4d6f785dd7d745b5cbd031625860e, type: 3}
+  m_Name: ChasePlayer
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 186cdc2ca74effb45970b3c2c94f60cb
+  Position: {x: 111.10335, y: 313}
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  chaseRotationLerpTime: 1.5
+  speed: 2
+  stopDistance: 2
