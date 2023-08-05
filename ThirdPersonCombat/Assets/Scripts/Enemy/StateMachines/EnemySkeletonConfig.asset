@@ -45,7 +45,7 @@ MonoBehaviour:
   TargetMinSpeedUpValue: 1.5
   TargetMaxSpeedUpValue: 3
   TargetBackDirChangeProbility: 0.1
-  TargetToAttackChangeRange: 2
+  TargetToAttackChangeRange: 1.25
   TargetToChaseChangeRange: 8
   GetHitAnimationTime: 0.7
   DeadAnimTime: 1.06

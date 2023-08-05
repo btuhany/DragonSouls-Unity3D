@@ -32,8 +32,8 @@ namespace UIControllers
             _slider.gameObject.SetActive(true);
             StopAllCoroutines();
             StartCoroutine(LookCamera(_timeDuration));
-            _slider.value = (float)newHealth / _health.MaxHealth;
-            _textHealth.SetText(newHealth + "/" + _health.MaxHealth);
+            _slider.value = (float)newHealth / _health.maxHealth;
+            _textHealth.SetText(newHealth + "/" + _health.maxHealth);
             _textDamage.SetText(_damageSum.ToString());
             StartCoroutine(DamageText(_timeDuration / 2));
         }

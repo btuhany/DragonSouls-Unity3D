@@ -1845,9 +1845,9 @@ GameObject:
   - component: {fileID: 6494932264427656613}
   - component: {fileID: 2622736940094571497}
   - component: {fileID: 1095210396577186076}
+  - component: {fileID: 1647817329}
   - component: {fileID: 1096273842}
   - component: {fileID: 1096273846}
-  - component: {fileID: 1647817329}
   - component: {fileID: 870582997287833273}
   m_Layer: 8
   m_Name: EnemySkeleton
@@ -1993,6 +1993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInvulnerable: 0
+  maxHealth: 100
   EnterHitPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1095210396577186076
 MonoBehaviour:
@@ -2007,6 +2008,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetPoint: {fileID: 6874704127163348152}
+--- !u!114 &1647817329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8676907167774288700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5395cd2f3ccb57c4b8981f241f241e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableImpact: 0
+  _gravityScale: 1
+  _impactMagnitude: 5
+  _impactLerpTime: 0.1
+  _enemyCheckTransform: {fileID: 1502987251}
+  _enemyCheckRadius: 1.5
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _groundCheckTransform: {fileID: 1395305594}
+  _checkRadius: 0.1
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!143 &1096273842
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2046,32 +2073,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1647817329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8676907167774288700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5395cd2f3ccb57c4b8981f241f241e3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravityScale: 1
-  _impactMagnitude: 5
-  _impactLerpTime: 0.1
-  _characterController: {fileID: 1096273842}
-  _enemyCheckTransform: {fileID: 1502987251}
-  _enemyCheckRadius: 1.5
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  _groundCheckTransform: {fileID: 1395305594}
-  _checkRadius: 0.1
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!195 &870582997287833273
 NavMeshAgent:
   m_ObjectHideFlags: 0

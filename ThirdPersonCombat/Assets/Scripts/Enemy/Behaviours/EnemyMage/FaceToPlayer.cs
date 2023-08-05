@@ -1,6 +1,5 @@
 using DG.Tweening;
 using States;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FaceToPlayer : ActionNode
@@ -41,7 +40,7 @@ public class FaceToPlayer : ActionNode
         }
         else
         {
-            agent.transform.DORotateQuaternion(Quaternion.LookRotation(dir), 100 * similarity / rotateSpeed).SetEase(Ease.InOutBack).onComplete = () =>
+            agent.transform.DORotateQuaternion(Quaternion.LookRotation(dir), 200 * similarity / rotateSpeed).SetEase(Ease.InOutBack).onComplete = () =>
             {
                 _isStartRotationEnded = true;
             };

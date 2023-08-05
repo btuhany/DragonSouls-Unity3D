@@ -91,12 +91,16 @@ namespace PlayerController
                 transform.SetParent(other.transform);
                 if (other.CompareTag("Enemy"))
                 {
-                    _currentEnemy = other.GetComponent<EnemyStateMachine>();
-                    _currentEnemy.ChangeState(_currentEnemy.SwordHitState);
-                    _currentEnemy.IsSwordOn= true;
-                    _currentEnemy.Sword = this;
-                    _isOnEnemy = true;
-                    _freezeElectricFX.gameObject.SetActive(true);
+                    if(other.TryGetComponent(out EnemyStateMachine enemy))
+                    {
+                        _currentEnemy = enemy;
+                        _currentEnemy.ChangeState(_currentEnemy.SwordHitState);
+                        _currentEnemy.IsSwordOn = true;
+                        _currentEnemy.Sword = this;
+                        _isOnEnemy = true;
+                        _freezeElectricFX.gameObject.SetActive(true);
+                    }
+
                 }
             }
         }

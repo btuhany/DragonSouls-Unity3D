@@ -18,7 +18,7 @@ namespace PlayerUI
 
         private void HandleOnHealthUpdated(int health, int damage)
         {
-            _slider.value = (float)health / _playerHealth.MaxHealth;
+            _slider.value = (float)health / _playerHealth.maxHealth;
         }
     }
 

@@ -5,15 +5,14 @@ namespace Combat
     public class Health : MonoBehaviour
     {
         public bool IsInvulnerable = false;
-        int _maxHealth = 100;
+        public int maxHealth = 100;
         private int _health;
         [HideInInspector] public Vector3 EnterHitPosition;
-        public int MaxHealth { get => _maxHealth; }
 
         public event System.Action<int,int> OnHealthUpdated;
         private void Start()
         {
-            _health = _maxHealth;
+            _health = maxHealth;
         }
 
         public void TakeDamage(int damage)
@@ -26,7 +25,7 @@ namespace Combat
 
         public void SetHealth(int value)
         {
-            _maxHealth = value;
+            maxHealth = value;
         }
     }
 }
