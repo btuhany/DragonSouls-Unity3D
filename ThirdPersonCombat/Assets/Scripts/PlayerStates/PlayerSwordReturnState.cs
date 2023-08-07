@@ -10,14 +10,14 @@ public class PlayerSwordReturnState : PlayerBaseState
 
     public PlayerSwordReturnState(PlayerStateMachine player) : base(player)
     {
-        _combat = player.CombatController;
+        _combat = player.combatController;
     }
     public override void Enter()
     {
         _combat.TryReturnSword();
         animationController.PlaySwordReturn();
 
-        if(stateMachine.PreviousState == stateMachine.UnarmedTargetState)
+        if(stateMachine.PreviousState == stateMachine.unarmedTargetState)
         {
             if (targetableCheck.TryTransferTarget())
             {
@@ -34,7 +34,7 @@ public class PlayerSwordReturnState : PlayerBaseState
         animationController.TargetStateSetFloats(inputReader.MovementOn2DAxis);
 
         //Cinemachine IsBlending doesn't work properly at start
-        if (!_isTargeted && stateMachine.CameraController.IsTargetCamActive) return;
+        if (!_isTargeted && stateMachine.cameraController.IsTargetCamActive) return;
 
         if (_isTargeted)
         {
@@ -44,7 +44,7 @@ public class PlayerSwordReturnState : PlayerBaseState
         }
         else
         {
-            if ((IsSprintHold || IsSprint) && stateMachine.Stamina.UseStamina(movement.SprintStaminaCost))
+            if ((IsSprintHold || IsSprint) && stateMachine.stamina.UseStamina(movement.SprintStaminaCost))
             {
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis.normalized), movement.ReturnSwordRunMovementSpeed, deltaTime);
             }
@@ -56,7 +56,7 @@ public class PlayerSwordReturnState : PlayerBaseState
 
             if (movementOn2DAxis.magnitude > 0f)
             {
-                if (stateMachine.CameraController.IsTransition)
+                if (stateMachine.cameraController.IsTransition)
                 {
                     return;
                 }
@@ -69,13 +69,13 @@ public class PlayerSwordReturnState : PlayerBaseState
         if(_combat.IsSwordReturned)
         {
             if (_isTargeted)
-                stateMachine.ChangeState(stateMachine.SwordTargetState);
+                stateMachine.ChangeState(stateMachine.swordTargetState);
             else
-                stateMachine.ChangeState(stateMachine.SwordFreeState);
+                stateMachine.ChangeState(stateMachine.swordFreeState);
         }
 
-        if (stateMachine.IsRoll)
-            stateMachine.ChangeState(stateMachine.RollState);
+        if (stateMachine.isRoll)
+            stateMachine.ChangeState(stateMachine.rollState);
     }
     public override void Exit()
     {

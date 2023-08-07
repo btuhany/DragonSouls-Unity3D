@@ -10,16 +10,16 @@ namespace States
         }
         public override void Enter()
         {
-            if (stateMachine.PreviousState == stateMachine.UnarmedTargetState || stateMachine.PreviousState == stateMachine.ReturnSwordState || stateMachine.PreviousState == stateMachine.AimState || stateMachine.PreviousState == stateMachine.RollState)
+            if (stateMachine.PreviousState == stateMachine.unarmedTargetState || stateMachine.PreviousState == stateMachine.returnSwordState || stateMachine.PreviousState == stateMachine.aimState || stateMachine.PreviousState == stateMachine.rollState)
             {
                 if (!targetableCheck.TryTransferTarget())
                 {
-                    stateMachine.ChangeState(stateMachine.SwordFreeState);
+                    stateMachine.ChangeState(stateMachine.swordFreeState);
                     return;
                 }
             }
-            if (stateMachine.PreviousState != stateMachine.SwordFreeState && stateMachine.PreviousState != stateMachine.ReturnSwordState &&
-                stateMachine.PreviousState != stateMachine.AimState && stateMachine.PreviousState != stateMachine.AimState && stateMachine.PreviousState != stateMachine.RollState) //else if
+            if (stateMachine.PreviousState != stateMachine.swordFreeState && stateMachine.PreviousState != stateMachine.returnSwordState &&
+                stateMachine.PreviousState != stateMachine.aimState && stateMachine.PreviousState != stateMachine.aimState && stateMachine.PreviousState != stateMachine.rollState) //else if
             {
                 animationController.PlayUnsheathSword();
                 animationController.TargetCombat(Weapon.Sword, false);
@@ -29,7 +29,7 @@ namespace States
                 animationController.TargetCombat(Weapon.Sword, true);
             }
             base.Enter();
-            if (stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsAttack)
+            if (stateMachine.PreviousState == stateMachine.rollState && stateMachine.rollState.IsAttack)
             {
                 LightAttack();
             }
@@ -45,7 +45,7 @@ namespace States
                 return;
             if (!targetableCheck.IsTargetInRange())
             {
-                stateMachine.ChangeState(stateMachine.SwordFreeState);
+                stateMachine.ChangeState(stateMachine.swordFreeState);
                 return;
             }
             base.StateTickActions(deltaTime);
@@ -53,16 +53,16 @@ namespace States
         protected override void HandleSheathEvent()
         {
             if (animationController.IsAttackPlaying) return;
-            stateMachine.ChangeState(stateMachine.UnarmedTargetState);
+            stateMachine.ChangeState(stateMachine.unarmedTargetState);
         }
 
         protected override void HandleOnTargetEvent()
         {
-            stateMachine.ChangeState(stateMachine.SwordFreeState);
+            stateMachine.ChangeState(stateMachine.swordFreeState);
         }
         protected override void HandleOnAimHoldEvent()
         {
-            stateMachine.ChangeState(stateMachine.AimState);
+            stateMachine.ChangeState(stateMachine.aimState);
         }
         protected override void HandleOnTargetSelect(Vector2 selectDir)
         {

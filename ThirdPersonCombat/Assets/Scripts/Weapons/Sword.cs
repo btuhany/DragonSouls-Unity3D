@@ -94,9 +94,9 @@ namespace PlayerController
                     if(other.TryGetComponent(out EnemyStateMachine enemy))
                     {
                         _currentEnemy = enemy;
-                        _currentEnemy.ChangeState(_currentEnemy.SwordHitState);
-                        _currentEnemy.IsSwordOn = true;
-                        _currentEnemy.Sword = this;
+                        _currentEnemy.ChangeState(_currentEnemy.swordHitState);
+                        _currentEnemy.isSwordOn = true;
+                        _currentEnemy.sword = this;
                         _isOnEnemy = true;
                         _freezeElectricFX.gameObject.SetActive(true);
                     }
@@ -144,9 +144,9 @@ namespace PlayerController
         {
             if(_isOnEnemy)
             {
-                _currentEnemy.ChangeState(_currentEnemy.ChaseState);
+                _currentEnemy.ChangeState(_currentEnemy.chaseState);
                 _freezeElectricFX.gameObject.SetActive(false);
-                _currentEnemy.IsSwordOn = false;
+                _currentEnemy.isSwordOn = false;
                 _isOnEnemy = false;
             }
             transform.parent = null;
@@ -201,7 +201,7 @@ namespace PlayerController
         public void DetachFromEnemy()
         {
             _freezeElectricFX.gameObject.SetActive(false);
-            _currentEnemy.IsSwordOn = false;
+            _currentEnemy.isSwordOn = false;
             _isOnEnemy = false;
         }
     }

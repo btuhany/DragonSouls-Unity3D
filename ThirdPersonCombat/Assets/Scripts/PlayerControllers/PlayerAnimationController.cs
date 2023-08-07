@@ -1,5 +1,6 @@
 using UnityEngine;
 using Combat;
+using System.Collections;
 
 namespace PlayerController
 {
@@ -44,6 +45,7 @@ namespace PlayerController
         private readonly int _isRollHash = Animator.StringToHash("Roll");
         private readonly int _isFastRollHash = Animator.StringToHash("FastRoll");
 
+        private readonly int _getHitAnim = Animator.StringToHash("PlayerGetHit");
         public void PlaySetFreeLookBlend()
         {
             _anim.CrossFadeInFixedTime(_freeLookBlendTreeHash, 0.1f);
@@ -162,6 +164,35 @@ namespace PlayerController
         public void PlayFastRoll()
         {
             _anim.CrossFadeInFixedTime(_isFastRollHash, 0.1f);
+        }
+        
+        public void PlayGetHit()
+        {
+            if (_isGetHitPlaying) return;
+            _isGetHitPlaying = true;
+            _anim.CrossFadeInFixedTime(_getHitAnim, 0.1f);
+            _anim.SetLayerWeight(1, 0.5f);
+            StopAllCoroutines();
+            StartCoroutine(ResetWeight(1, 0.5f));
+        }
+        WaitForSeconds _resetTime = new WaitForSeconds(1.0f);
+        bool _isGetHitPlaying = false;
+        private IEnumerator ResetWeight(int index, float startValue)
+        {
+            yield return _resetTime;
+            float elapsed = 0f;
+            float duration = 1.0f;
+            float value = startValue;
+            while (elapsed < duration)
+            {
+                float t = Mathf.Clamp01(elapsed / duration);
+                value = Mathf.Lerp(value, 0f, t);
+                _anim.SetLayerWeight(1, value);
+                elapsed += Time.unscaledDeltaTime;
+                yield return null;
+            }
+            _isGetHitPlaying = false;
+            yield return null;
         }
     }
 }

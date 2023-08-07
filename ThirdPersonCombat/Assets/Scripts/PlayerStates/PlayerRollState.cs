@@ -19,7 +19,7 @@ public class PlayerRollState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.Health.IsInvulnerable = true;
+        stateMachine.health.IsInvulnerable = true;
         IsTargeted = false;
         AimHolded = false;
         IsAttack = false;
@@ -35,7 +35,7 @@ public class PlayerRollState : PlayerBaseState
             _rollMovement = inputReader.MovementOn2DAxis.normalized;
         }
         
-        if(stateMachine.PreviousState == stateMachine.SwordTargetState || stateMachine.PreviousState == stateMachine.UnarmedTargetState)
+        if(stateMachine.PreviousState == stateMachine.swordTargetState || stateMachine.PreviousState == stateMachine.unarmedTargetState)
         {
             if(targetableCheck.TryTransferTarget())
             {
@@ -43,15 +43,15 @@ public class PlayerRollState : PlayerBaseState
             }
             else
             {
-                if (stateMachine.PreviousState == stateMachine.SwordTargetState)
-                    stateMachine.PreviousState = stateMachine.SwordFreeState;
+                if (stateMachine.PreviousState == stateMachine.swordTargetState)
+                    stateMachine.PreviousState = stateMachine.swordFreeState;
                 else
-                    stateMachine.PreviousState = stateMachine.UnarmedFreeState;
+                    stateMachine.PreviousState = stateMachine.unarmedFreeState;
             }
         }
         
 
-        if (stateMachine.PreviousState != stateMachine.AimState)
+        if (stateMachine.PreviousState != stateMachine.aimState)
         {
             animationController.PlayRoll();
             RotateCharacter(movement.CamRelativeMotionVector(_rollMovement), movement.RollStateRotateTime);
@@ -59,7 +59,7 @@ public class PlayerRollState : PlayerBaseState
         }
         else
         {
-            if(stateMachine.AimState.IsTargeted)
+            if(stateMachine.aimState.IsTargeted)
             {
                 if (targetableCheck.TryTransferTarget())
                 {
@@ -82,7 +82,7 @@ public class PlayerRollState : PlayerBaseState
         {
             if(_timeCounter > movement.FastRollDuration)
             {
-                if (_nextStateRoll && stateMachine.Stamina.UseStamina(movement.RollStaminaCost))
+                if (_nextStateRoll && stateMachine.stamina.UseStamina(movement.RollStaminaCost))
                 {
                     Exit();
                     Enter();
@@ -90,13 +90,13 @@ public class PlayerRollState : PlayerBaseState
                 }
                 if (_aimCancelled)
                 {
-                    if (stateMachine.AimState.IsTargeted)
+                    if (stateMachine.aimState.IsTargeted)
                     {
-                        stateMachine.ChangeState(stateMachine.SwordTargetState);
+                        stateMachine.ChangeState(stateMachine.swordTargetState);
                     }
                     else
                     {
-                        stateMachine.ChangeState(stateMachine.SwordFreeState);
+                        stateMachine.ChangeState(stateMachine.swordFreeState);
                     }
                 }
                 else
@@ -112,7 +112,7 @@ public class PlayerRollState : PlayerBaseState
         {
             if (_timeCounter > movement.RollDuration)
             {
-                if (_nextStateRoll && stateMachine.Stamina.UseStamina(movement.RollStaminaCost))
+                if (_nextStateRoll && stateMachine.stamina.UseStamina(movement.RollStaminaCost))
                 {
                     Exit();
                     Enter();
@@ -121,8 +121,8 @@ public class PlayerRollState : PlayerBaseState
                 //stateMachine.IsRoll = false;
                 if(AimHolded)
                 {
-                    stateMachine.AimState.IsTargeted = IsTargeted;
-                    stateMachine.ChangeState(stateMachine.AimState);
+                    stateMachine.aimState.IsTargeted = IsTargeted;
+                    stateMachine.ChangeState(stateMachine.aimState);
                     return;
                 }
 
@@ -137,7 +137,7 @@ public class PlayerRollState : PlayerBaseState
     public override void Exit()
     {
         targetableCheck.ClearTarget();
-        stateMachine.Health.IsInvulnerable = false;
+        stateMachine.health.IsInvulnerable = false;
         _nextStateRoll = false;
         if (IsFastRoll)
         {
@@ -147,18 +147,18 @@ public class PlayerRollState : PlayerBaseState
         {
             RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), movement.RollStateRotateTime);
         }
-        stateMachine.IsRoll = false;
+        stateMachine.isRoll = false;
         base.Exit();
     }
     protected override void HandleOnHeavyAttackEvent()
     {
-        if (stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
+        if (stateMachine.stamina.UseStamina(movement.HeavyAttackStaminaCost))
             IsAttack = true;
     }
 
     protected override void HandleOnLightAttackEvent()
     {
-        if (stateMachine.Stamina.UseStamina(movement.LightAttackStaminaCost))
+        if (stateMachine.stamina.UseStamina(movement.LightAttackStaminaCost))
             IsAttack = true;
     }
 

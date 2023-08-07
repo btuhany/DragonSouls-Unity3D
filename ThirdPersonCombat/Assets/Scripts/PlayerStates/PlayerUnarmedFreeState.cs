@@ -13,7 +13,7 @@ namespace States
         }
         public override void Enter()
         {
-            if(stateMachine.PreviousState == stateMachine.SwordFreeState || stateMachine.PreviousState == stateMachine.SwordTargetState)
+            if(stateMachine.PreviousState == stateMachine.swordFreeState || stateMachine.PreviousState == stateMachine.swordTargetState)
             {
                 animationController.PlaySheathSword();
                 animationController.FreeCombat(weapon, false);
@@ -23,7 +23,7 @@ namespace States
                 entryAttack = currentEntryAttack;
                 _isSheath = true;
             }
-            else if(stateMachine.PreviousState == stateMachine.AimState)
+            else if(stateMachine.PreviousState == stateMachine.aimState)
             {
                 _isSheath = false;
                 animationController.FreeCombat(weapon, false);
@@ -32,10 +32,10 @@ namespace States
                 base.Enter();
                 entryAttack = currentEntryAttack;
             }
-            else if(stateMachine.PreviousState == stateMachine.RollState)
+            else if(stateMachine.PreviousState == stateMachine.rollState)
             {
                 _isSheath = false;
-                if (stateMachine.RollState.IsAttack)
+                if (stateMachine.rollState.IsAttack)
                 {
                     entryAttack = true;
                 }
@@ -70,7 +70,7 @@ namespace States
             }
             Vector2 movementOn2DAxis = inputReader.MovementOn2DAxis;
 
-            if ((IsSprintHold || IsSprint) && stateMachine.Stamina.UseStamina(movement.SprintStaminaCost))
+            if ((IsSprintHold || IsSprint) && stateMachine.stamina.UseStamina(movement.SprintStaminaCost))
             {
                 animationController.SprintSetFloats(movementOn2DAxis);
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.CombatSprintSpeed, deltaTime);
@@ -83,7 +83,7 @@ namespace States
 
             if (movementOn2DAxis.magnitude > 0f)
             {
-                if (stateMachine.CameraController.IsTransition) 
+                if (stateMachine.cameraController.IsTransition) 
                 {
                     return;
                 }
@@ -91,24 +91,24 @@ namespace States
             }
             HandleSprintControl();
 
-            if (stateMachine.IsRoll)
-                stateMachine.ChangeState(stateMachine.RollState);
+            if (stateMachine.isRoll)
+                stateMachine.ChangeState(stateMachine.rollState);
         }
         protected override void HandleOnTargetEvent()
         {
             if (!targetableCheck.TrySelectTarget()) return;
-            stateMachine.ChangeState(stateMachine.UnarmedTargetState);
+            stateMachine.ChangeState(stateMachine.unarmedTargetState);
         }
 
         protected override void HandleSheathEvent()
         {
             if (animationController.IsAttackPlaying || !_combat.IsSwordReturned) return;
-            stateMachine.ChangeState(stateMachine.SwordFreeState);
+            stateMachine.ChangeState(stateMachine.swordFreeState);
         }
         protected override void HandleOnWeaponReturn()
         {
             if (_combat.IsSwordReturned) return;
-            stateMachine.ChangeState(stateMachine.ReturnSwordState);
+            stateMachine.ChangeState(stateMachine.returnSwordState);
         }
     }
 }

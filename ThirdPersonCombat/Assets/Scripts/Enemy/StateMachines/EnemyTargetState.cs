@@ -26,8 +26,8 @@ namespace States
 
         public EnemyTargetState(EnemyStateMachine enemy) : base(enemy)
         {
-            _movement = enemy.Movement;
-            _config = enemy.Config;
+            _movement = enemy.movementController;
+            _config = enemy.config;
             _playerTargetTransform = PlayerStateMachine.Instance.transform;
         }
 

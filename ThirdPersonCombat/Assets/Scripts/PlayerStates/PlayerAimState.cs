@@ -14,16 +14,16 @@ namespace States
         public bool IsTargeted = false;
         public PlayerAimState(PlayerStateMachine player) : base(player)
         {
-            _combat = player.CombatController;
+            _combat = player.combatController;
         }
 
         public override void Enter()
         {
-            if(stateMachine.PreviousState != stateMachine.RollState) 
+            if(stateMachine.PreviousState != stateMachine.rollState) 
             {
                 IsTargeted = false;
             }
-            if (stateMachine.PreviousState == stateMachine.SwordTargetState || (stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsTargeted))
+            if (stateMachine.PreviousState == stateMachine.swordTargetState || (stateMachine.PreviousState == stateMachine.rollState && stateMachine.rollState.IsTargeted))
             {
                 if (targetableCheck.TryTransferTarget())
                 {
@@ -31,12 +31,12 @@ namespace States
                     IsTargeted = true;
                 }
             }
-            if (!stateMachine.CameraController.IsTransition)
+            if (!stateMachine.cameraController.IsTransition)
             {
-                if (!(stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsFastRoll))
+                if (!(stateMachine.PreviousState == stateMachine.rollState && stateMachine.rollState.IsFastRoll))
                 {
                     LookRotationCameraForward();
-                    stateMachine.CameraController.AimCamSetVerticalRotation(Camera.main.transform.rotation.eulerAngles.x);
+                    stateMachine.cameraController.AimCamSetVerticalRotation(Camera.main.transform.rotation.eulerAngles.x);
                 }
                 
             }
@@ -54,9 +54,9 @@ namespace States
                 if (_animationTime > _combat.ThrowAttack.attackDuration + _combat.ThrowAttack.comboPermissionDelay)
                 {
                     if(IsTargeted)
-                        stateMachine.ChangeState(stateMachine.UnarmedTargetState);
+                        stateMachine.ChangeState(stateMachine.unarmedTargetState);
                     else
-                        stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+                        stateMachine.ChangeState(stateMachine.unarmedFreeState);
                     return;
                 }
 
@@ -69,6 +69,7 @@ namespace States
                 else
                 {
                     RotateAround(Vector3.up, inputReader.CameraMovementOn2DAxis.x * movement.AimStateCameraHorizontalRotationPower);
+                    stateMachine.cameraController.AimCamRotation(inputReader.CameraMovementOn2DAxis.y * movement.AimStateCameraVerticalRotationPower);
                 }
 
                 return;
@@ -79,7 +80,7 @@ namespace States
             if (IsTargeted)
             {
                 Vector3 relativeVector = targetTransform.position - Camera.main.transform.position;
-                stateMachine.CameraController.SetAimCamTarget(targetTransform, relativeVector);
+                stateMachine.cameraController.SetAimCamTarget(targetTransform, relativeVector);
                 relativeVector.y = 0f;
                 RotateCharacter(relativeVector, deltaTime);
                 MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
@@ -87,19 +88,19 @@ namespace States
             }
             else
             {
-                stateMachine.CameraController.ResetAimCamTarget();
+                stateMachine.cameraController.ResetAimCamTarget();
                 MoveCharacter(movement.CamRelativeMotionVector(movementVector), movement.AimMovementSpeed, deltaTime);
 
                 //Character horizontal rotation
                 RotateAround(Vector3.up, inputReader.CameraMovementOn2DAxis.x * movement.AimStateCameraHorizontalRotationPower);
 
                 //Camera vertical rotation
-                stateMachine.CameraController.AimCamRotation(inputReader.CameraMovementOn2DAxis.y * movement.AimStateCameraVerticalRotationPower);
+                stateMachine.cameraController.AimCamRotation(inputReader.CameraMovementOn2DAxis.y * movement.AimStateCameraVerticalRotationPower);
 
                 animationController.TargetStateSetFloats(inputReader.CameraMovementOn2DAxis + movementVector);
             }
-            if (stateMachine.IsRoll)
-                stateMachine.ChangeState(stateMachine.RollState);
+            if (stateMachine.isRoll)
+                stateMachine.ChangeState(stateMachine.rollState);
         }
 
         public override void Exit()
@@ -113,7 +114,7 @@ namespace States
         }
         protected override void HandleOnHeavyAttackEvent()
         {
-            if(stateMachine.Stamina.UseStamina(movement.SwordThrowStaminaCost))
+            if(stateMachine.stamina.UseStamina(movement.SwordThrowStaminaCost))
             {
                 ThrowSword();
                 _isThrowed = true;
@@ -122,7 +123,7 @@ namespace States
 
         protected override void HandleOnLightAttackEvent()
         {
-            if (stateMachine.Stamina.UseStamina(movement.SwordThrowStaminaCost))
+            if (stateMachine.stamina.UseStamina(movement.SwordThrowStaminaCost))
             {
                 ThrowSword();
                 _isThrowed = true;
@@ -155,9 +156,9 @@ namespace States
             if (!_isThrowed)
             {
                 if (IsTargeted)
-                    stateMachine.ChangeState(stateMachine.SwordTargetState);
+                    stateMachine.ChangeState(stateMachine.swordTargetState);
                 else
-                    stateMachine.ChangeState(stateMachine.SwordFreeState);
+                    stateMachine.ChangeState(stateMachine.swordFreeState);
             }
         }
 

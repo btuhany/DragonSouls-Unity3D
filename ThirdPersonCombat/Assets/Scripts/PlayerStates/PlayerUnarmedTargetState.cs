@@ -11,15 +11,15 @@ public class PlayerUnarmedTargetState : PlayerCombatTargetState
     }
     public override void Enter()
     {
-        if(stateMachine.PreviousState == stateMachine.SwordTargetState || stateMachine.PreviousState == stateMachine.AimState || stateMachine.PreviousState == stateMachine.RollState)
+        if(stateMachine.PreviousState == stateMachine.swordTargetState || stateMachine.PreviousState == stateMachine.aimState || stateMachine.PreviousState == stateMachine.rollState)
         {
             if(!targetableCheck.TryTransferTarget())
             {
-                stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+                stateMachine.ChangeState(stateMachine.unarmedFreeState);
                 return;
             }
         }
-        if (stateMachine.PreviousState == stateMachine.SwordFreeState || stateMachine.PreviousState == stateMachine.SwordTargetState)
+        if (stateMachine.PreviousState == stateMachine.swordFreeState || stateMachine.PreviousState == stateMachine.swordTargetState)
         {
             animationController.PlaySheathSword();
             animationController.TargetCombat(Weapon.Unarmed, false);
@@ -29,7 +29,7 @@ public class PlayerUnarmedTargetState : PlayerCombatTargetState
             animationController.TargetCombat(Weapon.Unarmed);
         }
         base.Enter();
-        if (stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsAttack)
+        if (stateMachine.PreviousState == stateMachine.rollState && stateMachine.rollState.IsAttack)
         {
             LightAttack();
         }
@@ -43,7 +43,7 @@ public class PlayerUnarmedTargetState : PlayerCombatTargetState
     {
         if (!targetableCheck.IsTargetInRange())
         {
-            stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+            stateMachine.ChangeState(stateMachine.unarmedFreeState);
             return;
         }
         base.StateTickActions(deltaTime);
@@ -51,18 +51,18 @@ public class PlayerUnarmedTargetState : PlayerCombatTargetState
     protected override void HandleSheathEvent()
     {
         if (animationController.IsAttackPlaying) return;
-        stateMachine.ChangeState(stateMachine.SwordTargetState);
+        stateMachine.ChangeState(stateMachine.swordTargetState);
     }
 
     protected override void HandleOnTargetEvent()
     {
-        stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+        stateMachine.ChangeState(stateMachine.unarmedFreeState);
     }
 
     protected override void HandleOnWeaponReturn()
     {
         if (_combat.IsSwordReturned) return;
-        stateMachine.ChangeState(stateMachine.ReturnSwordState);
+        stateMachine.ChangeState(stateMachine.returnSwordState);
     }
 
     protected override void HandleOnTargetSelect(Vector2 selectDir)

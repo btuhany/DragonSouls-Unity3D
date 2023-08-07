@@ -5,26 +5,29 @@ using Combat;
 using UnityEngine.AI;
 using System.Collections;
 using PlayerController;
+using Sounds;
 
 public class EnemyStateMachine : StateMachine
 {
     [SerializeField] private bool _debug = false;
-    public EnemyAnimationController AnimationController;
-    public EnemyConfig Config;
-    public NavMeshAgent NavmeshAgent;
-    public EnemyMovementController Movement;
-    public EnemyCombatController Combat;
-    public EnemyForceReceiver EnemyForceReceiver;
 
-    public EnemyIdleState IdleState;
-    public EnemyChaseState ChaseState;
-    public EnemyAttackState AttackState;
-    public EnemyTargetState TargetState;
-    public EnemyDeadState DeadState;
-    public EnemyGetHitState GetHitState;
-    public EnemySwordPierced SwordHitState;
+    public EnemyAnimationController animController;
+    public EnemyConfig config;
+    public NavMeshAgent navmeshAgent;
+    public EnemyMovementController movementController;
+    public EnemyCombatController combatController;
+    public EnemyForceReceiver forceReceiver;
+    public SkeletonSoundController sound;
 
-    public Health Health;
+    public EnemyIdleState idleState;
+    public EnemyChaseState chaseState;
+    public EnemyAttackState attackState;
+    public EnemyTargetState targetState;
+    public EnemyDeadState deadState;
+    public EnemyGetHitState getHitState;
+    public EnemySwordPierced swordHitState;
+
+    public Health health;
 
     public event System.Action OnDead; 
 
@@ -32,37 +35,37 @@ public class EnemyStateMachine : StateMachine
 
     private bool _isInAttackConditionCheck = false;
     private bool _isInChaseConditionCheck = false;
-    public bool IsSwordOn = false;
-    public Sword Sword;
-    public bool IsDead = false;
+    [HideInInspector] public bool isSwordOn = false;
+    [HideInInspector] public Sword sword;
+    [HideInInspector] public bool isDead = false;
     private void Awake()
     {
         _targetController = GetComponent<Targetable>();
-        Health = GetComponent<Health>();
-        AnimationController = GetComponent<EnemyAnimationController>();
-        Movement = GetComponent<EnemyMovementController>();
-        Combat = GetComponent<EnemyCombatController>();
-        EnemyForceReceiver = GetComponent<EnemyForceReceiver>();
+        health = GetComponent<Health>();
+        animController = GetComponent<EnemyAnimationController>();
+        movementController = GetComponent<EnemyMovementController>();
+        combatController = GetComponent<EnemyCombatController>();
+        forceReceiver = GetComponent<EnemyForceReceiver>();
 
-        IdleState = new EnemyIdleState(this);
-        ChaseState = new EnemyChaseState(this);
-        AttackState = new EnemyAttackState(this);
-        TargetState = new EnemyTargetState(this);
-        DeadState = new EnemyDeadState(this);
-        GetHitState = new EnemyGetHitState(this);
-        SwordHitState = new EnemySwordPierced(this);
+        idleState = new EnemyIdleState(this);
+        chaseState = new EnemyChaseState(this);
+        attackState = new EnemyAttackState(this);
+        targetState = new EnemyTargetState(this);
+        deadState = new EnemyDeadState(this);
+        getHitState = new EnemyGetHitState(this);
+        swordHitState = new EnemySwordPierced(this);
 
-        NavmeshAgent.isStopped = true;
+        navmeshAgent.isStopped = true;
     }
     private void OnEnable()
     {
-        Health.OnHealthUpdated += HandleOnHealthUpdated;
-        Health.SetHealth(Config.Health);
-        ChangeState(ChaseState);
+        health.OnHealthUpdated += HandleOnHealthUpdated;
+        health.SetHealth(config.Health);
+        ChangeState(idleState);
     }
     private void Update()
     {
-        if (IsDead) { return; }
+        if (isDead) { return; }
         UpdateState(Time.deltaTime);
 
         if (_debug)
@@ -71,7 +74,7 @@ public class EnemyStateMachine : StateMachine
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, Config.MinIdleRange);
+        Gizmos.DrawWireSphere(transform.position, config.MinIdleRange);
     }
 
     public bool IsPlayerInRange(float range)
@@ -99,23 +102,23 @@ public class EnemyStateMachine : StateMachine
     {
         if (health <= 0)
         {
-            ChangeState(DeadState);
+            ChangeState(deadState);
             OnDead?.Invoke();
             _targetController.ResetTargetable();
         }
         else
         {
-            if (_currentState == GetHitState)
-                GetHitState.GetHitAgain();
+            if (_currentState == getHitState)
+                getHitState.GetHitAgain();
             else
-                ChangeState(GetHitState);
+                ChangeState(getHitState);
         }
     }
     private IEnumerator CheckAttackStateConditions(WaitForSeconds waitTime, float range)
     {
         yield return waitTime;
         if (IsPlayerInRange(range))
-            ChangeState(AttackState);
+            ChangeState(attackState);
         _isInAttackConditionCheck = false;
         yield return null;
     }
@@ -123,7 +126,7 @@ public class EnemyStateMachine : StateMachine
     {
         yield return waitTime;
         if (IsPlayerInRange(range))
-            ChangeState(ChaseState);
+            ChangeState(chaseState);
         _isInChaseConditionCheck = false;
         yield return null;
     }

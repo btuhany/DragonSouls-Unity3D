@@ -14,10 +14,10 @@ public abstract class EnemyBaseState : State
     public EnemyBaseState(EnemyStateMachine enemy) 
     {
         this.stateMachine = enemy;
-        this.animationController = enemy.AnimationController;
-        this.config = enemy.Config;
-        this.navmeshAgent = enemy.NavmeshAgent;
-        this.movement = enemy.Movement;
+        this.animationController = enemy.animController;
+        this.config = enemy.config;
+        this.navmeshAgent = enemy.navmeshAgent;
+        this.movement = enemy.movementController;
     }
 
 }

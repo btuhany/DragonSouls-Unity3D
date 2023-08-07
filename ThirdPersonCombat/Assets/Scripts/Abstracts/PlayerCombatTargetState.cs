@@ -25,7 +25,7 @@ namespace States
 
         protected override void StateTickActions(float deltaTime)
         {
-            if ((IsSprintHold || IsSprint) && stateMachine.Stamina.UseStamina(movement.SprintStaminaCost))
+            if ((IsSprintHold || IsSprint) && stateMachine.stamina.UseStamina(movement.SprintStaminaCost))
             {
                 RotateCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis), deltaTime);
                 MoveCharacter(movement.CamRelativeMotionVector(inputReader.MovementOn2DAxis.normalized), movement.TargetRunSpeed, deltaTime);
@@ -38,8 +38,8 @@ namespace States
                 MoveCharacter(MotionVectorAroundTarget(), movement.TargetMovementSpeed, deltaTime);
             }
             HandleSprintControl();
-            if (stateMachine.IsRoll)
-                stateMachine.ChangeState(stateMachine.RollState);
+            if (stateMachine.isRoll)
+                stateMachine.ChangeState(stateMachine.rollState);
         }
 
         private Vector3 MotionVectorAroundTarget()

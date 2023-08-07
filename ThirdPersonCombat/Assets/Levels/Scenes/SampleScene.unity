@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 9df265e2db4d862498ec99e08c8834e8, type: 2}
+--- !u!224 &158158868 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1459652478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &205203700
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 266017366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,6 +933,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366638970}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1368191713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1368191714}
+  m_Layer: 8
+  m_Name: TargetPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1368191714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368191713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.983, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1673206227}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1398469392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,7 +1246,176 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInvulnerable: 0
+  maxHealth: 100
   EnterHitPosition: {x: 0, y: 0, z: 0}
+--- !u!1001 &1459652478
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1673206227}
+    m_Modifications:
+    - target: {fileID: 1086405357, guid: 3f3542543d1a65f4ba89c767ff9374ab, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318926065029036, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318926770942850, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927033681024, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927033681027, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927033681027, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481472, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyHealthBarCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481472, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481475, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927148481535, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: _health
+      value: 
+      objectReference: {fileID: 1673206236}
+    - target: {fileID: 3813318927404257258, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813318927484715258, guid: 3f3542543d1a65f4ba89c767ff9374ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f3542543d1a65f4ba89c767ff9374ab, type: 3}
 --- !u!1 &1468496587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,17 +1527,18 @@ GameObject:
   - component: {fileID: 1673206233}
   - component: {fileID: 1673206234}
   - component: {fileID: 1673206235}
+  - component: {fileID: 1673206236}
+  - component: {fileID: 1673206237}
   - component: {fileID: 1673206230}
   - component: {fileID: 1673206232}
   - component: {fileID: 1673206231}
-  - component: {fileID: 1673206236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mage
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1673206227
 Transform:
   m_ObjectHideFlags: 0
@@ -1340,12 +1547,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673206226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.88, y: -0.1280005, z: -11.590791}
+  m_LocalPosition: {x: -4.37, y: -0.1280005, z: -19.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8849681961683486374}
   - {fileID: 266017366}
+  - {fileID: 158158868}
+  - {fileID: 1368191714}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1380,6 +1589,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   forceReceiver: {fileID: 0}
   combat: {fileID: 0}
+  health: {fileID: 0}
   playerTransform: {fileID: 0}
 --- !u!95 &1673206230
 Animator:
@@ -1529,7 +1739,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInvulnerable: 0
+  maxHealth: 200
   EnterHitPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &1673206237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673206226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfab125736dbc634d9e92c20480e5ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetPoint: {fileID: 1368191714}
 --- !u!1 &1770230019 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5652237702366931658, guid: 450e79c70f5006b459f9a693891651bc,
@@ -2418,7 +2642,7 @@ PrefabInstance:
     - target: {fileID: 504054623537585359, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
       propertyPath: m_Pan
-      value: -6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5652237701393191375, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
@@ -2483,12 +2707,12 @@ PrefabInstance:
     - target: {fileID: 5652237701446456889, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008370028
+      value: -0.000000025108498
       objectReference: {fileID: 0}
     - target: {fileID: 5652237701446456889, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000019928634
+      value: -0.000000005978214
       objectReference: {fileID: 0}
     - target: {fileID: 5652237701598990202, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
@@ -2598,7 +2822,7 @@ PrefabInstance:
     - target: {fileID: 5652237701863550248, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 2.180772
+      value: 1.453393
       objectReference: {fileID: 0}
     - target: {fileID: 5652237701863550248, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
@@ -2783,7 +3007,7 @@ PrefabInstance:
     - target: {fileID: 5652237702694202791, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 2.180772
+      value: 1.453393
       objectReference: {fileID: 0}
     - target: {fileID: 5652237702694202791, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
@@ -2793,7 +3017,7 @@ PrefabInstance:
     - target: {fileID: 5652237702881225913, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 2.180772
+      value: 1.453393
       objectReference: {fileID: 0}
     - target: {fileID: 5652237702881225913, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
@@ -2810,6 +3034,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1096273842, guid: 27eda3e35cc8a47409d436cbb8a0f13a, type: 3}
+      propertyPath: m_Height
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096273842, guid: 27eda3e35cc8a47409d436cbb8a0f13a, type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096273842, guid: 27eda3e35cc8a47409d436cbb8a0f13a, type: 3}
+      propertyPath: m_Center.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096273842, guid: 27eda3e35cc8a47409d436cbb8a0f13a, type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 1647817329, guid: 27eda3e35cc8a47409d436cbb8a0f13a, type: 3}
       propertyPath: _checkRadius
       value: 0.5
@@ -2827,7 +3067,7 @@ PrefabInstance:
     - target: {fileID: 799302163229331243, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.69
+      value: -0.105
       objectReference: {fileID: 0}
     - target: {fileID: 799302163229331243, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
         type: 3}
@@ -2869,6 +3109,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5480919385194461741, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5877180588069845091, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2889,6 +3134,126 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _dead.Pitch
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _bones.Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _dead.Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _bones.Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _getHit.Pitch
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _getHit.Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _footSteps.Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _footSteps.Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _dead.AudioClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _bones.AudioClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _getHit.AudioClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _dead.AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ed617fa7bbf0c1488bf03e29ef0a5cf, type: 3}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _dead.AudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 24ed1855c6cb8e94e8a6d7e8eb7c2d1e, type: 3}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _bones.AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fe03db26c3992942a5cf2b0f104ebae, type: 3}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _bones.AudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d0e36aa510ded448930c239674141dd, type: 3}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _bones.AudioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: f47a3b704b3b76245b8a65582a4f1c4a, type: 3}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _footSteps.AudioClips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _getHit.AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 18abc09442ba41f48817c7f548eae51d, type: 3}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _getHit.AudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: c833aed36f8b64a49be6071571486830, type: 3}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _footSteps.AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ea11a2d13d536e4e8441a0f5895995c, type: 3}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _footSteps.AudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 203ac8b6f07070e4f93f1c1a6fff06c3, type: 3}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _footSteps.AudioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ac6649006dbee9e4685752e124111da7, type: 3}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _footSteps.AudioClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: f42914d98b070f741b2feee96a2988ee, type: 3}
+    - target: {fileID: 9014963873137789674, guid: 27eda3e35cc8a47409d436cbb8a0f13a,
+        type: 3}
+      propertyPath: _footSteps.AudioClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: feb62160ad1f8334ab037017b843d162, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27eda3e35cc8a47409d436cbb8a0f13a, type: 3}
 --- !u!1001 &6532161815652893474
@@ -10244,7 +10609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849580744079600076}
   - component: {fileID: 8878700462511953490}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body84
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10260,7 +10625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850082063455531466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_shtandart_centre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10276,7 +10641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849916388479072714}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10292,7 +10657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849275103628765662}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10308,7 +10673,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849265384200699594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10324,7 +10689,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849939601902271766}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandRing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10340,7 +10705,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849492025229619270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandIndex1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10356,7 +10721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849486045286840332}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftElbowEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10372,7 +10737,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849702182919937514}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10388,7 +10753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849909435090092358}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftShoulderEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10405,7 +10770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849629601613914784}
   - component: {fileID: 8878374128016213806}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body58
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10421,7 +10786,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850027690192020664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10438,7 +10803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849214224611499142}
   - component: {fileID: 8879309513433930258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body69
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10454,7 +10819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849168851623159710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandThumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10471,7 +10836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849354954136579484}
   - component: {fileID: 8878410986277524046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body123
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10487,7 +10852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850123280804630530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10503,7 +10868,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849296090069570840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10519,7 +10884,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849293626433040522}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandRing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10535,7 +10900,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849837987050274974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10551,7 +10916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849017798728540054}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10567,7 +10932,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849936974139283324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10583,7 +10948,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849926898765228966}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandMiddle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10600,7 +10965,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849825442012716212}
   - component: {fileID: 8879251668653040474}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body117
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10616,7 +10981,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849875305912029724}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10633,7 +10998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849683255730882404}
   - component: {fileID: 8879203319413762416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10649,7 +11014,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849630399713362868}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10666,7 +11031,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849804794191971822}
   - component: {fileID: 8878330887771893954}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10682,7 +11047,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849536888504331016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10698,7 +11063,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849913146419173290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_shtandart_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10714,7 +11079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849243346642156936}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10730,7 +11095,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849561492193805288}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10747,7 +11112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849974535809931052}
   - component: {fileID: 8878430816567023712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body98
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10763,7 +11128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849662126231842496}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_front_shield_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10779,7 +11144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849817910531487050}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10795,7 +11160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849583407271336268}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandIndex1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10811,7 +11176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849787554106674172}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandMiddle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10827,7 +11192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849589649831078258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_right_front_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10843,7 +11208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849969599391110828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10859,7 +11224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849907271228860886}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10875,7 +11240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850003919102016686}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandPinky2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10891,7 +11256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849858493043312314}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandRing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10907,7 +11272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849963997719567114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandMiddle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10924,7 +11289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849445128881099624}
   - component: {fileID: 8878441123893747666}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body70
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10940,7 +11305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849793468605659950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_scull_mid_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10956,7 +11321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849328394504745134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_scull_right_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10972,7 +11337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849181989335873882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10988,7 +11353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849206248316267474}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_back_colchuga_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11004,7 +11369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849149287758105290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11020,7 +11385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849729800604598586}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandThumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11036,7 +11401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849242123507447970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandIndex2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11052,7 +11417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849354090752212468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11069,7 +11434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849890257478587056}
   - component: {fileID: 8878963223016049474}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11086,7 +11451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849088886097172056}
   - component: {fileID: 8878666999670683520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11102,7 +11467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850022215636509402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11118,7 +11483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850091142981679608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11134,7 +11499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849438351988528578}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_right_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11150,7 +11515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849455787713862746}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandPinky1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11166,7 +11531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849827744368443682}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11183,7 +11548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849982003122024148}
   - component: {fileID: 8878776277793009728}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body73
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11199,7 +11564,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849178291104395072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11215,7 +11580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849568211840789500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11232,7 +11597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849108058753167864}
   - component: {fileID: 8878556247774610148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body89
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11248,7 +11613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849587646970264962}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_front_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11264,7 +11629,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850130090232928606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11280,7 +11645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849596384906758802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11296,7 +11661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850045159381252658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11312,7 +11677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849569924767981044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHipEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11329,7 +11694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849567594632055134}
   - component: {fileID: 8878940114829751874}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body78
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11346,7 +11711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849703250040047730}
   - component: {fileID: 8879306571379461988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body118
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11362,7 +11727,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849603317911138112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11378,7 +11743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849068631429881524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandThumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11394,7 +11759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849334668627273568}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandPinky1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11411,7 +11776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849297574779143482}
   - component: {fileID: 8879196887937224236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11427,7 +11792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849668915291001430}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11443,7 +11808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849823824360717828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11459,7 +11824,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849303569444712988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandPinky3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11475,7 +11840,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849681961683486374}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11491,7 +11856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849034205180211580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11507,7 +11872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850047450019509946}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightWristEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11524,7 +11889,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849479705513595706}
   - component: {fileID: 8879353036378263924}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11540,7 +11905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849319256748401672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11557,7 +11922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850096026737844970}
   - component: {fileID: 8878531103661333984}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11573,7 +11938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849576218749698870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: scythe_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11590,7 +11955,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849950542765357100}
   - component: {fileID: 8878501123343239124}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11606,7 +11971,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849975664933955904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11623,7 +11988,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849288233747352076}
   - component: {fileID: 8878731509446421254}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11640,7 +12005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849217313489082644}
   - component: {fileID: 8879188871933871704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11656,7 +12021,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849232062533577138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_front_shield_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11672,7 +12037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849903985134720028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11689,7 +12054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850092795490776826}
   - component: {fileID: 8879252631047835964}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body68
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11705,7 +12070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850087901966108038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11721,7 +12086,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849321989956307842}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Reference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11738,7 +12103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850088725077167072}
   - component: {fileID: 8878505927248195600}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11754,7 +12119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849905103030999028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11770,7 +12135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849231398737636278}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11787,7 +12152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849138354009555626}
   - component: {fileID: 8877928681858094972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body85
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11804,7 +12169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849649747957044924}
   - component: {fileID: 8878843331675746748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11821,7 +12186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850041202462723958}
   - component: {fileID: 8877900565997109428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body62
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11838,7 +12203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849502083708108244}
   - component: {fileID: 8877992225465838272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body81
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11854,7 +12219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850043378797269052}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_scull_mid_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11870,7 +12235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849967866311918034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandPinky4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11886,7 +12251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849790766146353152}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11903,7 +12268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849615015206336728}
   - component: {fileID: 8878644682430144210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11919,7 +12284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850055006874431778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11935,7 +12300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849553690112911786}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_left_back_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11952,7 +12317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849700804755516704}
   - component: {fileID: 8878732626788033414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body95
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11968,7 +12333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850065277229728066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandThumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11985,7 +12350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850015391341685618}
   - component: {fileID: 8878495231207542198}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body113
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12002,7 +12367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849511719487979930}
   - component: {fileID: 8878983480024659004}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12019,7 +12384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849308309768088128}
   - component: {fileID: 8878732319738403356}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body97
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12035,7 +12400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849709051458679380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandIndex3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12051,7 +12416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849870045454609150}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_right_back_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12067,7 +12432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849538568893446092}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandIndex4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12083,7 +12448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849018954703651318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12099,7 +12464,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849891058203232768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandIndex4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12115,7 +12480,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849264237999258042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12131,7 +12496,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849227840077764856}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12148,7 +12513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849082201585611722}
   - component: {fileID: 8878577599012243584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body75
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12164,7 +12529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850070814319643094}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandMiddle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12180,7 +12545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849289333969633832}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12196,7 +12561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849137127652139820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandThumbEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12212,7 +12577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849199443945336224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12229,7 +12594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849574751011250846}
   - component: {fileID: 8878739461590767196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body120
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12246,7 +12611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849843236031504786}
   - component: {fileID: 8878572206401014066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12263,7 +12628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849257791450503912}
   - component: {fileID: 8877875384489523366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body90
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12280,7 +12645,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849130982225966556}
   - component: {fileID: 8878459168993894850}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body94
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12296,7 +12661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849471653143909294}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandMiddle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12312,7 +12677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849555994671964250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandRingEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12328,7 +12693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849823198956984192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12345,7 +12710,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849130836291979768}
   - component: {fileID: 8878435076037035480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12361,7 +12726,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849844665449051218}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandThumb4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12378,7 +12743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849805616853426718}
   - component: {fileID: 8878844869039867934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body74
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12394,7 +12759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849518420656757658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandRing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12410,7 +12775,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849454353288801894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ikHandle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12426,7 +12791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849977238148212108}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_right_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12442,7 +12807,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849064815307901440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_centre_back_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12459,7 +12824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849166488026754594}
   - component: {fileID: 8878534326971801732}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body59
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12475,7 +12840,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849974716700918800}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandRingEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12491,7 +12856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849681300795554128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12508,7 +12873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849239764532076350}
   - component: {fileID: 8878605403220547348}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body80
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12525,7 +12890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850014536511963224}
   - component: {fileID: 8879353317903143254}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body103
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12541,7 +12906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849334535329183392}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12557,7 +12922,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849702360862853326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftKneeEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12573,7 +12938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850048085703846492}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12590,7 +12955,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850107520749465242}
   - component: {fileID: 8879169385810781368}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12607,7 +12972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849869817103966360}
   - component: {fileID: 8879385101950850362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12623,7 +12988,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849817500828497910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandThumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12639,7 +13004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849497626208469648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12655,7 +13020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849036172940037770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandThumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12671,7 +13036,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849810136537045990}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12687,7 +13052,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849145920892610640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandMiddle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12703,7 +13068,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849528848468039852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_right_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12720,7 +13085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849474697464636226}
   - component: {fileID: 8878819933619285634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body54
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12737,7 +13102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849886494584635144}
   - component: {fileID: 8879404355715916836}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12754,7 +13119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849233761265141610}
   - component: {fileID: 8878371604532894148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12770,7 +13135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850010866947064740}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightKneeEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12786,7 +13151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849980016831173148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12802,7 +13167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849474070763901512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandPinky3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12818,7 +13183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849480857724341132}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12834,7 +13199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849891727946028520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandRing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12851,7 +13216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850122037527453552}
   - component: {fileID: 8878654455210982306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body115
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12867,7 +13232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849981166146922198}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_HeadEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12883,7 +13248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849187702716473146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandIndex3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12900,7 +13265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849622378958198334}
   - component: {fileID: 8878976077929110192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body110
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12916,7 +13281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849533202171640750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12932,7 +13297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849112930424618440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandMiddle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12948,7 +13313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850090282280162114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12964,7 +13329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849503903627122364}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12980,7 +13345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849348655140836246}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_right_front_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12996,7 +13361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849589351413553654}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandMiddle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13012,7 +13377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849039303820875410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandRing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13028,7 +13393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849548757673521224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13045,7 +13410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849641223337755918}
   - component: {fileID: 8879361378965702402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body79
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13062,7 +13427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850025524300703804}
   - component: {fileID: 8878759264136217134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13078,7 +13443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849509595181171860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandMiddle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13094,7 +13459,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849979431735008660}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ikHandle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13111,7 +13476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849449150734075938}
   - component: {fileID: 8879362861776684406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body76
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13127,7 +13492,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849284825367489758}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13143,7 +13508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849306074135581580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13159,7 +13524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849529888275291524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandIndex2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13175,7 +13540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849568612329962168}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13192,7 +13557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849595074432568676}
   - component: {fileID: 8878501154344107924}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13208,7 +13573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849176928937859724}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13224,7 +13589,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849441226671760084}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_left_front_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13240,7 +13605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849629954226979452}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13256,7 +13621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849693478089350546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandMiddleEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13272,7 +13637,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849672031391333062}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_right_colchuga_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13289,7 +13654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849436458898980222}
   - component: {fileID: 8877918812648545700}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body35
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13306,7 +13671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849051597126715332}
   - component: {fileID: 8878840227350366194}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13322,7 +13687,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849830396795775184}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13338,7 +13703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849635567603082568}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13354,7 +13719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849110855309797094}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_right_front_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13370,7 +13735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849812750794034546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandPinky3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13386,7 +13751,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849518280107323140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_left_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13402,7 +13767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850123864879822208}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_right_back_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13419,7 +13784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849935361399851624}
   - component: {fileID: 8878598878093586100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body116
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13435,7 +13800,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850038859677056698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandPinkyEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13451,7 +13816,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849865256142073176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandIndexEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13467,7 +13832,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849523892680894746}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13484,7 +13849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850113736542706262}
   - component: {fileID: 8878512170333735710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13500,7 +13865,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849077228262194104}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandRing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13517,7 +13882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849497199680867534}
   - component: {fileID: 8878840120152883250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body112
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13533,7 +13898,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849255863941626862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13549,7 +13914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849984419014890030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13566,7 +13931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849529138614675322}
   - component: {fileID: 8877912920963152864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body124
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13582,7 +13947,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849351803174650024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13599,7 +13964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849800382256719546}
   - component: {fileID: 8878828699759450190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body93
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13615,7 +13980,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849163723744927270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13631,7 +13996,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849974785415637878}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13648,7 +14013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849442098158664136}
   - component: {fileID: 8879355148801537466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13664,7 +14029,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850103108270671124}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandIndex2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13680,7 +14045,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849928067732542296}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13696,7 +14061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849858744801096122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13713,7 +14078,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849191354332628354}
   - component: {fileID: 8877913150209892482}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body83
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13729,7 +14094,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849235700235551730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: transform1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13746,7 +14111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849222679974862770}
   - component: {fileID: 8879167605973269978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body44
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13762,7 +14127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849983668862632080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13779,7 +14144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849467049033986044}
   - component: {fileID: 8878604835280885776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13795,7 +14160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850110983398972044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13811,7 +14176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849266590278905830}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandMiddle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13827,7 +14192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849011533641929978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_left_back_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13843,7 +14208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849253331642427524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandThumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13859,7 +14224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850125544767065312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13875,7 +14240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849584450815697992}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13891,7 +14256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849515778852045320}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandThumb4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13908,7 +14273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849626092051106238}
   - component: {fileID: 8878519987107885550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body72
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13924,7 +14289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849227936176855466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandRing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13941,7 +14306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849215887799535690}
   - component: {fileID: 8878699038478099504}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body122
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13957,7 +14322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849860906202855876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_left_back_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13974,7 +14339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850061366201169936}
   - component: {fileID: 8878693499297518650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body65
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13990,7 +14355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849053451356221286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14006,7 +14371,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849641138174343378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14023,7 +14388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850002793219254630}
   - component: {fileID: 8879132429321955826}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body82
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14039,7 +14404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849179998154575900}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14055,7 +14420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849115848680525046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14072,7 +14437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850131575195207218}
   - component: {fileID: 8878617675356988040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14088,7 +14453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850041832302529462}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandPinky2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14104,7 +14469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849228729868068988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_centre_back_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14121,7 +14486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849453145362143602}
   - component: {fileID: 8879312603903337732}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body92
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14137,7 +14502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849559662466460132}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_left_front_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14154,7 +14519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850121034937193696}
   - component: {fileID: 8877865353043178618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14170,7 +14535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849328249835326330}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_right_back_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14186,7 +14551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849043917393338580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14202,7 +14567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849015243910832326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightShoulderEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14218,7 +14583,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849312066513658930}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandMiddle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14234,7 +14599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849991269795670284}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightFootEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14250,7 +14615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849896537734868034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14266,7 +14631,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850030761353654100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandRing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14282,7 +14647,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849528227224255186}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14299,7 +14664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849958449662826934}
   - component: {fileID: 8878793357465999346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14316,7 +14681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849523873149899756}
   - component: {fileID: 8878637482547714740}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14332,7 +14697,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849851033601919728}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14348,7 +14713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849170563996624498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14364,7 +14729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849933389418691924}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14380,7 +14745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849594607093980520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14397,7 +14762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849486379934018804}
   - component: {fileID: 8879346539154711950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body91
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14414,7 +14779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849263486234629904}
   - component: {fileID: 8878590378352658200}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body126
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14430,7 +14795,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849942267088739744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14446,7 +14811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849522289701667010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandPinkyEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14463,7 +14828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849842678320202456}
   - component: {fileID: 8878430699597347312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14479,7 +14844,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849637148737368620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_left_front_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14496,7 +14861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849851310552349936}
   - component: {fileID: 8878364069195503126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14513,7 +14878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849342112690542746}
   - component: {fileID: 8878764046921011438}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14529,7 +14894,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849051784436997932}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ikHandle5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14545,7 +14910,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849869584881206862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_back_colchuga_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14561,7 +14926,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849061964208491622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14577,7 +14942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849540303794181552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14593,7 +14958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849667097170049390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14609,7 +14974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849596122823950432}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14625,7 +14990,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849848149696994328}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandMiddle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14641,7 +15006,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849837280083733600}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14657,7 +15022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849138964765424792}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_front_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14673,7 +15038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849168716743204120}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandRing4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14689,7 +15054,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849837147986655882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_scull_left_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14705,7 +15070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849581445249616104}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14722,7 +15087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849784881455571452}
   - component: {fileID: 8878292798037452538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body101
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14739,7 +15104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849516666026038272}
   - component: {fileID: 8878417820303445476}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body49
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14755,7 +15120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849422562260405038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14772,7 +15137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849591135609757032}
   - component: {fileID: 8879346104306863918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body119
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14788,7 +15153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849199581178668658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14804,7 +15169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849359231820428584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14820,7 +15185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849027533510948460}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_scull_left_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14836,7 +15201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850020019691355208}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14852,7 +15217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849943486837269592}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandIndex4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14868,7 +15233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849210621038925690}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandPinky4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14884,7 +15249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849992726760855340}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14900,7 +15265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849056732267157058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14916,7 +15281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849962733096801956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14933,7 +15298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849088907388603912}
   - component: {fileID: 8878725028289838542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body64
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14949,7 +15314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849712118890618628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ikHandle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14965,7 +15330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850018607178697380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHipEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14981,7 +15346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850119750154046980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_left_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14998,7 +15363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849825574999737074}
   - component: {fileID: 8879369128772060330}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Weapon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15014,7 +15379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850092753067281822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15030,7 +15395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850106698121652516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_front_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15047,7 +15412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850060351481730756}
   - component: {fileID: 8878439002441854886}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body63
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15063,7 +15428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849269210782037444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15079,7 +15444,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850125433917552738}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15095,7 +15460,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850043414809605332}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandIndexEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15111,7 +15476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849876472277011990}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15127,7 +15492,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850000902052818220}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15143,7 +15508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849242877512350808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandRing3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15159,7 +15524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849653973206888814}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15176,7 +15541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849282355818579156}
   - component: {fileID: 8879143624954850040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body96
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15192,7 +15557,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849603875446617108}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_right_colchuga_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15208,7 +15573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850071957522196506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15225,7 +15590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849075633788760444}
   - component: {fileID: 8877929179179506868}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body67
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15241,7 +15606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849275050455380704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_right_colchuga_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15258,7 +15623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850036093049024622}
   - component: {fileID: 8879347795468992100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15274,7 +15639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849264052955298518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15290,7 +15655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850106475066948978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15307,7 +15672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849653315934009314}
   - component: {fileID: 8878590404192900054}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body87
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15323,7 +15688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849811037555554898}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15339,7 +15704,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849486937418458606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15356,7 +15721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849541957763979452}
   - component: {fileID: 8878551983658827248}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15373,7 +15738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849492995064792530}
   - component: {fileID: 8878481690376338730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body55
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15389,7 +15754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849053285087794648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandIndex2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15405,7 +15770,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850001879526264706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15422,7 +15787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849104598295884780}
   - component: {fileID: 8879325423878574968}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body106
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15438,7 +15803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849450299102178522}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: scythe_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15454,7 +15819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849849445956628210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15471,7 +15836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849549914700676230}
   - component: {fileID: 8878420015507214490}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15487,7 +15852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849089097350129516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15504,7 +15869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849863951645561968}
   - component: {fileID: 8878716154018527686}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body46
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15520,7 +15885,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849190108935235064}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandThumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15536,7 +15901,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849648131171530822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15552,7 +15917,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849579338557458744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15568,7 +15933,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850011873383829798}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandThumbEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15584,7 +15949,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850011086152614766}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightElbowEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15600,7 +15965,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849277383878379520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandIndex1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15617,7 +15982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849305058791310686}
   - component: {fileID: 8879407940883872424}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body104
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15633,7 +15998,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849817873196917332}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15649,7 +16014,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850067259176916280}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_ChestOriginEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15666,7 +16031,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849052895197936294}
   - component: {fileID: 8878799910400629608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15682,7 +16047,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849314202340638198}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandPinky3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15699,7 +16064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849711467530559684}
   - component: {fileID: 8878606974877712520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body121
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15715,7 +16080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849026721981027408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15731,7 +16096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849844828791409698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_left_back_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15747,7 +16112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849113040202797890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15764,7 +16129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850087274311917196}
   - component: {fileID: 8878822083613489950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15780,7 +16145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849492889359048086}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15796,7 +16161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849608900051723170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandMiddle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15812,7 +16177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849327692495963726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_back_colchuga_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15828,7 +16193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849231405799713948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15844,7 +16209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849014654342066156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15861,7 +16226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849256965198217126}
   - component: {fileID: 8878488813875109358}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body109
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15877,7 +16242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849046820566689242}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15893,7 +16258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849636163886822484}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandRing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15909,7 +16274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850016703536884650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_left_colchuga_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15925,7 +16290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850054512982393742}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15941,7 +16306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849141290771398334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15957,7 +16322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850020277422536224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_left_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15973,7 +16338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849109159045684216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15990,7 +16355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849958687978186546}
   - component: {fileID: 8879362669388692948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16007,7 +16372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849998686899589082}
   - component: {fileID: 8879250376890423180}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16023,7 +16388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850047101674659076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16039,7 +16404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849790017672572920}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16056,7 +16421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849293815995611878}
   - component: {fileID: 8878529823713623106}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body56
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16072,7 +16437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849098427413491732}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16088,7 +16453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849919268595939574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16104,7 +16469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849465407790452222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16121,7 +16486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849863026133704980}
   - component: {fileID: 8878686771425135226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body111
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16137,7 +16502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849197680740106726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16153,7 +16518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849924048810043514}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16169,7 +16534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849709964813848974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16185,7 +16550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849549012828020468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandRing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16201,7 +16566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850121806552110888}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16218,7 +16583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849298065659358972}
   - component: {fileID: 8878837441915627064}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body88
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16235,7 +16600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849162533462873180}
   - component: {fileID: 8878966813139629560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16251,7 +16616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849825593471313352}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandThumb4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16267,7 +16632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850125937234772576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandRing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16283,7 +16648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849681456106510204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_scull_right_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16299,7 +16664,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849205850629092022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16315,7 +16680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850007523567224716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_left_colchuga_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16331,7 +16696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849887523789885260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandThumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16347,7 +16712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849675469047102336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftAnkleEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16364,7 +16729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849817854613600100}
   - component: {fileID: 8879407219079068838}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body125
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16380,7 +16745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849037420461193848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandIndex4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16397,7 +16762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849622462718695668}
   - component: {fileID: 8879351799889598456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body61
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16413,7 +16778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849465927883079532}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_shtandart_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16429,7 +16794,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849220086994736376}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_left_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16446,7 +16811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849495921255509892}
   - component: {fileID: 8879172733051715122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16462,7 +16827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849451444561055810}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_HipsEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16478,7 +16843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849687521139090390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16494,7 +16859,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850009987205767900}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftWristEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16510,7 +16875,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850018534196678194}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_toga_centre_back_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16526,7 +16891,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850025149648453656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16542,7 +16907,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849589650505394576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16558,7 +16923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849013857393303268}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16575,7 +16940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849083258388371294}
   - component: {fileID: 8878956441648864006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16591,7 +16956,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849924187643090270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16607,7 +16972,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849466474721531026}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightAnkleEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16623,7 +16988,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849612013450588726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandPinky1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16639,7 +17004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850047967614996336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandPinky2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16656,7 +17021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849538526962048370}
   - component: {fileID: 8878613509029103460}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body99
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16672,7 +17037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849356097479260720}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandRing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16688,7 +17053,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849612594796461984}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_ChestEndEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16704,7 +17069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850035251032620204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandThumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16721,7 +17086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849729493669976966}
   - component: {fileID: 8878657346473259050}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16738,7 +17103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849482337656888372}
   - component: {fileID: 8878456632834849358}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body108
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16754,7 +17119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849893008691256332}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandIndex1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16770,7 +17135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849325802024326464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16787,7 +17152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8850080099229158924}
   - component: {fileID: 8878622747065886794}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body57
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16803,7 +17168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849578752659917230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16820,7 +17185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849289923763733586}
   - component: {fileID: 8878663155707034164}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body86
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16837,7 +17202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849246560078415324}
   - component: {fileID: 8877929773291695844}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16853,7 +17218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849791583661139824}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandPinky2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16870,7 +17235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849192004853251740}
   - component: {fileID: 8879359918273685180}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body102
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16886,7 +17251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849037031240749344}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16903,7 +17268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849882055210625478}
   - component: {fileID: 8878822489237977352}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16919,7 +17284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849854667491988634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_Reference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16935,7 +17300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849470772707124572}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16952,7 +17317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849817854686975226}
   - component: {fileID: 8878730228120648512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body66
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16968,7 +17333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849360980846877736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_left_colchuga_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16984,7 +17349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849472698586136328}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandIndex3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17000,7 +17365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849054991740101384}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandThumb4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17017,7 +17382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849576453741180800}
   - component: {fileID: 8879154903509402302}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body60
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17033,7 +17398,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849906356678202102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17049,7 +17414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849827337869863044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandPinky1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17065,7 +17430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849638680414840648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17081,7 +17446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849279136775962824}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: group1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17097,7 +17462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849522692272935010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandThumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17114,7 +17479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849161139170282532}
   - component: {fileID: 8878433833264875508}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body71
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17130,7 +17495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849677789426963688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Head_sceleton_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17146,7 +17511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850131401410907418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandThumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17162,7 +17527,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849258530233921446}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_left_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17179,7 +17544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849260585364507098}
   - component: {fileID: 8879257782040917812}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17196,7 +17561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849038254435477852}
   - component: {fileID: 8878471336624527632}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body114
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17213,7 +17578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849941835587496530}
   - component: {fileID: 8879393710105718726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17229,7 +17594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849889361203438430}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandPinky4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17245,7 +17610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849951158181527278}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17262,7 +17627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849476074156576566}
   - component: {fileID: 8878768444906697030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body107
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17278,7 +17643,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849821850957568156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandMiddle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17294,7 +17659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849874678644807168}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_right_long_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17310,7 +17675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849568179444193888}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_LeftHandPinky4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17327,7 +17692,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849599108851607456}
   - component: {fileID: 8878578400951017396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body48
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17343,7 +17708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849952678472506232}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandRing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17359,7 +17724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849949938201050594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftHandMiddleEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17376,7 +17741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849642900618518338}
   - component: {fileID: 8878515265282377214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17392,7 +17757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8850114331235536122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_scull_right_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17408,7 +17773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849119899049923048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_RightHandMiddle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17425,7 +17790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849817105928743234}
   - component: {fileID: 8878313154609627538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17441,7 +17806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849708890854251644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandMiddle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17457,7 +17822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849824282784826704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17473,7 +17838,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849923835443464834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_RightHandIndex3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17490,7 +17855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8849158872492819040}
   - component: {fileID: 8879220172634222492}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body77
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17506,7 +17871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849054430532220112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_chain_left_long_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17522,7 +17887,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8849133623319131926}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Necromancer_Ctrl_LeftFootEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}

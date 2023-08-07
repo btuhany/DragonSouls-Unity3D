@@ -3,35 +3,39 @@ using PlayerController;
 using UnityEngine;
 using Movement;
 using Combat;
+using System;
+using Sounds;
+
 namespace States
 {
     public class PlayerStateMachine : StateMachine
     {
         [Header("Components")]
         public InputReader InputReader;
-        public PlayerAnimationController AnimationController;
-        public TargetableCheck TargetableCheck;
-        public MovementController Movement;
-        public CombatController CombatController;
-        public ForceReceiver ForceReceiver;
-        public CameraController CameraController;
-        public Health Health;
-        public Stamina Stamina;
+        public PlayerAnimationController animationController;
+        public TargetableCheck targetableCheck;
+        public MovementController movement;
+        public CombatController combatController;
+        public ForceReceiver forceReceiver;
+        public CameraController cameraController;
+        public Health health;
+        public Stamina stamina;
+        public PlayerSoundController sound;
         
         //States
-        public PlayerFreeLookState FreeLookPlayerState;
-        public PlayerUnarmedTargetState UnarmedTargetState;
-        public PlayerUnarmedFreeState UnarmedFreeTransitionState;
-        public PlayerSwordFreeState SwordFreeState;
-        public PlayerSwordTargetState SwordTargetState;
-        public PlayerUnarmedFreeState UnarmedFreeState;
-        public PlayerAimState AimState;
-        public PlayerSwordReturnState ReturnSwordState;
-        public PlayerRollState RollState;
+        public PlayerFreeLookState freeLookPlayerState;
+        public PlayerUnarmedTargetState unarmedTargetState;
+        public PlayerUnarmedFreeState unarmedFreeTransitionState;
+        public PlayerSwordFreeState swordFreeState;
+        public PlayerSwordTargetState swordTargetState;
+        public PlayerUnarmedFreeState unarmedFreeState;
+        public PlayerAimState aimState;
+        public PlayerSwordReturnState returnSwordState;
+        public PlayerRollState rollState;
 
-        public bool IsSprintHolding;
-        public bool IsSprinting;
-        public bool IsRoll = false;
+        [HideInInspector] public bool isSprintHolding;
+        [HideInInspector] public bool isSprinting;
+        [HideInInspector] public bool isRoll = false;
 
         public static PlayerStateMachine Instance;
         public PlayerStateMachine()
@@ -41,17 +45,17 @@ namespace States
         private void Awake()
         {
             SingletonObject();
-            FreeLookPlayerState = new PlayerFreeLookState(this);
-            UnarmedTargetState = new PlayerUnarmedTargetState(this);
-            SwordTargetState = new PlayerSwordTargetState(this);
-            SwordFreeState = new PlayerSwordFreeState(this);
-            UnarmedFreeState = new PlayerUnarmedFreeState(this);
-            UnarmedFreeTransitionState = new PlayerUnarmedFreeState(this, Weapon.Unarmed, true, true);
-            AimState = new PlayerAimState(this);
-            ReturnSwordState = new PlayerSwordReturnState(this);
-            RollState = new PlayerRollState(this);
-            Health = GetComponent<Health>();
-            Stamina = GetComponent<Stamina>();
+            freeLookPlayerState = new PlayerFreeLookState(this);
+            unarmedTargetState = new PlayerUnarmedTargetState(this);
+            swordTargetState = new PlayerSwordTargetState(this);
+            swordFreeState = new PlayerSwordFreeState(this);
+            unarmedFreeState = new PlayerUnarmedFreeState(this);
+            unarmedFreeTransitionState = new PlayerUnarmedFreeState(this, Weapon.Unarmed, true, true);
+            aimState = new PlayerAimState(this);
+            returnSwordState = new PlayerSwordReturnState(this);
+            rollState = new PlayerRollState(this);
+            health = GetComponent<Health>();
+            stamina = GetComponent<Stamina>();
         }
 
         private void SingletonObject()
@@ -64,13 +68,24 @@ namespace States
 
         private void OnEnable()
         {
+            this.health.OnHealthUpdated += HandleOnHealthUpdate;
             InputReader.JumpEvent += HandleOnDodgeEvent;
             InputReader.DodgeEvent += HandleOnDodgeEvent;
             InputReader.TargetEvent += HandleOnTargetEvent;
         }
+
+        private void HandleOnHealthUpdate(int arg1, int arg2)
+        {
+            if (UnityEngine.Random.Range(0, 11) > 5)
+                sound.PlayHurtSFX();
+            PlayerCombatState combat = _currentState as PlayerCombatState;
+            if (combat != null && combat.IsAttacking) return;
+            animationController.PlayGetHit();
+        }
+
         private void Start()
         {
-            ChangeState(FreeLookPlayerState);
+            ChangeState(freeLookPlayerState);
         }
         private void Update()
         {

@@ -12,11 +12,11 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter() 
     {
-        if (stateMachine.IsSwordOn)
+        if (stateMachine.isSwordOn)
         {
-            stateMachine.Sword.DetachFromEnemy();
-            stateMachine.Sword.Throwed(Vector3.down * 0.5f, PlayerStateMachine.Instance.transform);
-            stateMachine.IsSwordOn = false;
+            stateMachine.sword.DetachFromEnemy();
+            stateMachine.sword.Throwed(Vector3.down * 0.5f, PlayerStateMachine.Instance.transform);
+            stateMachine.isSwordOn = false;
         }
         _timeCounter = 0f;
         animationController.PlayDeadAnimation();
@@ -33,7 +33,7 @@ public class EnemyDeadState : EnemyBaseState
         if(_timeCounter > config.DeadAnimTime)
         {
             stateMachine.gameObject.SetActive(false);
-            stateMachine.IsDead = true;
+            stateMachine.isDead = true;
         }
     }
 }

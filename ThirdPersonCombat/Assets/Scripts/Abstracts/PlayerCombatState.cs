@@ -7,7 +7,7 @@ namespace States
     public abstract class PlayerCombatState : PlayerBaseState
     {
         protected bool TransitionToAimState = false;
-        protected bool IsAttacking = false;
+        public bool IsAttacking = false;
         protected CombatController _combat;
         private bool _autoStateChange = false;
         private Attack[] _heavyAttackArray;
@@ -21,7 +21,7 @@ namespace States
         
         public PlayerCombatState(PlayerStateMachine player, Weapon weapon, bool autoStateChange = false ) : base(player)
         {
-            _combat = player.CombatController;
+            _combat = player.combatController;
             if(weapon == Weapon.Unarmed)
             {
                 _lightAttackArray = _combat.UnarmedLightAttacks;
@@ -51,7 +51,7 @@ namespace States
             {
                 if(_animationTimePassed > _combat.CombatModeDuration + _currentAttack.attackDuration + _currentAttack.comboPermissionDelay)
                 {
-                    stateMachine.ChangeState(stateMachine.FreeLookPlayerState);
+                    stateMachine.ChangeState(stateMachine.freeLookPlayerState);
                 }
 
             }
@@ -111,11 +111,11 @@ namespace States
                 }
                 else
                 {
-                    if (stateMachine.Stamina.UseStamina(movement.LightAttackStaminaCost))
+                    if (stateMachine.stamina.UseStamina(movement.LightAttackStaminaCost))
                         LightAttack();
                 }
             }
-            else if (stateMachine.Stamina.UseStamina(movement.LightAttackStaminaCost))
+            else if (stateMachine.stamina.UseStamina(movement.LightAttackStaminaCost))
             {
                 _lightAttackIndex = 0;
                 LightAttack();
@@ -138,11 +138,11 @@ namespace States
                 }
                 else
                 {
-                    if (stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
+                    if (stateMachine.stamina.UseStamina(movement.HeavyAttackStaminaCost))
                         HeavyAttack();
                 }
             }
-            else if (stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
+            else if (stateMachine.stamina.UseStamina(movement.HeavyAttackStaminaCost))
             {
                 _heavyAttackIndex = 0;
                 HeavyAttack();
@@ -155,7 +155,7 @@ namespace States
                 _nextAttack = AttackType.Heavy;
                 return;
             }
-            else if (normalizedTime <= _currentAttack.attackDuration + _currentAttack.comboPermissionDelay && stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
+            else if (normalizedTime <= _currentAttack.attackDuration + _currentAttack.comboPermissionDelay && stateMachine.stamina.UseStamina(movement.HeavyAttackStaminaCost))
             {
                 //Combo
                 //End the combo if last attack is performed.
@@ -173,7 +173,7 @@ namespace States
                 }
                 _animationTimePassed = 0f;
             }
-            else if (stateMachine.Stamina.UseStamina(movement.HeavyAttackStaminaCost))
+            else if (stateMachine.stamina.UseStamina(movement.HeavyAttackStaminaCost))
             {
                 _heavyAttackIndex = 0;
                 HeavyAttack();

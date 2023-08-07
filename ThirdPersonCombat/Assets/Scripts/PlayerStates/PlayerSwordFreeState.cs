@@ -16,7 +16,7 @@ namespace States
         {
             isSheating = false;
             //animationController.SetBoolsCombatFree(weapon, !animationController.IsUnsheathAnimPlaying);
-            if (stateMachine.PreviousState != stateMachine.SwordTargetState && stateMachine.PreviousState != stateMachine.AimState && stateMachine.PreviousState != stateMachine.ReturnSwordState && stateMachine.PreviousState != stateMachine.RollState)
+            if (stateMachine.PreviousState != stateMachine.swordTargetState && stateMachine.PreviousState != stateMachine.aimState && stateMachine.PreviousState != stateMachine.returnSwordState && stateMachine.PreviousState != stateMachine.rollState)
             {
                 animationController.PlayUnsheathSword();
                 animationController.FreeCombat(Weapon.Sword, false);
@@ -24,7 +24,7 @@ namespace States
             else
             {
                 animationController.FreeCombat(Weapon.Sword, true);
-                if(stateMachine.PreviousState == stateMachine.RollState && stateMachine.RollState.IsAttack)
+                if(stateMachine.PreviousState == stateMachine.rollState && stateMachine.rollState.IsAttack)
                 {
                     entryAttack = true;
                 }
@@ -51,7 +51,7 @@ namespace States
                 }
                 else
                 {
-                    stateMachine.ChangeState(stateMachine.AimState);
+                    stateMachine.ChangeState(stateMachine.aimState);
                     return;
                 }
 
@@ -60,11 +60,11 @@ namespace States
             if (animationController.IsUnsheathSheathAnimPlaying)
                 return;
             //Cinemachine IsBlending doesn't work properly at start
-            if(stateMachine.CameraController.IsAimCameraActive) 
+            if(stateMachine.cameraController.IsAimCameraActive) 
             {
                 return;
             }
-            if (stateMachine.CameraController.IsTransition)
+            if (stateMachine.cameraController.IsTransition)
             {
                 animationController.SwordFreeMovement(Vector2.zero);
                 return;
@@ -78,7 +78,7 @@ namespace States
                 RotateCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), deltaTime);
             }
             
-            if ((IsSprintHold || IsSprint) && stateMachine.Stamina.UseStamina(movement.SprintStaminaCost))
+            if ((IsSprintHold || IsSprint) && stateMachine.stamina.UseStamina(movement.SprintStaminaCost))
             {
                 animationController.SprintSetFloats(movementOn2DAxis);
                 MoveCharacter(movement.CamRelativeMotionVector(movementOn2DAxis), movement.CombatSprintSpeed, deltaTime);
@@ -91,20 +91,20 @@ namespace States
             
             HandleSprintControl();
 
-            if (stateMachine.IsRoll)
-                stateMachine.ChangeState(stateMachine.RollState);
+            if (stateMachine.isRoll)
+                stateMachine.ChangeState(stateMachine.rollState);
         }
 
         protected override void HandleOnTargetEvent()
         {
             if (!targetableCheck.TrySelectTarget()) return;
-            stateMachine.ChangeState(stateMachine.SwordTargetState);
+            stateMachine.ChangeState(stateMachine.swordTargetState);
         }
 
         protected override void HandleSheathEvent()
         {
             if(animationController.IsAttackPlaying) return;
-            stateMachine.ChangeState(stateMachine.UnarmedFreeState);
+            stateMachine.ChangeState(stateMachine.unarmedFreeState);
             isSheating = true;
         }
 
@@ -112,7 +112,7 @@ namespace States
         {
             if(!IsAttacking)
             {
-                stateMachine.ChangeState(stateMachine.AimState);
+                stateMachine.ChangeState(stateMachine.aimState);
             }
             else
             {

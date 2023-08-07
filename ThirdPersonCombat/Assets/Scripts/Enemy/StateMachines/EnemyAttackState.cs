@@ -11,13 +11,13 @@ namespace States
         private float _randomWaitTime = 0f;
         public EnemyAttackState(EnemyStateMachine enemy) : base(enemy)
         {
-            _combat = enemy.Combat;
+            _combat = enemy.combatController;
         }
 
         public override void Enter()
         {
             _randomWaitTime = Random.Range(config.AttackMinWaitTime, config.AttackMaxWaitTime);
-            stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.0f, 0f);
+            stateMachine.animController.SetIdleRunLocomotionSpeed(0.0f, 0f);
             RandomAttack();
             _animationTimeCounter = 0f;
             _timeCounter = 0f;
@@ -40,19 +40,19 @@ namespace States
                 {
                     if (!IsTurnedToPlayer())
                     {
-                        stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.05f, 0f);
+                        stateMachine.animController.SetIdleRunLocomotionSpeed(0.05f, 0f);
                     }
                     else
                     {
-                        stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.0f, 0f);
+                        stateMachine.animController.SetIdleRunLocomotionSpeed(0.0f, 0f);
                         if (!stateMachine.IsPlayerInRange(config.AttackToChaseChangeRange))
                         {
-                            stateMachine.ChangeState(stateMachine.ChaseState);
+                            stateMachine.ChangeState(stateMachine.chaseState);
                             return;
                         }
                         else if (!stateMachine.IsPlayerInRange(config.AttackToTargetChangeRange))
                         {
-                            stateMachine.ChangeState(stateMachine.TargetState);
+                            stateMachine.ChangeState(stateMachine.targetState);
                             return;
                         }
                     }
@@ -76,7 +76,7 @@ namespace States
             Attack randomAttack = _combat.Attacks[Random.Range(0, _combat.Attacks.Length)];
             _combat.CurrentAttack = randomAttack;
             animationController.PlayAttack(randomAttack.animationName, randomAttack.transitionDuration);
-            stateMachine.EnemyForceReceiver.AddForce();
+            stateMachine.forceReceiver.AddForce();
         }
 
         private bool IsTurnedToPlayer()

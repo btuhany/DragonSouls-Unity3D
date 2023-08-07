@@ -3,25 +3,27 @@ using UnityEngine;
 
 namespace Sounds
 {
+    [Serializable]
+    public struct SoundClips
+    {
+        public AudioClip[] AudioClips;
+        public float Volume;
+        public float Pitch;
+    }
     public class PlayerSoundController : MonoBehaviour
     {
-        [Serializable]
-        public struct SoundClips
-        {
-            public AudioClip[] AudioClips;
-            public float Volume;
-            public float Pitch;
-        }
-
         [SerializeField] private SoundClips _runFootSteps;
         [SerializeField] private SoundClips _walkFootSteps;
         [SerializeField] private SoundClips _rollStart;
         [SerializeField] private SoundClips _rollEnd;
+        [SerializeField] private SoundClips _hurt;
         private AudioSource _audioSource;
+        private AudioSource _secondarySource;
 
         private void Awake()
         {
-            _audioSource = GetComponent<AudioSource>();
+            _audioSource = GetComponents<AudioSource>()[0];
+            _secondarySource = GetComponents<AudioSource>()[1];
         }
         public void PlayRandomRunStepSFX()
         {
@@ -49,6 +51,12 @@ namespace Sounds
                 _audioSource.pitch = _rollEnd.Pitch;
                 _audioSource.PlayOneShot(_rollEnd.AudioClips[UnityEngine.Random.Range(0, _rollEnd.AudioClips.Length)]);
             }
+        }
+        public void PlayHurtSFX()
+        {
+            _secondarySource.volume = _hurt.Volume;
+            _secondarySource.pitch = _hurt.Pitch;
+            _secondarySource.PlayOneShot(_hurt.AudioClips[UnityEngine.Random.Range(0, _hurt.AudioClips.Length)]);
         }
     }
 

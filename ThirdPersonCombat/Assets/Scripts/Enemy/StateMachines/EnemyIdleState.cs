@@ -9,7 +9,7 @@ namespace States
 
         public override void Enter()
         {
-            stateMachine.AnimationController.SetIdleRunLocomotionSpeed(0.0f, 0f);           
+            stateMachine.animController.SetIdleRunLocomotionSpeed(0.0f, 0f);           
             animationController.PlayIdleRunBlend(config.IdleRunAnimTransitionTime);
             animationController.SetIdleRunLocomotionSpeed(0f, config.AnimationDampTime);
         }
@@ -22,7 +22,7 @@ namespace States
         {
             if (stateMachine.IsPlayerInRange(config.MinIdleRange))
             {
-                stateMachine.ChangeState(stateMachine.ChaseState);
+                stateMachine.ChangeState(stateMachine.chaseState);
             }
                 
         }

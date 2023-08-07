@@ -47,7 +47,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  Child: {fileID: -1117345180916584561}
+  Child: {fileID: -770790489364928419}
 --- !u!114 &-6326072361109823202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   description: 
   Children:
   - {fileID: 4366405669881577816}
+  - {fileID: 7779189282561392338}
 --- !u!114 &-1869640025236935411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +244,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: dc65eea70ad797343a2078940643fc1e
-  Position: {x: -329.00003, y: -503.1962}
+  Position: {x: -313.00015, y: -519.15}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -572,14 +573,14 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 6f3cff8ce75afea4f85e834e067294bd
-  Position: {x: 0, y: 0}
+  Position: {x: -396.00003, y: -214.50003}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  Message: 
+  Message: ' Got hit!'
 --- !u!114 &9176201677825486242
 MonoBehaviour:
   m_ObjectHideFlags: 0

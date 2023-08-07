@@ -16,8 +16,8 @@ namespace States
         {
             base.Enter();
             //animationController.PlaySetBoolsCombatFree(_weapon);
-            if (stateMachine.PreviousState == stateMachine.UnarmedTargetState) return;
-            if (stateMachine.PreviousState == stateMachine.SwordTargetState) return;
+            if (stateMachine.PreviousState == stateMachine.unarmedTargetState) return;
+            if (stateMachine.PreviousState == stateMachine.swordTargetState) return;
             if (entryAttack)
             {
                 if (inputReader.LastAttackType == AttackType.Light)

@@ -17,6 +17,7 @@ namespace States
 
         public override void Enter()
         {
+            stateMachine.sound.PlayGruntsSFX(true);
             navmeshAgent.isStopped = false;
             navmeshAgent.updatePosition = false;
             _timeCounter = 0f;
@@ -28,6 +29,7 @@ namespace States
 
         public override void Exit()
         {
+            stateMachine.sound.PlayGruntsSFX(false);
             navmeshAgent.isStopped = true;
             navmeshAgent.updatePosition = true;
             navmeshAgent.ResetPath();
@@ -37,13 +39,13 @@ namespace States
         public override void Tick(float deltaTime)
         {
             _timeCounter += deltaTime;
-            if (_timeCounter > stateMachine.Config.ChasePointRefreshTime)
+            if (_timeCounter > stateMachine.config.ChasePointRefreshTime)
             {
                 navmeshAgent.destination = PlayerStateMachine.Instance.transform.position;
                 _timeCounter = 0;
             }
 
-            if (!stateMachine.EnemyForceReceiver.IsGrounded) return;
+            if (!stateMachine.forceReceiver.IsGrounded) return;
             movement.Move(navmeshAgent.desiredVelocity.normalized, config.ChaseSpeed, deltaTime);
             navmeshAgent.velocity = movement.Velocity;
             Vector3 faceDir = movement.Velocity;
@@ -56,7 +58,7 @@ namespace States
             {
                 if (stateMachine.IsPlayerInRange(_chaseToTargetChangeRange))
                 {
-                    stateMachine.ChangeState(stateMachine.TargetState);
+                    stateMachine.ChangeState(stateMachine.targetState);
                     return;
                 }
 
@@ -65,14 +67,14 @@ namespace States
             {
                 if (stateMachine.IsPlayerInRange(config.ChaseToAttackChangeRange))
                 {
-                    stateMachine.ChangeState(stateMachine.AttackState);
+                    stateMachine.ChangeState(stateMachine.attackState);
                     return;
                 }
             }
 
             if (Vector3.Distance(stateMachine.transform.position, PlayerStateMachine.Instance.transform.position) > config.ChaseToIdleChangeRange)
             {
-                stateMachine.ChangeState(stateMachine.IdleState);
+                stateMachine.ChangeState(stateMachine.idleState);
                 return;
             }
 

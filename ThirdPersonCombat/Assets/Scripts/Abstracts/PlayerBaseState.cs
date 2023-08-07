@@ -26,21 +26,21 @@ namespace States
             this.stateMachine = player;
             this.transform = player.transform;
             this.inputReader = player.InputReader;
-            this.animationController = player.AnimationController;
-            this.targetableCheck = player.TargetableCheck;
-            this.movement = player.Movement;
-            this.forceReciver = player.ForceReceiver;
+            this.animationController = player.animationController;
+            this.targetableCheck = player.targetableCheck;
+            this.movement = player.movement;
+            this.forceReciver = player.forceReceiver;
         }
         public override void Enter()
         {
-            IsSprintHold = stateMachine.IsSprintHolding;
-            IsSprint = stateMachine.IsSprinting;
+            IsSprintHold = stateMachine.isSprintHolding;
+            IsSprint = stateMachine.isSprinting;
             AddMethodsToEvents();
         }
         public override void Exit()
         {
-            stateMachine.IsSprintHolding = IsSprintHold;
-            stateMachine.IsSprinting = IsSprint;
+            stateMachine.isSprintHolding = IsSprintHold;
+            stateMachine.isSprinting = IsSprint;
             RemoveMethodsFromEvents();
         }
         protected void MoveCharacter(Vector3 motion, float speed, float deltaTime)
@@ -131,9 +131,9 @@ namespace States
 
         protected virtual void HandleOnRollEvent()
         {
-            if(stateMachine.Stamina.UseStamina(movement.RollStaminaCost))
+            if(stateMachine.stamina.UseStamina(movement.RollStaminaCost))
             {
-                stateMachine.IsRoll = true;
+                stateMachine.isRoll = true;
             }
         }
         protected virtual void HandleOnAimHoldEvent() { }
