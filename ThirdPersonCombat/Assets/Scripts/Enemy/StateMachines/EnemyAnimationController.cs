@@ -25,6 +25,7 @@ namespace EnemyControllers
         
         public void PlayIdleRunBlend(float transitionTime)
         {
+            if (_anim == null) _anim = GetComponent<Animator>();
             _anim.CrossFadeInFixedTime(_idleRunBlend, transitionTime);
             _anim.SetBool(_isTargeted, false);
         }
@@ -36,7 +37,8 @@ namespace EnemyControllers
 
         public void SetIdleRunLocomotionSpeed(float speed, float dampTime)
         {
-            _anim.SetFloat(_locomotionSpeed, speed, dampTime, Time.deltaTime);
+            if (_anim == null) _anim = GetComponent<Animator>();
+             _anim.SetFloat(_locomotionSpeed, speed, dampTime, Time.deltaTime);
         }
         public void SetTargetedBool(bool targeted)
         {

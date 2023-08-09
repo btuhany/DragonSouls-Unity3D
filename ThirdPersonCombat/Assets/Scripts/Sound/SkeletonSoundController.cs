@@ -55,12 +55,13 @@ public class SkeletonSoundController : EnemySoundController
     }
     public override void PlayGetHitSFX()
     {
-        audioSource.Pause();
-        _secondarySource.Pause();
+        audioSource.Stop();
+        _secondarySource.Stop();
         _tertiarySource.volume = getHit.Volume;
         _tertiarySource.pitch = getHit.Pitch;
         _tertiarySource.PlayOneShot(getHit.AudioClips[UnityEngine.Random.Range(0, getHit.AudioClips.Length)]);
-        audioSource.UnPause();
-        _secondarySource.UnPause();
+        audioSource.volume = 1;
+        audioSource.pitch = _bones.Pitch;
+        audioSource.PlayOneShot(_bones.AudioClips[Random.Range(0, _bones.AudioClips.Length)]);
     }
 }

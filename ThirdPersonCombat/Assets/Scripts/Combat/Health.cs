@@ -15,7 +15,7 @@ namespace Combat
             _health = maxHealth;
         }
 
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage, GameObject damageObj)
         {
             if (IsInvulnerable) return;
             if (_health <= 0) return;

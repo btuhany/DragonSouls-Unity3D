@@ -8,7 +8,8 @@ namespace Combat
         [HideInInspector] public int AttackDamage;
         [SerializeField] Transform HitControlPosition;
         private List<Collider> _hitColliders = new List<Collider>();
-     
+        public event System.Action<Collider> OnHitGiven;
+
         private void OnTriggerEnter(Collider other)
         {
             if (_hitColliders.Contains(other)) return;
@@ -17,8 +18,10 @@ namespace Combat
             {
                 if (_hitColliders.Contains(other)) return;
                 _hitColliders.Add(other);
-                health.TakeDamage(AttackDamage);
+                health.TakeDamage(AttackDamage, this.gameObject);
                 health.EnterHitPosition = HitControlPosition.position;
+                if(!health.IsInvulnerable)
+                    OnHitGiven?.Invoke(other);
             }
         }
 
