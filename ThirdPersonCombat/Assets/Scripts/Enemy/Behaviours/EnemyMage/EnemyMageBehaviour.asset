@@ -437,7 +437,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  attackNum: 1
+  attackNum: 0
   isRandomAttack: 0
 --- !u!114 &4366405669881577816
 MonoBehaviour:
