@@ -76,10 +76,10 @@ namespace States
 
         private void HandleOnHealthUpdate(int arg1, int arg2)
         {
-            if (UnityEngine.Random.Range(0, 11) > 5)
-                sound.PlayHurtSFX();
             PlayerCombatState combat = _currentState as PlayerCombatState;
             if (combat != null && combat.IsAttacking) return;
+            if (UnityEngine.Random.Range(0, 11) > 5)
+                sound.PlayHurtSFX();
             animationController.PlayGetHit();
         }
 

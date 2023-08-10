@@ -84,6 +84,11 @@ MonoBehaviour:
     AudioClips: []
     Volume: 0.5
     Pitch: 0
+  _weaponSwingSounds:
+    AudioClips:
+    - {fileID: 8300000, guid: 58014ae401d9d35428d4f888335e9414, type: 3}
+    Volume: 0.5
+    Pitch: 1
 --- !u!114 &6190412059791161422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +189,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

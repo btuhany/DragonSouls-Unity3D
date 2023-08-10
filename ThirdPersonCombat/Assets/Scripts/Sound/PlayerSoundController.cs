@@ -17,6 +17,11 @@ namespace Sounds
         [SerializeField] private SoundClips _rollStart;
         [SerializeField] private SoundClips _rollEnd;
         [SerializeField] private SoundClips _hurt;
+        [SerializeField] private SoundClips _grunt;
+
+        [Header("AttackFootStep")]
+        [SerializeField] private float _attackFootStepSFXVolume = 0.6f;
+        [SerializeField] private float _attackFootStepSFXPitch = 1.2f;
         private AudioSource _audioSource;
         private AudioSource _secondarySource;
 
@@ -29,6 +34,12 @@ namespace Sounds
         {
             _audioSource.volume = _runFootSteps.Volume;
             _audioSource.pitch = _runFootSteps.Pitch;
+            _audioSource.PlayOneShot(_runFootSteps.AudioClips[UnityEngine.Random.Range(0, _runFootSteps.AudioClips.Length)]);
+        }
+        public void PlayRandomAttackFootStepSFX()
+        {
+            _audioSource.volume = _attackFootStepSFXVolume;
+            _audioSource.pitch = _attackFootStepSFXPitch;
             _audioSource.PlayOneShot(_runFootSteps.AudioClips[UnityEngine.Random.Range(0, _runFootSteps.AudioClips.Length)]);
         }
         public void PlayRandomWalkStepSFX()
@@ -57,6 +68,12 @@ namespace Sounds
             _secondarySource.volume = _hurt.Volume;
             _secondarySource.pitch = _hurt.Pitch;
             _secondarySource.PlayOneShot(_hurt.AudioClips[UnityEngine.Random.Range(0, _hurt.AudioClips.Length)]);
+        }
+        public void PlayGruntSFX()
+        {
+            _secondarySource.volume = _grunt.Volume;
+            _secondarySource.pitch = _grunt.Pitch + UnityEngine.Random.Range(-0.05f, 0.05f);
+            _secondarySource.PlayOneShot(_grunt.AudioClips[UnityEngine.Random.Range(0, _grunt.AudioClips.Length)]);
         }
     }
 

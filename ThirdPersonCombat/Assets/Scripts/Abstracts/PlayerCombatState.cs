@@ -58,12 +58,17 @@ namespace States
 
             if (_animationTimePassed > _currentAttack.attackDuration) //+ _currentAttack.comboPermissionDelay)
             {
+                if (stateMachine.stamina.stopRegenerate)
+                    stateMachine.stamina.stopRegenerate = false;
                 StateTickActions(deltaTime);
             }
             else
             {
                 if(!IsAttacking)
                     IsAttacking = true;
+                if(!stateMachine.stamina.stopRegenerate)
+                    stateMachine.stamina.stopRegenerate = true;
+                
             }
 
             //Auto attack from saved next attack if player pressed attack button in an attack duration.

@@ -21,6 +21,7 @@ namespace PlayerController
         [SerializeField] private SoundClips _swordDamageSounds;
         [SerializeField] private SoundClips _swordDraw;
         [SerializeField] private SoundClips _swordSheath;
+        [SerializeField] private SoundClips _swordSwipe;
 
         [Header("Sword Throw")]
         [SerializeField] private LayerMask _aimLayer;
@@ -199,6 +200,7 @@ namespace PlayerController
             _damage.ResetState();
             _damage.SetAttackDamage(damage);
             _damage.enabled = true;
+            PlaySwipeSFX();
         }
         
         public void StopAttack()
@@ -232,6 +234,12 @@ namespace PlayerController
             _audioSource.volume = _swordSheath.Volume;
             _audioSource.pitch = _swordSheath.Pitch;
             _audioSource.PlayOneShot(_swordSheath.AudioClips[0]);
+        }
+        private void PlaySwipeSFX()
+        {
+            _audioSource.volume = _swordSwipe.Volume;
+            _audioSource.pitch = _swordSwipe.Pitch + Random.Range(-0.24f, 0.24f);
+            _audioSource.PlayOneShot(_swordSwipe.AudioClips[0]);
         }
     }
 
