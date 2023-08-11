@@ -97,11 +97,12 @@ namespace PlayerController
                 _rb.velocity = Vector3.zero;
                 _yRotationAnim.Pause();
                 _rb.isKinematic = true;
-                transform.SetParent(other.transform);
+                //transform.SetParent(other.transform);
                 if (other.CompareTag("Enemy"))
                 {
                     if(other.TryGetComponent(out EnemyStateMachine enemy))
                     {
+                        transform.SetParent(other.transform);
                         _currentEnemy = enemy;
                         _currentEnemy.ChangeState(_currentEnemy.swordHitState);
                         _currentEnemy.isSwordOn = true;

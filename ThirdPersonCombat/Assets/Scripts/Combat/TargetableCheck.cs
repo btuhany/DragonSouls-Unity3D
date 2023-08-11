@@ -14,6 +14,8 @@ public class TargetableCheck : MonoBehaviour
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private CinemachineTargetGroup _cinemachineTargetGroup;
     [SerializeField] private TargetCrosshairController _targetCrosshair;
+    [Header("Obstacle")]
+    [SerializeField] private LayerMask _obstacleLayer;
     private Camera _mainCam;
     private Targetable _currentTargetable;
     private Targetable _previousTargetable;
@@ -44,6 +46,7 @@ public class TargetableCheck : MonoBehaviour
         if (Targets.Count == 0) return false;
         _currentTargetable = ClosestTargetScreenOrigin();
         if (_currentTargetable == null) return false;
+        if (IsThereObstacle(_currentTargetable.TargetPoint)) return false;
         _targetCrosshair.SetTargetState(_currentTargetable.TargetPoint);
         _cinemachineTargetGroup.AddMember(_currentTargetable.TargetPoint, targetMemberCamWeight, targetMemberCamRadius);
         return true;
@@ -53,6 +56,7 @@ public class TargetableCheck : MonoBehaviour
         if (Targets.Count == 0) return false;
         _currentTargetable = _previousTargetable;
         if (_currentTargetable == null) return false;
+        if (IsThereObstacle(_currentTargetable.TargetPoint)) return false;
         _targetCrosshair.SetTargetState(_currentTargetable.TargetPoint);
         _cinemachineTargetGroup.AddMember(_previousTargetable.TargetPoint, targetMemberCamWeight, targetMemberCamRadius);
         return true;
@@ -163,6 +167,15 @@ public class TargetableCheck : MonoBehaviour
             _targetCrosshair.SetTargetState(_currentTargetable.TargetPoint);
             _cinemachineTargetGroup.AddMember(_currentTargetable.TargetPoint, targetMemberCamWeight, targetMemberCamRadius);
         }
+    }
+
+    public bool IsThereObstacle(Transform targetTransform)
+    {
+        if(Physics.Raycast(transform.position, transform.TransformDirection(targetTransform.position), Vector3.Distance(transform.position, targetTransform.position), _obstacleLayer))
+        {
+            return true;
+        }
+        return false;
     }
 
 }

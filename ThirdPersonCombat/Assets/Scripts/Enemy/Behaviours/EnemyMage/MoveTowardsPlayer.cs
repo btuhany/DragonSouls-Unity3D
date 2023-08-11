@@ -23,7 +23,7 @@ public class MoveTowardsPlayer : ActionNode
     protected override State OnUpdate()
     {
         _navmeshAgent.destination = PlayerStateMachine.Instance.transform.position;
-        if (!agent.forceReceiver.IsGrounded) return State.Running;
+        if (!agent.forceReceiver.isGrounded) return State.Running;
         agent.characterController.Move(_navmeshAgent.desiredVelocity.normalized * speed * Time.deltaTime);
         _navmeshAgent.velocity = agent.characterController.velocity; 
 

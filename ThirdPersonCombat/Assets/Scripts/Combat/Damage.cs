@@ -18,7 +18,7 @@ namespace Combat
             {
                 if (_hitColliders.Contains(other)) return;
                 _hitColliders.Add(other);
-                health.TakeDamage(AttackDamage, this.gameObject);
+                health.TakeDamage(AttackDamage, this);
                 health.EnterHitPosition = HitControlPosition.position;
                 if(!health.IsInvulnerable)
                     OnHitGiven?.Invoke(other);

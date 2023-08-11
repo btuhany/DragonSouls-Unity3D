@@ -23,10 +23,11 @@ namespace EnemyControllers
         [SerializeField] private LayerMask _groundMask;
 
         private Vector3 _currentVelocity = Vector3.zero;
-        private Vector3 _impact;
+        private Vector3 _impact = Vector3.zero;
 
         private Vector3 _verticalVelocity = Vector3.zero;
-        public bool IsGrounded => Physics.CheckSphere(_groundCheckTransform.position, _checkRadius, _groundMask);
+        public bool isGrounded => Physics.CheckSphere(_groundCheckTransform.position, _checkRadius, _groundMask);
+        public bool isImpacted;
         private readonly float _gravity = Physics.gravity.y;
 
         private void Awake()
@@ -38,18 +39,19 @@ namespace EnemyControllers
             if(!_disableImpact)
             {
                 if (_impact.sqrMagnitude > 0.07f)
+                {
                     _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _currentVelocity, _impactLerpTime);
-                else
+                }
+                else if(isImpacted)
                 {
                     _impact = Vector3.zero;
+                    isImpacted = false;
                 }
-
-                transform.position += _impact * Time.deltaTime;
+                characterController.Move(_impact * Time.deltaTime);
             }
 
-
             _verticalVelocity.y += _gravity * Time.deltaTime * _gravityScale;
-            if (IsGrounded && _verticalVelocity.y < 0f)
+            if (isGrounded && _verticalVelocity.y < 0f)
                 _verticalVelocity.y = -2f;
 
             characterController.Move(_verticalVelocity * Time.deltaTime);
@@ -60,6 +62,13 @@ namespace EnemyControllers
             if (Physics.CheckSphere(_enemyCheckTransform.position, _enemyCheckRadius, _playerLayer)) return;
             if (Vector3.Distance(PlayerStateMachine.Instance.transform.position, transform.position) < 1.2f) return;
             _impact = transform.forward * _impactMagnitude;
+            isImpacted = true;
+        }
+
+        public void AddForce(Vector3 impact)
+        {
+            _impact = impact;
+            isImpacted = true;
         }
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -67,7 +76,10 @@ namespace EnemyControllers
             if (hit.collider.CompareTag("Player"))
             {
                 if (_impact != Vector3.zero)
+                {
                     _impact = Vector3.zero;
+                    isImpacted = false;
+                }
             }
         }
     }

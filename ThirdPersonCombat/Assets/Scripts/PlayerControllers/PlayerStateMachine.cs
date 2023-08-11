@@ -36,7 +36,7 @@ namespace States
         [HideInInspector] public bool isSprintHolding;
         [HideInInspector] public bool isSprinting;
         [HideInInspector] public bool isRoll = false;
-
+        public Transform targetPointTransform;
         public static PlayerStateMachine Instance;
         public PlayerStateMachine()
         {

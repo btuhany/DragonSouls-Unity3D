@@ -110,8 +110,11 @@ public class EnemyStateMachine : StateMachine
         {
             if (_currentState == getHitState)
                 getHitState.GetHitAgain();
+            else if (_currentState == swordHitState)
+                swordHitState.OnGetHit();
             else
                 ChangeState(getHitState);
+            
         }
     }
     private IEnumerator CheckAttackStateConditions(WaitForSeconds waitTime, float range)

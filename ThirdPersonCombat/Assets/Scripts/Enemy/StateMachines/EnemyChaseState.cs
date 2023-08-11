@@ -45,7 +45,8 @@ namespace States
                 _timeCounter = 0;
             }
 
-            if (!stateMachine.forceReceiver.IsGrounded) return;
+            if (!stateMachine.forceReceiver.isGrounded) return;
+            if (stateMachine.forceReceiver.isImpacted) return;
             movement.Move(navmeshAgent.desiredVelocity.normalized, config.ChaseSpeed, deltaTime);
             navmeshAgent.velocity = movement.Velocity;
             Vector3 faceDir = movement.Velocity;

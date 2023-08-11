@@ -6,6 +6,5 @@ public class TestScript : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-     //   Debug.Log("Test!");
     }
 }

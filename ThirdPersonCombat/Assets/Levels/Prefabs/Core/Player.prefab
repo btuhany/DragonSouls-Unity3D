@@ -5484,6 +5484,7 @@ MonoBehaviour:
   isSprintHolding: 0
   isSprinting: 0
   isRoll: 0
+  targetPointTransform: {fileID: 5140849124236503555}
 --- !u!114 &5140849125630205057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5537,7 +5538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sword: {fileID: 5140849124309685705}
   _unarmedLeft: {fileID: 7762632667364585262}
-  _unarmedRight: {fileID: 0}
+  _unarmedRight: {fileID: 964073134852930972}
   _throwForce: 60
   _crossHairPanel: {fileID: 0}
   AttackForce: 0
@@ -5743,6 +5744,7 @@ MonoBehaviour:
   _maxStamina: 200
   _regenerateSpeedOnMovement: 35
   _regenerateSpeed: 50
+  stopRegenerate: 0
 --- !u!114 &1793563101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5817,6 +5819,16 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 8614cb58d49ba0a4dbf808a5b617c232, type: 3}
     Volume: 1
     Pitch: 1
+  _grunt:
+    AudioClips:
+    - {fileID: 8300000, guid: 070f96c1887714a45902376902ae3cdd, type: 3}
+    - {fileID: 8300000, guid: b6586f8dda566ce4597baa0f6295822c, type: 3}
+    - {fileID: 8300000, guid: 9f1b6769c8a4bcf44abe3a4c541ac68b, type: 3}
+    - {fileID: 8300000, guid: 676070d8e5f1ee64d81c7611ef1b658c, type: 3}
+    Volume: 1
+    Pitch: 1
+  _attackFootStepSFXVolume: 0.5
+  _attackFootStepSFXPitch: 1
 --- !u!114 &3580281202228264021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6255,6 +6267,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.AudioClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e59a5a1aad751946828b7a4ec9cc4c5, type: 3}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.AudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: eeaa965ae4e901e4db40fa2c31885a83, type: 3}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.AudioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ea81061e16cdcf49ab4ff0586916cf4, type: 3}
     - target: {fileID: 7976475319326908060, guid: b49e235ddbd86224198da03391893db1,
         type: 3}
       propertyPath: m_Name
@@ -6262,6 +6304,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b49e235ddbd86224198da03391893db1, type: 3}
+--- !u!114 &964073134852930972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3233487293499561373}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4303e0e024b381748bee54ffb660cb9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4272735440067538232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1699099170078816421, guid: b49e235ddbd86224198da03391893db1,
@@ -6275,6 +6329,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3157419670107592758}
     m_Modifications:
+    - target: {fileID: 4383953095502281317, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.811
+      objectReference: {fileID: 0}
     - target: {fileID: 8768024155087912521, guid: aaf73536a91184541b82c405c667ae7e,
         type: 3}
       propertyPath: m_Name
@@ -6295,6 +6354,86 @@ PrefabInstance:
       propertyPath: _sheahtHolder
       value: 
       objectReference: {fileID: 3157419670107592758}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordDraw.Pitch
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordDraw.Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordSwipe.Pitch
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordSheath.Pitch
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordSwipe.Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordSheath.Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordDamageSounds.Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordDamageSounds.Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordDraw.AudioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordSwipe.AudioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordSheath.AudioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordDraw.AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d2f920b85764d94b9c6a081a9b7d7df, type: 3}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordSwipe.AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cff5e696f86f59b409394fb05186ab25, type: 3}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordSheath.AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 42f523b88270ad44697010e579ccf968, type: 3}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordDamageSounds.AudioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
+        type: 3}
+      propertyPath: _swordDamageSounds.AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 160da3428f156884097a307c0aaecea7, type: 3}
     - target: {fileID: 8768024155087912523, guid: aaf73536a91184541b82c405c667ae7e,
         type: 3}
       propertyPath: m_RootOrder
@@ -6432,6 +6571,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.Pitch
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.AudioClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e59a5a1aad751946828b7a4ec9cc4c5, type: 3}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.AudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: eeaa965ae4e901e4db40fa2c31885a83, type: 3}
+    - target: {fileID: 2431579754376210433, guid: b49e235ddbd86224198da03391893db1,
+        type: 3}
+      propertyPath: _weaponHitSounds.AudioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ea81061e16cdcf49ab4ff0586916cf4, type: 3}
     - target: {fileID: 7976475319326908060, guid: b49e235ddbd86224198da03391893db1,
         type: 3}
       propertyPath: m_Name
