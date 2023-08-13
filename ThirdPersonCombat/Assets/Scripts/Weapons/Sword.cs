@@ -22,7 +22,14 @@ namespace PlayerController
         [SerializeField] private SoundClips _swordDraw;
         [SerializeField] private SoundClips _swordSheath;
         [SerializeField] private SoundClips _swordSwipe;
+        [SerializeField] private SoundClips _swordGrab;
+        [SerializeField] private SoundClips _groundHitImpact;
 
+
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioSource _inAirSFXAuidoSource;
+        [SerializeField] private AudioSource _returnSFXAuidoSource;
+        
         [Header("Sword Throw")]
         [SerializeField] private LayerMask _aimLayer;
         [SerializeField] private float _aimRange;
@@ -41,13 +48,15 @@ namespace PlayerController
         private Transform _mainCam;
         private Transform _swordBody;
         private EnemyStateMachine _currentEnemy;
-        private AudioSource _audioSource;
-
+        private float _inAirSFXInitialVolume;
+        private float _returnSFXInitialVolume;
         public bool IsInHand => transform.parent == _handHolder;
         public bool IsInSheath => transform.parent == _sheahtHolder;
 
         private void Awake()
         {
+            _inAirSFXInitialVolume = _inAirSFXAuidoSource.volume;
+            _returnSFXInitialVolume = _returnSFXAuidoSource.volume;
             _trail = GetComponentInChildren<TrailRenderer>();
             _swordBody = GetComponentsInChildren<Transform>()[1];
             _damage = GetComponent<Damage>();
@@ -71,10 +80,15 @@ namespace PlayerController
         {
             if (_isInCurvePoint)
             {
+                if (_inAirSFXAuidoSource.isPlaying)
+                    SetActiveInAirSFX(false);
+
                 Vector3 dir = Vector3.Slerp(transform.position, _handHolder.position, _curvePointToHolderReturnLerpTime);
                 _rb.MovePosition(dir);
                 if (Vector3.Distance(_rb.position, _handHolder.position) < 1f)
                 {
+                    SetActiveReturnSFX(false);
+                    PlayGrabSFX();
                     StopAttack();
                     _zRotationAnim.Pause();
                     _yRotationAnim.Pause();
@@ -98,6 +112,7 @@ namespace PlayerController
                 _yRotationAnim.Pause();
                 _rb.isKinematic = true;
                 //transform.SetParent(other.transform);
+                SetActiveInAirSFX(false);
                 if (other.CompareTag("Enemy"))
                 {
                     if(other.TryGetComponent(out EnemyStateMachine enemy))
@@ -110,7 +125,10 @@ namespace PlayerController
                         _isOnEnemy = true;
                         _freezeElectricFX.gameObject.SetActive(true);
                     }
-
+                }
+                else
+                {
+                    PlayGroundHitImpactSFX();
                 }
             }
         }
@@ -130,6 +148,7 @@ namespace PlayerController
             _yRotationAnim.Play();
             StartAttack(_damageInAir);
             ThrowProcess(force);
+            SetActiveInAirSFX(true);
         }
         private void ThrowProcess(Vector3 force)
         {
@@ -152,7 +171,12 @@ namespace PlayerController
         }
         public void Return()
         {
-            if(_isOnEnemy)
+            if (!_returnSFXAuidoSource.isPlaying)
+                SetActiveReturnSFX(true);
+            if (_inAirSFXAuidoSource.isPlaying)
+                SetActiveInAirSFX(false);
+
+            if (_isOnEnemy)
             {
                 _currentEnemy.ChangeState(_currentEnemy.chaseState);
                 _freezeElectricFX.gameObject.SetActive(false);
@@ -218,6 +242,7 @@ namespace PlayerController
             _isOnEnemy = false;
         }
 
+        #region Sounds
         public void PlayDamageGivenSFX()
         {
             _audioSource.volume = _swordDamageSounds.Volume;
@@ -242,6 +267,48 @@ namespace PlayerController
             _audioSource.pitch = _swordSwipe.Pitch + Random.Range(-0.24f, 0.24f);
             _audioSource.PlayOneShot(_swordSwipe.AudioClips[0]);
         }
+        private void PlayGrabSFX()
+        {
+            _audioSource.volume = _swordGrab.Volume;
+            _audioSource.pitch = _swordGrab.Pitch + Random.Range(-0.24f, 0.24f);
+            _audioSource.PlayOneShot(_swordGrab.AudioClips[0]);
+        }
+        private void PlayGroundHitImpactSFX()
+        {
+            _audioSource.volume = _groundHitImpact.Volume;
+            _audioSource.pitch = _groundHitImpact.Pitch + Random.Range(-0.5f, 0.5f);
+            _audioSource.PlayOneShot(_groundHitImpact.AudioClips[0]);
+        }
+        private void SetActiveInAirSFX(bool active)
+        {
+            if(active)
+            {
+                _inAirSFXAuidoSource.Play();
+            }
+            else
+            {
+                _inAirSFXAuidoSource.DOFade(0.0f, 0.2f).onComplete = () => {
+                    _inAirSFXAuidoSource.Stop();
+                    _inAirSFXAuidoSource.volume = _inAirSFXInitialVolume;
+                };
+            }
+        }
+        private void SetActiveReturnSFX(bool active)
+        {
+            if (active)
+            {
+                _returnSFXAuidoSource.Play();
+            }
+            else
+            {
+                _returnSFXAuidoSource.DOFade(0.0f, 0.2f).onComplete = () =>
+                {
+                    _returnSFXAuidoSource.Stop();
+                    _returnSFXAuidoSource.volume = _returnSFXInitialVolume;
+                };
+            }
+        }
+        #endregion
     }
 
 }
