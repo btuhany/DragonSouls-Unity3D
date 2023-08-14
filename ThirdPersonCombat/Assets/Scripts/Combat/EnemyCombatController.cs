@@ -9,7 +9,7 @@ namespace Combat
 
         [SerializeField] WeaponController _weapon;
         [SerializeField] ProjectileController[] _projectiles;
-        [SerializeField] Transform _projectileSpawnPoint;
+        [SerializeField] Transform[] _projectileSpawnPoints;
 
         //Animation Events
         public void StartAttack()
@@ -25,8 +25,9 @@ namespace Combat
         public void SpawnProjectile(int projectileNum)
         {
             _projectiles[projectileNum].targetTransform = PlayerStateMachine.Instance.targetPointTransform;
-            Instantiate(_projectiles[projectileNum], _projectileSpawnPoint.position, _projectileSpawnPoint.rotation);
+            Instantiate(_projectiles[projectileNum], _projectileSpawnPoints[projectileNum].position, Quaternion.identity);
         }
+
         
     }
 }

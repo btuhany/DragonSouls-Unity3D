@@ -40,7 +40,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 4dc5c297e3b5b494e84e9e8ddfb79d17
-  Position: {x: 103, y: -280.5244}
+  Position: {x: 92.999855, y: -287.50003}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -89,13 +89,13 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 399f03b947740634bb530683b0937c80
-  Position: {x: -18, y: 118}
+  Position: {x: -93.00003, y: 122.00002}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
-  description: Walk
+  description: Set jump true
   transitionDuration: 0.1
   setWalk: 0
   setJump: 1
@@ -116,7 +116,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: d9a9001fb4b72f442a2bf11d8d182daa
-  Position: {x: -455, y: -373.99997}
+  Position: {x: -896.65, y: -465.45203}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 4d8b831d98720dd4394d3cd83615d4cb
-  Position: {x: -261.99982, y: 114}
+  Position: {x: -261.99985, y: 122}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 8ba6b758728fed343b0ddd1f47e5f397
-  Position: {x: -736.48724, y: 122.00001}
+  Position: {x: -582.52496, y: 122.00002}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -221,7 +221,6 @@ MonoBehaviour:
   description: 
   Children:
   - {fileID: -1234862867047803423}
-  - {fileID: 9176201677825486242}
   - {fileID: 5994578427901819139}
   - {fileID: -1259078877462805730}
   - {fileID: -2997563380355056416}
@@ -244,7 +243,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: dc65eea70ad797343a2078940643fc1e
-  Position: {x: -313.00015, y: -519.15}
+  Position: {x: -754.65, y: -610.452}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -334,7 +333,6 @@ MonoBehaviour:
   - {fileID: -652965926181081840}
   - {fileID: 4184451495741530902}
   - {fileID: 7422471987870150830}
-  - {fileID: 9176201677825486242}
   - {fileID: -2997563380355056416}
   - {fileID: 5834493538330735030}
   - {fileID: 1263101555433701142}
@@ -360,7 +358,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 33224713a7cbf524cac5af0ae08d50eb
-  Position: {x: -613, y: -99.999985}
+  Position: {x: -1054.65, y: -191.45201}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -437,7 +435,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  attackNum: 0
+  attackNum: 1
   isRandomAttack: 0
 --- !u!114 &4366405669881577816
 MonoBehaviour:
@@ -454,7 +452,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 9912ad435141c4f4c9ecb31db3ff8716
-  Position: {x: -621, y: -247.29999}
+  Position: {x: -1062.65, y: -338.45203}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -485,7 +483,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: '[0-10)'
   minDistance: 0
-  maxDistance: 5
+  maxDistance: 20
 --- !u!114 &5834493538330735030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,13 +499,13 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 463ea6cea88c28a4fba0d3f991d2f853
-  Position: {x: 449, y: 278}
+  Position: {x: 456.99997, y: 278}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
-  description: 
+  description: Set jump false
   transitionDuration: 0.1
   setWalk: 0
   setJump: 1
@@ -573,7 +571,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 6f3cff8ce75afea4f85e834e067294bd
-  Position: {x: -396.00003, y: -214.50003}
+  Position: {x: -837.64996, y: -305.45203}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -581,26 +579,3 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   Message: ' Got hit!'
---- !u!114 &9176201677825486242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0aea03134a7d3446842d858bb88f7d8, type: 3}
-  m_Name: DebugLogNode
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: 52561b63418489444840d2e6964cec52
-  Position: {x: -578, y: 126}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
-  Message: face bitti

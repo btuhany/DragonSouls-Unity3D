@@ -14570,8 +14570,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4243907315327173424}
-  - component: {fileID: 2922475079021499792}
   - component: {fileID: 205199500220406177}
+  - component: {fileID: 2922475079021499792}
   - component: {fileID: 2877559078445476082}
   - component: {fileID: 6208773287342923208}
   m_Layer: 7
@@ -14598,22 +14598,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2922475079021499792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947808655914556845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1e37a72e9180144fb0ab4768868f01f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackDamage: 25
-  _speed: 4
-  targetTransform: {fileID: 0}
-  postDestroyFX: {fileID: 3296998728048359813}
 --- !u!114 &205199500220406177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14628,6 +14612,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackDamage: 0
   HitControlPosition: {fileID: 4243907315327173424}
+--- !u!114 &2922475079021499792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3947808655914556845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e37a72e9180144fb0ab4768868f01f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackDamage: 25
+  _speed: 4
+  _chasePlayerInitial: 1
+  _useTween: 0
+  _tweenEase: 1
+  targetTransform: {fileID: 0}
+  postDestroyFX: {fileID: 3296998728048359813}
 --- !u!135 &2877559078445476082
 SphereCollider:
   m_ObjectHideFlags: 0

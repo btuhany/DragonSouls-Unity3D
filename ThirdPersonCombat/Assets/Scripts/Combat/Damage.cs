@@ -34,7 +34,6 @@ namespace Combat
         {
             AttackDamage = damage;
         }
-       
     }
 
 }
