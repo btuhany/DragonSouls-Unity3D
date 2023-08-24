@@ -16,7 +16,10 @@ namespace Combat
         {
             _weapon.StartAttack(CurrentAttack.damage);
         }
-
+        public void StartAttackOf(int attackNum)
+        {
+            _weapon.StartAttack(Attacks[attackNum].damage);
+        }
         public void EndAttack()
         {
             _weapon.StopAttack();    

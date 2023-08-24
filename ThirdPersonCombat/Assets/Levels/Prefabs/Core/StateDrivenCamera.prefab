@@ -78,7 +78,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5652237701393191375}
-  - component: {fileID: 5652237701393191372}
+  - component: {fileID: -4416781450699169951}
   m_Layer: 3
   m_Name: BottomRig
   m_TagString: Untagged
@@ -103,7 +103,7 @@ Transform:
   m_Father: {fileID: 5652237701602655795}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5652237701393191372
+--- !u!114 &-4416781450699169951
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 50
+    FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -140,6 +140,13 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -157,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5652237701446456889}
-  - component: {fileID: 5652237701446456870}
+  - component: {fileID: -5690280728188289376}
   m_Layer: 3
   m_Name: TopRig
   m_TagString: Untagged
@@ -182,7 +189,7 @@ Transform:
   m_Father: {fileID: 5652237701602655795}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5652237701446456870
+--- !u!114 &-5690280728188289376
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,7 +217,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 50
+    FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -219,6 +226,13 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -357,6 +371,13 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 1
@@ -439,9 +460,9 @@ MonoBehaviour:
     m_Radius: 4.2
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
-  - {fileID: 5652237701446456870}
-  - {fileID: 5652237702125818668}
-  - {fileID: 5652237701393191372}
+  - {fileID: -5690280728188289376}
+  - {fileID: -8052487365503252956}
+  - {fileID: -4416781450699169951}
 --- !u!114 &5652237701602655794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +573,13 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 1
@@ -589,8 +617,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5652237701863550230}
   - component: {fileID: 5652237701863550251}
-  - component: {fileID: 5652237701863550248}
-  - component: {fileID: 5652237701863550249}
+  - component: {fileID: -1436440114423317363}
+  - component: {fileID: 6587899442339984920}
   m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
@@ -625,7 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5652237701863550248
+--- !u!114 &-1436440114423317363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -637,11 +665,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: -1, z: -4.2}
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 0, z: -10}
   m_XDamping: 1
-  m_YDamping: 1.07
-  m_ZDamping: 1.07
+  m_YDamping: 1
+  m_ZDamping: 1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -649,7 +677,7 @@ MonoBehaviour:
   m_AngularDamping: 0
   m_Heading:
     m_Definition: 2
-    m_VelocityFilterStrength: 10
+    m_VelocityFilterStrength: 4
     m_Bias: 0
   m_RecenterToTargetHeading:
     m_enabled: 0
@@ -679,7 +707,7 @@ MonoBehaviour:
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
   m_HeadingIsSlave: 1
---- !u!114 &5652237701863550249
+--- !u!114 &6587899442339984920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -692,15 +720,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0.09
-  m_LookaheadSmoothing: 1.5
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
   m_HorizontalDamping: 0
-  m_VerticalDamping: 1.03
+  m_VerticalDamping: 0
   m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0.04
-  m_DeadZoneHeight: 0.042
+  m_ScreenY: 0.55
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
@@ -811,141 +839,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   m_CustomBlends: {fileID: 0}
-  m_ParentHash:
-  - m_Hash: 585382737
-    m_ParentHash: 756556552
-  - m_Hash: 230188126
-    m_ParentHash: 585382737
-  - m_Hash: 358441999
-    m_ParentHash: 585382737
-  - m_Hash: 1911844345
-    m_ParentHash: 585382737
-  - m_Hash: 281998946
-    m_ParentHash: 585382737
-  - m_Hash: -1356792818
-    m_ParentHash: 585382737
-  - m_Hash: -1369446728
-    m_ParentHash: 756556552
-  - m_Hash: -480202640
-    m_ParentHash: -1369446728
-  - m_Hash: -146263504
-    m_ParentHash: -1369446728
-  - m_Hash: 1888898293
-    m_ParentHash: -1369446728
-  - m_Hash: -812215092
-    m_ParentHash: -1369446728
-  - m_Hash: 1707402134
-    m_ParentHash: -1369446728
-  - m_Hash: -2006326390
-    m_ParentHash: -1369446728
-  - m_Hash: -636114868
-    m_ParentHash: -1369446728
-  - m_Hash: -1386221172
-    m_ParentHash: -1369446728
-  - m_Hash: -2083188994
-    m_ParentHash: -1369446728
-  - m_Hash: -641992632
-    m_ParentHash: 756556552
-  - m_Hash: 1085450738
-    m_ParentHash: 756556552
-  - m_Hash: 934648164
-    m_ParentHash: 756556552
-  - m_Hash: 582921605
-    m_ParentHash: 756556552
-  - m_Hash: -1145570241
-    m_ParentHash: 756556552
-  - m_Hash: -860828503
-    m_ParentHash: 756556552
-  - m_Hash: 1237525050
-    m_ParentHash: 756556552
-  - m_Hash: 1091168440
-    m_ParentHash: 1237525050
-  - m_Hash: 1245374172
-    m_ParentHash: 1237525050
-  - m_Hash: 2116848540
-    m_ParentHash: 1237525050
-  - m_Hash: -979823661
-    m_ParentHash: 756556552
-  - m_Hash: -2074571519
-    m_ParentHash: -979823661
-  - m_Hash: 696566192
-    m_ParentHash: -979823661
-  - m_Hash: -1645214938
-    m_ParentHash: -979823661
-  - m_Hash: 181233629
-    m_ParentHash: -979823661
-  - m_Hash: 263297175
-    m_ParentHash: -979823661
-  - m_Hash: 583111771
-    m_ParentHash: -979823661
-  - m_Hash: 2016290338
-    m_ParentHash: -979823661
-  - m_Hash: 1545714617
-    m_ParentHash: -979823661
-  - m_Hash: 696088879
-    m_ParentHash: -979823661
-  - m_Hash: -1229947499
-    m_ParentHash: 756556552
-  - m_Hash: -1965804464
-    m_ParentHash: 756556552
-  - m_Hash: -89113176
-    m_ParentHash: -1965804464
-  - m_Hash: -1425673496
-    m_ParentHash: -1965804464
-  - m_Hash: -1935328976
-    m_ParentHash: -1965804464
-  - m_Hash: -35432738
-    m_ParentHash: 756556552
-  - m_Hash: 1693058916
-    m_ParentHash: 756556552
-  - m_Hash: 637490722
-    m_ParentHash: 756556552
-  - m_Hash: -873384178
-    m_ParentHash: 756556552
-  - m_Hash: -1124726888
-    m_ParentHash: 756556552
-  - m_Hash: -780842870
-    m_ParentHash: 756556552
-  - m_Hash: -1673590721
-    m_ParentHash: 756556552
-  - m_Hash: 1456345457
-    m_ParentHash: 756556552
-  - m_Hash: -502611692
-    m_ParentHash: 1456345457
-  - m_Hash: -333839123
-    m_ParentHash: 1456345457
-  - m_Hash: -1552248232
-    m_ParentHash: 1456345457
-  - m_Hash: -1832232755
-    m_ParentHash: 1456345457
-  - m_Hash: -1690216891
-    m_ParentHash: 756556552
-  - m_Hash: -1328665135
-    m_ParentHash: 756556552
-  - m_Hash: 296868268
-    m_ParentHash: -1328665135
-  - m_Hash: -294390529
-    m_ParentHash: -1328665135
-  - m_Hash: -1208841263
-    m_ParentHash: -1328665135
-  - m_Hash: 112913232
-    m_ParentHash: -1328665135
-  - m_Hash: 320343703
-    m_ParentHash: 756556552
-  - m_Hash: 2051403469
-    m_ParentHash: 756556552
-  - m_Hash: -350224702
-    m_ParentHash: 756556552
-  - m_Hash: -1664765031
-    m_ParentHash: -350224702
-  - m_Hash: -1848285404
-    m_ParentHash: -350224702
-  - m_Hash: 1779536321
-    m_ParentHash: 756556552
-  - m_Hash: -2109475077
-    m_ParentHash: 1779536321
-  - m_Hash: 1151895187
-    m_ParentHash: 1779536321
+  m_ParentHash: []
 --- !u!1 &5652237702125818669
 GameObject:
   m_ObjectHideFlags: 3
@@ -955,7 +849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5652237702125818671}
-  - component: {fileID: 5652237702125818668}
+  - component: {fileID: -8052487365503252956}
   m_Layer: 3
   m_Name: MiddleRig
   m_TagString: Untagged
@@ -980,7 +874,7 @@ Transform:
   m_Father: {fileID: 5652237701602655795}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5652237702125818668
+--- !u!114 &-8052487365503252956
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1008,7 +902,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 50
+    FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -1017,6 +911,13 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1206,6 +1107,13 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 1
@@ -1254,8 +1162,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5652237702694202789}
   - component: {fileID: 5652237702694202790}
-  - component: {fileID: 5652237702694202791}
-  - component: {fileID: 5652237702694202788}
+  - component: {fileID: 7740073810375014595}
+  - component: {fileID: 2834257929202094110}
   m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
@@ -1290,7 +1198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5652237702694202791
+--- !u!114 &7740073810375014595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1302,8 +1210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: -1, z: -4.2}
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 0, z: -10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1314,7 +1222,7 @@ MonoBehaviour:
   m_AngularDamping: 0
   m_Heading:
     m_Definition: 2
-    m_VelocityFilterStrength: 10
+    m_VelocityFilterStrength: 4
     m_Bias: 0
   m_RecenterToTargetHeading:
     m_enabled: 0
@@ -1344,7 +1252,7 @@ MonoBehaviour:
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
   m_HeadingIsSlave: 1
---- !u!114 &5652237702694202788
+--- !u!114 &2834257929202094110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1381,8 +1289,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5652237702881225895}
   - component: {fileID: 5652237702881225912}
-  - component: {fileID: 5652237702881225913}
-  - component: {fileID: 5652237702881225894}
+  - component: {fileID: -6348078352772840240}
+  - component: {fileID: -426621960800317524}
   m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
@@ -1417,7 +1325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5652237702881225913
+--- !u!114 &-6348078352772840240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1429,8 +1337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: -1, z: -4.2}
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 0, z: -10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1441,7 +1349,7 @@ MonoBehaviour:
   m_AngularDamping: 0
   m_Heading:
     m_Definition: 2
-    m_VelocityFilterStrength: 10
+    m_VelocityFilterStrength: 4
     m_Bias: 0
   m_RecenterToTargetHeading:
     m_enabled: 0
@@ -1471,7 +1379,7 @@ MonoBehaviour:
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
   m_HeadingIsSlave: 1
---- !u!114 &5652237702881225894
+--- !u!114 &-426621960800317524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

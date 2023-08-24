@@ -5518,7 +5518,7 @@ MonoBehaviour:
   isSprintHolding: 0
   isSprinting: 0
   isRoll: 0
-  targetPointTransform: {fileID: 5140849124236503555}
+  targetPointTransform: {fileID: 8965417607676735079}
 --- !u!114 &5140849125630205057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6493,7 +6493,7 @@ PrefabInstance:
     - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
         type: 3}
       propertyPath: _swordGrab.Pitch
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8768024155087912522, guid: aaf73536a91184541b82c405c667ae7e,
         type: 3}

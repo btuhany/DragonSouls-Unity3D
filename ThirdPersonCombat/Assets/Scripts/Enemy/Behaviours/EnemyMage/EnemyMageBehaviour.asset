@@ -435,7 +435,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  attackNum: 1
+  attackNum: 3
   isRandomAttack: 0
 --- !u!114 &4366405669881577816
 MonoBehaviour:
@@ -483,7 +483,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: '[0-10)'
   minDistance: 0
-  maxDistance: 20
+  maxDistance: 3
 --- !u!114 &5834493538330735030
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,4 +7,8 @@ public class TestScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
     }
+    public void TestConsole()
+    {
+        Debug.Log("Triggered!");
+    }
 }
