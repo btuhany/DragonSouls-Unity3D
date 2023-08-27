@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8532649930470872099}
   - component: {fileID: 4932542108369767585}
+  - component: {fileID: 4236938103738263596}
   m_Layer: 0
   m_Name: furTree_dead
   m_TagString: Untagged
@@ -44,23 +45,37 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: -0.12982798, y: 6.7964416, z: -0.72881484}
   m_Size: 13.303882
-  m_FadeMode: 0
+  m_FadeMode: 1
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.6
+  - screenRelativeHeight: 0.48632327
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3267715597325440472}
-  - screenRelativeHeight: 0.3
+  - screenRelativeHeight: 0.17765872
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 6873254961554918876}
-  - screenRelativeHeight: 0.1
+  - screenRelativeHeight: 0.014304495
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 6873254961554918876}
   m_Enabled: 1
+--- !u!136 &4236938103738263596
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042187929787452325}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3387516
+  m_Height: 13.40063
+  m_Direction: 1
+  m_Center: {x: 0.18366605, y: 6.737371, z: -0.0857383}
 --- !u!1001 &4222361750557985116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221,26 +236,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ade68020413a6f543b647d2eb526c59e, type: 3}
---- !u!1 &4927580693472717833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ade68020413a6f543b647d2eb526c59e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5234063859690410328}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &4147711525493973628
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4927580693472717833}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.05
-  m_Height: 1.1702055
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.5976803, z: 0}
 --- !u!4 &5704257683934410419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ade68020413a6f543b647d2eb526c59e,

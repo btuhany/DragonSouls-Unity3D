@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2561204222627087945}
   - component: {fileID: 1451533739743250924}
   - component: {fileID: 3729004092357672230}
-  - component: {fileID: 2296406199629581136}
+  - component: {fileID: 2663014809536825983}
   m_Layer: 0
   m_Name: fernDark
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!205 &2296406199629581136
+--- !u!205 &2663014809536825983
 LODGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,8 +92,8 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2936603174198009075}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: -1.4551915e-11, y: 0.0000229871, z: -0.000005084694}
-  m_Size: 0.00028002553
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0

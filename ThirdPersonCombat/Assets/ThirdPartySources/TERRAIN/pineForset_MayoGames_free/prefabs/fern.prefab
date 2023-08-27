@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2561204222627087945}
-  - component: {fileID: 1451533739743250924}
-  - component: {fileID: 3729004092357672230}
-  - component: {fileID: 2296406199629581136}
+  - component: {fileID: 3121153801029155129}
+  - component: {fileID: 4392371793352055947}
   m_Layer: 0
   m_Name: fern
   m_TagString: Untagged
@@ -29,19 +28,12 @@ Transform:
   m_LocalRotation: {x: 0.03459406, y: 0.95055336, z: -0.11478025, w: 0.28649092}
   m_LocalPosition: {x: -0, y: -1.62, z: 0}
   m_LocalScale: {x: 12795.453, y: 28428.178, z: 31496.89}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1451533739743250924
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2936603174198009075}
-  m_Mesh: {fileID: 6697108462537596329, guid: 09ee95a4076c9d5478663838da366a3b, type: 3}
---- !u!23 &3729004092357672230
+--- !u!23 &3121153801029155129
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -52,6 +44,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -82,30 +75,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!205 &2296406199629581136
-LODGroup:
+--- !u!33 &4392371793352055947
+MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2936603174198009075}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -1.4551915e-11, y: 0.0000229871, z: -0.000005084694}
-  m_Size: 0.00028002553
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.6
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 3729004092357672230}
-  - screenRelativeHeight: 0.3
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 3729004092357672230}
-  - screenRelativeHeight: 0.1
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 3729004092357672230}
-  m_Enabled: 1
+  m_Mesh: {fileID: 6697108462537596329, guid: 09ee95a4076c9d5478663838da366a3b, type: 3}

@@ -107,9 +107,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_78EF3A58: 2
-    - Vector1_9904330F: 0.1
-    - Vector1_C312B0D1: 0.09
+    - Vector1_78EF3A58: 0.5
+    - Vector1_9904330F: 0.2
+    - Vector1_C312B0D1: 0.4
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 1
     - _AlphaCutoffEnable: 1
