@@ -3,7 +3,7 @@ using UnityEngine;
 public class BehaviourTreeRunner : MonoBehaviour
 {
     public BehaviourTree Tree;
-
+    public bool stop;
     private void Awake()
     {
         Tree = Tree.Clone();
@@ -11,6 +11,7 @@ public class BehaviourTreeRunner : MonoBehaviour
     }
     private void Update()
     {
+        if (stop) return;
         Tree.Update();
     }
 }

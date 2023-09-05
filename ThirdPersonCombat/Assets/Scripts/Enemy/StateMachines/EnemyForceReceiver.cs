@@ -1,4 +1,5 @@
 using States;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,6 +7,7 @@ namespace EnemyControllers
 {
     public class EnemyForceReceiver : MonoBehaviour
     {
+        [HideInInspector] public bool isCharacterControllerDisabled = false;
         [SerializeField] private bool _disableImpact = false;
 
         private CharacterController characterController;
@@ -47,14 +49,17 @@ namespace EnemyControllers
                     _impact = Vector3.zero;
                     isImpacted = false;
                 }
-                characterController.Move(_impact * Time.deltaTime);
+
+                if (!isCharacterControllerDisabled)
+                    characterController.Move(_impact * Time.deltaTime);
             }
 
             _verticalVelocity.y += _gravity * Time.deltaTime * _gravityScale;
             if (isGrounded && _verticalVelocity.y < 0f)
                 _verticalVelocity.y = -2f;
 
-            characterController.Move(_verticalVelocity * Time.deltaTime);
+            if(!isCharacterControllerDisabled)
+                characterController.Move(_verticalVelocity * Time.deltaTime);
         }
 
         public void AddForce()
@@ -81,6 +86,11 @@ namespace EnemyControllers
                     isImpacted = false;
                 }
             }
+        }
+
+        internal void HandleOnDead()
+        {
+            isCharacterControllerDisabled = true;
         }
     }
 

@@ -125,6 +125,10 @@ namespace PlayerController
                         _isOnEnemy = true;
                         _freezeElectricFX.gameObject.SetActive(true);
                     }
+                    else if(other.TryGetComponent(out AiAgent agent))
+                    {
+                        transform.SetParent(other.transform);
+                    }
                 }
                 else
                 {

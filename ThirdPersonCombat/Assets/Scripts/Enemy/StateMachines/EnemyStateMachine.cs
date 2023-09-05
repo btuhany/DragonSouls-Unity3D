@@ -61,7 +61,13 @@ public class EnemyStateMachine : StateMachine
     {
         health.OnHealthUpdated += HandleOnHealthUpdated;
         health.SetHealth(config.Health);
+        OnDead += forceReceiver.HandleOnDead;
         ChangeState(idleState);
+    }
+    private void OnDisable()
+    {
+        forceReceiver.isCharacterControllerDisabled = false;
+        OnDead -= forceReceiver.HandleOnDead;
     }
     private void Update()
     {
@@ -114,7 +120,6 @@ public class EnemyStateMachine : StateMachine
                 swordHitState.OnGetHit();
             else
                 ChangeState(getHitState);
-            
         }
     }
     private IEnumerator CheckAttackStateConditions(WaitForSeconds waitTime, float range)

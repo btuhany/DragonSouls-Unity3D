@@ -5,6 +5,7 @@ public class StartAttack : ActionNode
 {
     [Tooltip("For attack array in enemy combat controller")] public int attackNum;
     public bool isRandomAttack;
+    public int randomLength;
     EnemyCombatController combat;
     protected override void OnStart()
     {
@@ -26,7 +27,7 @@ public class StartAttack : ActionNode
         Attack attack;
 
         if (isRandomAttack)
-            attack = combat.Attacks[Random.Range(0, combat.Attacks.Length)];
+            attack = combat.Attacks[Random.Range(0, randomLength)];
         else
             attack = combat.Attacks[attackNum];
 

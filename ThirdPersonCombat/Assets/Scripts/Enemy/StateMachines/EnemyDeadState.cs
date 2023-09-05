@@ -20,6 +20,7 @@ public class EnemyDeadState : EnemyBaseState
         }
         _timeCounter = 0f;
         animationController.PlayDeadAnimation();
+        stateMachine.forceReceiver.isCharacterControllerDisabled = true;
     }
 
     public override void Exit()
@@ -32,8 +33,9 @@ public class EnemyDeadState : EnemyBaseState
         _timeCounter += deltaTime;
         if(_timeCounter > config.DeadAnimTime)
         {
-            stateMachine.gameObject.SetActive(false);
             stateMachine.isDead = true;
+            stateMachine.forceReceiver.isCharacterControllerDisabled = false;
+            stateMachine.gameObject.SetActive(false);
         }
     }
 }

@@ -9,6 +9,6 @@ public class TestScript : MonoBehaviour
     }
     public void TestConsole()
     {
-        Debug.Log("Triggered!");
+        //Debug.Log("Triggered!");
     }
 }
