@@ -1,0 +1,36 @@
+Hi :)
+
+The textures come with a complementary shader called "TextureMe/Tessellation"
+Of course, you can use your own shader if you wish.
+The "TextureMe/Tessellation" shader helps the materials to properly showcase the textures.
+The shader has the following properties:
+
+- Height:  Controls how much the surface is extruded outwards.
+
+- TesselationSize:  The "tightness" of polygonal subdivisions, relative to distance to camera. Smaller = more detailed, but less performant.
+
+- Ambient Occlusion Strength:  adds extra "darkness" in some of the creases and cracks, if the Ambient Occlusion texture is assigned.
+
+- Offset, Tiling:  allows you to scale and shift all the textures.
+
+- Base (RGB):  Texture containing colors (Albedo colors or Diffuse colors)
+
+- Height Texture:  Texture that dictates where to extrude the surface.
+
+- Normalmap:  Texture describing the surface details that react to lighting changes.
+
+- Ambient Occlusion:  Texture that describes where the extra shadows should appear, typically around the cracks and creases.
+
+- Specularity:  Texture that describes changes in shininess across the surface.
+
+- Smoothness:  A coefficient allowing to make the surface appear more matte or smooth.
+
+- Emissive: Texture describing where the glow should occur, and with which color.
+
+- Emissive Strength: A coefficient allowing to dim down the effect of the Emissive property.
+
+- Color: Allows to add a surface a tint.
+
+Render Queue, Enable GPU Instancing, Double Sided Global Illumination: inheritted from the Unity's Standard shader.
+Please consider leaving a review! 
+Good luck and create some awesome games.

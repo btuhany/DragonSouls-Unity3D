@@ -95,7 +95,7 @@ Material:
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
-    - _Cutoff: 0.25
+    - _Cutoff: 0.384
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Glossiness: 0

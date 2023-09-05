@@ -49,15 +49,15 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.6221463
-    fadeTransitionWidth: 0.787
+  - screenRelativeHeight: 0.5489736
+    fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8653327456890865517}
-  - screenRelativeHeight: 0.39632693
-    fadeTransitionWidth: 0.81
+  - screenRelativeHeight: 0.34609452
+    fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5097952856269658141}
-  - screenRelativeHeight: 0.14114788
+  - screenRelativeHeight: 0.16779993
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5097952856269658141}
@@ -137,6 +137,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 73006a33b193bc94d819ec8b25b1c42e,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 73006a33b193bc94d819ec8b25b1c42e,
         type: 3}
@@ -233,6 +238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 130c2eedcd9d2594dabf963f668b6e36,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 130c2eedcd9d2594dabf963f668b6e36,
         type: 3}
