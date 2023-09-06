@@ -1,5 +1,6 @@
 using Combat;
 using EnemyControllers;
+using Sounds;
 using States;
 using System.Collections;
 using UnityEngine;
@@ -21,10 +22,14 @@ public class AiAgent : MonoBehaviour
     [HideInInspector] public bool reactToHit;
 
     [SerializeField] private GameObject _agentFX;
+    [SerializeField] SoundClips[] _sfxClips;
+    [SerializeField] private AudioSource _audioSource;
+
     private BehaviourTreeRunner _treeRunner;
     public bool isFaceToPlayer => IsFaceToPlayer();
 
     private readonly int _animGotHit = Animator.StringToHash("Hit1");
+    private readonly int _animDead = Animator.StringToHash("death");
     private void Awake()
     {
         navmeshAgent = GetComponent<NavMeshAgent>();
@@ -35,12 +40,13 @@ public class AiAgent : MonoBehaviour
         combat = GetComponent<EnemyCombatController>();
         health = GetComponent<Health>();
         _treeRunner = GetComponent<BehaviourTreeRunner>();
-
+        _audioSource = GetComponent<AudioSource>();
         playerTransform = PlayerStateMachine.Instance.transform;
     }
 
     private void OnEnable()
     {
+        _treeRunner.stop = false;
         navmeshAgent.isStopped = true;
         health.OnHealthUpdated += HandleOnTakeHit;
     }
@@ -58,16 +64,25 @@ public class AiAgent : MonoBehaviour
     }
     private void HandleOnTakeHit(int health, int damage)
     {
-        if(reactToHit)
+        if(reactToHit && _agentFX != null)
         {
             if(_agentFX.activeSelf)
                 _agentFX.SetActive(false);
             animator.CrossFadeInFixedTime(_animGotHit, 0.1f);
             _treeRunner.stop = true;
         }
-        _treeRunner.Tree.blackboard.isHit = true;
-        StopAllCoroutines();
-        StartCoroutine(ResetIsHit());
+        if(health <= 0)
+        {
+            _treeRunner.stop = true;
+            animator.CrossFadeInFixedTime(_animDead, 0.1f);
+            Destroy(gameObject, 2f);
+        }
+        else
+        {
+            _treeRunner.Tree.blackboard.isHit = true;
+            StopAllCoroutines();
+            StartCoroutine(ResetIsHit());
+        }
     }
     WaitForSeconds _resetIsHitTime = new WaitForSeconds(0.2f);
     private IEnumerator ResetIsHit()
@@ -93,5 +108,13 @@ public class AiAgent : MonoBehaviour
         if (similarity > 0.99f)
             return true;
         return false;
+    }
+
+    //Animation Event
+    public void PlaySFX(int sfxNum)
+    {
+        _audioSource.pitch = _sfxClips[sfxNum].Pitch;
+        _audioSource.volume = _sfxClips[sfxNum].Volume;
+        _audioSource.PlayOneShot(_sfxClips[sfxNum].AudioClips[0]);
     }
 }

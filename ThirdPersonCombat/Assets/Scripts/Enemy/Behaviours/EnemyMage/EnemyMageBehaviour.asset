@@ -218,30 +218,6 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   Child: {fileID: 2445383422131859075}
---- !u!114 &-6868715136198176926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f9162f29886754286c212fb149d1cd, type: 3}
-  m_Name: IsPlayerInRange
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: 7c7df3377d8a5c04582019a678ef7b30
-  Position: {x: 142.00046, y: 448.2493}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
-  minDistance: 0
-  maxDistance: 2
 --- !u!114 &-6703984153930967482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,29 +244,6 @@ MonoBehaviour:
   restartOnSuccess: 1
   restartOnFailure: 0
   maxRepeats: 0
---- !u!114 &-6456322547701546784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89842ca5b85a69949a11a2119db5e970, type: 3}
-  m_Name: InverterNode
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: d4b885afe21d1d4499351cce481991e2
-  Position: {x: 142.00046, y: 315.24933}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
-  Child: {fileID: -6868715136198176926}
 --- !u!114 &-6439035357110343127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +273,8 @@ MonoBehaviour:
   - {fileID: 4184451495741530902}
   - {fileID: 7422471987870150830}
   - {fileID: 7787747952710574773}
+  - {fileID: 5475574446162877325}
+  - {fileID: 7216658164726643316}
 --- !u!114 &-6416260566147112735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,8 +451,32 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   Children:
-  - {fileID: -6456322547701546784}
+  - {fileID: -3186174795862127484}
   - {fileID: -671061783316545362}
+--- !u!114 &-3186174795862127484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f9162f29886754286c212fb149d1cd, type: 3}
+  m_Name: IsPlayerInRange
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: dfec6517d19833d47937c58d14392424
+  Position: {x: 156.99998, y: 359.49997}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  minDistance: 2
+  maxDistance: 7.5
 --- !u!114 &-2997563380355056416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,7 +643,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 401b1994f208fc944b8df833fde20b9b
-  Position: {x: 343.00037, y: 333.24924}
+  Position: {x: 327.50006, y: 368.0001}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -723,29 +702,6 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   WaitTime: 0.1
---- !u!114 &-237352580185381136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89842ca5b85a69949a11a2119db5e970, type: 3}
-  m_Name: InverterNode
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: eb4ecca78020a0f4aa733895ad99527b
-  Position: {x: -679.785, y: 402.49997}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
-  Child: {fileID: 4831811741546497500}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,7 +722,6 @@ MonoBehaviour:
   - {fileID: -1259078877462805730}
   - {fileID: -8400007247531871859}
   - {fileID: 4831811741546497500}
-  - {fileID: -237352580185381136}
   - {fileID: 3723601804869265868}
   - {fileID: 2448114138638213973}
   - {fileID: -6326072361109823202}
@@ -799,8 +754,6 @@ MonoBehaviour:
   - {fileID: 2274078959707400924}
   - {fileID: 3647548025614118240}
   - {fileID: -4151772914314447223}
-  - {fileID: -6456322547701546784}
-  - {fileID: -6868715136198176926}
   - {fileID: -671061783316545362}
   - {fileID: -4409870430867591242}
   - {fileID: 4516941801457470222}
@@ -820,6 +773,7 @@ MonoBehaviour:
   - {fileID: 6211397514650315918}
   - {fileID: 7216658164726643316}
   - {fileID: 5475574446162877325}
+  - {fileID: -3186174795862127484}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1040,7 +994,6 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   Children:
-  - {fileID: -237352580185381136}
   - {fileID: -8400007247531871859}
 --- !u!114 &3836888111199240679
 MonoBehaviour:
@@ -1119,7 +1072,7 @@ MonoBehaviour:
   description: Random range attack
   attackNum: 0
   isRandomAttack: 1
-  randomLength: 2
+  randomLength: 3
 --- !u!114 &4516941801457470222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,15 +1137,15 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 3247ec2c7ebb46344ae85497cfd31f6c
-  Position: {x: 0, y: 0}
+  Position: {x: 2848.0276, y: -124}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  minDistance: 0
-  maxDistance: 5
+  minDistance: 7
+  maxDistance: 25
 --- !u!114 &5776668942306746870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1407,15 +1360,15 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 0f127f98916ccc3428325b9c5a8f9617
-  Position: {x: 2920.6482, y: -133.49998}
+  Position: {x: 3030.8325, y: -124}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  minWaitTime: 0
-  maxWaitTime: 2
+  minWaitTime: 0.8
+  maxWaitTime: 3
 --- !u!114 &7422471987870150830
 MonoBehaviour:
   m_ObjectHideFlags: 0
