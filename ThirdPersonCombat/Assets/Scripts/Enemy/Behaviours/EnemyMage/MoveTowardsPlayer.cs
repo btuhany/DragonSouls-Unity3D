@@ -7,7 +7,6 @@ public class MoveTowardsPlayer : ActionNode
 
     public float chaseRotationLerpTime = 1.5f;
     public float speed = 1.6f;
-    public float stopDistance = 2f;
     private NavMeshAgent _navmeshAgent;
     protected override void OnStart()
     {

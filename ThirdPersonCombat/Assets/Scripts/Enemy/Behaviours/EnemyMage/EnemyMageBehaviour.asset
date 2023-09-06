@@ -994,6 +994,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   Children:
+  - {fileID: 4831811741546497500}
   - {fileID: -8400007247531871859}
 --- !u!114 &3836888111199240679
 MonoBehaviour:
@@ -1113,15 +1114,15 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 06b55964412f19b418a7f47c48e4393d
-  Position: {x: -683.7851, y: 529.5}
+  Position: {x: -695.00006, y: 406.50003}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 0 15
-  minDistance: 0
-  maxDistance: 15
+  minDistance: 15
+  maxDistance: 50
 --- !u!114 &5475574446162877325
 MonoBehaviour:
   m_ObjectHideFlags: 0

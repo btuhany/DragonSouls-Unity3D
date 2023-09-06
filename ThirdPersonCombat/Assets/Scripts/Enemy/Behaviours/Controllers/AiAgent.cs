@@ -8,6 +8,7 @@ using UnityEngine.AI;
 
 public class AiAgent : MonoBehaviour
 {
+    [SerializeField] private float _destroyTime = 2f;
     [HideInInspector] public NavMeshAgent navmeshAgent;
     [HideInInspector] public CharacterController characterController;
     [HideInInspector] public AiLocomotion locomotion;
@@ -64,9 +65,10 @@ public class AiAgent : MonoBehaviour
     }
     private void HandleOnTakeHit(int health, int damage)
     {
-        if(reactToHit && _agentFX != null)
+        if(reactToHit)
         {
-            if(_agentFX.activeSelf)
+            if(_agentFX != null)
+                if(_agentFX.activeSelf)
                 _agentFX.SetActive(false);
             animator.CrossFadeInFixedTime(_animGotHit, 0.1f);
             _treeRunner.stop = true;
@@ -75,7 +77,7 @@ public class AiAgent : MonoBehaviour
         {
             _treeRunner.stop = true;
             animator.CrossFadeInFixedTime(_animDead, 0.1f);
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, _destroyTime);
         }
         else
         {
@@ -109,8 +111,22 @@ public class AiAgent : MonoBehaviour
             return true;
         return false;
     }
+    public Vector3 RandomPointOnNavMesh(Vector3 center, float range, float samplePointRange)
+    {
+        Vector3 randomVector = Random.insideUnitSphere;
+        //randomVector.y = 0f;
+        
+        Vector3 randomPoint = center + randomVector * range;
+        NavMeshHit hit;
 
-    //Animation Event
+        if (NavMesh.SamplePosition(randomPoint, out hit, samplePointRange, NavMesh.AllAreas))
+        {
+            return hit.position;
+        }
+        return center;
+    }
+
+    //Animation Events
     public void PlaySFX(int sfxNum)
     {
         _audioSource.pitch = _sfxClips[sfxNum].Pitch;
