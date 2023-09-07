@@ -10,6 +10,8 @@ namespace Combat
         [SerializeField] WeaponController _weapon;
         [SerializeField] ProjectileController[] _projectiles;
         [SerializeField] Transform[] _projectileSpawnPoints;
+        [SerializeField] WeaponController[] _weapons;
+        
 
         //Animation Events
         public void StartAttack()
@@ -23,6 +25,10 @@ namespace Combat
         public void EndAttack()
         {
             _weapon.StopAttack();    
+        }
+        public void SetWeapon(int weaponNum)
+        {
+            _weapon = _weapons[weaponNum];
         }
 
         public void SpawnProjectile(int projectileNum)

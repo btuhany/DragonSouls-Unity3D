@@ -7,6 +7,8 @@ using UnityEngine.AI;
 public class MoveToNavmeshDest : ActionNode
 {
     public bool enableRotation = false;
+    public float speed = 5f;
+    public float rotationSpeed = 3f;
     private NavMeshAgent _navmeshAgent;
     protected override void OnStart()
     {
@@ -20,14 +22,14 @@ public class MoveToNavmeshDest : ActionNode
     protected override State OnUpdate()
     {
         if (!agent.forceReceiver.isGrounded) return State.Running;
-        agent.characterController.Move(_navmeshAgent.desiredVelocity.normalized * 7f * Time.deltaTime);
+        agent.characterController.Move(_navmeshAgent.desiredVelocity.normalized * speed * Time.deltaTime);
         _navmeshAgent.velocity = agent.characterController.velocity;
 
         if(enableRotation)
         {
             Vector3 dir = agent.characterController.velocity.normalized;
             dir.y = 0f;
-            agent.locomotion.LookRotation(dir, 1.5f, Time.deltaTime);
+            agent.locomotion.LookRotation(dir, rotationSpeed, Time.deltaTime);
         }
 
         return State.Success;

@@ -6,10 +6,16 @@ public class ProbabilityNode : DecoratorNode
     private bool _isSuccessed = false;
     protected override void OnStart()
     {
-        if (100 - 100 * probability <= Random.Range(0, 100))
+        int randomNum = Random.Range(0, 100);
+        if (100 - 100 * probability <= randomNum)
         {
             _isSuccessed = true;
         }
+        else
+        {
+            _isSuccessed = false;
+        }
+        //Debug.Log("state: " + _isSuccessed.ToString());// + " with random num:" + randomNum.ToString()); 
     }
 
     protected override void OnStop()
@@ -22,7 +28,6 @@ public class ProbabilityNode : DecoratorNode
         {
             return Child.Update();
         }
-
         return State.Failure;
     }
 }
