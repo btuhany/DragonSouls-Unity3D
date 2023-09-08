@@ -8,12 +8,15 @@ public class SetBearAnim : ActionNode
     [Header("Anims To Set")]
     public bool setRunForward = false;
     public bool setRunBackward= false;
+    public bool setSleep = false;
     [Header("Anims To Set")]
     public bool isRunForward = false;
     public bool isRunBackward = false;
+    public bool isSleeping = false;
 
     private readonly int _animRunForward = Animator.StringToHash("runForward");
     private readonly int _animRunBackward = Animator.StringToHash("runBackward");
+    private readonly int _animSleep = Animator.StringToHash("isSleep");
     protected override void OnStart()
     {
     }
@@ -31,6 +34,11 @@ public class SetBearAnim : ActionNode
         else if (setRunBackward)
         {
             agent.animator.SetBool(_animRunBackward, isRunBackward);
+        }
+
+        if (setSleep)
+        {
+            agent.animator.SetBool(_animSleep, isSleeping);
         }
         return State.Success;
     }
