@@ -24,7 +24,7 @@ public class AiAgent : MonoBehaviour
 
     [SerializeField] private GameObject _agentFX;
     [SerializeField] SoundClips[] _sfxClips;
-    [SerializeField] private AudioSource _audioSource;
+    private AudioSource[] _audioSources;
 
     private BehaviourTreeRunner _treeRunner;
     public bool isFaceToPlayer => IsFaceToPlayer();
@@ -41,7 +41,7 @@ public class AiAgent : MonoBehaviour
         combat = GetComponent<EnemyCombatController>();
         health = GetComponent<Health>();
         _treeRunner = GetComponent<BehaviourTreeRunner>();
-        _audioSource = GetComponent<AudioSource>();
+        _audioSources = GetComponents<AudioSource>();
         playerTransform = PlayerStateMachine.Instance.transform;
     }
 
@@ -126,11 +126,29 @@ public class AiAgent : MonoBehaviour
         return center;
     }
 
+    public void SetSecondaryAuidoSource(bool isPlay)
+    {
+        if(isPlay)
+        {
+            _audioSources[1].Play();
+        }
+        else
+        {
+            _audioSources[1].Stop();
+        }
+    }
+
     //Animation Events
     public void PlaySFX(int sfxNum)
     {
-        _audioSource.pitch = _sfxClips[sfxNum].Pitch;
-        _audioSource.volume = _sfxClips[sfxNum].Volume;
-        _audioSource.PlayOneShot(_sfxClips[sfxNum].AudioClips[0]);
+        _audioSources[0].pitch = _sfxClips[sfxNum].Pitch;
+        _audioSources[0].volume = _sfxClips[sfxNum].Volume;
+        _audioSources[0].PlayOneShot(_sfxClips[sfxNum].AudioClips[0]);
+    }
+    public void PlayRandomClipSFX(int sfxNum)
+    {
+        _audioSources[0].pitch = _sfxClips[sfxNum].Pitch;
+        _audioSources[0].volume = _sfxClips[sfxNum].Volume;
+        _audioSources[0].PlayOneShot(_sfxClips[sfxNum].AudioClips[Random.Range(0, _sfxClips[sfxNum].AudioClips.Length)]);
     }
 }
