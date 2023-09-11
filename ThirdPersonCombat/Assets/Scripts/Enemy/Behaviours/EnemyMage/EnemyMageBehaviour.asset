@@ -102,6 +102,7 @@ MonoBehaviour:
   - {fileID: 8529242116797682590}
   - {fileID: -6435626859721039461}
   - {fileID: 8145837745766127361}
+  - {fileID: 3781647088062412908}
 --- !u!114 &-7662288975266798563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1489,14 +1490,14 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 4aec7ea8371f1bf42a852d2f561b79be
-  Position: {x: 0, y: 0}
+  Position: {x: 2019.9999, y: 81}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  hitReaction: 0
+  hitReaction: 1
 --- !u!114 &3836888111199240679
 MonoBehaviour:
   m_ObjectHideFlags: 0
