@@ -111230,14 +111230,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 3
     messageOptions: 0
-  - time: 1.4583334
+  - time: 1.3333334
     functionName: EndAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.5
+  - time: 1.375
     functionName: SetSycteTrail
     data: 
     objectReferenceParameter: {fileID: 0}

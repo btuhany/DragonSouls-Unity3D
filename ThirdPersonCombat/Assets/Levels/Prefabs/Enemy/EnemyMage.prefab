@@ -22232,6 +22232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650d669bd77afbf42bb68e59b3b4bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyTime: 2
   navmeshAgent: {fileID: 0}
   characterController: {fileID: 0}
   locomotion: {fileID: 0}
@@ -22277,7 +22278,6 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 24ed1855c6cb8e94e8a6d7e8eb7c2d1e, type: 3}
     Volume: 0.55
     Pitch: 0.5
-  _audioSource: {fileID: 0}
 --- !u!114 &7886039454863686673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22374,6 +22374,7 @@ MonoBehaviour:
   _projectileSpawnPoints:
   - {fileID: 1710846687416577480}
   - {fileID: 1711164669321005330}
+  _weapons: []
 --- !u!114 &7886039454863686676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22474,7 +22475,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2.95
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

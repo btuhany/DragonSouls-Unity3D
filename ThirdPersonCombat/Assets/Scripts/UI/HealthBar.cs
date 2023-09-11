@@ -30,11 +30,11 @@ namespace UIControllers
         {
             _damageSum += damage;
             _slider.gameObject.SetActive(true);
-            StopAllCoroutines();
-            StartCoroutine(LookCamera(_timeDuration));
             _slider.value = (float)newHealth / _health.maxHealth;
             _textHealth.SetText(newHealth + "/" + _health.maxHealth);
             _textDamage.SetText(_damageSum.ToString());
+            StopAllCoroutines();
+            StartCoroutine(LookCamera(_timeDuration));
             StartCoroutine(DamageText(_timeDuration / 2));
         }
 
@@ -56,6 +56,7 @@ namespace UIControllers
             _textDamage.gameObject.SetActive(true);
             yield return new WaitForSeconds(duration);
             _textDamage.gameObject.SetActive(false);
+            _damageSum = 0;
             yield return null;
         }
     }

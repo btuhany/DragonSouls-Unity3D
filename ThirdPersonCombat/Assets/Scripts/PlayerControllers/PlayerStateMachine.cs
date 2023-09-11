@@ -80,7 +80,9 @@ namespace States
             if (combat != null && combat.IsAttacking) return;
             if (UnityEngine.Random.Range(0, 11) > 5)
                 sound.PlayHurtSFX();
-            animationController.PlayGetHit();
+            if (swordFreeState.IsAttacking || swordTargetState.IsAttacking || unarmedFreeState.IsAttacking || unarmedTargetState.IsAttacking)
+                return;
+            //animationController.PlayGetHit();
         }
 
         private void Start()

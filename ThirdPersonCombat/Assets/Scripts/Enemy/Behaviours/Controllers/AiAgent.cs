@@ -27,6 +27,7 @@ public class AiAgent : MonoBehaviour
     private AudioSource[] _audioSources;
 
     private BehaviourTreeRunner _treeRunner;
+    private bool _isDead;
     public bool isFaceToPlayer => IsFaceToPlayer();
 
     private readonly int _animGotHit = Animator.StringToHash("Hit1");
@@ -50,6 +51,7 @@ public class AiAgent : MonoBehaviour
         _treeRunner.stop = false;
         navmeshAgent.isStopped = true;
         health.OnHealthUpdated += HandleOnTakeHit;
+        _isDead = false;
     }
     private void Update()
     {
@@ -62,12 +64,14 @@ public class AiAgent : MonoBehaviour
     private void OnDisable()
     {
         health.OnHealthUpdated -= HandleOnTakeHit;
+        _isDead = false;
     }
     private void HandleOnTakeHit(int health, int damage)
     {
         if(reactToHit)
         {
-            if(_agentFX != null)
+            combat.EndAttack();
+            if (_agentFX != null)
                 if(_agentFX.activeSelf)
                 _agentFX.SetActive(false);
             animator.CrossFadeInFixedTime(_animGotHit, 0.1f);
@@ -75,7 +79,9 @@ public class AiAgent : MonoBehaviour
         }
         if(health <= 0)
         {
+            _isDead = true;
             _treeRunner.stop = true;
+            faceToPlayer = false;
             animator.CrossFadeInFixedTime(_animDead, 0.1f);
             Destroy(gameObject, _destroyTime);
         }
@@ -90,8 +96,9 @@ public class AiAgent : MonoBehaviour
     private IEnumerator ResetIsHit()
     {
         yield return _resetIsHitTime;
-        _treeRunner.Tree.blackboard.isHit = false;
-        _treeRunner.stop = false;
+        //_treeRunner.Tree.blackboard.isHit = false;
+        if(!_isDead)
+            _treeRunner.stop = false;
         yield return null;
     }
     private void FaceToPlayer()
