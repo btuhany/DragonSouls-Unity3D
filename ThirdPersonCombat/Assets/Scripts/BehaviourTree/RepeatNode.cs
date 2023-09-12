@@ -24,7 +24,6 @@ public class RepeatNode : DecoratorNode
         {
             return State.Failure;
         }
-
         switch (Child.Update())
         {
             case State.Running:

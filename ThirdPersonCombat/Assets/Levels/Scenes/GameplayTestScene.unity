@@ -846,7 +846,7 @@ MonoBehaviour:
     damage: 0
     force: 0
     forceLerpTime: 0
-  _weapon: {fileID: 0}
+  _weapon: {fileID: 1166561895}
   _projectiles: []
   _projectileSpawnPoints: []
   _weapons: []
@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650d669bd77afbf42bb68e59b3b4bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyTime: 2
+  _destroyTime: 1.7
   navmeshAgent: {fileID: 0}
   characterController: {fileID: 0}
   locomotion: {fileID: 0}
@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598e3a02052f41a4dac756ac497cd8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tree: {fileID: 11400000, guid: 36fd1b51cf477a24992b822ff31403ea, type: 2}
+  Tree: {fileID: 11400000, guid: 3e01b110b8a7bd249afb3bee76ae8dfb, type: 2}
   stop: 0
 --- !u!4 &889079056
 Transform:
@@ -916,6 +916,7 @@ Transform:
   m_Children:
   - {fileID: 3778245479673441122}
   - {fileID: 310922779}
+  - {fileID: 1166561898}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1104,12 +1105,12 @@ PrefabInstance:
     - target: {fileID: 5652237701393191375, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000046650904
+      value: 0.000000012500067
       objectReference: {fileID: 0}
     - target: {fileID: 5652237701393191375, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000057888934
+      value: -0.0000000015511281
       objectReference: {fileID: 0}
     - target: {fileID: 5652237701446456889, guid: 450e79c70f5006b459f9a693891651bc,
         type: 3}
@@ -2636,6 +2637,88 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162069148}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1166561894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1166561898}
+  - component: {fileID: 1166561897}
+  - component: {fileID: 1166561895}
+  - component: {fileID: 1166561899}
+  m_Layer: 0
+  m_Name: SlimeWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1166561895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166561894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4303e0e024b381748bee54ffb660cb9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponHitSounds:
+    AudioClips: []
+    Volume: 0
+    Pitch: 0
+  _weaponSwingSounds:
+    AudioClips: []
+    Volume: 0
+    Pitch: 0
+--- !u!114 &1166561897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166561894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ae64e890d01044fad5d5df403144ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackDamage: 0
+  HitControlPosition: {fileID: 1166561898}
+--- !u!4 &1166561898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166561894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.587, z: 1.846}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 889079056}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1166561899
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166561894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  m_Radius: 0.7880268
+  m_Height: 1.6849885
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: -0.56452847}
 --- !u!1 &1346741400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5652237702694202786, guid: 450e79c70f5006b459f9a693891651bc,
