@@ -27,7 +27,8 @@ namespace UIControllers
         }
         public void ClearTarget()
         {
-            _targetCrosshairImage.enabled = false;
+            if(_targetCrosshairImage!= null)
+                _targetCrosshairImage.enabled = false;
             _currentTargetTransform = null;
         }
     }

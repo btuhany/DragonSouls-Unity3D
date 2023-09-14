@@ -24,6 +24,8 @@ public class IsFaceToPlayer : ActionNode
         dir.y = 0f;
         float similarity = Vector3.Dot(dir.normalized, agent.transform.forward);
 
+        if (similarity > minSimilarity)
+            return State.Success;
 
         Vector3 targetRelativePoint = agent.transform.InverseTransformPoint(agent.playerTransform.position);
         if(blackboard.playerOnLeft)
@@ -43,8 +45,6 @@ public class IsFaceToPlayer : ActionNode
             }
         }
 
-        if (similarity > minSimilarity)
-            return State.Success;
         return State.Failure;
     }
 }

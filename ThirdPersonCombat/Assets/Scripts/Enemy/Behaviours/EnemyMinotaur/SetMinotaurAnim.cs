@@ -7,7 +7,7 @@ public class SetMinotaurAnim : ActionNode
     public bool setRun = false;
     public bool setWalk = false;
     public bool playStrafe = false;
-
+    public bool playIdle = false;
 
     public bool isRun = false;
     public bool isWalk = false;
@@ -16,6 +16,7 @@ public class SetMinotaurAnim : ActionNode
     private readonly int _animBoolWalk = Animator.StringToHash("isWalk");
     private readonly int _animStrafeLeft = Animator.StringToHash("strafeLeft");
     private readonly int _animStrafeRight = Animator.StringToHash("strafeRight");
+    private readonly int _animIdle = Animator.StringToHash("idle");
     protected override void OnStart()
     {
         if(setRun)
@@ -39,6 +40,10 @@ public class SetMinotaurAnim : ActionNode
                 agent.animator.CrossFadeInFixedTime(_animStrafeRight, transitionDuration);
                 blackboard.playerOnLeft = false;
             }
+        }
+        if(playIdle)
+        {
+            agent.animator.CrossFadeInFixedTime(_animIdle, transitionDuration);
         }
     }
 
