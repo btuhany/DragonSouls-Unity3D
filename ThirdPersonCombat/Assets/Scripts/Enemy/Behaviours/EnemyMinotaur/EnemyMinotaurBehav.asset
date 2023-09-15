@@ -725,7 +725,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  minDistance: 6.5
+  minDistance: 10
   maxDistance: 30
 --- !u!114 &-2110474467038086129
 MonoBehaviour:
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minDistance: 1.6
-  maxDistance: 7
+  maxDistance: 11
 --- !u!114 &711231655944802289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1432,7 +1432,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  minDistance: 6.5
+  minDistance: 1.6
   maxDistance: 30
 --- !u!114 &4844419501188628358
 MonoBehaviour:
