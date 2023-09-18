@@ -104,31 +104,6 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   WaitTime: 0.2
---- !u!114 &-8470319888069683289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98aff75666545c546b96546150c95d1d, type: 3}
-  m_Name: SetRotationToPlayer
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: a4dcbada44c2bb94c9a79db5db2dbec7
-  Position: {x: -1589, y: -1156}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-    playerOnLeft: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
-  faceToPlayer: 0
-  faceRotationLerpTime: 2
 --- !u!114 &-8441249869591697938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +144,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 8897cc783ad072d40af950e9d8b1777f
-  Position: {x: -1565.0005, y: -235.99994}
+  Position: {x: -884, y: 1439}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -194,7 +169,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 4dc5c297e3b5b494e84e9e8ddfb79d17
-  Position: {x: -576.51514, y: -1624.645}
+  Position: {x: 382.08072, y: -52.362915}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -202,7 +177,31 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  Child: {fileID: 7192623595860676937}
+  Child: {fileID: 8763655933726395102}
+--- !u!114 &-8157395197015776604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0aea03134a7d3446842d858bb88f7d8, type: 3}
+  m_Name: DebugLogNode
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: a4a8de8f9b1e5fc4a9f747805f372a1d
+  Position: {x: 442.93027, y: 410}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  Message: 50
 --- !u!114 &-8023518683245605735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +293,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 84d3a593c53782e40b6a24d6f0301229
-  Position: {x: -2267, y: -1164}
+  Position: {x: -979, y: 394}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -303,7 +302,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 0-15
   minDistance: 0
-  maxDistance: 30
+  maxDistance: 100
 --- !u!114 &-6671010739698966006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +318,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: aa042f246f6e83d44a7aee99818ea37d
-  Position: {x: -1659.0002, y: -709}
+  Position: {x: -1124, y: 964}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -329,7 +328,7 @@ MonoBehaviour:
   description: 
   Children:
   - {fileID: -2379104005664613539}
-  - {fileID: -1222357987089382003}
+  - {fileID: -5942871911599352702}
   - {fileID: 8992141317485170014}
 --- !u!114 &-6549838670175867877
 MonoBehaviour:
@@ -370,7 +369,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 93718f2243ecbca4d8ba5ab641e2138a
-  Position: {x: -2114.5051, y: -269.0001}
+  Position: {x: -1544, y: 1422}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -395,7 +394,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: f84a77eaff41bf340b9c7aa3fbd8347f
-  Position: {x: -1101, y: -847}
+  Position: {x: -78, y: 828}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -409,7 +408,7 @@ MonoBehaviour:
   - {fileID: -6671010739698966006}
   - {fileID: 2274078959707400924}
   - {fileID: -927292404316160044}
---- !u!114 &-6048393147075280786
+--- !u!114 &-5942871911599352702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -418,13 +417,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80199edb590ac3a42ad3a67ce8a6d5ed, type: 3}
-  m_Name: SetMinotaurAnim
+  m_Script: {fileID: 11500000, guid: 7e5313e714210024db9804ac53d600e0, type: 3}
+  m_Name: SetDragonAnim
   m_EditorClassIdentifier: 
   mState: 0
   Started: 0
-  Guid: e14f3d8cd218a134089f04e523a80439
-  Position: {x: -2472.5051, y: -567.0001}
+  Guid: bc1a134138aa08842b57da56c8f6372e
+  Position: {x: -1191, y: 1164}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -433,12 +432,14 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   transitionDuration: 0.1
+  playIdle1: 0
+  playIdle2: 0
+  playSleep: 0
+  playStrafe: 0
   setRun: 1
   setWalk: 1
-  playStrafe: 0
-  playIdle: 0
-  isRun: 0
-  isWalk: 1
+  isRun: 1
+  isWalk: 0
 --- !u!114 &-4731374539821184530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,7 +455,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 939b5fadb8f609a40b015f183e0ff74c
-  Position: {x: -2212.505, y: -412.00012}
+  Position: {x: -1642, y: 1279}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -531,7 +532,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: f4cea394d913fa34f8c442f1f627cd4a
-  Position: {x: -2274.5051, y: -262.0001}
+  Position: {x: -1704, y: 1429}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -539,8 +540,8 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  minDistance: 1.6
-  maxDistance: 7
+  minDistance: 5.8
+  maxDistance: 15
 --- !u!114 &-3690131611399790831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,7 +557,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: e5d19c73144a1344390267524cae35a3
-  Position: {x: -1811.0001, y: -1156}
+  Position: {x: -523, y: 402}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -566,6 +567,7 @@ MonoBehaviour:
   description: 
   Children:
   - {fileID: -3164246104916007926}
+  - {fileID: 2831933884859163338}
   - {fileID: -1653715522017913992}
   - {fileID: 2048321930520456151}
 --- !u!114 &-3471850683960931730
@@ -610,7 +612,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 71b927ae55113ff41ae65ec38983a69d
-  Position: {x: -1681.0001, y: -865}
+  Position: {x: -562, y: 722}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -634,7 +636,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: ea4d657edd05955458f7a50f35ea0829
-  Position: {x: -2053, y: -991}
+  Position: {x: -1109, y: 575}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -642,7 +644,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  minSimilarity: 0.95
+  minSimilarity: 0.97
 --- !u!114 &-2889389375860086641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,7 +690,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 0d6d4906e636c584c9b202cb140fcea7
-  Position: {x: -2370.5051, y: -717.0001}
+  Position: {x: -1800, y: 974}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -698,7 +700,7 @@ MonoBehaviour:
   description: 
   Children:
   - {fileID: 296216652746261798}
-  - {fileID: -6048393147075280786}
+  - {fileID: 3183788294282107821}
   - {fileID: 4844419501188628358}
 --- !u!114 &-2662701894158233589
 MonoBehaviour:
@@ -767,7 +769,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 63c08b8eee39fd9418cf530e8c73e213
-  Position: {x: -1969.0004, y: -534}
+  Position: {x: -1385, y: 1148}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -776,7 +778,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minDistance: 10
-  maxDistance: 30
+  maxDistance: 25
 --- !u!114 &-2110474467038086129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,7 +794,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 26061525fc7c39a44bed7205640e7e3d
-  Position: {x: -1093, y: -1164}
+  Position: {x: -86, y: 402}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -801,6 +803,32 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   Child: {fileID: -6326072361109823202}
+--- !u!114 &-1709612515953480689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d015bf38358e84c92085d3aa55a061, type: 3}
+  m_Name: StartAttack
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: fca1969175b4cd84e8e6cd37c526da7a
+  Position: {x: 88.99993, y: 418}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  attackNum: 3
+  isRandomAttack: 0
+  randomLength: 0
 --- !u!114 &-1653715522017913992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,7 +844,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 19110c03c4ec9d644951f8f559b219d6
-  Position: {x: -1860.0001, y: -1004}
+  Position: {x: -759, y: 567}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -824,7 +852,30 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  Child: {fileID: 6200081461741384261}
+  Child: {fileID: 2009480513774677602}
+--- !u!114 &-1636306551593907240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45614e169099f3f43840f7ce0610952f, type: 3}
+  m_Name: IsAttackEnded
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 88b1f892337069e45a1c2d917fe0e093
+  Position: {x: 265.8086, y: 410}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
 --- !u!114 &-1259078877462805730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,7 +891,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 4d8b831d98720dd4394d3cd83615d4cb
-  Position: {x: -2883, y: -584}
+  Position: {x: -2334, y: 1118}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -849,36 +900,6 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: True
   enabled: 1
---- !u!114 &-1222357987089382003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80199edb590ac3a42ad3a67ce8a6d5ed, type: 3}
-  m_Name: SetMinotaurAnim
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: 07f07316557eb0b46b2e60c4251374ed
-  Position: {x: -1769.0005, y: -523}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-    playerOnLeft: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
-  transitionDuration: 0.1
-  setRun: 1
-  setWalk: 0
-  playStrafe: 0
-  playIdle: 0
-  isRun: 1
-  isWalk: 0
 --- !u!114 &-927292404316160044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,7 +915,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: b43dd58d2a5370b46ad7b50075190ef7
-  Position: {x: -1034, y: -653}
+  Position: {x: 253, y: 1046}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -963,7 +984,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bc07011cd47b63498f3fa50047e455d, type: 3}
-  m_Name: EnemyMinotaurBehav
+  m_Name: BossNightmareDragonBehav
   m_EditorClassIdentifier: 
   RootNode: {fileID: -8301581025811783737}
   TreeState: 0
@@ -975,7 +996,6 @@ MonoBehaviour:
   - {fileID: 3723601804869265868}
   - {fileID: 2448114138638213973}
   - {fileID: -6326072361109823202}
-  - {fileID: 7192623595860676937}
   - {fileID: 997934962334746509}
   - {fileID: -7081810292214097771}
   - {fileID: -2110474467038086129}
@@ -985,11 +1005,9 @@ MonoBehaviour:
   - {fileID: -7341891911999374569}
   - {fileID: 6879295958195423360}
   - {fileID: -927292404316160044}
-  - {fileID: -1222357987089382003}
   - {fileID: 8557138284113387487}
   - {fileID: 2048321930520456151}
   - {fileID: -3190684764570087615}
-  - {fileID: 6200081461741384261}
   - {fileID: 711231655944802289}
   - {fileID: -9180701976130889959}
   - {fileID: 3375283944401655906}
@@ -998,7 +1016,6 @@ MonoBehaviour:
   - {fileID: -4731374539821184530}
   - {fileID: -4178712336019488919}
   - {fileID: -6377273115905646499}
-  - {fileID: -6048393147075280786}
   - {fileID: -3164246104916007926}
   - {fileID: -3690131611399790831}
   - {fileID: -2379104005664613539}
@@ -1034,7 +1051,15 @@ MonoBehaviour:
   - {fileID: -4603480893578665313}
   - {fileID: 5415257550476741501}
   - {fileID: -8441249869591697938}
-  - {fileID: -8470319888069683289}
+  - {fileID: 8763655933726395102}
+  - {fileID: 2009480513774677602}
+  - {fileID: 3183788294282107821}
+  - {fileID: -5942871911599352702}
+  - {fileID: 2831933884859163338}
+  - {fileID: 1472826196624394246}
+  - {fileID: -1709612515953480689}
+  - {fileID: -1636306551593907240}
+  - {fileID: -8157395197015776604}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1079,7 +1104,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 8ba9d3269ce5bf94f9fd01c6308b9bf0
-  Position: {x: -2682.5051, y: -559.00006}
+  Position: {x: -2113, y: 1136}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1128,7 +1153,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: fa988264c79e3b1439ead8aaaa1c1105
-  Position: {x: -561, y: -1320}
+  Position: {x: -220, y: 234}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1138,19 +1163,37 @@ MonoBehaviour:
   description: 
   Children:
   - {fileID: -7081810292214097771}
-  - {fileID: 6879295958195423360}
   - {fileID: -3690131611399790831}
-  - {fileID: -8470319888069683289}
-  - {fileID: 7131352535010506069}
+  - {fileID: 1472826196624394246}
   - {fileID: -2110474467038086129}
-  - {fileID: 87228878643134735}
-  - {fileID: 5415257550476741501}
-  - {fileID: 3488650729749189461}
-  - {fileID: -4463281401045029057}
-  - {fileID: -8023518683245605735}
-  - {fileID: -2569752540820307000}
-  - {fileID: 711231655944802289}
-  - {fileID: -9194212256611489136}
+  - {fileID: -1709612515953480689}
+  - {fileID: -1636306551593907240}
+  - {fileID: -8157395197015776604}
+--- !u!114 &1472826196624394246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98aff75666545c546b96546150c95d1d, type: 3}
+  m_Name: SetRotationToPlayer
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 3792afd6687135d4d8b9c5cb8d2c6f81
+  Position: {x: -321, y: 410}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  faceToPlayer: 0
+  faceRotationLerpTime: 2
 --- !u!114 &1692793641416614821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,6 +1248,38 @@ MonoBehaviour:
   playIdle: 0
   isRun: 0
   isWalk: 0
+--- !u!114 &2009480513774677602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5313e714210024db9804ac53d600e0, type: 3}
+  m_Name: SetDragonAnim
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 98b86560fb2b28b4f9260ccbc8dc1d2c
+  Position: {x: -769, y: 714}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  transitionDuration: 0.1
+  playIdle1: 0
+  playIdle2: 0
+  playSleep: 0
+  playStrafe: 1
+  setRun: 0
+  setWalk: 0
+  isRun: 0
+  isWalk: 0
 --- !u!114 &2048321930520456151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,7 +1295,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 50d362b78daa8144a84138aa1e8e8c96
-  Position: {x: -1671.0001, y: -996}
+  Position: {x: -570, y: 575}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1247,7 +1322,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 251a31423c677f94e983892cb74b3902
-  Position: {x: -1207, y: -644}
+  Position: {x: 80, y: 1055}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1271,7 +1346,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 62d488937a7006b44abaf526f725576f
-  Position: {x: -1192, y: -486}
+  Position: {x: 95, y: 1213}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1305,6 +1380,62 @@ MonoBehaviour:
   description: 
   minDistance: 0.35
   maxDistance: 15
+--- !u!114 &2831933884859163338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb83904a941767844981263d75b99f83, type: 3}
+  m_Name: FailureNode
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 0567b211f548a9f459f46aad9131766c
+  Position: {x: -941, y: 559}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  Child: {fileID: 6879295958195423360}
+--- !u!114 &3183788294282107821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5313e714210024db9804ac53d600e0, type: 3}
+  m_Name: SetDragonAnim
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: bdf5e6f9cead657429bd91e266bf5d4f
+  Position: {x: -1915, y: 1140}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  transitionDuration: 0.1
+  playIdle1: 0
+  playIdle2: 0
+  playSleep: 0
+  playStrafe: 0
+  setRun: 1
+  setWalk: 1
+  isRun: 0
+  isWalk: 1
 --- !u!114 &3375283944401655906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,7 +1507,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 255a283442a7bd143acedf5d561bec45
-  Position: {x: -1452.0005, y: -402.00003}
+  Position: {x: -985, y: 1287}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1385,8 +1516,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   Children:
-  - {fileID: -8400007247531871859}
   - {fileID: 4831811741546497500}
+  - {fileID: -8400007247531871859}
 --- !u!114 &4069008921528198077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1428,7 +1559,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: a285b950d08b6244cb4b8870a3b14be5
-  Position: {x: -2871, y: -725}
+  Position: {x: -2300, y: 966}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1476,7 +1607,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 06b55964412f19b418a7f47c48e4393d
-  Position: {x: -1302.0002, y: -243.99994}
+  Position: {x: -1109, y: 1437}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1484,8 +1615,8 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  minDistance: 1.6
-  maxDistance: 30
+  minDistance: 5.8
+  maxDistance: 40
 --- !u!114 &4844419501188628358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,7 +1632,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 39f635c56644560488b3a0e001e5c1e6
-  Position: {x: -2204.5051, y: -559.00006}
+  Position: {x: -1634, y: 1132}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1565,36 +1696,6 @@ MonoBehaviour:
   - {fileID: -7414784576601790012}
   - {fileID: -7341891911999374569}
   - {fileID: 6764392968854228262}
---- !u!114 &6200081461741384261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80199edb590ac3a42ad3a67ce8a6d5ed, type: 3}
-  m_Name: SetMinotaurAnim
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: 36cb627313054f3429660bcfe0ae2fb4
-  Position: {x: -1860.0001, y: -873}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-    playerOnLeft: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
-  transitionDuration: 0.1
-  setRun: 0
-  setWalk: 0
-  playStrafe: 1
-  playIdle: 0
-  isRun: 0
-  isWalk: 0
 --- !u!114 &6394221710954073956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1666,7 +1767,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 39591b999b566204b81aab9d6d11c791
-  Position: {x: -2061, y: -1156}
+  Position: {x: -951, y: 705}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1675,7 +1776,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   faceToPlayer: 1
-  faceRotationLerpTime: 2.5
+  faceRotationLerpTime: 1
 --- !u!114 &7069070226056705171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,7 +1818,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: dab011f3674e4524196332d4878a141c
-  Position: {x: -1286, y: -1164}
+  Position: {x: -2111.0005, y: -1319.3947}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1727,33 +1828,6 @@ MonoBehaviour:
   description: 
   minWaitTime: 0
   maxWaitTime: 0.3
---- !u!114 &7192623595860676937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ec57ae1ce6eacc429902710e77695e7, type: 3}
-  m_Name: RepeatNode
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: fa825012a57d64447bf8ceccdfb93de9
-  Position: {x: -569, y: -1487}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-    playerOnLeft: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
-  Child: {fileID: 997934962334746509}
-  restartOnSuccess: 1
-  restartOnFailure: 1
-  maxRepeats: 0
 --- !u!114 &7872779909693720007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,7 +1876,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 6572eba2b1521d94db92e1064ed43bb3
-  Position: {x: -1026, y: -478}
+  Position: {x: 261, y: 1221}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1817,6 +1891,33 @@ MonoBehaviour:
   playIdle: 0
   isRun: 0
   isWalk: 0
+--- !u!114 &8763655933726395102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec57ae1ce6eacc429902710e77695e7, type: 3}
+  m_Name: RepeatNode
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: e33d425acc3a26b45bcc092f1f6847a7
+  Position: {x: 231.08073, y: 124.637054}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  Child: {fileID: 997934962334746509}
+  restartOnSuccess: 1
+  restartOnFailure: 0
+  maxRepeats: 0
 --- !u!114 &8992141317485170014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1832,7 +1933,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 352cd7674a159404c98b230351eda486
-  Position: {x: -1460.0004, y: -550}
+  Position: {x: -967, y: 1156}
   blackboard:
     attackTimeCounter: 0
     isHit: 0

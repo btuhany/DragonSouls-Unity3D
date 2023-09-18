@@ -22,7 +22,7 @@ public class EnemyMageController : MonoBehaviour
                 _roarMageFX.Play();
                 break;
             case 1:
-                Instantiate(_roarPlayerFX, PlayerStateMachine.Instance.transform.position + Vector3.up * -0.21f, Quaternion.identity);
+                Instantiate(_roarPlayerFX, PlayerStateMachine.Instance.transform.position + Vector3.up * -0.21f, Quaternion.identity); //from the position of the player's location ground
                 break;
             default:
                 break;

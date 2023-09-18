@@ -78,7 +78,7 @@ namespace States
         {
             PlayerCombatState combat = _currentState as PlayerCombatState;
             if (combat != null && combat.IsAttacking) return;
-            if (UnityEngine.Random.Range(0, 11) > 5)
+            //if (UnityEngine.Random.Range(0, 11) > 5)
                 sound.PlayHurtSFX();
             if (swordFreeState.IsAttacking || swordTargetState.IsAttacking || unarmedFreeState.IsAttacking || unarmedTargetState.IsAttacking)
                 return;
