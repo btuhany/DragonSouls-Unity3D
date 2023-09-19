@@ -24,13 +24,13 @@ public class DragonFireball : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        SpawnLava();
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(this.gameObject, 0.1f);
         }
         else
         {
-            SpawnLava();
         }
         
     }
