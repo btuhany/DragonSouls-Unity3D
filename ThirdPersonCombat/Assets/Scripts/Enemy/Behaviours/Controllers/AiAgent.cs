@@ -103,7 +103,7 @@ public class AiAgent : MonoBehaviour
     }
     private void FaceToPlayer()
     {
-        if (IsFaceToPlayer()) return;
+        //if (IsFaceToPlayer()) return;
         Vector3 dir = playerTransform.position - transform.position;
         dir.y = 0f;
         locomotion.LookRotation(dir, faceLerpTime, Time.deltaTime);

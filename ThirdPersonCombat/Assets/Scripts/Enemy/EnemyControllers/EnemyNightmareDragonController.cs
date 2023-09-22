@@ -2,6 +2,17 @@ using UnityEngine;
 
 public class EnemyNightmareDragonController : MonoBehaviour
 {
+    [Header("FireProjectile")]
+    [SerializeField] private DragonFireProjectile _fireProjectile;
+    [SerializeField] private Transform _fireProjectileSpawnPoint;
+
+    [Header("FireWall")]
+    [SerializeField] private DragonFireWall _fireWall;
+    [SerializeField] private Transform _fireWallSpawnPoint;
+
+    [Header("FireBreath")]
+    [SerializeField] private ParticleSystem _fireBreath;
+    
     [Header("Fireball")]
     [SerializeField] private Transform _fireballSpawnPoint;
     [SerializeField] private Rigidbody _fireball;
@@ -11,6 +22,10 @@ public class EnemyNightmareDragonController : MonoBehaviour
     [SerializeField][Range(0, 1f)] private float _maxRightAxisMag = 0.5f;
     [SerializeField][Range(0, 1f)] private float _maxForwardAxisMag = 1.0f;
     [SerializeField][Range(0, 1f)] private float _minForwardAxisMag = 0.5f;
+
+    private Transform _playerTransform => States.PlayerStateMachine.Instance.transform;
+
+    //Animation events
     public void SpawnFireball()
     {
         Rigidbody fireball = Instantiate(_fireball, _fireballSpawnPoint.position, _fireballSpawnPoint.rotation);
@@ -25,5 +40,37 @@ public class EnemyNightmareDragonController : MonoBehaviour
             Vector3.right * randomRightAxisVal + 
             Vector3.up * randomUpAxisVal)
             * randomSpeed);
+    }
+
+    public void SetActiveFireBreath(int active)
+    {
+        if(active == 0)
+        {
+            _fireBreath.Play();
+        }
+        else
+        {
+            _fireBreath.Stop();
+        }
+    }
+
+    public void ThrowFireProjectile()
+    {
+        DragonFireProjectile fireProjectile = Instantiate(_fireProjectile, _fireProjectileSpawnPoint.position, _fireProjectileSpawnPoint.rotation);
+
+        Vector3 dir = _playerTransform.position - this._fireballSpawnPoint.position;
+        dir.y += 1.3f;
+        
+        fireProjectile.SetVelocityDirection(dir);
+    }
+
+    public void ThrowFireWall()
+    {
+        DragonFireWall fireWall = Instantiate(_fireWall, _fireWallSpawnPoint.position, _fireWallSpawnPoint.rotation);
+
+        Vector3 dir = _playerTransform.position - this._fireWallSpawnPoint.position;
+        dir.y = 0f;
+
+        fireWall.SetVelocityDirection(dir);
     }
 }

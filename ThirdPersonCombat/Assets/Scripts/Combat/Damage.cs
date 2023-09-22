@@ -34,6 +34,13 @@ namespace Combat
         {
             AttackDamage = damage;
         }
+
+        public void GiveDamageForced(Health health, Collider collider)
+        {
+            health.TakeDamage(AttackDamage, this);
+            health.EnterHitPosition = HitControlPosition.position;
+            OnHitGiven?.Invoke(collider);
+        }
     }
 
 }

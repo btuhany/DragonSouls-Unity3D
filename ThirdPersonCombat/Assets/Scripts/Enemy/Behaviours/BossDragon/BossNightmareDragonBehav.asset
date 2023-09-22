@@ -612,7 +612,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 71b927ae55113ff41ae65ec38983a69d
-  Position: {x: -562, y: 722}
+  Position: {x: -561.59973, y: 722.3999}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -620,7 +620,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  minSimilarity: 0.89
+  minSimilarity: 0.99
 --- !u!114 &-3164246104916007926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,7 +644,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  minSimilarity: 0.97
+  minSimilarity: 0.95
 --- !u!114 &-2889389375860086641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -826,7 +826,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  attackNum: 3
+  attackNum: 5
   isRandomAttack: 0
   randomLength: 0
 --- !u!114 &-1653715522017913992
@@ -1165,10 +1165,10 @@ MonoBehaviour:
   - {fileID: -7081810292214097771}
   - {fileID: -3690131611399790831}
   - {fileID: 1472826196624394246}
-  - {fileID: -2110474467038086129}
   - {fileID: -1709612515953480689}
   - {fileID: -1636306551593907240}
   - {fileID: -8157395197015776604}
+  - {fileID: -2110474467038086129}
 --- !u!114 &1472826196624394246
 MonoBehaviour:
   m_ObjectHideFlags: 0

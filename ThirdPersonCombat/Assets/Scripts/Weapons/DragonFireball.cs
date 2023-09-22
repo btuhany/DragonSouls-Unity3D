@@ -7,6 +7,7 @@ public class DragonFireball : MonoBehaviour
     //[SerializeField] private SoundClips _weaponSwingSounds;
     [SerializeField] private int _damagePoint = 13;
     [SerializeField] private GameObject _explosionFX;
+    [SerializeField] private GameObject _fireArea;
     private Damage _damage;
     private SphereCollider _collider;
     private AudioSource _audioSource;
@@ -24,19 +25,22 @@ public class DragonFireball : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        SpawnLava();
-        if (other.gameObject.CompareTag("Player"))
+        SpawnExplosionFX();
+        if (!other.gameObject.CompareTag("Player"))
         {
-            Destroy(this.gameObject, 0.1f);
+            SpawnFireArea();
         }
-        else
-        {
-        }
+        StopAttack();
+        Destroy(this.gameObject, 0.1f);
         
     }
-    private void SpawnLava()
+    private void SpawnExplosionFX()
     {
         Instantiate(_explosionFX, transform.position, Quaternion.identity).SetActive(true);
+    }
+    private void SpawnFireArea()
+    {
+        Instantiate(_fireArea, transform.position, Quaternion.identity).SetActive(true);
     }
     private void StartAttack(int damage)
     {
