@@ -5,11 +5,15 @@ using Movement;
 using Combat;
 using System;
 using Sounds;
+using System.Xml;
 
 namespace States
 {
     public class PlayerStateMachine : StateMachine
     {
+        [SerializeField] private ParticleSystem _healFX;
+        [SerializeField] private int _healFlask = 3;
+
         [Header("Components")]
         public InputReader InputReader;
         public PlayerAnimationController animationController;
@@ -32,6 +36,7 @@ namespace States
         public PlayerAimState aimState;
         public PlayerSwordReturnState returnSwordState;
         public PlayerRollState rollState;
+        public PlayerDeadState deadState;
 
         [HideInInspector] public bool isSprintHolding;
         [HideInInspector] public bool isSprinting;
@@ -54,6 +59,7 @@ namespace States
             aimState = new PlayerAimState(this);
             returnSwordState = new PlayerSwordReturnState(this);
             rollState = new PlayerRollState(this);
+            deadState = new PlayerDeadState(this);
             health = GetComponent<Health>();
             stamina = GetComponent<Stamina>();
         }
@@ -72,8 +78,25 @@ namespace States
             InputReader.JumpEvent += HandleOnDodgeEvent;
             InputReader.DodgeEvent += HandleOnDodgeEvent;
             InputReader.TargetEvent += HandleOnTargetEvent;
+            InputReader.HealEvent += HandleOnHealEvent;
+            health.OnHealthIncreased += HandleOnHealthIncreased;
+            health.OnDead += HandleOnDead;
         }
 
+        private void HandleOnHealEvent()
+        {
+            if (_healFlask <= 0) return;
+            health.IncreaseHealth(10);
+        }
+        private void HandleOnHealthIncreased()
+        {
+            _healFlask--;
+            _healFX.Play();
+        }
+        private void HandleOnDead()
+        {
+            ChangeState(deadState);
+        }
         private void HandleOnHealthUpdate(int arg1, int arg2)
         {
             PlayerCombatState combat = _currentState as PlayerCombatState;
@@ -91,6 +114,7 @@ namespace States
         }
         private void Update()
         {
+            if(health.IsDead) return;
             UpdateState(Time.deltaTime);
         }
         void HandleOnJumpEvent()

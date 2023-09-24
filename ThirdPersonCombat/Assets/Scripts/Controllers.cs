@@ -152,6 +152,15 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Heal"",
+                    ""type"": ""Button"",
+                    ""id"": ""a372bbda-98b7-4714-9eca-b9dd4ca9ea10"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -385,6 +394,17 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""action"": ""TargetSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c46d4c00-bcc4-4fad-808b-44f0bbe0ec6f"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -435,6 +455,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         m_Player_WeaponReturn = m_Player.FindAction("WeaponReturn", throwIfNotFound: true);
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
         m_Player_TargetSelect = m_Player.FindAction("TargetSelect", throwIfNotFound: true);
+        m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -510,6 +531,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_WeaponReturn;
     private readonly InputAction m_Player_Roll;
     private readonly InputAction m_Player_TargetSelect;
+    private readonly InputAction m_Player_Heal;
     public struct PlayerActions
     {
         private @Controllers m_Wrapper;
@@ -528,6 +550,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         public InputAction @WeaponReturn => m_Wrapper.m_Player_WeaponReturn;
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
         public InputAction @TargetSelect => m_Wrapper.m_Player_TargetSelect;
+        public InputAction @Heal => m_Wrapper.m_Player_Heal;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -579,6 +602,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @TargetSelect.started += instance.OnTargetSelect;
             @TargetSelect.performed += instance.OnTargetSelect;
             @TargetSelect.canceled += instance.OnTargetSelect;
+            @Heal.started += instance.OnHeal;
+            @Heal.performed += instance.OnHeal;
+            @Heal.canceled += instance.OnHeal;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -625,6 +651,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @TargetSelect.started -= instance.OnTargetSelect;
             @TargetSelect.performed -= instance.OnTargetSelect;
             @TargetSelect.canceled -= instance.OnTargetSelect;
+            @Heal.started -= instance.OnHeal;
+            @Heal.performed -= instance.OnHeal;
+            @Heal.canceled -= instance.OnHeal;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -676,5 +705,6 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         void OnWeaponReturn(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
         void OnTargetSelect(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
     }
 }

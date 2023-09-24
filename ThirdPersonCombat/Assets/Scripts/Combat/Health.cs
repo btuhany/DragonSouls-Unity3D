@@ -9,8 +9,10 @@ namespace Combat
         private int _health;
         public Damage lastDamageObj;
         [HideInInspector] public Vector3 EnterHitPosition;
-
+        public bool IsDead { get; private set; }
         public event System.Action<int,int> OnHealthUpdated;
+        public event System.Action OnHealthIncreased;
+        public event System.Action OnDead;
         private void Start()
         {
             _health = maxHealth;
@@ -18,9 +20,14 @@ namespace Combat
 
         public virtual void TakeDamage(int damage, Damage damageObj)
         {
-            if (IsInvulnerable) return;
+            if (IsInvulnerable || IsDead) return;
             if (_health <= 0) return;
             _health = Mathf.Max(_health - damage, 0);
+            if(_health <= 0)
+            {
+                IsDead = true;
+                OnDead?.Invoke();
+            }
             lastDamageObj  = damageObj;
             OnHealthUpdated?.Invoke(_health, damage);
         }
@@ -28,6 +35,14 @@ namespace Combat
         public void SetHealth(int value)
         {
             maxHealth = value;
+        }
+        public void IncreaseHealth(int value)
+        {
+            if(IsDead) return;
+            if (_health >= maxHealth) return;
+            _health = Mathf.Min(_health + value, maxHealth);
+            OnHealthUpdated?.Invoke(_health, 0);
+            OnHealthIncreased?.Invoke();
         }
     }
 }

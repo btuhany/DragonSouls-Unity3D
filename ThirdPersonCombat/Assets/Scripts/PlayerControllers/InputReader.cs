@@ -24,6 +24,7 @@ namespace Inputs
         public event System.Action WeaponReturnEvent;
         public event System.Action RollEvent;
         public event System.Action<Vector2> TargetSelectEvent;
+        public event System.Action HealEvent;
         public AttackType LastAttackType { get; private set; }
 
         private Controllers _controls;
@@ -150,6 +151,14 @@ namespace Inputs
             if (context.performed)
             {
                 TargetSelectEvent?.Invoke(context.ReadValue<Vector2>());
+            }
+        }
+
+        public void OnHeal(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                HealEvent?.Invoke();
             }
         }
     }

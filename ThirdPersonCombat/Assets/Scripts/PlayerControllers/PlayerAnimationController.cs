@@ -46,6 +46,7 @@ namespace PlayerController
         private readonly int _isFastRollHash = Animator.StringToHash("FastRoll");
 
         private readonly int _getHitAnim = Animator.StringToHash("PlayerGetHit");
+        private readonly int _playerDeath = Animator.StringToHash("PlayerDeath");
         public void PlaySetFreeLookBlend()
         {
             _anim.CrossFadeInFixedTime(_freeLookBlendTreeHash, 0.1f);
@@ -165,6 +166,10 @@ namespace PlayerController
         {
             _anim.CrossFadeInFixedTime(_isFastRollHash, 0.1f);
         }
+        public void PlayDeath()
+        {
+            _anim.CrossFadeInFixedTime(_playerDeath, 0.1f);
+        }
         
         public void PlayGetHit()
         {
@@ -177,6 +182,8 @@ namespace PlayerController
         }
         WaitForSeconds _resetTime = new WaitForSeconds(1.0f);
         bool _isGetHitPlaying = false;
+
+
         private IEnumerator ResetWeight(int index, float startValue)
         {
             yield return _resetTime;

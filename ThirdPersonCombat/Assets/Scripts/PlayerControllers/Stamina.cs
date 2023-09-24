@@ -1,4 +1,5 @@
 using Inputs;
+using System.Collections;
 using UnityEngine;
 
 namespace PlayerController
@@ -13,10 +14,10 @@ namespace PlayerController
         private InputReader _inputReader;
         public bool stopRegenerate;
         public float MaxStamina { get => _maxStamina;}
+        private bool _isStaminaUsing;
 
         public event System.Action<float> OnStaminaUpdate;
 
-        private bool _isOneTimeLowStaminaUsed;
         private void Awake()
         {
             _inputReader = GetComponent<InputReader>();
@@ -28,26 +29,30 @@ namespace PlayerController
         public bool UseStamina(float value)
         {
             //Allow player to spend more stamina than required stamina if stamina is too low, one time.
-            if(_stamina > _maxStamina / 5)
+            if (_stamina < value)
             {
-                if (_stamina < value && !_isOneTimeLowStaminaUsed)
-                    return false;
-            }
-            else
-            {
-                if (_isOneTimeLowStaminaUsed)
-                    return false;
-                else
-                    _isOneTimeLowStaminaUsed = true;
+                if (_stamina >= (value / _maxStamina) * 45f) // 45 for avarage stamina cost values
+                {
+                    _stamina = 0f;
+                    _isStaminaUsing = true;
+                    StopAllCoroutines();
+                    StartCoroutine(StaminaUsedCooldown());
+                    OnStaminaUpdate?.Invoke(_stamina);
+                    return true;
+                }
+                return false;
             }
             _stamina -= value;
             _isFull = false;
             OnStaminaUpdate?.Invoke(_stamina);
+            _isStaminaUsing = true;
+            StopAllCoroutines();
+            StartCoroutine(StaminaUsedCooldown());
             return true;
         }
         private void Update()
         {
-            if (_isFull) return;
+            if (_isFull || _isStaminaUsing) return;
             if (stopRegenerate) return;
             if(_inputReader.MovementOn2DAxis.magnitude < 0.1f)
             {
@@ -62,9 +67,16 @@ namespace PlayerController
                 _stamina = MaxStamina;
                 _isFull = true;
             }
-            if (_isOneTimeLowStaminaUsed && _stamina > _maxStamina / 2.5f)
-                _isOneTimeLowStaminaUsed = false;
+
             OnStaminaUpdate?.Invoke(_stamina);
+        }
+
+        private WaitForSeconds _staminaCooldown = new WaitForSeconds(0.1f);
+        IEnumerator StaminaUsedCooldown()
+        {
+            yield return _staminaCooldown;
+            _isStaminaUsing = false;
+            yield return null;
         }
     }
 }
