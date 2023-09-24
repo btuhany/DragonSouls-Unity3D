@@ -47,6 +47,7 @@ namespace PlayerController
 
         private readonly int _getHitAnim = Animator.StringToHash("PlayerGetHit");
         private readonly int _playerDeath = Animator.StringToHash("PlayerDeath");
+        private readonly int _sitBonfire = Animator.StringToHash("Bonfire");
         public void PlaySetFreeLookBlend()
         {
             _anim.CrossFadeInFixedTime(_freeLookBlendTreeHash, 0.1f);
@@ -170,7 +171,10 @@ namespace PlayerController
         {
             _anim.CrossFadeInFixedTime(_playerDeath, 0.1f);
         }
-        
+        public void PlayBonfireSit()
+        {
+            _anim.CrossFadeInFixedTime(_sitBonfire, 0.1f);
+        }
         public void PlayGetHit()
         {
             if (_isGetHitPlaying) return;

@@ -9,8 +9,8 @@ using Sounds;
 
 public class EnemyStateMachine : StateMachine
 {
+    public int soulPoint = 10;
     [SerializeField] private bool _debug = false;
-
     public EnemyAnimationController animController;
     public EnemyConfig config;
     public NavMeshAgent navmeshAgent;
@@ -38,8 +38,13 @@ public class EnemyStateMachine : StateMachine
     [HideInInspector] public bool isSwordOn = false;
     [HideInInspector] public Sword sword;
     [HideInInspector] public bool isDead = false;
+    private Vector3 _initialWorldPos;
+    private Quaternion _initialWorldRotation;
     private void Awake()
     {
+        _initialWorldPos = transform.position;
+        _initialWorldRotation = transform.rotation;
+
         _targetController = GetComponent<Targetable>();
         health = GetComponent<Health>();
         animController = GetComponent<EnemyAnimationController>();
@@ -54,11 +59,12 @@ public class EnemyStateMachine : StateMachine
         deadState = new EnemyDeadState(this);
         getHitState = new EnemyGetHitState(this);
         swordHitState = new EnemySwordPierced(this);
-
-        navmeshAgent.isStopped = true;
+        BonfiresManager.Instance.OnTakeRestEvent += HandleOnPlayerTookRest;
     }
     private void OnEnable()
     {
+        navmeshAgent.isStopped = true;
+
         health.OnHealthUpdated += HandleOnHealthUpdated;
         health.SetHealth(config.Health);
         OnDead += forceReceiver.HandleOnDead;
@@ -67,6 +73,7 @@ public class EnemyStateMachine : StateMachine
     private void OnDisable()
     {
         forceReceiver.isCharacterControllerDisabled = false;
+        health.OnHealthUpdated -= HandleOnHealthUpdated;
         OnDead -= forceReceiver.HandleOnDead;
     }
     private void Update()
@@ -137,5 +144,16 @@ public class EnemyStateMachine : StateMachine
             ChangeState(chaseState);
         _isInChaseConditionCheck = false;
         yield return null;
+    }
+    private void HandleOnPlayerTookRest()
+    {
+        isDead = false;
+        health.ResetHealth();
+        if(!movementController.CharacterController.enabled)
+            movementController.CharacterController.enabled = true;
+        this.gameObject.SetActive(false);
+        transform.position = _initialWorldPos;
+        transform.rotation = _initialWorldRotation;
+        this.gameObject.SetActive(true);
     }
 }

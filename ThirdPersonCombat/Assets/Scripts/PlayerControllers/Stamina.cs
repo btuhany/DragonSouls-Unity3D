@@ -1,4 +1,5 @@
 using Inputs;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -77,6 +78,12 @@ namespace PlayerController
             yield return _staminaCooldown;
             _isStaminaUsing = false;
             yield return null;
+        }
+
+        internal void ResetStamina()
+        {
+            _stamina = MaxStamina;
+            OnStaminaUpdate?.Invoke(_stamina);
         }
     }
 }

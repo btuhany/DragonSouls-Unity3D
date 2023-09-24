@@ -25,6 +25,7 @@ namespace Inputs
         public event System.Action RollEvent;
         public event System.Action<Vector2> TargetSelectEvent;
         public event System.Action HealEvent;
+        public event System.Action LightBonfireEvent;
         public AttackType LastAttackType { get; private set; }
 
         private Controllers _controls;
@@ -159,6 +160,14 @@ namespace Inputs
             if (context.performed)
             {
                 HealEvent?.Invoke();
+            }
+        }
+
+        public void OnLightBonfire(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                LightBonfireEvent?.Invoke();
             }
         }
     }

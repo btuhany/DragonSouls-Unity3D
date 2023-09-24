@@ -161,6 +161,15 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LightBonfire"",
+                    ""type"": ""Button"",
+                    ""id"": ""e25f6d8d-c356-4744-b726-1da419253f7c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -405,6 +414,17 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23c062bf-2c53-4387-81f5-26f16975e4e6"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LightBonfire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -456,6 +476,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
         m_Player_TargetSelect = m_Player.FindAction("TargetSelect", throwIfNotFound: true);
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
+        m_Player_LightBonfire = m_Player.FindAction("LightBonfire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -532,6 +553,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Roll;
     private readonly InputAction m_Player_TargetSelect;
     private readonly InputAction m_Player_Heal;
+    private readonly InputAction m_Player_LightBonfire;
     public struct PlayerActions
     {
         private @Controllers m_Wrapper;
@@ -551,6 +573,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
         public InputAction @TargetSelect => m_Wrapper.m_Player_TargetSelect;
         public InputAction @Heal => m_Wrapper.m_Player_Heal;
+        public InputAction @LightBonfire => m_Wrapper.m_Player_LightBonfire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -605,6 +628,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @Heal.started += instance.OnHeal;
             @Heal.performed += instance.OnHeal;
             @Heal.canceled += instance.OnHeal;
+            @LightBonfire.started += instance.OnLightBonfire;
+            @LightBonfire.performed += instance.OnLightBonfire;
+            @LightBonfire.canceled += instance.OnLightBonfire;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -654,6 +680,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @Heal.started -= instance.OnHeal;
             @Heal.performed -= instance.OnHeal;
             @Heal.canceled -= instance.OnHeal;
+            @LightBonfire.started -= instance.OnLightBonfire;
+            @LightBonfire.performed -= instance.OnLightBonfire;
+            @LightBonfire.canceled -= instance.OnLightBonfire;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -706,5 +735,6 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         void OnRoll(InputAction.CallbackContext context);
         void OnTargetSelect(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
+        void OnLightBonfire(InputAction.CallbackContext context);
     }
 }

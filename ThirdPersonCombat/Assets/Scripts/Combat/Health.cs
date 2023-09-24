@@ -44,6 +44,12 @@ namespace Combat
             OnHealthUpdated?.Invoke(_health, 0);
             OnHealthIncreased?.Invoke();
         }
+        public void ResetHealth()
+        {
+            IsDead = false;
+            _health = maxHealth;
+            OnHealthUpdated?.Invoke(_health, 0);
+        }
     }
 }
 

@@ -12,6 +12,7 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter() 
     {
+        SoulsManager.Instance.AddSoul(stateMachine.soulPoint, stateMachine.transform.position);
         if (stateMachine.isSwordOn)
         {
             stateMachine.sword.DetachFromEnemy();
@@ -25,7 +26,7 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Exit()
     {
-
+        stateMachine.forceReceiver.isCharacterControllerDisabled = false;
     }
 
     public override void Tick(float deltaTime)

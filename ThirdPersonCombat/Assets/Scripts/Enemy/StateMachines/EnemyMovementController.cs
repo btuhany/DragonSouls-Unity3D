@@ -6,6 +6,9 @@ public class EnemyMovementController : MonoBehaviour
     private CharacterController _characterController;
 
     public Vector3 Velocity => _characterController.velocity;
+
+    public CharacterController CharacterController { get => _characterController; set => _characterController = value; }
+
     private void Awake()
     {
         _characterController = GetComponentInChildren<CharacterController>();

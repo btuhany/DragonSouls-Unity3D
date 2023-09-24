@@ -1,5 +1,6 @@
 using Combat;
 using EnemyControllers;
+using Movement;
 using Sounds;
 using States;
 using System.Collections;
@@ -8,6 +9,7 @@ using UnityEngine.AI;
 
 public class AiAgent : MonoBehaviour
 {
+    [SerializeField] private int _soulPoint = 10;
     [SerializeField] private float _destroyTime = 2f;
     [HideInInspector] public NavMeshAgent navmeshAgent;
     [HideInInspector] public CharacterController characterController;
@@ -33,8 +35,12 @@ public class AiAgent : MonoBehaviour
 
     private readonly int _animGotHit = Animator.StringToHash("Hit1");
     private readonly int _animDead = Animator.StringToHash("death");
+    private Vector3 _initialWorldPos;
+    private Quaternion _initialWorldRotation;
+    private WaitForSeconds _disableDelay;
     private void Awake()
     {
+        _disableDelay = new WaitForSeconds(_destroyTime);
         navmeshAgent = GetComponent<NavMeshAgent>();
         characterController = GetComponent<CharacterController>();
         locomotion = GetComponent<AiLocomotion>();
@@ -45,14 +51,22 @@ public class AiAgent : MonoBehaviour
         _treeRunner = GetComponent<BehaviourTreeRunner>();
         _audioSources = GetComponents<AudioSource>();
         playerTransform = PlayerStateMachine.Instance.transform;
+        BonfiresManager.Instance.OnTakeRestEvent += Respawn;
+        _initialWorldPos = transform.position;
+        _initialWorldRotation = transform.rotation;
     }
 
     private void OnEnable()
     {
         _treeRunner.stop = false;
-        navmeshAgent.isStopped = true;
+        forceReceiver.isCharacterControllerDisabled = false;
         health.OnHealthUpdated += HandleOnTakeHit;
         _isDead = false;
+    }
+    private void Start()
+    {
+        navmeshAgent.isStopped = true;
+        
     }
     private void Update()
     {
@@ -80,10 +94,13 @@ public class AiAgent : MonoBehaviour
         if(health <= 0)
         {
             _isDead = true;
+            SoulsManager.Instance.AddSoul(_soulPoint, this.transform.position);
             _treeRunner.stop = true;
             faceToPlayer = false;
             animator.CrossFadeInFixedTime(_animDead, 0.1f);
-            Destroy(gameObject, _destroyTime);
+            //Destroy(gameObject, _destroyTime);
+            StopAllCoroutines();
+            StartCoroutine(DisableThisWithDelay());
         }
         else
         {
@@ -92,6 +109,14 @@ public class AiAgent : MonoBehaviour
             StartCoroutine(ResetIsHit());
         }
     }
+
+    private IEnumerator DisableThisWithDelay()
+    {
+        yield return _disableDelay;
+        this.gameObject.SetActive(false);
+        yield return null;
+    }
+
     WaitForSeconds _resetIsHitTime = new WaitForSeconds(0.2f);
     private IEnumerator ResetIsHit()
     {
@@ -151,7 +176,18 @@ public class AiAgent : MonoBehaviour
             trailRenderer.SetActive(active);
         }
     }
-
+    public void Respawn()
+    {
+        _isDead = false;
+        _treeRunner.stop = false;
+        forceReceiver.isCharacterControllerDisabled = true;
+        health.ResetHealth();
+        this.gameObject.SetActive(false);
+        transform.position = _initialWorldPos;
+        transform.rotation = _initialWorldRotation;
+        this.gameObject.SetActive(true);
+        navmeshAgent.isStopped = true;
+    }
     //Animation Events
     public void PlaySFX(int sfxNum)
     {
