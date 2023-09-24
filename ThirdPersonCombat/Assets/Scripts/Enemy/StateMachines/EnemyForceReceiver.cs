@@ -54,7 +54,8 @@ namespace EnemyControllers
                     characterController.Move(_impact * Time.deltaTime);
             }
 
-            _verticalVelocity.y += _gravity * Time.deltaTime * _gravityScale;
+            //if(!isGrounded)
+                _verticalVelocity.y += _gravity * Time.deltaTime * _gravityScale;
             if (isGrounded && _verticalVelocity.y < 0f)
                 _verticalVelocity.y = -2f;
 

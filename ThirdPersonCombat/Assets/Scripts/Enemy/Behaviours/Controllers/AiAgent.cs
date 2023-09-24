@@ -23,6 +23,7 @@ public class AiAgent : MonoBehaviour
     [HideInInspector] public bool reactToHit;
 
     [SerializeField] private GameObject _agentFX;
+    [SerializeField] private GameObject[] _trailRenderers;
     [SerializeField] SoundClips[] _sfxClips;
     private AudioSource[] _audioSources;
 
@@ -57,7 +58,6 @@ public class AiAgent : MonoBehaviour
     {
         if (faceToPlayer)
         {
-            //Debug.Log("face");
             FaceToPlayer();
         }
     }
@@ -142,6 +142,13 @@ public class AiAgent : MonoBehaviour
         else
         {
             _audioSources[1].Stop();
+        }
+    }
+    public void SetTrailRenderer(bool active)
+    {
+        foreach (GameObject trailRenderer in _trailRenderers)
+        {
+            trailRenderer.SetActive(active);
         }
     }
 

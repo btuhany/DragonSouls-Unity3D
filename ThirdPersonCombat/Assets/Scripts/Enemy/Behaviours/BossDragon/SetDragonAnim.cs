@@ -11,6 +11,7 @@ public class SetDragonAnim : ActionNode
     public bool playIdle2 = false;
     public bool playSleep = false;
     public bool playStrafe = false;
+    public bool playJump = false;
 
     public bool setRun = false;
     public bool setWalk = false;
@@ -25,6 +26,7 @@ public class SetDragonAnim : ActionNode
     private readonly int _animIdle = Animator.StringToHash("idle");
     private readonly int _animIdle2 = Animator.StringToHash("idle2");
     private readonly int _animSleep = Animator.StringToHash("Sleep");
+    private readonly int _animJump = Animator.StringToHash("Jump");
     protected override void OnStart()
     {
         if (setRun)
@@ -60,6 +62,10 @@ public class SetDragonAnim : ActionNode
         if (playSleep)
         {
             agent.animator.CrossFadeInFixedTime(_animSleep, transitionDuration);
+        }
+        if (playJump)
+        {
+            agent.animator.CrossFadeInFixedTime(_animJump, transitionDuration);
         }
     }
 

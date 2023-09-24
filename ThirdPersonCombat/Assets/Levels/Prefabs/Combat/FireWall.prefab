@@ -34151,7 +34151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb735f8e75a7de84da08f0e1bd16fd4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLifeTime: 5.6
+  _maxLifeTime: 7
   _speed: 5
   _damagePoint: 20
   _particles:
