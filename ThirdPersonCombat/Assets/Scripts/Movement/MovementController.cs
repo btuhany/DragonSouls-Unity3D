@@ -40,6 +40,9 @@ namespace Movement
         [SerializeField] private CharacterController _characterController;
 
         public Vector3 Velocity => _characterController.velocity;
+
+        public CharacterController CharacterController { get => _characterController; set => _characterController = value; }
+
         private Transform _mainCam;
         private void Awake()
         {

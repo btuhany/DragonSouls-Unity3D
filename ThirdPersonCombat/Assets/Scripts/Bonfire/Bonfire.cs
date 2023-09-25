@@ -6,6 +6,7 @@ using UnityEngine;
 public class Bonfire : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _fireFX;
+    [SerializeField] private ParticleSystem _fireCircleFX;
     [SerializeField] private GameObject _uiUnkindledInfo;
     [SerializeField] private GameObject _uiKindledInfo;
     public Transform respawnPoint;
@@ -20,16 +21,17 @@ public class Bonfire : MonoBehaviour
         _uiUnkindledInfo.SetActive(false);
         _uiKindledInfo.SetActive(true);
         BonfiresManager.Instance.RegisterKindledBonfire(this);
-        BonfiresManager.Instance.lastInteractedBonfire = this;
+        BonfiresManager.Instance.LastInteractedBonfire = this;
     }
     public void TakeRest()
     {
         if (PlayerStateMachine.Instance.targetableCheck.IsThereTarget) return;
-        BonfiresManager.Instance.lastInteractedBonfire = this;
+        BonfiresManager.Instance.LastInteractedBonfire = this;
         PlayerStateMachine.Instance.health.ResetHealth();
         PlayerStateMachine.Instance.stamina.ResetStamina();
         _uiKindledInfo.SetActive(false);
         BonfiresManager.Instance.RestTaken();
+        _fireCircleFX.Play();
     }
     public void AtBonfire()
     {

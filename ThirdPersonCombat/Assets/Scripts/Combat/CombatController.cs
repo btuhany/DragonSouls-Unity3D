@@ -29,6 +29,7 @@ namespace Combat
     }
     public class CombatController : MonoBehaviour
     {
+        [HideInInspector] public float attackDamageBoostPercent = 0f;
         private ForceReceiver _force;
         [Header("ThrowSwordConfig")]
         [SerializeField] private Sword _sword;
@@ -95,7 +96,7 @@ namespace Combat
 
         public void EnableSwordHitbox()
         {
-            _sword.StartAttack(CurrentAttack.damage);
+            _sword.StartAttack(CurrentAttack.damage + (int)(CurrentAttack.damage * (attackDamageBoostPercent / 100)));
             _force.AddForce(CurrentAttack.force * transform.forward, CurrentAttack.forceLerpTime);
         }
                 
@@ -105,12 +106,12 @@ namespace Combat
         }
         public void EnableRightUnarmedHitboxes()
         {
-            _unarmedRight.StartAttack(CurrentAttack.damage);
+            _unarmedRight.StartAttack(CurrentAttack.damage + (int)(CurrentAttack.damage * (attackDamageBoostPercent / 100)));
             _force.AddForce(CurrentAttack.force * transform.forward, CurrentAttack.forceLerpTime);
         }
         public void EnableLeftUnarmedHitbox()
         {
-            _unarmedLeft.StartAttack(CurrentAttack.damage);
+            _unarmedLeft.StartAttack(CurrentAttack.damage + (int)(CurrentAttack.damage * (attackDamageBoostPercent / 100)));
             _force.AddForce(CurrentAttack.force * transform.forward, CurrentAttack.forceLerpTime);
         }
         public void DisableUnarmedHitboxes()

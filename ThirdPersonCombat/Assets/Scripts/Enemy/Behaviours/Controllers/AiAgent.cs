@@ -94,11 +94,12 @@ public class AiAgent : MonoBehaviour
         if(health <= 0)
         {
             _isDead = true;
-            SoulsManager.Instance.AddSoul(_soulPoint, this.transform.position);
+
             _treeRunner.stop = true;
             faceToPlayer = false;
             animator.CrossFadeInFixedTime(_animDead, 0.1f);
             //Destroy(gameObject, _destroyTime);
+            SoulsManager.Instance.AddSoul(_soulPoint, this.transform.position);
             StopAllCoroutines();
             StartCoroutine(DisableThisWithDelay());
         }

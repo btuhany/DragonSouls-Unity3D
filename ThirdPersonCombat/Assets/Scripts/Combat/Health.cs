@@ -32,7 +32,7 @@ namespace Combat
             OnHealthUpdated?.Invoke(_health, damage);
         }
 
-        public void SetHealth(int value)
+        public void SetMaxHealth(int value)
         {
             maxHealth = value;
         }
@@ -43,6 +43,11 @@ namespace Combat
             _health = Mathf.Min(_health + value, maxHealth);
             OnHealthUpdated?.Invoke(_health, 0);
             OnHealthIncreased?.Invoke();
+        }
+        public void IncreaseMaxHealth(int value)
+        {
+            maxHealth += value;
+            _health = maxHealth;
         }
         public void ResetHealth()
         {

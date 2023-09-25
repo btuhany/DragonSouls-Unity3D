@@ -278,6 +278,7 @@ MonoBehaviour:
   description: 
   attackNum: 2
   isRandomAttack: 1
+  minRandomIndex: 0
   randomLength: 3
 --- !u!114 &-7081810292214097771
 MonoBehaviour:
@@ -775,7 +776,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  minDistance: 10
+  minDistance: 7
   maxDistance: 30
 --- !u!114 &-2110474467038086129
 MonoBehaviour:
@@ -929,6 +930,7 @@ MonoBehaviour:
   enableRotation: 0
   speed: 1.8
   rotationSpeed: 3
+  variableSpeedForDist: 0
 --- !u!114 &-409834494972710875
 MonoBehaviour:
   m_ObjectHideFlags: 0

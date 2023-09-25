@@ -66,7 +66,7 @@ public class EnemyStateMachine : StateMachine
         navmeshAgent.isStopped = true;
 
         health.OnHealthUpdated += HandleOnHealthUpdated;
-        health.SetHealth(config.Health);
+        health.SetMaxHealth(config.Health);
         OnDead += forceReceiver.HandleOnDead;
         ChangeState(idleState);
     }

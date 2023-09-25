@@ -9995,6 +9995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fireFX: {fileID: 4966706856702705690}
+  _fireCircleFX: {fileID: 6680283987592713376}
   _uiUnkindledInfo: {fileID: 0}
   _uiKindledInfo: {fileID: 0}
   respawnPoint: {fileID: 2088778289411326608}
@@ -10010,7 +10011,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.4
+  m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2510493232590400338
 GameObject:

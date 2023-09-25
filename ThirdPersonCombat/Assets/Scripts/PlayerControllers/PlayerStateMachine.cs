@@ -4,6 +4,7 @@ using UnityEngine;
 using Movement;
 using Combat;
 using Sounds;
+using static UnityEngine.ParticleSystem;
 
 namespace States
 {
@@ -67,6 +68,7 @@ namespace States
             stamina = GetComponent<Stamina>();
             _initialPos = transform.position;
             _initialRotation = transform.rotation;
+            BonfiresManager.Instance.OnTakeRestEvent += LookToBonfire;
         }
 
         private void SingletonObject()
@@ -148,17 +150,24 @@ namespace States
         public void Respawn()
         {
             health.ResetHealth();
-            if(BonfiresManager.Instance.lastInteractedBonfire == null)
+            if(BonfiresManager.Instance.LastInteractedBonfire == null)
             {
                 transform.position = _initialPos;
                 transform.rotation = _initialRotation;
             }
             else
             {
-                transform.position = BonfiresManager.Instance.lastInteractedBonfire.respawnPoint.position;
+                transform.position = BonfiresManager.Instance.LastInteractedBonfire.respawnPoint.position;
             }
             ChangeState(freeLookPlayerState);
 
+        }
+        private void LookToBonfire()
+        {
+            Vector3 targetDir = BonfiresManager.Instance.LastInteractedBonfire.transform.position - transform.position;
+            targetDir.y = 0f;
+            transform.rotation = Quaternion.LookRotation(
+            targetDir, Vector3.up);
         }
         void HandleOnJumpEvent()
         {

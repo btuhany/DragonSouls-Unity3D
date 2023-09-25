@@ -85,6 +85,24 @@ namespace PlayerController
             _stamina = MaxStamina;
             OnStaminaUpdate?.Invoke(_stamina);
         }
+        public void IncreaseMaxStamina(float value)
+        {
+            _maxStamina += value;
+            _stamina = _maxStamina;
+        }
+        public bool IsEnoughStamina(float value)
+        {
+            //Allow player to spend more stamina than required stamina if stamina is too low, one time.
+            if (_stamina < value)
+            {
+                if (_stamina >= (value / _maxStamina) * 45f) // 45 for avarage stamina cost values
+                {
+                    return true;
+                }
+                return false;
+            }
+            return true;
+        }
     }
 }
 

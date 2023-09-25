@@ -19,6 +19,7 @@ public class PlayerRollState : PlayerBaseState
 
     public override void Enter()
     {
+        stateMachine.stamina.UseStamina(movement.RollStaminaCost);
         stateMachine.health.IsInvulnerable = true;
         IsTargeted = false;
         AimHolded = false;
@@ -82,7 +83,7 @@ public class PlayerRollState : PlayerBaseState
         {
             if(_timeCounter > movement.FastRollDuration)
             {
-                if (_nextStateRoll && stateMachine.stamina.UseStamina(movement.RollStaminaCost))
+                if (_nextStateRoll && stateMachine.stamina.IsEnoughStamina(movement.RollStaminaCost))
                 {
                     Exit();
                     Enter();
@@ -112,7 +113,7 @@ public class PlayerRollState : PlayerBaseState
         {
             if (_timeCounter > movement.RollDuration)
             {
-                if (_nextStateRoll && stateMachine.stamina.UseStamina(movement.RollStaminaCost))
+                if (_nextStateRoll && stateMachine.stamina.IsEnoughStamina(movement.RollStaminaCost))
                 {
                     Exit();
                     Enter();
