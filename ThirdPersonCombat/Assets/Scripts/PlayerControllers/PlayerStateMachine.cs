@@ -5,14 +5,17 @@ using Movement;
 using Combat;
 using Sounds;
 using static UnityEngine.ParticleSystem;
+using TMPro;
 
 namespace States
 {
     public class PlayerStateMachine : StateMachine
     {
         [SerializeField] private ParticleSystem _healFX;
-        [SerializeField] private int _healFlask = 3;
+        [SerializeField] private int _initialHealFlask = 3;
+        [SerializeField] private TextMeshProUGUI _healPotionText;
         [HideInInspector] public Bonfire currentBonfire;
+        private int _healFlask = 3;
 
         [Header("Components")]
         public InputReader InputReader;
@@ -81,6 +84,7 @@ namespace States
 
         private void OnEnable()
         {
+            ResetSetHealFlask();
             this.health.OnHealthUpdated += HandleOnHealthUpdate;
             InputReader.JumpEvent += HandleOnJumpEvent;
             InputReader.DodgeEvent += HandleOnDodgeEvent;
@@ -100,7 +104,13 @@ namespace States
         private void HandleOnHealthIncreased()
         {
             _healFlask--;
+            _healPotionText.text = _healFlask.ToString();
             _healFX.Play();
+        }
+        public void ResetSetHealFlask()
+        {
+            _healFlask = _initialHealFlask;
+            _healPotionText.text = _healFlask.ToString();
         }
         private void HandleOnDead()
         {

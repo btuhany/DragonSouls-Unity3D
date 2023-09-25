@@ -11,6 +11,7 @@ public class PlayerBonfireState : PlayerBaseState
     }
     public override void Enter()
     {
+        stateMachine.ResetSetHealFlask();
         _isWaitTimePassed = false;
         _timeCounter = 0f;
         animationController.PlayBonfireSit();
