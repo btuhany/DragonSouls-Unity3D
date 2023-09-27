@@ -112,7 +112,7 @@ namespace States
                 animationController.SetTargetedBool(false);
                 animationController.SetIdleRunLocomotionSpeed(_forwardValue * _movementSpeedMultiplier, 0.1f);
             }
-
+            
             if (stateMachine.IsPlayerInRange(_config.TargetToAttackChangeRange))
             {
                 stateMachine.StartAttackStateCheck(_closeRangeAttackWaitTime, _config.TargetToAttackChangeRange);
@@ -121,6 +121,9 @@ namespace States
             {
                 stateMachine.StartChaseStateCheck(_closeRangeChaseWaitTime, _config.TargetToChaseChangeRange);
             }
+
+            if (PlayerStateMachine.Instance.isInvinsible)
+                stateMachine.ChangeState(stateMachine.idleState);
         }
 
         private Vector3 MotionVectorAroundTarget(float rightVal, float forwardVal)

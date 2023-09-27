@@ -41,6 +41,7 @@ namespace Combat
         [SerializeField] private GameObject _crossHairPanel;
 
         public bool IsSwordReturned => _sword.IsInHand || _sword.IsInSheath;
+        public bool IsSwordInSheath => _sword.IsInSheath;
 
         public bool AttackForce = false;
         public bool AutoTarget = false;

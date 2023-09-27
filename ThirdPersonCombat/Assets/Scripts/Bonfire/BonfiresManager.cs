@@ -20,7 +20,6 @@ public class BonfiresManager : MonoBehaviour
     public List<Bonfire> kindledBonfiresList = new List<Bonfire>();
     public static BonfiresManager Instance;
     public event System.Action OnTakeRestEvent;
-
     [Header("Camera")]
     [SerializeField] private CinemachineTargetGroup _cinemachineBonfireTargetGroup;
     private Bonfire _lastInteractedBonfire;

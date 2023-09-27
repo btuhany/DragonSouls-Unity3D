@@ -18,8 +18,7 @@ public class AiAgent : MonoBehaviour
     [HideInInspector] public EnemyForceReceiver forceReceiver;
     [HideInInspector] public EnemyCombatController combat;
     [HideInInspector] public Health health;
-
-    [HideInInspector] public Transform playerTransform;
+    [HideInInspector] public Transform playerTransform => GetPlayerTransform();
     [HideInInspector] public bool faceToPlayer;
     [HideInInspector] public float faceLerpTime = 2f;
     [HideInInspector] public bool reactToHit;
@@ -50,8 +49,8 @@ public class AiAgent : MonoBehaviour
         health = GetComponent<Health>();
         _treeRunner = GetComponent<BehaviourTreeRunner>();
         _audioSources = GetComponents<AudioSource>();
-        playerTransform = PlayerStateMachine.Instance.transform;
         BonfiresManager.Instance.OnTakeRestEvent += Respawn;
+        PlayerStateMachine.Instance.OnPlayerRespawn += Respawn;
         _initialWorldPos = transform.position;
         _initialWorldRotation = transform.rotation;
     }
@@ -179,8 +178,9 @@ public class AiAgent : MonoBehaviour
     }
     public void Respawn()
     {
-        _isDead = false;
-        _treeRunner.stop = false;
+        _isDead = true;
+        _treeRunner.stop = true;
+        faceToPlayer = false;
         forceReceiver.isCharacterControllerDisabled = true;
         health.ResetHealth();
         this.gameObject.SetActive(false);
@@ -188,6 +188,14 @@ public class AiAgent : MonoBehaviour
         transform.rotation = _initialWorldRotation;
         this.gameObject.SetActive(true);
         navmeshAgent.isStopped = true;
+        _isDead = false;
+        _treeRunner.stop = false;
+    }
+    public Transform GetPlayerTransform()
+    {
+        if(PlayerStateMachine.Instance.currentBonfire != null)
+            return PlayerStateMachine.Instance.currentBonfire.transform;
+        return PlayerStateMachine.Instance.transform;
     }
     //Animation Events
     public void PlaySFX(int sfxNum)

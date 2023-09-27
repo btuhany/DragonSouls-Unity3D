@@ -2,6 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using Combat;
 using Sounds;
+using States;
 
 namespace PlayerController
 {
@@ -102,6 +103,19 @@ namespace PlayerController
                     transform.localRotation = Quaternion.Euler(Vector3.zero);
                 }
             }
+            if(!_isReturning && _isOnThrow)
+            {
+                float distance = Vector3.Distance(_rb.position, PlayerStateMachine.Instance.transform.position);
+                if(distance >= 250f) //max distance
+                {
+                    _isOnThrow = false;
+                    _rb.velocity = Vector3.zero;
+                    _yRotationAnim.Pause();
+                    _rb.isKinematic = true;
+                    SetActiveInAirSFX(false);
+                }
+            }
+                
         }
         private void OnTriggerEnter(Collider other)
         {

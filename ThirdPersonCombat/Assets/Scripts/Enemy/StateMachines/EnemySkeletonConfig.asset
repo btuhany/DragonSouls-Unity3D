@@ -16,7 +16,7 @@ MonoBehaviour:
   MaxSpeed: 5
   IdleRunAnimTransitionTime: 0.1
   AnimationDampTime: 0.1
-  MinIdleRange: 19
+  MinIdleRange: 9.6
   ChasePointRefreshTime: 0.78
   ChaseToTargetChangeMaxRange: 5
   ChaseToTargetChangeMinRange: 3

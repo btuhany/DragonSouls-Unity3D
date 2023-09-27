@@ -1,11 +1,10 @@
-using UnityEngine;
-using States;
-using EnemyControllers;
 using Combat;
-using UnityEngine.AI;
-using System.Collections;
+using EnemyControllers;
 using PlayerController;
-using Sounds;
+using States;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStateMachine : StateMachine
 {
@@ -60,6 +59,7 @@ public class EnemyStateMachine : StateMachine
         getHitState = new EnemyGetHitState(this);
         swordHitState = new EnemySwordPierced(this);
         BonfiresManager.Instance.OnTakeRestEvent += HandleOnPlayerTookRest;
+        PlayerStateMachine.Instance.OnPlayerRespawn += HandleOnPlayerTookRest;
     }
     private void OnEnable()
     {
@@ -92,7 +92,7 @@ public class EnemyStateMachine : StateMachine
 
     public bool IsPlayerInRange(float range)
     {
-        if (Vector3.Distance(this.transform.position, PlayerStateMachine.Instance.transform.position) < range)
+        if (Vector3.Distance(this.transform.position, PlayerStateMachine.Instance.transform.position) < range && !PlayerStateMachine.Instance.isInvinsible)
             return true;
         else
             return false;

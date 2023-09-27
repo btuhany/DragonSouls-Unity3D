@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4158514900586121839
 Transform:
@@ -158,6 +158,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: furTreeSmall_lod1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 057f83f8f3f18ce4382e2844af65666f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 057f83f8f3f18ce4382e2844af65666f, type: 3}
 --- !u!4 &2402150283901923039 stripped
@@ -253,6 +258,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: furTreeSmall_lod0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fef4a39e5fb019d46b146ed639b4bca3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fef4a39e5fb019d46b146ed639b4bca3, type: 3}

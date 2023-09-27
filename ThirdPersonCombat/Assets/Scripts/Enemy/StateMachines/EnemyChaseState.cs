@@ -79,6 +79,8 @@ namespace States
                 return;
             }
 
+            if (PlayerStateMachine.Instance.isInvinsible)
+                stateMachine.ChangeState(stateMachine.idleState);
         }
 
 

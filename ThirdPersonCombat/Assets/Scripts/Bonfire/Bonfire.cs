@@ -25,7 +25,6 @@ public class Bonfire : MonoBehaviour
     }
     public void TakeRest()
     {
-        if (PlayerStateMachine.Instance.targetableCheck.IsThereTarget) return;
         BonfiresManager.Instance.LastInteractedBonfire = this;
         PlayerStateMachine.Instance.health.ResetHealth();
         PlayerStateMachine.Instance.stamina.ResetStamina();

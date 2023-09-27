@@ -24,7 +24,8 @@ namespace Combat
         }
         public void EndAttack()
         {
-            _weapon.StopAttack();    
+            if(_weapon != null)
+                _weapon.StopAttack();    
         }
         public void SetWeapon(int weaponNum)
         {

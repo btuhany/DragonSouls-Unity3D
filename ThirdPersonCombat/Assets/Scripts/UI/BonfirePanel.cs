@@ -21,23 +21,30 @@ public class BonfirePanel : MonoBehaviour
     [SerializeField] GameObject _staminaUpgradeBarsPanel;
     [SerializeField] TextMeshProUGUI _staminaUpgSoulInfoText;
     [SerializeField] RectTransform _staminaSlider;
+    [Header("ArmorPanel")]
+    [SerializeField] GameObject _armorUpgradeBarsPanel;
+    [SerializeField] TextMeshProUGUI _armorUpgSoulInfoText;
     [Header("Config - Upgrades")]
     [SerializeField] private float _atkDmgPercentPerUpg = 10f;
     [SerializeField] private int _healthAddUpg = 40;
     [SerializeField] private int _staminaAddUpg = 30;
+    [SerializeField] private int _armorPercentPerUpg = 60;
     [Header("Config - Soul Costs")]
     [SerializeField] private int[] _atkDmgSoulCosts = new int[5];
     [SerializeField] private int[] _healthSoulCosts = new int[5];
     [SerializeField] private int[] _staminaSoulCosts = new int[5];
+    [SerializeField] private int[] _armorSoulsCosts = new int[5];
 
     private Image[] _atkDmgUpgradeBars;
     private Image[] _healthUpgradeBars;
     private Image[] _staminaUpgradeBars;
+    private Image[] _armorUpgradeBars;
 
 
     private int _attackDamageUpgrade = 0;
     private int _healthUpgrade = 0;
     private int _staminaUpgrade = 0;
+    private int _armorUpgrade = 0;
     
     private const int maxUpgrade = 5;
     private readonly Color _greenColor = new Color(0.54f, 0.91f, 0.61f);
@@ -46,6 +53,7 @@ public class BonfirePanel : MonoBehaviour
         _atkDmgUpgradeBars = _atkDmgUpgradeBarsPanel.GetComponentsInChildren<Image>();
         _healthUpgradeBars = _healthUpgradeBarsPanel.GetComponentsInChildren<Image>();
         _staminaUpgradeBars = _staminaUpgradeBarsPanel.GetComponentsInChildren<Image>();
+        _armorUpgradeBars = _armorUpgradeBarsPanel.GetComponentsInChildren<Image>();
     }
     private void OnEnable()
     {
@@ -93,8 +101,6 @@ public class BonfirePanel : MonoBehaviour
             _staminaUpgSoulInfoText.text = "";
         else
             _staminaUpgSoulInfoText.text = $"Required souls: {_staminaSoulCosts[_staminaUpgrade]}";
-
-
     }
        
     //Button events
@@ -150,5 +156,18 @@ public class BonfirePanel : MonoBehaviour
         Vector3 motion = BonfiresManager.Instance.kindledBonfiresList[bonfireVal].respawnPoint.position - PlayerStateMachine.Instance.transform.position;
         PlayerStateMachine.Instance.movement.CharacterController.Move(motion);
         PlayerStateMachine.Instance.ChangeState(PlayerStateMachine.Instance.PreviousState);
+    }
+    public void IncreaseArmor()
+    {
+        if (_armorUpgrade == maxUpgrade) return;
+        if (!SoulsManager.Instance.SpendSoul(_armorSoulsCosts[_armorUpgrade]))
+        {
+            HandleOnInvalid();
+            return;
+        }
+        _armorUpgrade++;
+        _armorUpgradeBars[_armorUpgrade - 1].color = _greenColor;
+        PlayerStateMachine.Instance.health.IncreaseArmor(_armorPercentPerUpg);
+        UpdatePanel();
     }
 }

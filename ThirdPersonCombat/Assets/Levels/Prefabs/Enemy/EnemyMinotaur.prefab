@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650d669bd77afbf42bb68e59b3b4bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soulPoint: 10
   _destroyTime: 2.2
   navmeshAgent: {fileID: 0}
   characterController: {fileID: 0}
@@ -85,6 +86,7 @@ MonoBehaviour:
   faceLerpTime: 2
   reactToHit: 0
   _agentFX: {fileID: 0}
+  _trailRenderers: []
   _sfxClips:
   - AudioClips:
     - {fileID: 8300000, guid: eb491a4de6595a246bbef0f211e2bd73, type: 3}
@@ -5149,6 +5151,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8460002473558622963}
     m_Modifications:
+    - target: {fileID: 2879073243322865849, guid: ac433b0fde99f05459f4836613f3b64f,
+        type: 3}
+      propertyPath: m_Height
+      value: 1.3124166
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879073243322865849, guid: ac433b0fde99f05459f4836613f3b64f,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.65620816
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879073243322865849, guid: ac433b0fde99f05459f4836613f3b64f,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.037462838
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879073243322865849, guid: ac433b0fde99f05459f4836613f3b64f,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.14465567
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879073243322865849, guid: ac433b0fde99f05459f4836613f3b64f,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.42900518
+      objectReference: {fileID: 0}
     - target: {fileID: 2920912635009150252, guid: ac433b0fde99f05459f4836613f3b64f,
         type: 3}
       propertyPath: m_Name

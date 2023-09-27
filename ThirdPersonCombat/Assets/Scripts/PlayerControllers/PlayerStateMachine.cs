@@ -6,16 +6,24 @@ using Combat;
 using Sounds;
 using static UnityEngine.ParticleSystem;
 using TMPro;
+using UnityEngine.UI;
+using DG.Tweening;
 
 namespace States
 {
     public class PlayerStateMachine : StateMachine
     {
+        [SerializeField] Material[] _armorMaterials;
+        [SerializeField] SkinnedMeshRenderer[] _skinnedMeshes;
+        private int _armorUpgradeCount = 0;
         [SerializeField] private ParticleSystem _healFX;
         [SerializeField] private int _initialHealFlask = 3;
         [SerializeField] private TextMeshProUGUI _healPotionText;
         [HideInInspector] public Bonfire currentBonfire;
+        [SerializeField] private int _healAmount;
         private int _healFlask = 3;
+        public event System.Action OnPlayerRespawn;
+        public bool isInvinsible = false;
 
         [Header("Components")]
         public InputReader InputReader;
@@ -72,6 +80,8 @@ namespace States
             _initialPos = transform.position;
             _initialRotation = transform.rotation;
             BonfiresManager.Instance.OnTakeRestEvent += LookToBonfire;
+            health.OnArmorUpgrade += HandleOnArmorUprade;
+            _healFlask = _initialHealFlask;
         }
 
         private void SingletonObject()
@@ -99,7 +109,7 @@ namespace States
         private void HandleOnHealEvent()
         {
             if (_healFlask <= 0) return;
-            health.IncreaseHealth(10);
+            health.IncreaseHealth(_healAmount);
         }
         private void HandleOnHealthIncreased()
         {
@@ -147,6 +157,7 @@ namespace States
                 {
                     if (swordFreeState.IsAttacking || swordTargetState.IsAttacking || unarmedFreeState.IsAttacking || unarmedTargetState.IsAttacking)
                         return;
+                    if (targetableCheck.IsEnemyNearby(6f)) return;
                     targetableCheck.ClearTarget();
                     currentBonfire.TakeRest();
                     ChangeState(bonfireState);
@@ -160,17 +171,29 @@ namespace States
         public void Respawn()
         {
             health.ResetHealth();
+            movement.CharacterController.enabled = false;
             if(BonfiresManager.Instance.LastInteractedBonfire == null)
             {
+                //movement.CharacterController.Move(_initialPos - transform.position);
                 transform.position = _initialPos;
-                transform.rotation = _initialRotation;
+
             }
             else
             {
                 transform.position = BonfiresManager.Instance.LastInteractedBonfire.respawnPoint.position;
+                //movement.CharacterController.Move(BonfiresManager.Instance.LastInteractedBonfire.respawnPoint.position - transform.position);
             }
-            ChangeState(freeLookPlayerState);
+            transform.rotation = _initialRotation;
+            movement.CharacterController.enabled = true;
 
+            if (combatController.IsSwordInSheath)
+                ChangeState(freeLookPlayerState);
+            else if (combatController.IsSwordReturned)
+                ChangeState(swordFreeState);
+            else
+                ChangeState(unarmedFreeState);
+            ResetSetHealFlask();
+            OnPlayerRespawn?.Invoke();
         }
         private void LookToBonfire()
         {
@@ -178,6 +201,24 @@ namespace States
             targetDir.y = 0f;
             transform.rotation = Quaternion.LookRotation(
             targetDir, Vector3.up);
+        }
+        private void HandleOnArmorUprade()
+        {
+            _armorUpgradeCount++;
+            if (_armorUpgradeCount == 1)
+            {
+                foreach (SkinnedMeshRenderer skinnedMeshRenderer in _skinnedMeshes)
+                {
+                    skinnedMeshRenderer.material = _armorMaterials[0];
+                }
+            }
+            else if (_armorUpgradeCount == 2)
+            {
+                foreach (SkinnedMeshRenderer skinnedMeshRenderer in _skinnedMeshes)
+                {
+                    skinnedMeshRenderer.material = _armorMaterials[1];
+                }
+            }
         }
         void HandleOnJumpEvent()
         {

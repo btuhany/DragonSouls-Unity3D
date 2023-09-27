@@ -22179,6 +22179,7 @@ GameObject:
   - component: {fileID: 7886039454863686672}
   - component: {fileID: 7886039454863686687}
   - component: {fileID: 458172739}
+  - component: {fileID: 5335820677078730366}
   m_Layer: 8
   m_Name: EnemyMage
   m_TagString: Enemy
@@ -22232,6 +22233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650d669bd77afbf42bb68e59b3b4bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soulPoint: 10
   _destroyTime: 2
   navmeshAgent: {fileID: 0}
   characterController: {fileID: 0}
@@ -22240,11 +22242,11 @@ MonoBehaviour:
   forceReceiver: {fileID: 0}
   combat: {fileID: 0}
   health: {fileID: 0}
-  playerTransform: {fileID: 0}
   faceToPlayer: 0
   faceLerpTime: 2
   reactToHit: 0
   _agentFX: {fileID: 546616754}
+  _trailRenderers: []
   _sfxClips:
   - AudioClips:
     - {fileID: 8300000, guid: 4d92b7b017bd31947a2785ee1aca7812, type: 3}
@@ -22577,6 +22579,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5335820677078730366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886039454863686682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf89749485dabd40a5767c50c9ac5d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _range: 20
 --- !u!1 &7886039455465570205
 GameObject:
   m_ObjectHideFlags: 0

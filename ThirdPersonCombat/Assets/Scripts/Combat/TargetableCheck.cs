@@ -177,5 +177,17 @@ public class TargetableCheck : MonoBehaviour
         }
         return false;
     }
+    public bool IsEnemyNearby(float range)
+    {
+        if (!IsThereTarget) return false;
+        bool isEnemyNearby = false;
+        foreach (Targetable targetable in Targets)
+        {
+            float distance = Vector3.Distance(targetable.transform.position, transform.position);
+            if (distance <= range)
+                isEnemyNearby = true;
+        }
+        return isEnemyNearby;
+    }
 
 }

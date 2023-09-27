@@ -1,3 +1,4 @@
+using States;
 using UnityEngine;
 public class IsPlayerInRange : ActionNode
 {
@@ -15,7 +16,7 @@ public class IsPlayerInRange : ActionNode
     protected override State OnUpdate()
     {
         float distance = Vector3.Distance(agent.playerTransform.position, agent.transform.position);
-        if(distance >= minDistance && distance < maxDistance)
+        if(distance >= minDistance && distance < maxDistance && !PlayerStateMachine.Instance.isInvinsible)
         {
             return State.Success;
         }

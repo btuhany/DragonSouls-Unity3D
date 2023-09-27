@@ -19,6 +19,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -42,6 +43,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -65,6 +67,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -88,6 +91,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -112,6 +116,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -136,6 +141,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -159,6 +165,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -182,6 +189,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -214,11 +222,13 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
   attackNum: 0
   isRandomAttack: 1
+  minRandomIndex: 0
   randomLength: 3
 --- !u!114 &-7088225966763211265
 MonoBehaviour:
@@ -239,6 +249,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -261,11 +272,12 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 0-15
   minDistance: 0
-  maxDistance: 30
+  maxDistance: 15
 --- !u!114 &-6809431092183912143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +297,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -308,6 +321,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -332,6 +346,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -358,6 +373,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -382,6 +398,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -406,6 +423,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -430,6 +448,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -454,6 +473,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -477,6 +497,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -502,6 +523,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -525,6 +547,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -549,6 +572,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -573,6 +597,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -602,6 +627,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -631,6 +657,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -663,6 +690,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -686,12 +714,14 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
   enableRotation: 1
   speed: 5
   rotationSpeed: 5
+  variableSpeedForDist: 0
 --- !u!114 &-2726566029393795314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,6 +741,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -734,6 +765,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -767,6 +799,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -790,11 +823,12 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
   minDistance: 0
-  maxDistance: 30
+  maxDistance: 15
 --- !u!114 &-1673434230803128145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,6 +848,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -837,6 +872,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -866,6 +902,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -895,6 +932,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: True
@@ -918,6 +956,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -930,29 +969,6 @@ MonoBehaviour:
   - {fileID: -1479655489922066869}
   - {fileID: -2726566029393795314}
   - {fileID: 545712381686173993}
---- !u!114 &-1035494549681083611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0aea03134a7d3446842d858bb88f7d8, type: 3}
-  m_Name: DebugLogNode
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: e0354b2cd2898b747a2c6bea291fccbb
-  Position: {x: -1121.2764, y: -889.9999}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
-  Message: Hit
 --- !u!114 &-1028972802081179553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,6 +988,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -996,6 +1013,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1020,6 +1038,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1052,6 +1071,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1075,6 +1095,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1101,6 +1122,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1211,14 +1233,11 @@ MonoBehaviour:
   - {fileID: 8940026371192957758}
   - {fileID: 4649679545447092053}
   - {fileID: -986123500153313805}
-  - {fileID: 3705388375559937411}
-  - {fileID: 8268875691630392556}
-  - {fileID: -1035494549681083611}
-  - {fileID: 1533024849270547264}
   - {fileID: 6010524667424414810}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
 --- !u!114 &545712381686173993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1238,6 +1257,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1261,6 +1281,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1290,6 +1311,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1313,6 +1335,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1339,6 +1362,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1349,32 +1373,6 @@ MonoBehaviour:
   - {fileID: -2110474467038086129}
   - {fileID: 704637447074848728}
   - {fileID: 7057380886283242264}
---- !u!114 &1533024849270547264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ec57ae1ce6eacc429902710e77695e7, type: 3}
-  m_Name: RepeatNode
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: 9259e849be53c7244bb2d5549d55e3a0
-  Position: {x: -798.0001, y: -1307.8075}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
-  Child: {fileID: 3705388375559937411}
-  restartOnSuccess: 1
-  restartOnFailure: 1
-  maxRepeats: 0
 --- !u!114 &1748753656205607806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,6 +1392,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1418,6 +1417,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1444,6 +1444,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1467,6 +1468,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1490,6 +1492,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1516,6 +1519,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1540,6 +1544,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: False
@@ -1563,11 +1568,13 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
   attackNum: 3
   isRandomAttack: 0
+  minRandomIndex: 0
   randomLength: 0
 --- !u!114 &2804375891776784441
 MonoBehaviour:
@@ -1588,6 +1595,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1617,36 +1625,12 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
   Child: {fileID: -3761756035236375672}
   probability: 0.25
---- !u!114 &3705388375559937411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0a95d4c8869f6943bdfe49b6db6f511, type: 3}
-  m_Name: SequencerNode
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: 8edc54e483d9ad849bdfb89da492cec9
-  Position: {x: -1229, y: -1033.6044}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
-  Children:
-  - {fileID: 8268875691630392556}
-  - {fileID: -1035494549681083611}
 --- !u!114 &3723601804869265868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1666,6 +1650,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1691,6 +1676,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1715,6 +1701,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1738,6 +1725,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1761,11 +1749,12 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 0 15
   minDistance: 2.5
-  maxDistance: 30
+  maxDistance: 15
 --- !u!114 &4939198901416333742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1785,6 +1774,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1809,6 +1799,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1834,6 +1825,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1857,6 +1849,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: False
@@ -1880,6 +1873,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1909,6 +1903,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1932,12 +1927,14 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
   enableRotation: 0
   speed: 5
   rotationSpeed: 3
+  variableSpeedForDist: 0
 --- !u!114 &6125014552692456190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1957,6 +1954,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -1980,6 +1978,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2004,6 +2003,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2036,6 +2036,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2061,6 +2062,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2084,6 +2086,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2106,6 +2109,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2130,6 +2134,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2155,6 +2160,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2184,6 +2190,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2208,6 +2215,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: True
@@ -2231,6 +2239,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2257,6 +2266,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2281,6 +2291,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2291,28 +2302,6 @@ MonoBehaviour:
   - {fileID: -7088225966763211265}
   - {fileID: 8313740526044379933}
   - {fileID: -5389409882146671838}
---- !u!114 &8268875691630392556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf3d56aff5f92947a62b0ea4c14d21f, type: 3}
-  m_Name: IsHit
-  m_EditorClassIdentifier: 
-  mState: 0
-  Started: 0
-  Guid: 0453cbdb4c60ac84cb34790c29fecd5f
-  Position: {x: -1454, y: -897.8129}
-  blackboard:
-    attackTimeCounter: 0
-    isHit: 0
-  tree: {fileID: 0}
-  agent: {fileID: 0}
-  description: 
 --- !u!114 &8313740526044379933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2332,6 +2321,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2356,6 +2346,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2379,6 +2370,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2402,6 +2394,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2428,6 +2421,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2451,6 +2445,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
@@ -2475,6 +2470,7 @@ MonoBehaviour:
   blackboard:
     attackTimeCounter: 0
     isHit: 0
+    playerOnLeft: 0
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 

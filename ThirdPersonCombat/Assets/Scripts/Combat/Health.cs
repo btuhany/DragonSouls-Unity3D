@@ -4,6 +4,7 @@ namespace Combat
 {
     public class Health : MonoBehaviour
     {
+        private int _armorPercent = 0;
         public bool IsInvulnerable = false;
         public int maxHealth = 100;
         private int _health;
@@ -13,6 +14,7 @@ namespace Combat
         public event System.Action<int,int> OnHealthUpdated;
         public event System.Action OnHealthIncreased;
         public event System.Action OnDead;
+        public event System.Action OnArmorUpgrade;
         private void Start()
         {
             _health = maxHealth;
@@ -22,6 +24,7 @@ namespace Combat
         {
             if (IsInvulnerable || IsDead) return;
             if (_health <= 0) return;
+            damage = damage - (damage * _armorPercent) / 100;
             _health = Mathf.Max(_health - damage, 0);
             if(_health <= 0)
             {
@@ -54,6 +57,11 @@ namespace Combat
             IsDead = false;
             _health = maxHealth;
             OnHealthUpdated?.Invoke(_health, 0);
+        }
+        public void IncreaseArmor(int value)
+        {
+            _armorPercent += value;
+            OnArmorUpgrade?.Invoke();
         }
     }
 }

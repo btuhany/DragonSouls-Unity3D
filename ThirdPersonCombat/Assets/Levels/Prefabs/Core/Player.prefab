@@ -5506,7 +5506,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cf116691766224c88e32bbd567137a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _armorMaterials:
+  - {fileID: 2100000, guid: eb672304fc7494d498965b8f2b242de6, type: 2}
+  - {fileID: 2100000, guid: 0cead53e4ecd4a04798672bd2e5ad8e8, type: 2}
+  _skinnedMeshes:
+  - {fileID: 3157419670337278130}
+  - {fileID: 3157419670840455620}
+  - {fileID: 3157419671393404582}
+  - {fileID: 3157419671511974995}
+  - {fileID: 3157419671482248181}
+  - {fileID: 3157419670904836615}
+  - {fileID: 3157419670230104704}
   _healFX: {fileID: 557322140910696082}
+  _initialHealFlask: 3
+  _healPotionText: {fileID: 0}
+  currentBonfire: {fileID: 0}
   InputReader: {fileID: 5140849125630205063}
   animationController: {fileID: 5140849125630205056}
   targetableCheck: {fileID: 5140849125275155405}
@@ -5572,6 +5586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a58e3526a28c454ca23e0b2d663ad99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamageBoostPercent: 0
   _sword: {fileID: 5140849124309685705}
   _unarmedLeft: {fileID: 7762632667364585262}
   _unarmedRight: {fileID: 964073134852930972}
@@ -6798,6 +6813,21 @@ PrefabInstance:
         type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329450421456403366, guid: 1245b8d2997d5b34fb1637be70a7eb05,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329450421456403366, guid: 1245b8d2997d5b34fb1637be70a7eb05,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5329450421456403366, guid: 1245b8d2997d5b34fb1637be70a7eb05,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5858841876001134857, guid: 1245b8d2997d5b34fb1637be70a7eb05,
         type: 3}
