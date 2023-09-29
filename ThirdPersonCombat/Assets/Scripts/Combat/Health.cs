@@ -56,7 +56,7 @@ namespace Combat
         {
             IsDead = false;
             _health = maxHealth;
-            OnHealthUpdated?.Invoke(_health, 0);
+            OnHealthUpdated?.Invoke(maxHealth, 0);
         }
         public void IncreaseArmor(int value)
         {

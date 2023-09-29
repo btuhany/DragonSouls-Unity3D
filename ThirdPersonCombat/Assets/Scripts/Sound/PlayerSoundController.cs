@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Sounds
 {
@@ -12,6 +13,7 @@ namespace Sounds
     }
     public class PlayerSoundController : MonoBehaviour
     {
+        [SerializeField] [Range(0, 1)] private float _gruntPossibility = 0.6f;
         [SerializeField] private SoundClips _runFootSteps;
         [SerializeField] private SoundClips _walkFootSteps;
         [SerializeField] private SoundClips _rollStart;
@@ -71,6 +73,7 @@ namespace Sounds
         }
         public void PlayGruntSFX()
         {
+            if (10 * _gruntPossibility < Random.Range(0, 10)) return;
             _secondarySource.volume = _grunt.Volume;
             _secondarySource.pitch = _grunt.Pitch + UnityEngine.Random.Range(-0.05f, 0.05f);
             _secondarySource.PlayOneShot(_grunt.AudioClips[UnityEngine.Random.Range(0, _grunt.AudioClips.Length)]);

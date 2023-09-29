@@ -290,7 +290,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 84d3a593c53782e40b6a24d6f0301229
-  Position: {x: -4915.1777, y: 417.6}
+  Position: {x: -4908.7993, y: 425.59995}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 0-15
   minDistance: 0
-  maxDistance: 100
+  maxDistance: 50
 --- !u!114 &-6926841034591639127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4171,7 +4171,7 @@ MonoBehaviour:
   description: 
   Child: {fileID: 997934962334746509}
   restartOnSuccess: 1
-  restartOnFailure: 0
+  restartOnFailure: 1
   maxRepeats: 0
 --- !u!114 &8992141317485170014
 MonoBehaviour:

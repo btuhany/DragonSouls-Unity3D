@@ -29311,7 +29311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 6
-  _attackDamage: 7
+  _attackDamage: 10
   _spawnSFX:
     AudioClips:
     - {fileID: 8300000, guid: d78deecc6fa3040c9b6481172d2745cc, type: 3}

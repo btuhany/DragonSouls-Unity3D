@@ -97,6 +97,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   Children:
+  - {fileID: 3781647088062412908}
   - {fileID: 1535827785561554815}
   - {fileID: 8048808301846210684}
   - {fileID: -3945448565135437671}
@@ -106,7 +107,6 @@ MonoBehaviour:
   - {fileID: 8529242116797682590}
   - {fileID: -6435626859721039461}
   - {fileID: 8145837745766127361}
-  - {fileID: 3781647088062412908}
 --- !u!114 &-7662288975266798563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 0-15
   minDistance: 0
-  maxDistance: 17
+  maxDistance: 15
 --- !u!114 &-7039008707516526641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,7 +660,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   direction: {x: 1, y: 0, z: 0}
-  lenght: 5
+  lenght: 3
   randomSphereRadius: 3
   samplePointRadius: 3
   randomLenght: 1
@@ -693,7 +693,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minDistance: 2
-  maxDistance: 7.5
+  maxDistance: 5
 --- !u!114 &-3003504271729217450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,7 +900,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minWaitTime: 0
-  maxWaitTime: 0.3
+  maxWaitTime: 0.2
 --- !u!114 &-671061783316545362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1098,6 +1098,7 @@ MonoBehaviour:
   - {fileID: -3003504271729217450}
   - {fileID: 6860142535554721808}
   - {fileID: 3781647088062412908}
+  - {fileID: 1115370962491261312}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1231,6 +1232,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   Children:
+  - {fileID: 1115370962491261312}
   - {fileID: 649376416404090754}
   - {fileID: -4409870430867591242}
   - {fileID: 7131352535010506069}
@@ -1239,6 +1241,31 @@ MonoBehaviour:
   - {fileID: -5507925030596452737}
   - {fileID: 4986857270988758789}
   - {fileID: 3663467115145120711}
+--- !u!114 &1115370962491261312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f9162f29886754286c212fb149d1cd, type: 3}
+  m_Name: IsPlayerInRange
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 38a5b69248fb97741945ea02d6843829
+  Position: {x: -2466.2085, y: -425.60007}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  minDistance: 0
+  maxDistance: 25
 --- !u!114 &1535827785561554815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1581,7 +1608,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minWaitTime: 0.05
-  maxWaitTime: 0.4
+  maxWaitTime: 0.2
 --- !u!114 &3983814821903913056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1680,7 +1707,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 06b55964412f19b418a7f47c48e4393d
-  Position: {x: -1345.9998, y: 410.84094}
+  Position: {x: -1345.5997, y: 422.39993}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1688,8 +1715,8 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 0 15
-  minDistance: 7
-  maxDistance: 17
+  minDistance: 15
+  maxDistance: 25
 --- !u!114 &4986857270988758789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1763,7 +1790,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  minDistance: 1.5
+  minDistance: 1
   maxDistance: 10
 --- !u!114 &5776668942306746870
 MonoBehaviour:
@@ -1789,7 +1816,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minDistance: 0
-  maxDistance: 17
+  maxDistance: 15
 --- !u!114 &5834493538330735030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1868,7 +1895,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minWaitTime: 0
-  maxWaitTime: 0.8
+  maxWaitTime: 0.3
 --- !u!114 &6860142535554721808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1917,7 +1944,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minDistance: 0
-  maxDistance: 7.5
+  maxDistance: 5
 --- !u!114 &7131352535010506069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1942,7 +1969,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minWaitTime: 0.1
-  maxWaitTime: 0.7
+  maxWaitTime: 0.3
 --- !u!114 &7192623595860676937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2090,7 +2117,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minWaitTime: 0.1
-  maxWaitTime: 0.7
+  maxWaitTime: 0.3
 --- !u!114 &8145837745766127361
 MonoBehaviour:
   m_ObjectHideFlags: 0

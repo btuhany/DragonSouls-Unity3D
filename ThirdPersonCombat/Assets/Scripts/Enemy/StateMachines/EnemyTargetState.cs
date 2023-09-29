@@ -33,6 +33,8 @@ namespace States
 
         public override void Enter()
         {
+            if (stateMachine.isDead)
+                stateMachine.ChangeState(stateMachine.deadState);
             if (_playerTargetTransform == null)
                 _playerTargetTransform = PlayerStateMachine.Instance.transform;
             animationController.PlayTargetedBlend(0.1f);
@@ -122,8 +124,10 @@ namespace States
                 stateMachine.StartChaseStateCheck(_closeRangeChaseWaitTime, _config.TargetToChaseChangeRange);
             }
 
-            if (PlayerStateMachine.Instance.isInvinsible)
+            if (PlayerStateMachine.Instance.isInvisible)
                 stateMachine.ChangeState(stateMachine.idleState);
+
+
         }
 
         private Vector3 MotionVectorAroundTarget(float rightVal, float forwardVal)

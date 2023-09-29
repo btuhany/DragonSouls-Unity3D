@@ -119,6 +119,7 @@ namespace PlayerController
         }
         private void OnTriggerEnter(Collider other)
         {
+            if (other.CompareTag("Trigger")) return;
             if (!_isReturning && _isOnThrow)
             {
                 _isOnThrow = false;

@@ -4932,7 +4932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f49c15f4da098249b684c1701c3181a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damagePoint: 13
+  _damagePoint: 35
   _explosionFX: {fileID: 358637982589807520}
   _fireArea: {fileID: 4190181531339006643}
 --- !u!114 &1810930396243003254

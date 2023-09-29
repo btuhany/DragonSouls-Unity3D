@@ -5521,6 +5521,8 @@ MonoBehaviour:
   _initialHealFlask: 3
   _healPotionText: {fileID: 0}
   currentBonfire: {fileID: 0}
+  _healAmount: 27
+  isInvisible: 1
   InputReader: {fileID: 5140849125630205063}
   animationController: {fileID: 5140849125630205056}
   targetableCheck: {fileID: 5140849125275155405}
@@ -5551,9 +5553,9 @@ MonoBehaviour:
   FreeLookMaxMovementSpeed: 4
   FaceDirectionRotationLerpTimeScale: 27.02
   FreeLookSprintMovementSpeed: 6
-  CombatSprintSpeed: 5.5
-  UnarmedFreeSpeed: 2.4
-  SwordFreeSpeed: 3
+  CombatSprintSpeed: 5.7
+  UnarmedFreeSpeed: 4.3
+  SwordFreeSpeed: 3.9
   RotateAfterAttackTime: 0.15
   TargetMovementSpeed: 1.5
   TargetDirectionRotationLerpTimeScale: 2
@@ -5565,14 +5567,14 @@ MonoBehaviour:
   AimStateCameraVerticalRotationPower: 0.7
   RollStateRotateTime: 1
   RollDuration: 0.75
-  RollDistance: 3
+  RollDistance: 5
   FastRollDuration: 0.4
   FastRollDistance: 1.7
-  RollStaminaCost: 30
-  SprintStaminaCost: 0.25
-  LightAttackStaminaCost: 40
-  HeavyAttackStaminaCost: 60
-  SwordThrowStaminaCost: 30
+  RollStaminaCost: 15
+  SprintStaminaCost: 0.15
+  LightAttackStaminaCost: 15
+  HeavyAttackStaminaCost: 30
+  SwordThrowStaminaCost: 9
   _characterController: {fileID: 5140849125630205058}
 --- !u!114 &5140849125630205052
 MonoBehaviour:
@@ -5647,21 +5649,21 @@ MonoBehaviour:
     attackDuration: 0.9
     comboPermissionDelay: 0.35
     damage: 25
-    force: 6
+    force: 8
     forceLerpTime: 0.15
   - animationName: SwordLight1
     transitionDuration: 0.5
     attackDuration: 0.9
     comboPermissionDelay: 0.35
     damage: 30
-    force: 6.5
+    force: 8.3
     forceLerpTime: 0.15
   - animationName: SwordLight2
     transitionDuration: 0.1
     attackDuration: 0.95
     comboPermissionDelay: 0.35
     damage: 35
-    force: 7
+    force: 9
     forceLerpTime: 0.15
   SwordHeavyAttacks:
   - animationName: SwordHeavy1
@@ -5669,14 +5671,14 @@ MonoBehaviour:
     attackDuration: 0.95
     comboPermissionDelay: 0.3
     damage: 35
-    force: 8
+    force: 10
     forceLerpTime: 0.15
   - animationName: SwordHeavy2
     transitionDuration: 0.1
     attackDuration: 0.95
     comboPermissionDelay: 0.35
     damage: 40
-    force: 7
+    force: 11
     forceLerpTime: 0.15
   SwordLLHComboAttack:
     animationName: SwordLLHCombo
@@ -5691,7 +5693,7 @@ MonoBehaviour:
     transitionDuration: 0.1
     attackDuration: 0.5
     comboPermissionDelay: 0.2
-    damage: 17
+    damage: 26
     force: 0
     forceLerpTime: 0
   NullAttack:
@@ -5792,9 +5794,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c908bb02eb5f30d42b65fa987af2f0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxStamina: 100
-  _regenerateSpeedOnMovement: 15
-  _regenerateSpeed: 30
+  _maxStamina: 180
+  _regenerateSpeedOnMovement: 27
+  _regenerateSpeed: 37
   stopRegenerate: 0
 --- !u!114 &1793563101
 MonoBehaviour:
@@ -5808,6 +5810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcd0577d9db0374e8fabe62e352a553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gruntPossibility: 0.6
   _runFootSteps:
     AudioClips:
     - {fileID: 8300000, guid: 03e0be3d4ce61d34da02d3d0a674d54a, type: 3}
@@ -5893,7 +5896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInvulnerable: 0
-  maxHealth: 100
+  maxHealth: 120
   lastDamageObj: {fileID: 0}
   EnterHitPosition: {x: 0, y: 0, z: 0}
 --- !u!143 &5140849125630205058

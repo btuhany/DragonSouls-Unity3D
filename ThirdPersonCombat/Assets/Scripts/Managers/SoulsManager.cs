@@ -83,6 +83,7 @@ public class SoulsManager : MonoBehaviour
 
     private IEnumerator AddSoulsAnim(int value)
     {
+        _soulAddDelay = new WaitForSeconds(1.5f / value);
         _addedSoulsText.text = $"+{value}";
         _addedSoulsText.DOFade(1, 1f);
         for (int i = 0; i < value; i++)
@@ -101,4 +102,9 @@ public class SoulsManager : MonoBehaviour
         
     //    _addedSoulsText.DOFade(0, 1f);
     //}
+    public void ResetSouls()
+    {
+        _currentSouls = 0;
+        _soulText.text = _currentSouls.ToString();
+    }
 }

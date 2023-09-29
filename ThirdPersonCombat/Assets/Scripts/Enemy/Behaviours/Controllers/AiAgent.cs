@@ -93,7 +93,6 @@ public class AiAgent : MonoBehaviour
         if(health <= 0)
         {
             _isDead = true;
-
             _treeRunner.stop = true;
             faceToPlayer = false;
             animator.CrossFadeInFixedTime(_animDead, 0.1f);
@@ -190,6 +189,17 @@ public class AiAgent : MonoBehaviour
         navmeshAgent.isStopped = true;
         _isDead = false;
         _treeRunner.stop = false;
+    }
+    public void StopAgent()
+    {
+        _treeRunner.stop = true;
+        forceReceiver.isCharacterControllerDisabled = true;
+        animator.CrossFadeInFixedTime("Sleep", 0.1f);
+    }
+    public void StartAgent()
+    {
+        _treeRunner.stop = false;
+        forceReceiver.isCharacterControllerDisabled = false;
     }
     public Transform GetPlayerTransform()
     {

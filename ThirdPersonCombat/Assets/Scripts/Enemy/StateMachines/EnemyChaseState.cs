@@ -17,6 +17,8 @@ namespace States
 
         public override void Enter()
         {
+            if (stateMachine.isDead)
+                stateMachine.ChangeState(stateMachine.deadState);
             stateMachine.sound.PlayGruntsSFX(true);
             navmeshAgent.isStopped = false;
             navmeshAgent.updatePosition = false;
@@ -79,7 +81,7 @@ namespace States
                 return;
             }
 
-            if (PlayerStateMachine.Instance.isInvinsible)
+            if (PlayerStateMachine.Instance.isInvisible)
                 stateMachine.ChangeState(stateMachine.idleState);
         }
 

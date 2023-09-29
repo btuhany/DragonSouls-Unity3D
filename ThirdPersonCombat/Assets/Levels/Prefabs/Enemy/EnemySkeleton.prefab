@@ -1978,7 +1978,7 @@ Transform:
   m_GameObject: {fileID: 8676907167774288700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000004, y: 1, z: 1.0000004}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5945522263688682093}
@@ -2001,6 +2001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08a5de864aa2ca4d9c5e1c2c92efcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soulPoint: 15
   _debug: 0
   animController: {fileID: 2467826576402964528}
   config: {fileID: 11400000, guid: 297e8e3b8450e774e946722a4b0ccbed, type: 2}
@@ -2054,28 +2055,28 @@ MonoBehaviour:
     transitionDuration: 0.3
     attackDuration: 1.48
     comboPermissionDelay: 0
-    damage: 20
+    damage: 30
     force: 0
     forceLerpTime: 0
   - animationName: SkeletonAttack2
     transitionDuration: 0.3
     attackDuration: 2.7
     comboPermissionDelay: 0
-    damage: 22
+    damage: 35
     force: 0
     forceLerpTime: 0
   - animationName: SkeletonAttack3
     transitionDuration: 0.3
     attackDuration: 2
     comboPermissionDelay: 0
-    damage: 25
+    damage: 30
     force: 0
     forceLerpTime: 0
   - animationName: SkeletonAttack4
     transitionDuration: 0.3
     attackDuration: 1.37
     comboPermissionDelay: 0
-    damage: 24
+    damage: 35
     force: 0
     forceLerpTime: 0
   - animationName: SkeletonSwordedAttack
@@ -2096,6 +2097,7 @@ MonoBehaviour:
   _weapon: {fileID: 142385827806822885}
   _projectiles: []
   _projectileSpawnPoints: []
+  _weapons: []
 --- !u!114 &2622736940094571497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2109,7 +2111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInvulnerable: 0
-  maxHealth: 100
+  maxHealth: 180
   lastDamageObj: {fileID: 0}
   EnterHitPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1095210396577186076

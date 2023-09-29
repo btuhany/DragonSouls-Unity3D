@@ -153,9 +153,10 @@ public class BonfirePanel : MonoBehaviour
             return;
         }
         BonfiresManager.Instance.ExitRest();
-        Vector3 motion = BonfiresManager.Instance.kindledBonfiresList[bonfireVal].respawnPoint.position - PlayerStateMachine.Instance.transform.position;
-        PlayerStateMachine.Instance.movement.CharacterController.Move(motion);
-        PlayerStateMachine.Instance.ChangeState(PlayerStateMachine.Instance.PreviousState);
+        //Vector3 motion = BonfiresManager.Instance.kindledBonfiresList[bonfireVal].respawnPoint.position - PlayerStateMachine.Instance.transform.position;
+        //PlayerStateMachine.Instance.movement.CharacterController.Move(motion);
+        PlayerStateMachine.Instance.TeleportTo(BonfiresManager.Instance.kindledBonfiresList[bonfireVal].respawnPoint.position);
+
     }
     public void IncreaseArmor()
     {

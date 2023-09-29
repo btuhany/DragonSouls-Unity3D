@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyMovementController : MonoBehaviour
 {
     private CharacterController _characterController;
+    private EnemyStateMachine _enemyStateMachine;
 
     public Vector3 Velocity => _characterController.velocity;
 
@@ -12,7 +13,15 @@ public class EnemyMovementController : MonoBehaviour
     private void Awake()
     {
         _characterController = GetComponentInChildren<CharacterController>();
-        GetComponent<EnemyStateMachine>().OnDead += HandleOnDead;
+        //_enemyStateMachine = GetComponent<EnemyStateMachine>();
+    }
+    private void OnEnable()
+    {
+        //_enemyStateMachine.OnDead += HandleOnDead;
+    }
+    private void OnDisable()
+    {
+        //_enemyStateMachine.OnDead -= HandleOnDead;
     }
     public Vector3 TargetRelativeMotionVector(Vector3 targetPos)
     {

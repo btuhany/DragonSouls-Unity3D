@@ -2,14 +2,16 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skybox Cubemap Extended Night
   m_Shader: {fileID: 4800000, guid: 82881a2d011b0964696411c822cdd00b, type: 3}
-  m_ShaderKeywords: _ENABLEFOG_ON _ENABLEROTATION_ON
+  m_ValidKeywords:
+  - _ENABLEROTATION_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -75,24 +77,26 @@ Material:
         m_Texture: {fileID: 8900000, guid: 3ce67fee0f260ee47b4d820421fe6ff9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _Advancedd: 1
     - _BumpScale: 1
     - _CUBEMAPP: 1
-    - _CubemapPosition: 0
+    - _CubemapPosition: -0.07
     - _Cubemapp: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EnableFog: 1
+    - _EnableFog: 0
     - _EnableRotation: 1
-    - _Exposure: 1
+    - _Exposure: 0.84
     - _Float0: -0.21
-    - _FogFill: 0
-    - _FogHeight: 0.625
+    - _FogFill: 0.139
+    - _FogHeight: 0.569
     - _FogIntensity: 1
-    - _FogPosition: 0
-    - _FogSmoothness: 0.5
+    - _FogMessage: 0
+    - _FogPosition: 0.42
+    - _FogSmoothness: 0.33
     - _Fogg: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -117,4 +121,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Tex_HDR: {r: 1, g: 1, b: 0, a: 0}
-    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _TintColor: {r: 0.61095184, g: 0.5715379, b: 0.7264151, a: 1}
+  m_BuildTextureStacks: []

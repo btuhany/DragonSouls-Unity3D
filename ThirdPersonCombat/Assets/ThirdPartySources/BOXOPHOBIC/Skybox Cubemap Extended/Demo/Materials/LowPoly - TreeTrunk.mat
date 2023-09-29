@@ -139,7 +139,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.4191176, g: 0.29521015, b: 0.24962148, a: 1}
     - _BottomColor: {r: 0.43382335, g: 0.2423427, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.41911757, g: 0.29521012, b: 0.24962145, a: 1}
     - _Color1: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}

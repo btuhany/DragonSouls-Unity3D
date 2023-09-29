@@ -14626,7 +14626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e37a72e9180144fb0ab4768868f01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDamage: 25
+  _attackDamage: 40
   _speed: 8
   _chasePlayerInitial: 1
   _useTween: 0

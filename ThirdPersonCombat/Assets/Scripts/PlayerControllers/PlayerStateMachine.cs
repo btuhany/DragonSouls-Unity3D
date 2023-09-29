@@ -23,7 +23,7 @@ namespace States
         [SerializeField] private int _healAmount;
         private int _healFlask = 3;
         public event System.Action OnPlayerRespawn;
-        public bool isInvinsible = false;
+        public bool isInvisible = false;
 
         [Header("Components")]
         public InputReader InputReader;
@@ -125,6 +125,9 @@ namespace States
         private void HandleOnDead()
         {
             ChangeState(deadState);
+            SoulsManager.Instance.ResetSouls();
+            if (BossManager.Instance.IsInBoss)
+                BossManager.Instance.ExitBossFight();
         }
         private void HandleOnHealthUpdate(int health, int damage)
         {
@@ -194,6 +197,21 @@ namespace States
                 ChangeState(unarmedFreeState);
             ResetSetHealFlask();
             OnPlayerRespawn?.Invoke();
+        }
+        public void TeleportTo(Vector3 pos)
+        {
+            health.ResetHealth();
+            movement.CharacterController.enabled = false;
+            transform.position = pos;
+            transform.rotation = _initialRotation;
+            movement.CharacterController.enabled = true;
+            if (combatController.IsSwordInSheath)
+                ChangeState(freeLookPlayerState);
+            else if (combatController.IsSwordReturned)
+                ChangeState(swordFreeState);
+            else
+                ChangeState(unarmedFreeState);
+            ResetSetHealFlask();
         }
         private void LookToBonfire()
         {

@@ -304,7 +304,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 0-15
   minDistance: 0
-  maxDistance: 30
+  maxDistance: 21
 --- !u!114 &-6671010739698966006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,7 +777,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minDistance: 7
-  maxDistance: 30
+  maxDistance: 21
 --- !u!114 &-2110474467038086129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1081,7 +1081,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 8ba9d3269ce5bf94f9fd01c6308b9bf0
-  Position: {x: -2682.5051, y: -559.00006}
+  Position: {x: -2674.4, y: -553.6}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minDistance: 1.6
-  maxDistance: 11
+  maxDistance: 7
 --- !u!114 &711231655944802289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1487,7 +1487,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   minDistance: 1.6
-  maxDistance: 30
+  maxDistance: 21
 --- !u!114 &4844419501188628358
 MonoBehaviour:
   m_ObjectHideFlags: 0

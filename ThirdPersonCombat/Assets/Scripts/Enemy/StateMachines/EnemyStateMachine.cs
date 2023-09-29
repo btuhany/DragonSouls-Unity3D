@@ -92,7 +92,7 @@ public class EnemyStateMachine : StateMachine
 
     public bool IsPlayerInRange(float range)
     {
-        if (Vector3.Distance(this.transform.position, PlayerStateMachine.Instance.transform.position) < range && !PlayerStateMachine.Instance.isInvinsible)
+        if (Vector3.Distance(this.transform.position, PlayerStateMachine.Instance.transform.position) < range && !PlayerStateMachine.Instance.isInvisible)
             return true;
         else
             return false;
@@ -118,6 +118,7 @@ public class EnemyStateMachine : StateMachine
             ChangeState(deadState);
             OnDead?.Invoke();
             _targetController.ResetTargetable();
+            return;
         }
         else
         {
