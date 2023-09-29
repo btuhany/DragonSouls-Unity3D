@@ -31,7 +31,6 @@ public class BossHealthBar : MonoBehaviour
         _textDamage.SetText(_damageSum.ToString());
         StopAllCoroutines();
         StartCoroutine(DamageText(_timeDuration / 2));
-        Debug.Log("boss");
     }
 
     IEnumerator DamageText(float duration)

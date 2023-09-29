@@ -170,6 +170,15 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""41e56f51-6f61-4594-9018-5a142c78bace"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -425,6 +434,17 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""action"": ""LightBonfire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0daf74d6-084f-402f-a002-dde8c7bc5d5b"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -477,6 +497,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         m_Player_TargetSelect = m_Player.FindAction("TargetSelect", throwIfNotFound: true);
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
         m_Player_LightBonfire = m_Player.FindAction("LightBonfire", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -554,6 +575,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_TargetSelect;
     private readonly InputAction m_Player_Heal;
     private readonly InputAction m_Player_LightBonfire;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @Controllers m_Wrapper;
@@ -574,6 +596,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         public InputAction @TargetSelect => m_Wrapper.m_Player_TargetSelect;
         public InputAction @Heal => m_Wrapper.m_Player_Heal;
         public InputAction @LightBonfire => m_Wrapper.m_Player_LightBonfire;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -631,6 +654,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @LightBonfire.started += instance.OnLightBonfire;
             @LightBonfire.performed += instance.OnLightBonfire;
             @LightBonfire.canceled += instance.OnLightBonfire;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -683,6 +709,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @LightBonfire.started -= instance.OnLightBonfire;
             @LightBonfire.performed -= instance.OnLightBonfire;
             @LightBonfire.canceled -= instance.OnLightBonfire;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -736,5 +765,6 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         void OnTargetSelect(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
         void OnLightBonfire(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

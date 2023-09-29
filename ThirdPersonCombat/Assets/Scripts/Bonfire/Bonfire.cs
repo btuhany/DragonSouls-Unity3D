@@ -1,10 +1,9 @@
 using States;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bonfire : MonoBehaviour
 {
+    [SerializeField] private GameObject _light;
     [SerializeField] private ParticleSystem _fireFX;
     [SerializeField] private ParticleSystem _fireCircleFX;
     [SerializeField] private GameObject _uiUnkindledInfo;
@@ -20,6 +19,7 @@ public class Bonfire : MonoBehaviour
         isLighted = true;
         _uiUnkindledInfo.SetActive(false);
         _uiKindledInfo.SetActive(true);
+        _light.SetActive(true);
         BonfiresManager.Instance.RegisterKindledBonfire(this);
         BonfiresManager.Instance.LastInteractedBonfire = this;
     }

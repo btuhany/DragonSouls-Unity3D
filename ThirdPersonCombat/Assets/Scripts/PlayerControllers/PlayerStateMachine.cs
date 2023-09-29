@@ -8,6 +8,8 @@ using static UnityEngine.ParticleSystem;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.InputSystem;
+using System;
 
 namespace States
 {
@@ -21,6 +23,7 @@ namespace States
         [SerializeField] private TextMeshProUGUI _healPotionText;
         [HideInInspector] public Bonfire currentBonfire;
         [SerializeField] private int _healAmount;
+        [SerializeField] private GameObject _pauseScreen;
         private int _healFlask = 3;
         public event System.Action OnPlayerRespawn;
         public bool isInvisible = false;
@@ -104,6 +107,12 @@ namespace States
             InputReader.DodgeEvent += HandleOnDodgeEvent;
             health.OnHealthIncreased += HandleOnHealthIncreased;
             health.OnDead += HandleOnDead;
+            InputReader.PauseEvent += HandleOnPause;
+        }
+
+        private void HandleOnPause()
+        {
+            _pauseScreen.SetActive(!_pauseScreen.activeSelf);
         }
 
         private void HandleOnHealEvent()

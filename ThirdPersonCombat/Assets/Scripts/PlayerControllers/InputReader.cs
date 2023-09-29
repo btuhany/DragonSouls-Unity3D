@@ -26,6 +26,7 @@ namespace Inputs
         public event System.Action<Vector2> TargetSelectEvent;
         public event System.Action HealEvent;
         public event System.Action LightBonfireEvent;
+        public event System.Action PauseEvent;
         public AttackType LastAttackType { get; private set; }
 
         private Controllers _controls;
@@ -168,6 +169,14 @@ namespace Inputs
             if (context.performed)
             {
                 LightBonfireEvent?.Invoke();
+            }
+        }
+
+        public void OnPause(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                PauseEvent?.Invoke();
             }
         }
     }

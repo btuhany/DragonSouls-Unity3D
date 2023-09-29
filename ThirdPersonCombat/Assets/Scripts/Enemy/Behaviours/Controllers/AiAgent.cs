@@ -95,9 +95,9 @@ public class AiAgent : MonoBehaviour
             _isDead = true;
             _treeRunner.stop = true;
             faceToPlayer = false;
-            animator.CrossFadeInFixedTime(_animDead, 0.1f);
-            //Destroy(gameObject, _destroyTime);
             SoulsManager.Instance.AddSoul(_soulPoint, this.transform.position);
+            //Destroy(gameObject, _destroyTime);
+            animator.CrossFadeInFixedTime(_animDead, 0.1f);
             StopAllCoroutines();
             StartCoroutine(DisableThisWithDelay());
         }

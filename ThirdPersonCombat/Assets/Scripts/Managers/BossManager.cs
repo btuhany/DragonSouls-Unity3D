@@ -25,6 +25,10 @@ public class BossManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void Start()
+    {
+        _boss.health.OnDead += HandleOnBossDeath;
+    }
     public void StartBossFight()
     {
         if (_isBossStopped)
@@ -45,7 +49,7 @@ public class BossManager : MonoBehaviour
     }
     public void HandleOnBossDeath()
     {
-        ExitBossFight();
+        _bossHealthUI.SetActive(false);
         OnBossDefeated?.Invoke();
         GameManager.Instance.EndGame();
     }
