@@ -28,14 +28,17 @@ public class EnemyNightmareDragonController : MonoBehaviour
     //Animation events
     public void SpawnFireball()
     {
-        Rigidbody fireball = Instantiate(_fireball, _fireballSpawnPoint.position, _fireballSpawnPoint.rotation);
+        //Rigidbody fireball = Instantiate(_fireball, _fireballSpawnPoint.position, _fireballSpawnPoint.rotation);
+        DragonFireball fireball = BossFireballPool.Instance.GetObject();
+        fireball.transform.position = _fireballSpawnPoint.position;
+        fireball.transform.rotation = _fireballSpawnPoint.rotation;
 
         float randomRightAxisVal = Random.Range(-_maxRightAxisMag, _maxRightAxisMag);
         float randomUpAxisVal = Random.Range(0f, _maxUpAxisMag);
         float randomForwardAxisVal = Random.Range(_minForwardAxisMag, _maxForwardAxisMag);
         float randomSpeed = Random.Range(_minSpeed, _maxSpeed);
 
-        fireball.AddForce(_fireballSpawnPoint.TransformDirection(
+        fireball.rb.AddForce(_fireballSpawnPoint.TransformDirection(
             Vector3.forward * _maxForwardAxisMag + 
             Vector3.right * randomRightAxisVal + 
             Vector3.up * randomUpAxisVal)
@@ -56,7 +59,10 @@ public class EnemyNightmareDragonController : MonoBehaviour
 
     public void ThrowFireProjectile()
     {
-        DragonFireProjectile fireProjectile = Instantiate(_fireProjectile, _fireProjectileSpawnPoint.position, _fireProjectileSpawnPoint.rotation);
+        //DragonFireProjectile fireProjectile = Instantiate(_fireProjectile, _fireProjectileSpawnPoint.position, _fireProjectileSpawnPoint.rotation);
+        DragonFireProjectile fireProjectile = BossFireProjectilePool.Instance.GetObject();
+        fireProjectile.transform.position = _fireProjectileSpawnPoint.position;
+        fireProjectile.transform.rotation = _fireProjectileSpawnPoint.rotation;
 
         Vector3 dir = _playerTransform.position - this._fireballSpawnPoint.position;
         dir.y += 1.3f;
@@ -66,7 +72,10 @@ public class EnemyNightmareDragonController : MonoBehaviour
 
     public void ThrowFireWall()
     {
-        DragonFireWall fireWall = Instantiate(_fireWall, _fireWallSpawnPoint.position, _fireWallSpawnPoint.rotation);
+        //DragonFireWall fireWall = Instantiate(_fireWall, _fireWallSpawnPoint.position, _fireWallSpawnPoint.rotation);
+        DragonFireWall fireWall = BossFirewallPool.Instance.GetObject();
+        fireWall.transform.position = _fireWallSpawnPoint.position;
+        fireWall.transform.rotation = _fireWallSpawnPoint.rotation;
 
         Vector3 dir = _playerTransform.position - this._fireWallSpawnPoint.position;
         dir.y = 0f;

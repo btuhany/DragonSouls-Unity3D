@@ -22,7 +22,9 @@ public class EnemyMageController : MonoBehaviour
                 _roarMageFX.Play();
                 break;
             case 1:
-                Instantiate(_roarPlayerFX, PlayerStateMachine.Instance.transform.position + Vector3.up * -0.21f, Quaternion.identity); //from the position of the player's location ground
+                //Instantiate(_roarPlayerFX, PlayerStateMachine.Instance.transform.position + Vector3.up * -0.21f, Quaternion.identity); //from the position of the player's location ground
+                MageMeteorParticleController meteorFX = MageMeteorPool.Instance.GetObject();
+                meteorFX.transform.position = PlayerStateMachine.Instance.transform.position + Vector3.up * -0.21f;
                 break;
             default:
                 break;

@@ -23,6 +23,7 @@ public class DragonFireProjectile : MonoBehaviour
         ResetParticles();
         StartAttack(_damagePoint);
         _lifeTimeCounter = 0f;
+        _damage.ResetState();
     }
     private void Update()
     {
@@ -30,7 +31,7 @@ public class DragonFireProjectile : MonoBehaviour
         if(_lifeTimeCounter > _maxLifeTime)
         {
             _lifeTimeCounter = 0f;
-            Destroy(this.gameObject);
+            BossFireProjectilePool.Instance.ReturnObject(this);
         }
     }
     private void OnDisable()

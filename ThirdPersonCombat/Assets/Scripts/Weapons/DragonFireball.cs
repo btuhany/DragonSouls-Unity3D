@@ -11,17 +11,20 @@ public class DragonFireball : MonoBehaviour
     private Damage _damage;
     private SphereCollider _collider;
     private AudioSource _audioSource;
+    public Rigidbody rb;
 
     private void Awake()
     {
         _damage = GetComponent<Damage>();
         _collider = GetComponent<SphereCollider>();
+        rb = GetComponent<Rigidbody>();
         //_audioSource = GetComponent<AudioSource>();
     }
     private void OnEnable()
     {
         //_damage.OnHitGiven += PlayWeaponHitSFX;
         StartAttack(_damagePoint);
+        rb.velocity = Vector3.zero;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -31,16 +34,20 @@ public class DragonFireball : MonoBehaviour
             SpawnFireArea();
         }
         StopAttack();
-        Destroy(this.gameObject, 0.1f);
+        BossFireballPool.Instance.ReturnObject(this);
         
     }
     private void SpawnExplosionFX()
     {
-        Instantiate(_explosionFX, transform.position, Quaternion.identity).SetActive(true);
+        //Instantiate(_explosionFX, transform.position, Quaternion.identity).SetActive(true);
+        ExplosionSmoke explosionFX = ExplosionSmokePool.Instance.GetObject();
+        explosionFX.transform.position = transform.position;
     }
     private void SpawnFireArea()
     {
-        Instantiate(_fireArea, transform.position, Quaternion.identity).SetActive(true);
+        //Instantiate(_fireArea, transform.position, Quaternion.identity).SetActive(true);
+        DragonFireArea fireArea = BossFireAreaPool.Instance.GetObject();
+        fireArea.transform.position = transform.position;
     }
     private void StartAttack(int damage)
     {

@@ -21,6 +21,7 @@ public class DragonFireWall : MonoBehaviour
     {
         StartAttack(_damagePoint);
         _lifeTimeCounter = 0f;
+        _damage.ResetState();
     }
     private void Update()
     {
@@ -28,7 +29,8 @@ public class DragonFireWall : MonoBehaviour
         if (_lifeTimeCounter > _maxLifeTime)
         {
             _lifeTimeCounter = 0f;
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            BossFirewallPool.Instance.ReturnObject(this);
         }
     }
     private void OnDisable()

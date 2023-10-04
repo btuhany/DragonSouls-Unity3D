@@ -32,12 +32,29 @@ namespace Combat
             _weapon = _weapons[weaponNum];
         }
 
+        //Only mage uses this function
         public void SpawnProjectile(int projectileNum)
         {
-            _projectiles[projectileNum].targetTransform = PlayerStateMachine.Instance.targetPointTransform;
-            Instantiate(_projectiles[projectileNum], _projectileSpawnPoints[projectileNum].position, Quaternion.identity);
+         
+            if (projectileNum == 0)
+            {
+                ProjectileController newProjectile = MageBigProjectilePool.Instance.GetObjectDisabled();
+                newProjectile.transform.parent = null;
+                newProjectile.transform.position = _projectileSpawnPoints[0].position;
+                newProjectile.gameObject.SetActive(true);
+            }
+            else
+            {
+                ProjectileController newProjectile = MageSmallProjectilePool.Instance.GetObjectDisabled();
+                newProjectile.transform.parent = null;
+                newProjectile.transform.position = _projectileSpawnPoints[1].position;
+                newProjectile.gameObject.SetActive(true);
+            }
+
+            //_projectiles[projectileNum].targetTransform = PlayerStateMachine.Instance.targetPointTransform;
+            //Instantiate(_projectiles[projectileNum], _projectileSpawnPoints[projectileNum].position, Quaternion.identity);
         }
 
-        
+
     }
 }

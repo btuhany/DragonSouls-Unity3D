@@ -24,6 +24,7 @@ public class DragonFireArea : MonoBehaviour
         _lifeTimeCounter = 0f;
         _damageTimeCounter = 0f;
         StartAttack(_damagePoint);
+        _damage.ResetState();
     }
     private void OnDisable()
     {
@@ -46,7 +47,7 @@ public class DragonFireArea : MonoBehaviour
         if(_lifeTimeCounter > _maxLifeTime )
         {
             _lifeTimeCounter = 0f;
-            Destroy(this.gameObject);
+            BossFireAreaPool.Instance.ReturnObject(this);
         }
     }
     private void OnTriggerStay(Collider other)

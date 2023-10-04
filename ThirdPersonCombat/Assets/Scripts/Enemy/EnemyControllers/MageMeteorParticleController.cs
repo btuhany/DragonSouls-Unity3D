@@ -43,7 +43,7 @@ public class MageMeteorParticleController : MonoBehaviour
         _timeCounter += Time.deltaTime;
         if(_timeCounter > _duration)
         {
-            Destroy(this.gameObject);
+            MageMeteorPool.Instance.ReturnObject(this);
         }
     }
     private void OnParticleCollision(GameObject other)

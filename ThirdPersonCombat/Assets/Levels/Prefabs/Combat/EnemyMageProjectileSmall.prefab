@@ -24228,10 +24228,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6140740908248935020}
+  - component: {fileID: -255740414979064416}
   - component: {fileID: 1829688503961976671}
   - component: {fileID: -7333891303425993184}
   - component: {fileID: -5185838641846361940}
-  - component: {fileID: -255740414979064416}
   - component: {fileID: 9193112439132327470}
   - component: {fileID: 4881891608209687846}
   - component: {fileID: 6307250531340742402}
@@ -24262,6 +24262,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-255740414979064416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6140740908248935019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ae64e890d01044fad5d5df403144ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackDamage: 0
+  HitControlPosition: {fileID: 6140740908248935020}
 --- !u!114 &1829688503961976671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24280,7 +24294,6 @@ MonoBehaviour:
   _useTween: 1
   _tweenTime: 0.7
   _tweenEase: 20
-  _destroyDelay: 0.8
   targetTransform: {fileID: 0}
   postDestroyFX: {fileID: 3922237276514206620}
   _childs:
@@ -24299,6 +24312,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a15c0f3fe74004cf89b51cfd5604f582, type: 3}
     Volume: 0.5
     Pitch: 1
+  _isBigProjectile: 0
 --- !u!54 &-7333891303425993184
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24328,20 +24342,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-255740414979064416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6140740908248935019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8ae64e890d01044fad5d5df403144ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackDamage: 0
-  HitControlPosition: {fileID: 6140740908248935020}
 --- !u!96 &9193112439132327470
 TrailRenderer:
   serializedVersion: 2

@@ -1,6 +1,7 @@
 using Combat;
 using DG.Tweening;
 using Sounds;
+using States;
 using System.Collections;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private bool _useTween = false;
     [SerializeField] private float _tweenTime = 1f;
     [SerializeField] private Ease _tweenEase = Ease.Linear;
-    [SerializeField] private float _destroyDelay = 0.5f;
+    //[SerializeField] private float _destroyDelay = 0.5f;
     private Damage _damage;
     private Rigidbody _rb;
     public Transform targetTransform;
@@ -26,6 +27,7 @@ public class ProjectileController : MonoBehaviour
     [Header("AudioClips")]
     [SerializeField] private SoundClips _spawnSFX;
     [SerializeField] private SoundClips _destroySFX;
+    [SerializeField] private bool _isBigProjectile;
 
     private void Awake()
     {
@@ -33,6 +35,7 @@ public class ProjectileController : MonoBehaviour
         _damage = GetComponent<Damage>();
         _rb = GetComponent<Rigidbody>();
         _audioSources = GetComponents<AudioSource>();
+       targetTransform = PlayerStateMachine.Instance.targetPointTransform;
     }
     private void OnEnable()
     {
@@ -40,7 +43,6 @@ public class ProjectileController : MonoBehaviour
         PlaySpawnSFX();
         _chasePlayer = _chasePlayerInitial;
         _damage.OnHitGiven += HandleOnDamageGiven;
-
         if(_useTween)
         {
             _isStop = true;
@@ -80,7 +82,6 @@ public class ProjectileController : MonoBehaviour
                 _chasePlayer = false;
             return;
         }
-
         DisableProjectile();
     }
     private void HandleOnDamageGiven(Collider other)
@@ -95,7 +96,20 @@ public class ProjectileController : MonoBehaviour
         _isStop = true;
         SetChildObjects(false);
         PlayDestroySFX();
-        Destroy(this.gameObject, _destroyDelay);
+        Invoke(nameof(ReturnToPool), 0.5f);
+    }
+    private void ReturnToPool()
+    {
+        if (_isBigProjectile)
+        {
+            transform.SetParent(MageBigProjectilePool.Instance.transform);
+            MageBigProjectilePool.Instance.ReturnObject(this);
+        }
+        else
+        {
+            transform.SetParent(MageSmallProjectilePool.Instance.transform);
+            MageSmallProjectilePool.Instance.ReturnObject(this);
+        }
     }
     private void PlaySpawnSFX()
     {

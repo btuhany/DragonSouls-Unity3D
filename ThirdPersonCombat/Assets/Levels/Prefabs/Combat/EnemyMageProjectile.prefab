@@ -14648,6 +14648,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a15c0f3fe74004cf89b51cfd5604f582, type: 3}
     Volume: 0.5
     Pitch: 1
+  _isBigProjectile: 1
 --- !u!135 &2877559078445476082
 SphereCollider:
   m_ObjectHideFlags: 0
