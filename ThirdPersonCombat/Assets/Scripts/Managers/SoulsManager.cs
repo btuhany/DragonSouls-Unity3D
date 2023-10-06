@@ -23,7 +23,6 @@ public class SoulsManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
         else
         {

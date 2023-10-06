@@ -6,6 +6,7 @@ namespace Inputs
 {
     public class InputReader : MonoBehaviour, Controllers.IPlayerActions
     {
+        public bool stopInput = false;
         public Vector2 MovementOn2DAxis { get; private set; }
         public Vector2 CameraMovementOn2DAxis { get; private set; }
         public bool SprintHold { get; private set; }
@@ -54,6 +55,7 @@ namespace Inputs
 
         public void OnMove(InputAction.CallbackContext context)
         {
+            if (stopInput) return;
             MovementOn2DAxis = context.ReadValue<Vector2>();
         }
 
@@ -104,6 +106,7 @@ namespace Inputs
 
         public void OnSheathSword(InputAction.CallbackContext context)
         {
+            if (stopInput) return;
             if (!context.performed) { return; }
             SheathUnsheathSword?.Invoke();
         }
@@ -158,6 +161,7 @@ namespace Inputs
 
         public void OnHeal(InputAction.CallbackContext context)
         {
+            if (stopInput) return;
             if (context.performed)
             {
                 HealEvent?.Invoke();
@@ -176,6 +180,7 @@ namespace Inputs
         {
             if (context.performed)
             {
+                stopInput = !stopInput;
                 PauseEvent?.Invoke();
             }
         }

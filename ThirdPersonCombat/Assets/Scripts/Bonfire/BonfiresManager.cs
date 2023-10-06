@@ -29,7 +29,6 @@ public class BonfiresManager : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
         else
         {

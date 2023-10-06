@@ -10,7 +10,7 @@ public class YouAreDeadPanel : MonoBehaviour
     public TextMeshProUGUI deadText;
     public Image blackScreen;
 
-    private void Awake()
+    private void Start()
     {
         PlayerStateMachine.Instance.health.OnDead += HandleOnPlayerDeath;
         PlayerStateMachine.Instance.OnPlayerRespawn += HandleOnPlayerRespawn;

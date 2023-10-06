@@ -18,7 +18,6 @@ public class BossManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
         else
         {

@@ -60,13 +60,9 @@ namespace States
         public static PlayerStateMachine Instance;
         private Vector3 _initialPos;
         private Quaternion _initialRotation;
-        public PlayerStateMachine()
-        {
-            Instance = this;
-        }
         private void Awake()
         {
-            SingletonObject();
+            SingletonThis();
             freeLookPlayerState = new PlayerFreeLookState(this);
             unarmedTargetState = new PlayerUnarmedTargetState(this);
             swordTargetState = new PlayerSwordTargetState(this);
@@ -87,7 +83,7 @@ namespace States
             _healFlask = _initialHealFlask;
         }
 
-        private void SingletonObject()
+        private void SingletonThis()
         {
             if (Instance != null && Instance != this)
                 Destroy(this.gameObject);

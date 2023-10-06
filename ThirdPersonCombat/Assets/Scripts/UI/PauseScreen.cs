@@ -12,6 +12,10 @@ public class PauseScreen : MonoBehaviour
     {
         GameManager.Instance.RestartGame();
     }
+    public void QuitToMainMenu()
+    {
+        GameManager.Instance.QuitToMainMenu();
+    }
     public void QuitGame()
     {
         GameManager.Instance.QuitGame();

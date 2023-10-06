@@ -4,17 +4,20 @@ using UnityEngine.UI;
 public class MainMenuCanvas : MonoBehaviour
 {
     [SerializeField] Button _firstSelectedButton;
+    [SerializeField] GameObject _panel;
     private void OnEnable()
     {
         _firstSelectedButton.Select();
     }
     public void StartGameButton()
     {
-        Debug.Log("StartTheGame!");
+        SoundManager.Instance.PlayAuidoClip(0, 0);
+        GameManager.Instance.StartGame();
+        _panel.SetActive(false);
     }
     public void QuitGameButton()
     {
-        Debug.Log("Quit!");
-        Application.Quit();
+        SoundManager.Instance.PlayAuidoClip(0, 0);
+        GameManager.Instance.QuitGame();
     }
 }
