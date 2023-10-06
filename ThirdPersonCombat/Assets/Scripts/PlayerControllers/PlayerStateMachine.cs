@@ -106,49 +106,10 @@ namespace States
             InputReader.PauseEvent += HandleOnPause;
         }
 
-        private void HandleOnPause()
-        {
-            _pauseScreen.SetActive(!_pauseScreen.activeSelf);
-        }
-
-        private void HandleOnHealEvent()
-        {
-            if (_healFlask <= 0) return;
-            health.IncreaseHealth(_healAmount);
-        }
-        private void HandleOnHealthIncreased()
-        {
-            _healFlask--;
-            _healPotionText.text = _healFlask.ToString();
-            _healFX.Play();
-        }
-        public void ResetSetHealFlask()
-        {
-            _healFlask = _initialHealFlask;
-            _healPotionText.text = _healFlask.ToString();
-        }
-        private void HandleOnDead()
-        {
-            ChangeState(deadState);
-            SoulsManager.Instance.ResetSouls();
-            if (BossManager.Instance.IsInBoss)
-                BossManager.Instance.ExitBossFight();
-        }
-        private void HandleOnHealthUpdate(int health, int damage)
-        {
-            PlayerCombatState combat = _currentState as PlayerCombatState;
-            if (combat != null && combat.IsAttacking) return;
-            //if (UnityEngine.Random.Range(0, 11) > 5)
-            if(damage != 0)
-                sound.PlayHurtSFX();
-            if (swordFreeState.IsAttacking || swordTargetState.IsAttacking || unarmedFreeState.IsAttacking || unarmedTargetState.IsAttacking)
-                return;
-            //animationController.PlayGetHit();
-        }
-
         private void Start()
         {
             ChangeState(freeLookPlayerState);
+            SoundManager.Instance.PlayAuidoClip(3, 0);
         }
         private void Update()
         {
@@ -242,6 +203,45 @@ namespace States
                     skinnedMeshRenderer.material = _armorMaterials[1];
                 }
             }
+        }
+        private void HandleOnPause()
+        {
+            _pauseScreen.SetActive(!_pauseScreen.activeSelf);
+        }
+
+        private void HandleOnHealEvent()
+        {
+            if (_healFlask <= 0) return;
+            health.IncreaseHealth(_healAmount);
+        }
+        private void HandleOnHealthIncreased()
+        {
+            _healFlask--;
+            _healPotionText.text = _healFlask.ToString();
+            _healFX.Play();
+        }
+        public void ResetSetHealFlask()
+        {
+            _healFlask = _initialHealFlask;
+            _healPotionText.text = _healFlask.ToString();
+        }
+        private void HandleOnDead()
+        {
+            ChangeState(deadState);
+            SoulsManager.Instance.ResetSouls();
+            if (BossManager.Instance.IsInBoss)
+                BossManager.Instance.ExitBossFight();
+        }
+        private void HandleOnHealthUpdate(int health, int damage)
+        {
+            PlayerCombatState combat = _currentState as PlayerCombatState;
+            if (combat != null && combat.IsAttacking) return;
+            //if (UnityEngine.Random.Range(0, 11) > 5)
+            if (damage != 0)
+                sound.PlayHurtSFX();
+            if (swordFreeState.IsAttacking || swordTargetState.IsAttacking || unarmedFreeState.IsAttacking || unarmedTargetState.IsAttacking)
+                return;
+            //animationController.PlayGetHit();
         }
         void HandleOnJumpEvent()
         {

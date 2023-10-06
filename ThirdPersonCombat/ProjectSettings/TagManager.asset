@@ -8,6 +8,7 @@ TagManager:
   - EnemyWeapon
   - FxTemporaire
   - Trigger
+  - Bonfire
   layers:
   - Default
   - TransparentFX

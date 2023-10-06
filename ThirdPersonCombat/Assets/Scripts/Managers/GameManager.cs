@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
+        SoundManager.Instance.PlayAuidoClip(4, 0);
         StartCoroutine(LoadNextSceneFromIndexAsync(1));
     }
     public void RestartGame()

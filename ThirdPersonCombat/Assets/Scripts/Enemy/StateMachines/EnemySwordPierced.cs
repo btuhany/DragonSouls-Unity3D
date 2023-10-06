@@ -14,6 +14,10 @@ public class EnemySwordPierced : EnemyBaseState
     {
         _timeCounter = 0f;
         animationController.PlayGetHitAnimation(0);
+        if (stateMachine.isOnDeadState)
+        {
+            stateMachine.ChangeState(stateMachine.deadState);
+        }
     }
 
     public override void Exit()

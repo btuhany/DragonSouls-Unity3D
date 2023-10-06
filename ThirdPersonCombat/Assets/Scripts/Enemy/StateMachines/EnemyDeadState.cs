@@ -12,21 +12,22 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter() 
     {
-        SoulsManager.Instance.AddSoul(stateMachine.soulPoint, stateMachine.transform.position);
+        stateMachine.forceReceiver.isCharacterControllerDisabled = true;
         if (stateMachine.isSwordOn)
         {
             stateMachine.sword.DetachFromEnemy();
-            stateMachine.sword.Throwed(Vector3.down * 0.5f, PlayerStateMachine.Instance.transform);
+            stateMachine.sword.OnEnemyDeath();
             stateMachine.isSwordOn = false;
         }
+        SoulsManager.Instance.AddSoul(stateMachine.soulPoint, stateMachine.transform.position);
         _timeCounter = 0f;
         animationController.PlayDeadAnimation();
-        stateMachine.forceReceiver.isCharacterControllerDisabled = true;
     }
 
     public override void Exit()
     {
         stateMachine.forceReceiver.isCharacterControllerDisabled = false;
+        stateMachine.isOnDeadState = false;
     }
 
     public override void Tick(float deltaTime)
@@ -34,6 +35,7 @@ public class EnemyDeadState : EnemyBaseState
         _timeCounter += deltaTime;
         if(_timeCounter > config.DeadAnimTime)
         {
+            stateMachine.isOnDeadState = false;
             stateMachine.isDead = true;
             stateMachine.forceReceiver.isCharacterControllerDisabled = false;
             stateMachine.gameObject.SetActive(false);

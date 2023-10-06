@@ -39,6 +39,7 @@ public class EnemyStateMachine : StateMachine
     [HideInInspector] public bool isDead = false;
     private Vector3 _initialWorldPos;
     private Quaternion _initialWorldRotation;
+    [HideInInspector] public bool isOnDeadState = false;
     private void Awake()
     {
         _initialWorldPos = transform.position;
@@ -64,7 +65,8 @@ public class EnemyStateMachine : StateMachine
     private void OnEnable()
     {
         navmeshAgent.isStopped = true;
-
+        isDead = false;
+        isOnDeadState = false;
         health.OnHealthUpdated += HandleOnHealthUpdated;
         health.SetMaxHealth(config.Health);
         OnDead += forceReceiver.HandleOnDead;
@@ -115,6 +117,7 @@ public class EnemyStateMachine : StateMachine
     {
         if (health <= 0)
         {
+            isOnDeadState = true;
             ChangeState(deadState);
             OnDead?.Invoke();
             _targetController.ResetTargetable();
@@ -149,6 +152,7 @@ public class EnemyStateMachine : StateMachine
     private void HandleOnPlayerTookRest()
     {
         isDead = false;
+        isOnDeadState = false;
         health.ResetHealth();
         if(!movementController.CharacterController.enabled)
             movementController.CharacterController.enabled = true;

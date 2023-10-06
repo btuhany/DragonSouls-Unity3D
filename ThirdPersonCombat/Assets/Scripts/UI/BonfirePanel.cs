@@ -80,7 +80,7 @@ public class BonfirePanel : MonoBehaviour
     }
     private void HandleOnInvalid()
     {
-
+        SoundManager.Instance.PlayAuidoClip(0, 1);
     }
     
     private void UpdatePanel()
@@ -101,6 +101,7 @@ public class BonfirePanel : MonoBehaviour
             _staminaUpgSoulInfoText.text = "";
         else
             _staminaUpgSoulInfoText.text = $"Required souls: {_staminaSoulCosts[_staminaUpgrade]}";
+        SoundManager.Instance.PlayAuidoClip(0, 0);
     }
        
     //Button events
@@ -155,6 +156,7 @@ public class BonfirePanel : MonoBehaviour
         BonfiresManager.Instance.ExitRest();
         //Vector3 motion = BonfiresManager.Instance.kindledBonfiresList[bonfireVal].respawnPoint.position - PlayerStateMachine.Instance.transform.position;
         //PlayerStateMachine.Instance.movement.CharacterController.Move(motion);
+        SoundManager.Instance.PlayAuidoClip(0, 0);
         PlayerStateMachine.Instance.TeleportTo(BonfiresManager.Instance.kindledBonfiresList[bonfireVal].respawnPoint.position);
 
     }

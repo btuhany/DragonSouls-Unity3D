@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3210178318798290801}
   - component: {fileID: 2713661057373240036}
   - component: {fileID: 7197030966693816125}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2583772842840670885}
   - component: {fileID: 2863715862323560353}
   - component: {fileID: 216637220659082119}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 2583282352537205497}
   - component: {fileID: 3117156894463458811}
   - component: {fileID: 4412843238073803012}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5057,7 +5057,7 @@ GameObject:
   - component: {fileID: 4495971499103971871}
   - component: {fileID: 8826671841016402362}
   - component: {fileID: 4703736713313127184}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ShockWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9925,7 +9925,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088778289411326608}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -9958,7 +9958,8 @@ GameObject:
   - component: {fileID: 2088778291194546094}
   - component: {fileID: 2088778291194546095}
   - component: {fileID: 2088778291194546092}
-  m_Layer: 0
+  - component: {fileID: 510865873193024057}
+  m_Layer: 11
   m_Name: Bonfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10014,6 +10015,111 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &510865873193024057
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088778291194546093}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8fff534c015b12f40b5525049fa47eba, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 7
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.14285715
+      value: 1
+      inSlope: -0.55271244
+      outSlope: -0.55271244
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.6236659
+      value: 0.7159271
+      inSlope: -0.29812136
+      outSlope: -0.29812136
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33470902
+    - serializedVersion: 3
+      time: 1
+      value: 0.14285715
+      inSlope: -0.14291406
+      outSlope: -0.14291406
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.942
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5972222
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2510493232590400338
 GameObject:
   m_ObjectHideFlags: 0
@@ -10025,7 +10131,7 @@ GameObject:
   - component: {fileID: 3853095988799355118}
   - component: {fileID: 4034318852457208262}
   - component: {fileID: 7001828505611115425}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10106,7 +10212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4449653335993953626}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock_Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10151,7 +10257,7 @@ GameObject:
   - component: {fileID: 2180168769971641538}
   - component: {fileID: 5912095245083470953}
   - component: {fileID: 4047400016286738073}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14975,7 +15081,7 @@ GameObject:
   - component: {fileID: 6434723628263086839}
   - component: {fileID: 4704816415553857487}
   - component: {fileID: 8226917393716344280}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15090,7 +15196,7 @@ GameObject:
   - component: {fileID: 7824831666711638057}
   - component: {fileID: 2632091688067242144}
   - component: {fileID: 4051841647779307035}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15173,7 +15279,7 @@ GameObject:
   - component: {fileID: 5501240639403853134}
   - component: {fileID: 4504928758192312418}
   - component: {fileID: 6984078858455091806}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15256,7 +15362,7 @@ GameObject:
   - component: {fileID: 1075959338825819574}
   - component: {fileID: 3154969999863688865}
   - component: {fileID: 3458834324221350034}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15339,7 +15445,7 @@ GameObject:
   - component: {fileID: 8730505381028113723}
   - component: {fileID: 7171376794939020334}
   - component: {fileID: 4524178615150374306}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15422,7 +15528,7 @@ GameObject:
   - component: {fileID: 8649861524769784570}
   - component: {fileID: 6680283987592713376}
   - component: {fileID: 3165725291900890443}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Holy hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20304,7 +20410,7 @@ GameObject:
   - component: {fileID: 3639146189468854456}
   - component: {fileID: 4612751405795103889}
   - component: {fileID: 7746711663355233049}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20387,7 +20493,7 @@ GameObject:
   - component: {fileID: 4966706856253690747}
   - component: {fileID: 4966706856253690748}
   - component: {fileID: 4966706856253690749}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fire_ALPHA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25211,7 +25317,7 @@ GameObject:
   - component: {fileID: 4966706856702705689}
   - component: {fileID: 4966706856702705690}
   - component: {fileID: 4966706856702705691}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fire_Big_FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30040,7 +30146,7 @@ GameObject:
   - component: {fileID: 4966706857380997954}
   - component: {fileID: 4966706857380997952}
   - component: {fileID: 4966706857380997953}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fire_ADD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34864,7 +34970,7 @@ GameObject:
   - component: {fileID: 4966706857479972943}
   - component: {fileID: 4966706857479972941}
   - component: {fileID: 4966706857479972942}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39688,7 +39794,7 @@ GameObject:
   - component: {fileID: 7736376517722005080}
   - component: {fileID: 1408545777037210620}
   - component: {fileID: 7824122566561524382}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39769,7 +39875,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6039256136962826545}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BonfireBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39805,7 +39911,7 @@ GameObject:
   - component: {fileID: 5512529155854871145}
   - component: {fileID: 5512529155851479625}
   - component: {fileID: 5512529155852576905}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39888,7 +39994,7 @@ GameObject:
   - component: {fileID: 6587932499746115179}
   - component: {fileID: 7118177770833862766}
   - component: {fileID: 3063348323463914041}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44767,7 +44873,7 @@ GameObject:
   - component: {fileID: 133600119372472950}
   - component: {fileID: 7272144204288848885}
   - component: {fileID: 885553023313204010}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44850,7 +44956,7 @@ GameObject:
   - component: {fileID: 4746281358383181483}
   - component: {fileID: 8758467463372048424}
   - component: {fileID: 6301966792495205204}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rock01 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

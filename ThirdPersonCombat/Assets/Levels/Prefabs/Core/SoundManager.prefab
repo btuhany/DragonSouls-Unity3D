@@ -45,6 +45,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63a157acb9c7f642995611b01f54372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioClips:
+  - AudioClips:
+    - {fileID: 8300000, guid: 7e58c1718e011c847949792efd486a17, type: 3}
+    - {fileID: 8300000, guid: b190a8a5f59499f4f9204e64b9a04da9, type: 3}
+    Volume: 0.61
+    Pitch: 0.88
+  - AudioClips:
+    - {fileID: 8300000, guid: 0967dc946ec0d5a48984b7d784ab285a, type: 3}
+    Volume: 0.6
+    Pitch: 1
+  - AudioClips:
+    - {fileID: 8300000, guid: 674258a055e994b72bbb15a28eb79838, type: 3}
+    Volume: 0.1
+    Pitch: 0.6
+  - AudioClips:
+    - {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}
+    Volume: 1
+    Pitch: 1
+  - AudioClips:
+    - {fileID: 8300000, guid: 0a107c34827044545b73ee9351383543, type: 3}
+    Volume: 1
+    Pitch: 1
 --- !u!82 &808453729781631220
 AudioSource:
   m_ObjectHideFlags: 0

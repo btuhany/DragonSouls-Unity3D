@@ -40,6 +40,8 @@ namespace PlayerController
         private bool _isOnThrow = false;
         private bool _isInCurvePoint = false;
         private bool _isOnEnemy = false;
+        private bool _isOnAgent = false;
+        private AiAgent _currentAgent;
         private Rigidbody _rb;
         private Tweener _zRotationAnim;
         private Tweener _yRotationAnim;
@@ -120,6 +122,7 @@ namespace PlayerController
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Trigger")) return;
+            if (other.CompareTag("Bonfire")) return;
             if (!_isReturning && _isOnThrow)
             {
                 _isOnThrow = false;
@@ -134,7 +137,8 @@ namespace PlayerController
                     {
                         transform.SetParent(other.transform);
                         _currentEnemy = enemy;
-                        _currentEnemy.ChangeState(_currentEnemy.swordHitState);
+                        if(!_currentEnemy.isOnDeadState && !_currentEnemy.isDead)
+                            _currentEnemy.ChangeState(_currentEnemy.swordHitState);
                         _currentEnemy.isSwordOn = true;
                         _currentEnemy.sword = this;
                         _isOnEnemy = true;
@@ -143,6 +147,10 @@ namespace PlayerController
                     else if(other.TryGetComponent(out AiAgent agent))
                     {
                         transform.SetParent(other.transform);
+                        agent.isSwordOnThis = true;
+                        agent.sword = this;
+                        _isOnAgent = true;
+                        _currentAgent = agent;
                     }
                 }
                 else
@@ -168,6 +176,10 @@ namespace PlayerController
             StartAttack(_damageInAir);
             ThrowProcess(force);
             SetActiveInAirSFX(true);
+        }
+        public void OnEnemyDeath()
+        {
+            transform.position = _currentEnemy.transform.position;
         }
         private void ThrowProcess(Vector3 force)
         {
@@ -197,10 +209,17 @@ namespace PlayerController
 
             if (_isOnEnemy)
             {
-                _currentEnemy.ChangeState(_currentEnemy.chaseState);
+                if(!_currentEnemy.isDead || !_currentEnemy.isOnDeadState)
+                    _currentEnemy.ChangeState(_currentEnemy.chaseState);
                 _freezeElectricFX.gameObject.SetActive(false);
                 _currentEnemy.isSwordOn = false;
                 _isOnEnemy = false;
+            }
+            if (_isOnAgent)
+            {
+                _currentAgent.isSwordOnThis = false;
+                _currentAgent.sword = null;
+                _isOnAgent = false;
             }
             transform.parent = null;
             if(_isOnThrow)
@@ -253,12 +272,16 @@ namespace PlayerController
             _damage.enabled = false;
             _trail.enabled = false;
         }
-
+        public void DetachFromAgent()
+        {
+            transform.SetParent(null);
+        }
         public void DetachFromEnemy()
         {
             _freezeElectricFX.gameObject.SetActive(false);
             _currentEnemy.isSwordOn = false;
             _isOnEnemy = false;
+            transform.SetParent(null);
         }
 
         #region Sounds

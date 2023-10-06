@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Bonfire : MonoBehaviour
 {
+    private AudioSource _audioSource;
     [SerializeField] private GameObject _light;
     [SerializeField] private ParticleSystem _fireFX;
     [SerializeField] private ParticleSystem _fireCircleFX;
@@ -11,10 +12,15 @@ public class Bonfire : MonoBehaviour
     public Transform respawnPoint;
     [HideInInspector] public bool isLighted;
 
-
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
     public void KindleBonfire()
     {
         if (isLighted) return;
+        SoundManager.Instance.PlayAuidoClip(1, 0);
+        _audioSource.Play();
         _fireFX.Play();
         isLighted = true;
         _uiUnkindledInfo.SetActive(false);

@@ -72,6 +72,7 @@ public class SoulsManager : MonoBehaviour
         animTime = Mathf.Max(animTime, 1.5f);
         particleFX.gameObject.transform.DOMove(States.PlayerStateMachine.Instance.transform.position + Vector3.up * 1.2f, animTime).SetEase(_particleMoveAnimEase).onComplete = () =>
         {
+            SoundManager.Instance.PlayAuidoClip(2, 0);
             StartCoroutine(AddSoulsAnim(value));
         };
         particleFX.Play();

@@ -1,6 +1,7 @@
 using Combat;
 using EnemyControllers;
 using Movement;
+using PlayerController;
 using Sounds;
 using States;
 using System.Collections;
@@ -22,6 +23,8 @@ public class AiAgent : MonoBehaviour
     [HideInInspector] public bool faceToPlayer;
     [HideInInspector] public float faceLerpTime = 2f;
     [HideInInspector] public bool reactToHit;
+    [HideInInspector] public bool isSwordOnThis;
+    [HideInInspector] public Sword sword;
 
     [SerializeField] private GameObject _agentFX;
     [SerializeField] private GameObject[] _trailRenderers;
@@ -61,6 +64,7 @@ public class AiAgent : MonoBehaviour
         forceReceiver.isCharacterControllerDisabled = false;
         health.OnHealthUpdated += HandleOnTakeHit;
         _isDead = false;
+        
     }
     private void Start()
     {
@@ -78,6 +82,13 @@ public class AiAgent : MonoBehaviour
     {
         health.OnHealthUpdated -= HandleOnTakeHit;
         _isDead = false;
+        if (isSwordOnThis)
+        {
+            isSwordOnThis = false;
+            sword?.DetachFromAgent();
+            sword?.OnEnemyDeath();
+            sword = null;
+        }
     }
     private void HandleOnTakeHit(int health, int damage)
     {
@@ -98,6 +109,11 @@ public class AiAgent : MonoBehaviour
             SoulsManager.Instance.AddSoul(_soulPoint, this.transform.position);
             //Destroy(gameObject, _destroyTime);
             animator.CrossFadeInFixedTime(_animDead, 0.1f);
+            if(isSwordOnThis)
+            {
+                isSwordOnThis = false;
+                sword.DetachFromAgent();
+            }
             StopAllCoroutines();
             StartCoroutine(DisableThisWithDelay());
         }
