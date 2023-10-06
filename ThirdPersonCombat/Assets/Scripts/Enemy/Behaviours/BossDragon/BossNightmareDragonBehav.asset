@@ -214,7 +214,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: 4dc5c297e3b5b494e84e9e8ddfb79d17
-  Position: {x: 382.08072, y: -52.362915}
+  Position: {x: 446.99988, y: -329.13}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -1831,6 +1831,33 @@ MonoBehaviour:
   Children:
   - {fileID: 1314983313390075698}
   - {fileID: -4483130029923902525}
+--- !u!114 &-91295099580112014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d015bf38358e84c92085d3aa55a061, type: 3}
+  m_Name: StartAttack
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 1cab0fe84d918214c9fd2a5ef315c2d6
+  Position: {x: 0, y: 0}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  attackNum: 0
+  isRandomAttack: 0
+  minRandomIndex: 0
+  randomLength: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2002,6 +2029,10 @@ MonoBehaviour:
   - {fileID: 7936310589759445807}
   - {fileID: -3135393465627781077}
   - {fileID: 7919097395600816059}
+  - {fileID: -91295099580112014}
+  - {fileID: 2936916377251027844}
+  - {fileID: 5507309887606594590}
+  - {fileID: 3725254004780437081}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -2809,6 +2840,29 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   Child: {fileID: 9205660038534167090}
+--- !u!114 &2936916377251027844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45614e169099f3f43840f7ce0610952f, type: 3}
+  m_Name: IsAttackEnded
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 50d1d8d12e2dda24f990d5b86a30c24f
+  Position: {x: 189.02196, y: 14.500001}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
 --- !u!114 &3005390946482491496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3073,6 +3127,30 @@ MonoBehaviour:
   Children:
   - {fileID: 4831811741546497500}
   - {fileID: -8400007247531871859}
+--- !u!114 &3725254004780437081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665389cfbf74f8343b8a681821e31802, type: 3}
+  m_Name: WaitNode
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 74c110a89b69ebc448fd016ab20262d3
+  Position: {x: 346.99994, y: 23.000038}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  WaitTime: 1
 --- !u!114 &3823603594370831735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3488,6 +3566,33 @@ MonoBehaviour:
   agent: {fileID: 0}
   description: 
   Child: {fileID: -2662701894158233589}
+--- !u!114 &5507309887606594590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a95d4c8869f6943bdfe49b6db6f511, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  mState: 0
+  Started: 0
+  Guid: 8081fed9d6cd7ff46b2bdb0741041a52
+  Position: {x: 46.999947, y: -165.4999}
+  blackboard:
+    attackTimeCounter: 0
+    isHit: 0
+    playerOnLeft: 0
+  tree: {fileID: 0}
+  agent: {fileID: 0}
+  description: 
+  Children:
+  - {fileID: -91295099580112014}
+  - {fileID: 2936916377251027844}
+  - {fileID: 3725254004780437081}
 --- !u!114 &5665470947064533787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4161,7 +4266,7 @@ MonoBehaviour:
   mState: 0
   Started: 0
   Guid: e33d425acc3a26b45bcc092f1f6847a7
-  Position: {x: 231.08073, y: 124.637054}
+  Position: {x: 221.85199, y: -274.4999}
   blackboard:
     attackTimeCounter: 0
     isHit: 0
@@ -4169,7 +4274,7 @@ MonoBehaviour:
   tree: {fileID: 0}
   agent: {fileID: 0}
   description: 
-  Child: {fileID: 997934962334746509}
+  Child: {fileID: 5507309887606594590}
   restartOnSuccess: 1
   restartOnFailure: 1
   maxRepeats: 0

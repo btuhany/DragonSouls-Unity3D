@@ -9,7 +9,7 @@ public class BossManager : MonoBehaviour
     [SerializeField] private GameObject _bossHealthUI;
     [SerializeField] private GameObject _bossWall;
     [SerializeField] private AiAgent _boss;
-
+    private AudioSource _audio;
     public bool IsInBoss;
     public static BossManager Instance;
     public event System.Action OnBossDefeated;
@@ -23,6 +23,7 @@ public class BossManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        _audio = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -32,6 +33,7 @@ public class BossManager : MonoBehaviour
     {
         if (_isBossStopped)
             _boss.StartAgent();
+        _audio.Play();
         _isBossStopped = false;
         IsInBoss = true;
         _bossHealthUI.SetActive(true);
@@ -45,6 +47,7 @@ public class BossManager : MonoBehaviour
         _bossWall.transform.DOMove(_bossWall.transform.position + _bossWall.transform.TransformDirection(Vector3.back * 17f), 0.6f).SetEase(Ease.Linear);
         _boss.StopAgent();
         _isBossStopped = true;
+        _audio.Stop();
     }
     public void HandleOnBossDeath()
     {

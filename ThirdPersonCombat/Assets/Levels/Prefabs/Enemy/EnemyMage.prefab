@@ -22250,6 +22250,8 @@ MonoBehaviour:
   faceToPlayer: 0
   faceLerpTime: 2
   reactToHit: 0
+  isSwordOnThis: 0
+  sword: {fileID: 0}
   _agentFX: {fileID: 546616754}
   _trailRenderers: []
   _sfxClips:
@@ -22509,7 +22511,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 13.8
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

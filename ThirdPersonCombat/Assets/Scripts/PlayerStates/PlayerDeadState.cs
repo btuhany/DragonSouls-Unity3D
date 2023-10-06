@@ -9,6 +9,7 @@ public class PlayerDeadState : PlayerBaseState
     }
     public override void Enter()
     {
+        SoundManager.Instance.PlayAuidoClip(5, 0);
         stateMachine.health.IsInvulnerable = true;
         _timeCounter = 0f;
         animationController.PlayDeath();

@@ -153,6 +153,7 @@ public class BonfirePanel : MonoBehaviour
             HandleOnInvalid();
             return;
         }
+        SoundManager.Instance.PlayAuidoClip(6, 0);
         BonfiresManager.Instance.ExitRest();
         //Vector3 motion = BonfiresManager.Instance.kindledBonfiresList[bonfireVal].respawnPoint.position - PlayerStateMachine.Instance.transform.position;
         //PlayerStateMachine.Instance.movement.CharacterController.Move(motion);
