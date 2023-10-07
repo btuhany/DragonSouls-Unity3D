@@ -84251,14 +84251,14 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 14
     messageOptions: 0
   - time: 0.53333336
     functionName: PlaySFX
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 3
+    intParameter: 13
     messageOptions: 0
   - time: 1.5666667
     functionName: ThrowFireProjectile
