@@ -9,6 +9,7 @@ public class BossManager : MonoBehaviour
     [SerializeField] private GameObject _bossHealthUI;
     [SerializeField] private GameObject _bossWall;
     [SerializeField] private AiAgent _boss;
+    [SerializeField] private ParticleSystem _fireFX;
     private AudioSource _audio;
     public bool IsInBoss;
     public static BossManager Instance;
@@ -28,6 +29,7 @@ public class BossManager : MonoBehaviour
     private void Start()
     {
         _boss.health.OnDead += HandleOnBossDeath;
+        _fireFX.Stop();
     }
     public void StartBossFight()
     {
@@ -38,6 +40,7 @@ public class BossManager : MonoBehaviour
         IsInBoss = true;
         _bossHealthUI.SetActive(true);
         _bossWall.transform.DOMove(_bossWall.transform.position + _bossWall.transform.TransformDirection(Vector3.forward * 17f), 0.6f).SetEase(Ease.Linear);
+        _fireFX.Play();
     }
     public void ExitBossFight()
     {
@@ -48,11 +51,13 @@ public class BossManager : MonoBehaviour
         _boss.StopAgent();
         _isBossStopped = true;
         _audio.Stop();
+        _fireFX.Stop();
     }
     public void HandleOnBossDeath()
     {
+        _audio.Stop();
         _bossHealthUI.SetActive(false);
         OnBossDefeated?.Invoke();
-        GameManager.Instance.EndGame();
+        //GameManager.Instance.EndGame();
     }
 }

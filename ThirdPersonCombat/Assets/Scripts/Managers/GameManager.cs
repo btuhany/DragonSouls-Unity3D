@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour
     }
     public void EndGame()
     {
-
+        Time.timeScale = 0.0f;
+        SoundManager.Instance.PlayAuidoClip(9, 0);
+        SoundManager.Instance.PlayAuidoClip(8, 0);
     }
     public void StartGame()
     {

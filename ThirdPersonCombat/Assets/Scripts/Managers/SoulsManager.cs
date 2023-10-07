@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class SoulsManager : MonoBehaviour
 {
@@ -52,7 +53,11 @@ public class SoulsManager : MonoBehaviour
     {
         //Handle souls gather particleFX
         Vector3 target = States.PlayerStateMachine.Instance.transform.position + Vector3.up * 1.7f;
-        ParticleSystem particleFX = Instantiate(_particleFX, pos + Vector3.up * 2f, Quaternion.identity);
+        //ParticleSystem particleFX = Instantiate(_particleFX, pos + Vector3.up * 2f, Quaternion.identity);
+        SoulParticles particleObj = SoulParticlesPool.Instance.GetObjectDisabled();
+        particleObj.transform.position = pos + Vector3.up * 2f;
+        particleObj.transform.rotation = Quaternion.identity;
+        ParticleSystem particleFX = particleObj.particleFx;
         particleFX.gameObject.transform.rotation = Quaternion.LookRotation(
             Vector3.up, target - particleFX.transform.position);
         float distance = Vector3.Distance(target, pos);
@@ -73,8 +78,10 @@ public class SoulsManager : MonoBehaviour
         particleFX.gameObject.transform.DOMove(States.PlayerStateMachine.Instance.transform.position + Vector3.up * 1.2f, animTime).SetEase(_particleMoveAnimEase).onComplete = () =>
         {
             SoundManager.Instance.PlayAuidoClip(2, 0);
+            SoulParticlesPool.Instance.ReturnObject(particleObj);
             StartCoroutine(AddSoulsAnim(value));
         };
+        particleObj.gameObject.SetActive(true);
         particleFX.Play();
     }
 
