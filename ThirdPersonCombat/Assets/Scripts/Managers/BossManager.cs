@@ -1,6 +1,5 @@
 using DG.Tweening;
 using UnityEngine;
-using static UnityEngine.InputManagerEntry;
 
 public class BossManager : MonoBehaviour
 {

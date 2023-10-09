@@ -61,11 +61,31 @@ MonoBehaviour:
     Pitch: 0.6
   - AudioClips:
     - {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}
-    Volume: 1
+    Volume: 0.4
     Pitch: 1
   - AudioClips:
     - {fileID: 8300000, guid: 0a107c34827044545b73ee9351383543, type: 3}
-    Volume: 1
+    Volume: 0.5
+    Pitch: 1
+  - AudioClips:
+    - {fileID: 8300000, guid: f126dd7aa600246c29bc92e20ceab0e7, type: 3}
+    Volume: 0.5
+    Pitch: 1
+  - AudioClips:
+    - {fileID: 8300000, guid: d78deecc6fa3040c9b6481172d2745cc, type: 3}
+    Volume: 0.5
+    Pitch: 1
+  - AudioClips:
+    - {fileID: 8300000, guid: d78deecc6fa3040c9b6481172d2745cc, type: 3}
+    Volume: 0.5
+    Pitch: 1
+  - AudioClips:
+    - {fileID: 8300000, guid: 844058b16f64a804cad26400b08ea1f6, type: 3}
+    Volume: 0.7
+    Pitch: 1
+  - AudioClips:
+    - {fileID: 8300000, guid: 8a44b12d3e3f24b1a89dc7f0b66756f4, type: 3}
+    Volume: 0.5
     Pitch: 1
 --- !u!82 &808453729781631220
 AudioSource:
@@ -80,7 +100,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.58
   Loop: 0
   Mute: 0
   Spatialize: 0

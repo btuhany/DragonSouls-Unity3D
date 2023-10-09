@@ -4,12 +4,9 @@ using UnityEngine;
 using Movement;
 using Combat;
 using Sounds;
-using static UnityEngine.ParticleSystem;
 using TMPro;
-using UnityEngine.UI;
 using DG.Tweening;
-using UnityEngine.InputSystem;
-using System;
+using Cinemachine;
 
 namespace States
 {
@@ -28,6 +25,7 @@ namespace States
         public event System.Action OnPlayerRespawn;
         public event System.Action OnPlayerTeleported;
         public bool isInvisible = false;
+        [SerializeField] private CinemachineCollider _cinemachineCollider;
 
         [Header("Components")]
         public InputReader InputReader;
@@ -167,13 +165,14 @@ namespace States
         }
         public void TeleportTo(Vector3 pos)
         {
+            _cinemachineCollider.enabled = false;
             OnPlayerTeleported?.Invoke();
             health.ResetHealth();
             movement.CharacterController.enabled = false;
             forceReceiver.disableForce = true;
-            transform.DOMove(transform.position + Vector3.up * 100f, 0.1f).onComplete = () =>
+            transform.DOMove(transform.position + Vector3.up * 180f, 1f).onComplete = () =>
             {
-                transform.DOMove(new Vector3(pos.x, transform.position.y, pos.z), 0.4f).onComplete = () => 
+                transform.DOMove(new Vector3(pos.x, transform.position.y, pos.z), 1f).onComplete = () => 
                 {
                     transform.position = pos + Vector3.up;
                     transform.rotation = _initialRotation;
@@ -186,6 +185,7 @@ namespace States
                     else
                         ChangeState(unarmedFreeState);
                     ResetSetHealFlask();
+                    _cinemachineCollider.enabled = true;
                 };
             };
         }

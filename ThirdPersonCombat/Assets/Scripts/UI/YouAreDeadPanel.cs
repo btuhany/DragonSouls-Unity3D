@@ -26,11 +26,11 @@ public class YouAreDeadPanel : MonoBehaviour
         blackScreen.color = Color.black;
         StartCoroutine(BlackScreenWait());
     }
-    private WaitForSeconds _blackScreenWait = new WaitForSeconds(2f);
+    private WaitForSeconds _blackScreenWait = new WaitForSeconds(3f);
     private IEnumerator BlackScreenWait()
     {
         yield return _blackScreenWait;
-        blackScreen.DOFade(0f, 1f).onComplete = () =>
+        blackScreen.DOFade(0f, 2f).onComplete = () =>
         {
             blackScreen.gameObject.SetActive(false);
         };
