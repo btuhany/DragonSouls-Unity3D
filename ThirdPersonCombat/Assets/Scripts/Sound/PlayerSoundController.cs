@@ -20,6 +20,7 @@ namespace Sounds
         [SerializeField] private SoundClips _rollEnd;
         [SerializeField] private SoundClips _hurt;
         [SerializeField] private SoundClips _grunt;
+        [SerializeField] private SoundClips _heal;
 
         [Header("AttackFootStep")]
         [SerializeField] private float _attackFootStepSFXVolume = 0.6f;
@@ -27,6 +28,7 @@ namespace Sounds
         private AudioSource _audioSource;
         private AudioSource _secondarySource;
 
+        //TODO: DRY code.
         private void Awake()
         {
             _audioSource = GetComponents<AudioSource>()[0];
@@ -77,6 +79,12 @@ namespace Sounds
             _secondarySource.volume = _grunt.Volume;
             _secondarySource.pitch = _grunt.Pitch + UnityEngine.Random.Range(-0.05f, 0.05f);
             _secondarySource.PlayOneShot(_grunt.AudioClips[UnityEngine.Random.Range(0, _grunt.AudioClips.Length)]);
+        }
+        public void PlayHealSFX()
+        {
+            _secondarySource.volume = _heal.Volume;
+            _secondarySource.pitch = _heal.Pitch;
+            _secondarySource.PlayOneShot(_heal.AudioClips[UnityEngine.Random.Range(0, _heal.AudioClips.Length)]);
         }
     }
 

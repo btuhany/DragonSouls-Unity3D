@@ -23,12 +23,14 @@ namespace Movement
 
         private Vector3 _impact;
         private float _impactSmoothTime = 0.1f;
-
+        public bool disableForce = false;
    
         private readonly float _gravity = Physics.gravity.y;
         private bool _isGrounded => Physics.CheckSphere(_groundCheckTransform.position, _checkRadius, _groundMask);
         private void Update()
         {
+            if (disableForce) return;
+
             if (_impact.sqrMagnitude > 0.07f)
                 _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _currentVelocity ,_impactSmoothTime);
             else

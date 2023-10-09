@@ -1,115 +1,308 @@
 fileFormatVersion: 2
 guid: a58154c350c4ccf47a6cdad03a8dca1a
-timeCreated: 1508858356
-licenseType: Store
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: Bip01
-    100002: Bip01 Footsteps
-    100004: Bip01 Head
-    100006: Bip01 HeadNub
-    100008: Bip01 L Calf
-    100010: Bip01 L Clavicle
-    100012: Bip01 L Finger0
-    100014: Bip01 L Finger01
-    100016: Bip01 L Finger0Nub
-    100018: Bip01 L Finger1
-    100020: Bip01 L Finger11
-    100022: Bip01 L Finger1Nub
-    100024: Bip01 L Foot
-    100026: Bip01 L Forearm
-    100028: Bip01 L Hand
-    100030: Bip01 L Thigh
-    100032: Bip01 L Toe0
-    100034: Bip01 L Toe0Nub
-    100036: Bip01 L UpperArm
-    100038: Bip01 Neck
-    100040: Bip01 Pelvis
-    100042: Bip01 Ponytail1
-    100044: Bip01 Ponytail1Nub
-    100046: Bip01 R Calf
-    100048: Bip01 R Clavicle
-    100050: Bip01 R Finger0
-    100052: Bip01 R Finger01
-    100054: Bip01 R Finger0Nub
-    100056: Bip01 R Finger1
-    100058: Bip01 R Finger11
-    100060: Bip01 R Finger1Nub
-    100062: Bip01 R Foot
-    100064: Bip01 R Forearm
-    100066: Bip01 R Hand
-    100068: Bip01 R Thigh
-    100070: Bip01 R Toe0
-    100072: Bip01 R Toe0Nub
-    100074: Bip01 R UpperArm
-    100076: Bip01 Spine
-    100078: Bip01 Spine1
-    100080: Bip01 Spine2
-    100082: Bip01 Spine3
-    100084: jar_01
-    100086: //RootNode
-    100088: skeleton_mesh
-    400000: Bip01
-    400002: Bip01 Footsteps
-    400004: Bip01 Head
-    400006: Bip01 HeadNub
-    400008: Bip01 L Calf
-    400010: Bip01 L Clavicle
-    400012: Bip01 L Finger0
-    400014: Bip01 L Finger01
-    400016: Bip01 L Finger0Nub
-    400018: Bip01 L Finger1
-    400020: Bip01 L Finger11
-    400022: Bip01 L Finger1Nub
-    400024: Bip01 L Foot
-    400026: Bip01 L Forearm
-    400028: Bip01 L Hand
-    400030: Bip01 L Thigh
-    400032: Bip01 L Toe0
-    400034: Bip01 L Toe0Nub
-    400036: Bip01 L UpperArm
-    400038: Bip01 Neck
-    400040: Bip01 Pelvis
-    400042: Bip01 Ponytail1
-    400044: Bip01 Ponytail1Nub
-    400046: Bip01 R Calf
-    400048: Bip01 R Clavicle
-    400050: Bip01 R Finger0
-    400052: Bip01 R Finger01
-    400054: Bip01 R Finger0Nub
-    400056: Bip01 R Finger1
-    400058: Bip01 R Finger11
-    400060: Bip01 R Finger1Nub
-    400062: Bip01 R Foot
-    400064: Bip01 R Forearm
-    400066: Bip01 R Hand
-    400068: Bip01 R Thigh
-    400070: Bip01 R Toe0
-    400072: Bip01 R Toe0Nub
-    400074: Bip01 R UpperArm
-    400076: Bip01 Spine
-    400078: Bip01 Spine1
-    400080: Bip01 Spine2
-    400082: Bip01 Spine3
-    400084: jar_01
-    400086: //RootNode
-    400088: skeleton_mesh
-    2300000: jar_01
-    3300000: jar_01
-    4300000: skeleton_mesh
-    4300002: jar_01
-    9500000: //RootNode
-    13700000: skeleton_mesh
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Bip01
+  - first:
+      1: 100002
+    second: Bip01 Footsteps
+  - first:
+      1: 100004
+    second: Bip01 Head
+  - first:
+      1: 100006
+    second: Bip01 HeadNub
+  - first:
+      1: 100008
+    second: Bip01 L Calf
+  - first:
+      1: 100010
+    second: Bip01 L Clavicle
+  - first:
+      1: 100012
+    second: Bip01 L Finger0
+  - first:
+      1: 100014
+    second: Bip01 L Finger01
+  - first:
+      1: 100016
+    second: Bip01 L Finger0Nub
+  - first:
+      1: 100018
+    second: Bip01 L Finger1
+  - first:
+      1: 100020
+    second: Bip01 L Finger11
+  - first:
+      1: 100022
+    second: Bip01 L Finger1Nub
+  - first:
+      1: 100024
+    second: Bip01 L Foot
+  - first:
+      1: 100026
+    second: Bip01 L Forearm
+  - first:
+      1: 100028
+    second: Bip01 L Hand
+  - first:
+      1: 100030
+    second: Bip01 L Thigh
+  - first:
+      1: 100032
+    second: Bip01 L Toe0
+  - first:
+      1: 100034
+    second: Bip01 L Toe0Nub
+  - first:
+      1: 100036
+    second: Bip01 L UpperArm
+  - first:
+      1: 100038
+    second: Bip01 Neck
+  - first:
+      1: 100040
+    second: Bip01 Pelvis
+  - first:
+      1: 100042
+    second: Bip01 Ponytail1
+  - first:
+      1: 100044
+    second: Bip01 Ponytail1Nub
+  - first:
+      1: 100046
+    second: Bip01 R Calf
+  - first:
+      1: 100048
+    second: Bip01 R Clavicle
+  - first:
+      1: 100050
+    second: Bip01 R Finger0
+  - first:
+      1: 100052
+    second: Bip01 R Finger01
+  - first:
+      1: 100054
+    second: Bip01 R Finger0Nub
+  - first:
+      1: 100056
+    second: Bip01 R Finger1
+  - first:
+      1: 100058
+    second: Bip01 R Finger11
+  - first:
+      1: 100060
+    second: Bip01 R Finger1Nub
+  - first:
+      1: 100062
+    second: Bip01 R Foot
+  - first:
+      1: 100064
+    second: Bip01 R Forearm
+  - first:
+      1: 100066
+    second: Bip01 R Hand
+  - first:
+      1: 100068
+    second: Bip01 R Thigh
+  - first:
+      1: 100070
+    second: Bip01 R Toe0
+  - first:
+      1: 100072
+    second: Bip01 R Toe0Nub
+  - first:
+      1: 100074
+    second: Bip01 R UpperArm
+  - first:
+      1: 100076
+    second: Bip01 Spine
+  - first:
+      1: 100078
+    second: Bip01 Spine1
+  - first:
+      1: 100080
+    second: Bip01 Spine2
+  - first:
+      1: 100082
+    second: Bip01 Spine3
+  - first:
+      1: 100084
+    second: jar_01
+  - first:
+      1: 100086
+    second: //RootNode
+  - first:
+      1: 100088
+    second: skeleton_mesh
+  - first:
+      4: 400000
+    second: Bip01
+  - first:
+      4: 400002
+    second: Bip01 Footsteps
+  - first:
+      4: 400004
+    second: Bip01 Head
+  - first:
+      4: 400006
+    second: Bip01 HeadNub
+  - first:
+      4: 400008
+    second: Bip01 L Calf
+  - first:
+      4: 400010
+    second: Bip01 L Clavicle
+  - first:
+      4: 400012
+    second: Bip01 L Finger0
+  - first:
+      4: 400014
+    second: Bip01 L Finger01
+  - first:
+      4: 400016
+    second: Bip01 L Finger0Nub
+  - first:
+      4: 400018
+    second: Bip01 L Finger1
+  - first:
+      4: 400020
+    second: Bip01 L Finger11
+  - first:
+      4: 400022
+    second: Bip01 L Finger1Nub
+  - first:
+      4: 400024
+    second: Bip01 L Foot
+  - first:
+      4: 400026
+    second: Bip01 L Forearm
+  - first:
+      4: 400028
+    second: Bip01 L Hand
+  - first:
+      4: 400030
+    second: Bip01 L Thigh
+  - first:
+      4: 400032
+    second: Bip01 L Toe0
+  - first:
+      4: 400034
+    second: Bip01 L Toe0Nub
+  - first:
+      4: 400036
+    second: Bip01 L UpperArm
+  - first:
+      4: 400038
+    second: Bip01 Neck
+  - first:
+      4: 400040
+    second: Bip01 Pelvis
+  - first:
+      4: 400042
+    second: Bip01 Ponytail1
+  - first:
+      4: 400044
+    second: Bip01 Ponytail1Nub
+  - first:
+      4: 400046
+    second: Bip01 R Calf
+  - first:
+      4: 400048
+    second: Bip01 R Clavicle
+  - first:
+      4: 400050
+    second: Bip01 R Finger0
+  - first:
+      4: 400052
+    second: Bip01 R Finger01
+  - first:
+      4: 400054
+    second: Bip01 R Finger0Nub
+  - first:
+      4: 400056
+    second: Bip01 R Finger1
+  - first:
+      4: 400058
+    second: Bip01 R Finger11
+  - first:
+      4: 400060
+    second: Bip01 R Finger1Nub
+  - first:
+      4: 400062
+    second: Bip01 R Foot
+  - first:
+      4: 400064
+    second: Bip01 R Forearm
+  - first:
+      4: 400066
+    second: Bip01 R Hand
+  - first:
+      4: 400068
+    second: Bip01 R Thigh
+  - first:
+      4: 400070
+    second: Bip01 R Toe0
+  - first:
+      4: 400072
+    second: Bip01 R Toe0Nub
+  - first:
+      4: 400074
+    second: Bip01 R UpperArm
+  - first:
+      4: 400076
+    second: Bip01 Spine
+  - first:
+      4: 400078
+    second: Bip01 Spine1
+  - first:
+      4: 400080
+    second: Bip01 Spine2
+  - first:
+      4: 400082
+    second: Bip01 Spine3
+  - first:
+      4: 400084
+    second: jar_01
+  - first:
+      4: 400086
+    second: //RootNode
+  - first:
+      4: 400088
+    second: skeleton_mesh
+  - first:
+      23: 2300000
+    second: jar_01
+  - first:
+      33: 3300000
+    second: jar_01
+  - first:
+      43: 4300000
+    second: skeleton_mesh
+  - first:
+      43: 4300002
+    second: jar_01
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: skeleton_mesh
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -117,6 +310,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -131,19 +326,33 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -151,10 +360,13 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: Bip01 Pelvis
       humanName: Hips
@@ -629,14 +841,18 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -1,5 +1,8 @@
 using DG.Tweening;
 using States;
+using System;
+using System.Collections;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +17,25 @@ public class YouAreDeadPanel : MonoBehaviour
     {
         PlayerStateMachine.Instance.health.OnDead += HandleOnPlayerDeath;
         PlayerStateMachine.Instance.OnPlayerRespawn += HandleOnPlayerRespawn;
+        PlayerStateMachine.Instance.OnPlayerTeleported += HandleOnPlayerTeleported;
     }
+
+    private void HandleOnPlayerTeleported()
+    {
+        blackScreen.gameObject.SetActive(true);
+        blackScreen.color = Color.black;
+        StartCoroutine(BlackScreenWait());
+    }
+    private WaitForSeconds _blackScreenWait = new WaitForSeconds(2f);
+    private IEnumerator BlackScreenWait()
+    {
+        yield return _blackScreenWait;
+        blackScreen.DOFade(0f, 1f).onComplete = () =>
+        {
+            blackScreen.gameObject.SetActive(false);
+        };
+    }
+
     public void HandleOnPlayerDeath()
     {
         deadPanel.gameObject.SetActive(true);

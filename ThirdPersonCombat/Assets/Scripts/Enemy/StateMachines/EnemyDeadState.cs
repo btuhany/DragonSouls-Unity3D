@@ -12,6 +12,7 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter() 
     {
+        stateMachine.lockState = true;
         stateMachine.forceReceiver.isCharacterControllerDisabled = true;
         if (stateMachine.isSwordOn)
         {
@@ -38,6 +39,7 @@ public class EnemyDeadState : EnemyBaseState
             stateMachine.isOnDeadState = false;
             stateMachine.isDead = true;
             stateMachine.forceReceiver.isCharacterControllerDisabled = false;
+            stateMachine.lockState = false;
             stateMachine.gameObject.SetActive(false);
         }
     }

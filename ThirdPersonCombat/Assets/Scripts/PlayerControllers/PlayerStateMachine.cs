@@ -26,6 +26,7 @@ namespace States
         [SerializeField] private GameObject _pauseScreen;
         private int _healFlask = 3;
         public event System.Action OnPlayerRespawn;
+        public event System.Action OnPlayerTeleported;
         public bool isInvisible = false;
 
         [Header("Components")]
@@ -166,18 +167,27 @@ namespace States
         }
         public void TeleportTo(Vector3 pos)
         {
+            OnPlayerTeleported?.Invoke();
             health.ResetHealth();
             movement.CharacterController.enabled = false;
-            transform.position = pos;
-            transform.rotation = _initialRotation;
-            movement.CharacterController.enabled = true;
-            if (combatController.IsSwordInSheath)
-                ChangeState(freeLookPlayerState);
-            else if (combatController.IsSwordReturned)
-                ChangeState(swordFreeState);
-            else
-                ChangeState(unarmedFreeState);
-            ResetSetHealFlask();
+            forceReceiver.disableForce = true;
+            transform.DOMove(transform.position + Vector3.up * 100f, 0.1f).onComplete = () =>
+            {
+                transform.DOMove(new Vector3(pos.x, transform.position.y, pos.z), 0.4f).onComplete = () => 
+                {
+                    transform.position = pos + Vector3.up;
+                    transform.rotation = _initialRotation;
+                    forceReceiver.disableForce = false;
+                    movement.CharacterController.enabled = true;
+                    if (combatController.IsSwordInSheath)
+                        ChangeState(freeLookPlayerState);
+                    else if (combatController.IsSwordReturned)
+                        ChangeState(swordFreeState);
+                    else
+                        ChangeState(unarmedFreeState);
+                    ResetSetHealFlask();
+                };
+            };
         }
         private void LookToBonfire()
         {
@@ -219,6 +229,7 @@ namespace States
             _healFlask--;
             _healPotionText.text = _healFlask.ToString();
             _healFX.Play();
+            sound.PlayHealSFX();
         }
         public void ResetSetHealFlask()
         {

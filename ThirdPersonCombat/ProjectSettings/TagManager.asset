@@ -9,6 +9,7 @@ TagManager:
   - FxTemporaire
   - Trigger
   - Bonfire
+  - NoLight
   layers:
   - Default
   - TransparentFX
@@ -22,9 +23,9 @@ TagManager:
   - PlayerTargetCast
   - AreaAttacks
   - Trigger
-  - 
-  - 
-  - 
+  - NoLight
+  - DecorTerrain
+  - Terrain
   - 
   - 
   - 

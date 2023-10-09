@@ -118,9 +118,9 @@ public class EnemyStateMachine : StateMachine
         if (health <= 0)
         {
             isOnDeadState = true;
-            ChangeState(deadState);
             OnDead?.Invoke();
             _targetController.ResetTargetable();
+            ChangeState(deadState);
             return;
         }
         else

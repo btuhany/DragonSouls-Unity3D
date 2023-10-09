@@ -3,6 +3,7 @@ namespace States
 {
     public abstract class StateMachine : MonoBehaviour
     {
+        public bool lockState = false;
         protected State _currentState;
         public State PreviousState;
         public void UpdateState(float deltaTime)
@@ -11,6 +12,7 @@ namespace States
         }
         public void ChangeState(State newState)
         {
+            if (lockState) return;
             State prewState = _currentState;
             _currentState?.Exit();
             _currentState = newState;

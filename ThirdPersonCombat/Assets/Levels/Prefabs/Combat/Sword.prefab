@@ -300,13 +300,21 @@ MonoBehaviour:
     AudioClips: []
     Volume: 0
     Pitch: 0
+  _swordGrab:
+    AudioClips: []
+    Volume: 0
+    Pitch: 0
+  _groundHitImpact:
+    AudioClips: []
+    Volume: 0
+    Pitch: 0
+  _audioSource: {fileID: 4383953095502281317}
+  _inAirSFXAuidoSource: {fileID: 8593640439721224309}
+  _returnSFXAuidoSource: {fileID: 8911186998952045215}
   _aimLayer:
     serializedVersion: 2
     m_Bits: 2147483647
   _aimRange: 250
-  _audioSource: {fileID: 4383953095502281317}
-  _inAirSFXAuidoSource: {fileID: 8593640439721224309}
-  _returnSFXAuidoSource: {fileID: 8911186998952045215}
 --- !u!114 &2187547406103913585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,7 +430,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

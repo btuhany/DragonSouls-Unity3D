@@ -78,6 +78,7 @@ namespace PlayerController
             _collider.enabled = false;
             _trail.enabled = false;
             _freezeElectricFX.gameObject.SetActive(false);
+            _damage.OnHitGiven += HandleOnHitGiven;
         }
         private void FixedUpdate()
         {
@@ -272,6 +273,17 @@ namespace PlayerController
             _damage.enabled = false;
             _trail.enabled = false;
         }
+        public void HandleOnHitGiven(Collider collider)
+        {
+            if(TryGetComponent(out EnemyNightmareDragonController boss))
+            {
+
+            }
+            else if(collider.CompareTag("Enemy"))
+            {
+                PlayDamageGivenSFX();
+            }
+        }
         public void DetachFromAgent()
         {
             transform.SetParent(null);
@@ -287,9 +299,9 @@ namespace PlayerController
         #region Sounds
         public void PlayDamageGivenSFX()
         {
-            _audioSource.volume = _swordDamageSounds.Volume;
-            _audioSource.pitch = _swordDamageSounds.Pitch;
-            _audioSource.PlayOneShot(_swordDamageSounds.AudioClips[Random.Range(0, _swordDamageSounds.AudioClips.Length)]);
+            //_audioSource.volume = _swordDamageSounds.Volume;
+            //_audioSource.pitch = _swordDamageSounds.Pitch;
+            _inAirSFXAuidoSource.PlayOneShot(_swordDamageSounds.AudioClips[Random.Range(0, _swordDamageSounds.AudioClips.Length)]);
         }
         private void PlayDrawSFX()
         {

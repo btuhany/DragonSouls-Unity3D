@@ -17,11 +17,11 @@ MonoBehaviour:
   m_Settings:
     Downsample: 0
     AfterOpaque: 0
-    Source: 1
+    Source: 0
     NormalSamples: 1
-    Intensity: 1
-    DirectLightingStrength: 0.165
-    Radius: 0.25
+    Intensity: 0.94
+    DirectLightingStrength: 0.479
+    Radius: 0.42
     SampleCount: 12
 --- !u!114 &11400000
 MonoBehaviour:
