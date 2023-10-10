@@ -22261,7 +22261,7 @@ MonoBehaviour:
     Pitch: 0.6
   - AudioClips:
     - {fileID: 8300000, guid: b6e291334dde36742ad484a8e6e60255, type: 3}
-    Volume: 0.5
+    Volume: 0.4
     Pitch: 0.5
   - AudioClips:
     - {fileID: 8300000, guid: 18abc09442ba41f48817c7f548eae51d, type: 3}

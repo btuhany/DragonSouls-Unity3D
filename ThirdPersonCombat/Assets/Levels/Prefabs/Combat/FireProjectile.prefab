@@ -34299,7 +34299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxLifeTime: 7
   _speed: 15
-  _damagePoint: 50
+  _damagePoint: 85
   _particles:
   - {fileID: 6653371431749272945}
   - {fileID: 7880834093699726653}
